@@ -26,4 +26,4 @@ def get_movie():
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
-            debug=True)   # Must change this to false before submission ---------------------------------------------
+            debug=True)   # Must change this to false before submission -----

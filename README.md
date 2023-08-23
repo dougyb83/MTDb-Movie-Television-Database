@@ -136,46 +136,57 @@ In this section, list all of your user stories for the project.
 
 ## Wireframes
 
-⚠️⚠️⚠️⚠️⚠️ START OF NOTES (to be deleted) ⚠️⚠️⚠️⚠️⚠️
-
-In this section, display your wireframe screenshots using a Markdown `table`.
-
-Instructions on how to do Markdown `tables` start on line #213 on this site: https://pandao.github.io/editor.md/en.html
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
-To follow best practice, wireframes were developed for mobile, tablet, and desktop sizes.
+To follow best practices, wireframes were developed for mobile, tablet, and desktop sizes.
 I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wireframes.
 
-### Home Page Wireframes
+### Mobile Wireframes
 
-| Size | Screenshot |
-| --- | --- |
-| Mobile | ![screenshot](documentation/wireframes/mobile-home.png) |
-| Tablet | ![screenshot](documentation/wireframes/tablet-home.png) |
-| Desktop | ![screenshot](documentation/wireframes/desktop-home.png) |
+<details>
+<summary>Click here to see the Mobile Wireframes</summary>
 
-### About Page Wireframes
+- Home Page
+  - ![screenshot](documentation/wireframes/mobile-home.png)
+- Library Page
+  - ![screenshot](documentation/wireframes/mobile-library.png)
+- Search Result Page
+  - ![screenshot](documentation/wireframes/mobile-search.png)
+- Existing List Item Page
+  - ![screenshot](documentation/wireframes/mobile-list-item.png)
 
-| Size | Screenshot |
-| --- | --- |
-| Mobile | ![screenshot](documentation/wireframes/mobile-about.png) |
-| Tablet | ![screenshot](documentation/wireframes/tablet-about.png) |
-| Desktop | ![screenshot](documentation/wireframes/desktop-about.png) |
+</details>
 
-### Contact Page Wireframes
+### Tablet Wireframes
 
-| Size | Screenshot |
-| --- | --- |
-| Mobile | ![screenshot](documentation/wireframes/mobile-contact.png) |
-| Tablet | ![screenshot](documentation/wireframes/tablet-contact.png) |
-| Desktop | ![screenshot](documentation/wireframes/desktop-contact.png) |
+<details>
+<summary>Click here to see the Tablet Wireframes</summary>
 
-⚠️⚠️⚠️⚠️⚠️ START OF NOTES (to be deleted) ⚠️⚠️⚠️⚠️⚠️
+- Home Page
+  - ![screenshot](documentation/wireframes/tablet-home.png)
+- Library Page
+  - ![screenshot](documentation/wireframes/tablet-library.png)
+- Search Result Page
+  - ![screenshot](documentation/wireframes/tablet-search.png)
+- Existing List Item Page
+  - ![screenshot](documentation/wireframes/tablet-list-item.png)
 
-Repeat for any addition wireframe pages you have.
+</details>
 
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
+### Desktop Wireframes
+
+<details>
+<summary>Click here to see the Desktop Wireframes</summary>
+
+- Home Page
+  - ![screenshot](documentation/wireframes/desktop-home.png)
+- Library Page
+  - ![screenshot](documentation/wireframes/desktop-library.png)
+- Search Result Page
+  - ![screenshot](documentation/wireframes/desktop-search.png)
+- Existing List Item Page
+  - ![screenshot](documentation/wireframes/desktop-list-item.png)
+
+</details>
+
 
 ## Features
 
