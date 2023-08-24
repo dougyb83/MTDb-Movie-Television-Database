@@ -1,4 +1,4 @@
-# MTDB MOVIE TELEVISION DATABASE
+# MTDB - MOVIE & TELEVISION DATABASE
 
 ⚠️⚠️⚠️⚠️⚠️ START OF NOTES (to be deleted) ⚠️⚠️⚠️⚠️⚠️
 
@@ -27,6 +27,10 @@ Find out more about using Markdown elements here:
 https://pandao.github.io/editor.md/en.html
 
 🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
+
+Introducing MTDB - the Movie & Television Database, your ultimate solution for keeping track of what to watch next and what you've already seen. Say goodbye to forgetting movie recommendations or losing track of TV show progress. MTDB makes it effortless to create a list of films and shows you're excited to watch and organize the ones you've already enjoyed.
+
+MTDB is designed for all entertainment enthusiasts. Whether you're a movie buff, a TV show addict, or just someone who enjoys the occasional flick, MTDB is here to make your life easier. Create your personal watchlist, rate what you've seen, and get tailored recommendations based on your preferences. No more scrolling through endless options – MTDB helps you decide what's worth your time.
 
 ## UX
 
