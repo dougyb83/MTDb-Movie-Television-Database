@@ -34,11 +34,9 @@ MTDB is designed for all entertainment enthusiasts. Whether you're a movie buff,
 
 ## UX
 
-⚠️⚠️⚠️⚠️⚠️ START OF NOTES (to be deleted) ⚠️⚠️⚠️⚠️⚠️
+The Homepage's main function will be to attract new users to register an account and for existing users to log in. So sign-up and log in options will be in clear eyesight as soon as the page is opened. Some extra functionality will be the ability to search for a movie or show log-inhe nav bar without first logging in or signing up. Once a search result is found an option will be presented to log-in a watchlist or seen list. If either of these buttons are clicked the user will be promted to log in or sign up.
 
-In this section, you will briefly explain your design processes.
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
+Once the user is logged in they will be presented with a library of all the movies and shows saved to their lists. From here they can select the individual lists available to them or select an item from the full library, where they are given the ability to move the item between lists, give it a rating, add personal comments or delete the item.
 
 ### Colour Scheme
 
@@ -116,24 +114,24 @@ In this section, list all of your user stories for the project.
 
 ### New Site Users
 
-- As a new site user, I would like to ____________, so that I can ____________.
-- As a new site user, I would like to ____________, so that I can ____________.
-- As a new site user, I would like to ____________, so that I can ____________.
-- As a new site user, I would like to ____________, so that I can ____________.
-- As a new site user, I would like to ____________, so that I can ____________.
+- As a new site user, I would like to see clear sign-up and login options, so that I can quickly access the sites full functionality.
+- As a new site user, I would like to search for movies/shows without signing up, so that I can see what the site has to offer.
+- As a new site user, I would like to easily navigate through the site, so that I can quickly find exactly what I'm looking for.
+- As a new site user, I would like to responsive design, so that I can view the page on multiple devices.
 
 ### Returning Site Users
 
-- As a returning site user, I would like to ____________, so that I can ____________.
-- As a returning site user, I would like to ____________, so that I can ____________.
-- As a returning site user, I would like to ____________, so that I can ____________.
-- As a returning site user, I would like to ____________, so that I can ____________.
-- As a returning site user, I would like to ____________, so that I can ____________.
+- As a returning site user, I would like to easily log in, so that I can access my library and lists.
+- As a returning site user, I would like to view each of my lists individually, so I can choose what to watch.
+- As a returning site user, I would like to see where I can watch the movies/shows in my lists, so I can choose a streaming service to watch on.
+- As a returning site user, I would like to add movies/shows to my lists, so that I can keep track of what to watch or what I have watched.
+- As a returning site user, I would like to edit movies/shows in my lists, so that I can personal or correct the information already stored.
+- As a returning site user, I would like to delete movies/shows from my lists, so that unwanted items are no longer displayed to me.
 
 ### Site Admin
 
-- As a site administrator, I should be able to ____________, so that I can ____________.
-- As a site administrator, I should be able to ____________, so that I can ____________.
+- As a site administrator, I should be able to add or remove categories from the database, so that I can provide the user with relevant information.
+- As a site administrator, I should be able to see how many people are using the site.
 - As a site administrator, I should be able to ____________, so that I can ____________.
 - As a site administrator, I should be able to ____________, so that I can ____________.
 - As a site administrator, I should be able to ____________, so that I can ____________.
