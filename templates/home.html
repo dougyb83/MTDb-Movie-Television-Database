@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+
+    {% for movie in movies %}
+        {{ movie.movie_name }}<br>
+        {{ movie.year }}<br>
+        {{ movie.runtime }}<br>
+        {{ movie.poster }}<br>
+        {{ movie.synopsis }}<br>
+    {% endfor %}
+
+{% endblock %}
