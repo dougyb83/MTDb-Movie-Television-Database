@@ -1,0 +1,20 @@
+.welcome {
+    height: 80vh;
+    width: 100%;
+    background-image: radial-gradient(farthest-side at 100% -20%, #6b0e87, rgb(27 6 51), #0b0a0a);
+}
+
+.welcome h1 {
+    color: white;
+    margin: 0;
+}
+
+.popular {
+    height: 80vh;
+    background-color: black;
+    color: white;
+}
+
+.popular h2 {
+    margin: 0;
+}
