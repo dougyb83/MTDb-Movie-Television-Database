@@ -4,12 +4,26 @@
     background-image: radial-gradient(farthest-side at 90% -0%, #6b0e87, rgb(36 5 71), #0f0219);
     margin-top: -66px;
     padding: 90px;
+    text-align: center;
 }
 
 .welcome h1 {
     color: white;
-    margin: 0;
+    margin: 0 155px;
 }
+
+.left-aligned {
+    text-align: left;
+}
+
+.center-aligned {
+    text-align: center;
+}
+
+.right-aligned {
+    text-align: right;
+}
+
 
 .popular {
     height: 80vh;
