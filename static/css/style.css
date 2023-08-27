@@ -1,7 +1,9 @@
 .welcome {
     height: 80vh;
-    width: 100%;
-    background-image: radial-gradient(farthest-side at 100% -20%, #6b0e87, rgb(27 6 51), #0b0a0a);
+    width: 100%;    
+    background-image: radial-gradient(farthest-side at 90% -0%, #6b0e87, rgb(36 5 71), #0f0219);
+    margin-top: -66px;
+    padding: 90px;
 }
 
 .welcome h1 {
@@ -17,4 +19,13 @@
 
 .popular h2 {
     margin: 0;
+}
+
+.navbar-fixed nav {
+    opacity: 90%;
+    width: 98%;
+    border-radius: 14px;
+    margin-top: 10px;
+    margin-left: 11px;
+    padding-left: 10px;
 }
