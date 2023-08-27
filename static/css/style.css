@@ -12,6 +12,11 @@
     margin: 0 155px;
 }
 
+.title-container {
+    width: 80%;
+    margin: 0 auto;
+}
+
 .left-aligned {
     text-align: left;
 }
@@ -43,3 +48,8 @@
     margin-left: 11px;
     padding-left: 10px;
 }
+
+.navbar-center {
+    display: flex;
+    justify-content: center;
+  }
