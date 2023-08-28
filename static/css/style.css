@@ -29,7 +29,6 @@
     text-align: right;
 }
 
-
 .popular {
     height: 80vh;
     background-color: black;
@@ -53,3 +52,8 @@
     display: flex;
     justify-content: center;
   }
+
+.flashes {
+    position: absolute;
+    width: 100%;
+}

@@ -29,7 +29,7 @@
                 {% if session.user|lower == "admin"|lower %}
                   <li><a href="#">Manage Categories</a></li>
                 {% endif %}
-                <li><a href="#">Log Out</a></li>
+                <li><a href="{{ url_for('logout') }}">Log Out</a></li>
                 {% else %}
                   <li class="log-in-button"><a href="#">Log In</a></li>
                   <li class="sign-up-button"><a href="#">Sign up</a></li>
@@ -47,7 +47,8 @@
               <li><a href="#">New Task</a></li>
               {% if session.user|lower == "admin"|lower %}
                 <li><a href="#">Manage Categories</a></li>
-              {% endif %}              <li><a href="#">Log Out</a></li>
+              {% endif %}              
+              <li><a href="{{ url_for('logout') }}">Log Out</a></li>
             {% else %}
               <li><a href="#">Log In</a></li>
               <li><a href="#"></a>Register</a></li>
