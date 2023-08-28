@@ -4,15 +4,94 @@
         <button type="button" class="close" sign-up-close-modal aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
-        <h2>Sign Up</h2>
+        
+        <h3 class="center-align">Sign Up</h3>
+
+        <div class="row">
+            <form class="col s12 m8 offset-m2" method="POST" action="{{ url_for('home') }}">
+                <div class="card-panel">
+                    <!-- username -->
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="fas fa-user-plus prefix light-blue-text text-darken-4"></i>
+                            <input id="signup-username" name="signup-username" type="text" minlength="5"
+                                maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
+                            <label for="signup-username">Username</label>
+                          </div>
+                    </div>
+                    <!-- password -->
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="fas fa-user-lock prefix light-blue-text text-darken-4"></i>
+                            <input id="password" name="password" type="password" minlength="5"
+                                maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
+                            <label for="password">Password</label>
+                        </div>
+                    </div>
+                    <!-- register -->
+                    <div class="row">
+                        <button type="submit" class="col s12 btn-large light-blue darken-4 text-shadow">
+                            Register <i class="fas fa-sign-in-alt"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    
+        <div class="row">
+            <div class="col s12">
+                <p class="center-align">
+                    Already Registered? 
+                    <a href="" class="light-blue-text text-darken-4">Log In</a>
+                </p>
+            </div>
+        </div>
     </dialog>
 
     <dialog data-modal id="log-in-modal">
         <button type="button" class="close" log-in-close-modal aria-label="Close">
             <span aria-hidden="true">&times;</span>
         </button>
-        <h2>Sign In</h2>
-    </dialog>
+        <h3 class="center-align">Log In</h3>
+
+        <div class="row">
+            <form class="col s12 m8 offset-m2" method="POST" action="">  
+                <div class="card-panel">
+                    <!-- username -->
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="fas fa-user-cog prefix light-blue-text text-darken-4"></i>
+                            <input id="username" name="username" type="text" minlength="5"
+                                maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
+                            <label for="username">Username</label>
+                          </div>
+                    </div>
+                    <!-- password -->
+                    <div class="row">
+                        <div class="input-field col s12">
+                            <i class="fas fa-user-lock prefix light-blue-text text-darken-4"></i>
+                            <input id="password" name="password" type="password" minlength="5"
+                                maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
+                            <label for="password">Password</label>
+                        </div>
+                    </div>
+                    <!-- login -->
+                    <div class="row">
+                        <button type="submit" class="col s12 btn-large light-blue darken-4 text-shadow">
+                            Log In <i class="fas fa-sign-in-alt"></i>
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    
+        <div class="row">
+            <div class="col s12">
+                <p class="center-align">
+                    New Here? 
+                    <a href="" class="light-blue-text text-darken-4">Register Account</a> 
+            </div>
+        </div>    </dialog>
 
     <div class="welcome">
         <div class="title-container">
