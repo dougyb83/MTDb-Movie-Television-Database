@@ -57,3 +57,7 @@
     position: absolute;
     width: 100%;
 }
+
+dialog::backdrop {
+    background: rgba(0, 0, 0, 0.6);
+}
