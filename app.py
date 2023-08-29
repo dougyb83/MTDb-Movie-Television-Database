@@ -51,12 +51,12 @@ def home():
             # ensure hashed password matches user input
             if check_password_hash(
                     existing_user["password"], request.form.get("password")):
-                        session["user"] = request.form.get(
-                            "login-username").lower()
-                        flash("Welcome, {}".format(
-                            request.form.get("login-username")))
-                        return redirect(url_for(
-                            "library", username=session["user"]))
+                session["user"] = request.form.get(
+                    "login-username").lower()
+                flash("Welcome, {}".format(
+                    request.form.get("login-username")))
+                return redirect(url_for(
+                    "library", username=session["user"]))
             else:
                 # invalid password match
                 flash("Incorrect Username and/or Password")
