@@ -17,9 +17,15 @@
     <header>
         <!-- top navbar -->
         <div class="navbar-fixed navbar-center">
-          <nav class="text-shadow  grey darken-4">
+          <nav class="text-shadow grey darken-4">
             <div class="nav-wrapper">
               <a href="#" class="brand-logo">MTDb</a>
+              <form class="search-bar">
+                <div class="input-field">
+                  <input id="search" type="search" required>
+                  <label class="label-icon" for="search"><i class="fa-solid fa-magnifying-glass"></i>
+                </div>
+              </form>
               <a href="#" data-target="mobile-demo" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
               <ul class="right hide-on-med-and-down">
                 <li><a href="{{ url_for('home') }}">Home</a></li>
@@ -36,8 +42,8 @@
                 {% endif%}
               </ul>
             </div>
-          </div>
-        </nav>
+          </nav>
+        </div>
           <!-- mobile sidenav -->
           <ul class="sidenav" id="mobile-demo">
             <li><h4 class="center-align light-blue-text text-darken-4">Task Manager</h4></li>
