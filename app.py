@@ -39,7 +39,7 @@ def home():
         # put the new user into 'session' cookie
         session["user"] = request.form.get("signup-username").lower()
         flash("Registration Successful!")
-        # return redirect(url_for("profile", username=session["user"]))
+        return redirect(url_for("library", username=session["user"]))
 
     # log in
     if request.method == "POST" and request.form.get("login-username"):
@@ -55,8 +55,8 @@ def home():
                             "login-username").lower()
                         flash("Welcome, {}".format(
                             request.form.get("login-username")))
-                        # return redirect(url_for(
-                        #     "profile", username=session["user"]))
+                        return redirect(url_for(
+                            "library", username=session["user"]))
             else:
                 # invalid password match
                 flash("Incorrect Username and/or Password")
@@ -65,7 +65,7 @@ def home():
         else:
             # username doesn't exist
             flash("Incorrect Username and/or Password")
-            return redirect(url_for("login"))
+            return redirect(url_for("home"))
     movies = mongo.db.movies.find()
     return render_template("home.html", movies=movies)
 
@@ -75,6 +75,18 @@ def logout():
     # remove user from session cookie
     flash("You have been logged out")
     session.pop("user")
+    return redirect(url_for("home"))
+
+
+@app.route("/library/<username>", methods=["GET", "POST"])
+def library(username):
+    # grab the session user's username from db
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+
+    if session["user"]:
+        return render_template("library.html", username=username)
+
     return redirect(url_for("home"))
 
 

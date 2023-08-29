@@ -32,11 +32,23 @@ logInCloseButton.addEventListener("click", () => {
 // });
 
 // displays sign up modal
-$(".sign-up-button").click(function () {
+$(".sign-up-button").click(function () {    
     signUpModal.showModal();
 });
 
 // displays log in modal
 $(".log-in-button").click(function () {
+    logInModal.showModal();
+});
+
+// closes log in modal anddisplays sign up modal
+$("#sign-up").click(function () {
+    logInModal.close(); 
+    signUpModal.showModal();
+});
+
+// closes sign in modal and displays log in modal
+$("#log-in").click(function () {
+    signUpModal.close(); 
     logInModal.showModal();
 });
