@@ -1,3 +1,51 @@
+/* flash messages */
+.flashes {
+    position: absolute;
+    width: 100%;
+}
+
+/* base.html */
+body {
+    background-image: radial-gradient(farthest-side at 90% -0%, #6b0e87, rgb(36 5 71), #0f0219);
+}
+
+nav {
+    opacity: 90%;
+    width: 98%;
+    border-radius: 10px;
+    margin-top: 10px;
+    margin-left: 11px;
+    padding-left: 10px;
+}
+
+.search-bar {
+    float: left;    
+    padding: 15px;
+}
+
+.input-field {
+    display: contents;
+}
+
+.search-bar, .label-icon {
+    margin-left: 100px;
+}
+
+.label-icon {
+    padding-left: 10px;
+}
+
+#search {
+    border-radius: 30px;
+    background-color: rgba(240, 248, 255, 0.37);
+}
+
+footer {
+    position: relative;
+    z-index: 10;
+}
+
+/* home page */
 .welcome {
     height: 80vh;
     width: 100%;    
@@ -39,42 +87,20 @@
     margin: 0;
 }
 
-.flashes {
-    position: absolute;
-    width: 100%;
-}
-
 dialog::backdrop {
     background: rgba(0, 0, 0, 0.6);
 }
 
-nav {
-    opacity: 90%;
-    width: 98%;
-    border-radius: 10px;
-    margin-top: 10px;
-    margin-left: 11px;
-    padding-left: 10px;
+/* library page */
+.side-menu {
+    margin-top: 30px;
+    margin-left: 10px;
+    height: 85vh;
+    width: 15vw;
+    position: fixed;
 }
 
-.search-bar {
-    float: left;    
-    padding: 15px;
-}
-
-.input-field {
-    display: contents;
-}
-
-.search-bar, .label-icon {
-    margin-left: 100px;
-}
-
-.label-icon {
-    padding-left: 10px;
-}
-
-#search {
-    border-radius: 30px;
-    background-color: rgba(240, 248, 255, 0.37);
+.library-content {
+    height: 150vh;
+    margin: 20px 20px 0 270px;
 }
