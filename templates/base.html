@@ -33,7 +33,6 @@
                 <li><a href="{{ url_for('home') }}">Home</a></li>
                 {% if session.user %}          
                 <li><a href="{{ url_for('library', username=session['user']) }}">Library</a></li>
-                <li><a href="#">New Task</a></li>
                 {% if session.user|lower == "admin"|lower %}
                   <li><a href="#">Manage Categories</a></li>
                 {% endif %}
@@ -52,7 +51,6 @@
             <li><a href="{{ url_for('home') }}">Home</a></li>                
             {% if session.user %}          
             <li><a href="{{ url_for('library', username=session['user']) }}">Library</a></li>
-            <li><a href="#">New Task</a></li>
               {% if session.user|lower == "admin"|lower %}
                 <li><a href="#">Manage Categories</a></li>
               {% endif %}              

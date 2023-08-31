@@ -114,3 +114,35 @@ dialog::backdrop {
     border-radius: 3px;
 }
 
+.card-title-container {
+    position: absolute;
+    width: 100%;
+}
+
+.feature-title {
+    position: absolute;
+    left: 5px;
+    bottom: 2px;
+    width: 100%;
+}
+
+.card-close {
+    position: absolute;
+    top: 11px;
+    right: 15px;
+    color: whitesmoke;
+}
+
+.card .card-reveal {
+    background-color: #080808b3;
+    color: whitesmoke;
+}
+
+.controls {
+    display: flex;
+    flex-direction: column;
+    height: 75%;
+    justify-content: space-between;
+    text-align: center;
+    font-size: 20px;
+}
