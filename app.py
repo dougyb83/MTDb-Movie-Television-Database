@@ -93,7 +93,7 @@ def library(username):
 
 @app.route("/search", methods=["GET", "POST"])
 def search():
-    title = request.form.get("search").replace(" ", "_")
+    title = request.form.get("search")
     # store the api url with the title included
     url = f"https://api.themoviedb.org/3/search/multi?query={title}&include_adult=false&language=en-US&page=1"
     # api authorisation
@@ -105,6 +105,7 @@ def search():
     # store the url response
     response = requests.get(url, headers=headers)
     data = response.text
+    print(data)
     return render_template("search-result.html", data=data)
 
 
