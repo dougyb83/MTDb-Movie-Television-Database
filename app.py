@@ -1,6 +1,5 @@
 import os
-from urllib.request import urlopen
-import json
+import requests
 from flask import (
     Flask, flash, render_template, redirect, request, session, url_for)
 from flask_pymongo import PyMongo
@@ -96,10 +95,15 @@ def library(username):
 def search():
     title = request.form.get("search").replace(" ", "_")
     # store the api url with the title included
-    url = f"https://www.omdbapi.com/?t={title}&apikey=7e1d975f"
+    url = f"https://api.themoviedb.org/3/search/multi?query={title}&include_adult=false&language=en-US&page=1"
+    # api authorisation
+    headers = {
+        "accept": "application/json",
+        "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmMDI0OGZiZjZmMjJhZjA1YTdmZTljMGQ0OTNmYmZjMCIsInN1YiI6IjY0ZjBiNmI4ZTBjYTdmMDE0ZjZhNDY4ZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.xxKyBZZwkd6aIaxb8m0m3OHmUj5G76Eh82TUa2qpZTk"
+        }
     # store the url response
-    response = urlopen(url)
-    data = json.loads(response.read())
+    response = requests.get(url, headers=headers)
+    data = response.text
     return render_template("search-result.html", data=data)
 
 
