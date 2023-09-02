@@ -97,9 +97,10 @@ def search():
     # store the api url with the title included
     url = f"https://api.themoviedb.org/3/search/multi?query={title}&include_adult=false&language=en-US&page=1"
     # api authorisation
+    api_bearer = os.environ.get("API_BEARER")
     headers = {
         "accept": "application/json",
-        "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJmMDI0OGZiZjZmMjJhZjA1YTdmZTljMGQ0OTNmYmZjMCIsInN1YiI6IjY0ZjBiNmI4ZTBjYTdmMDE0ZjZhNDY4ZCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.xxKyBZZwkd6aIaxb8m0m3OHmUj5G76Eh82TUa2qpZTk"
+        "Authorization": f"{api_bearer}"
         }
     # store the url response
     response = requests.get(url, headers=headers)
