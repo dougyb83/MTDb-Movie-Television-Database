@@ -105,7 +105,7 @@ dialog::backdrop {
     margin: 20px 20px 0 270px;
 }
 
-.poster {
+.card-poster {
     background-color: transparent;
     box-shadow: none;
 }

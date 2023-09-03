@@ -52,3 +52,14 @@ $("#log-in").click(function () {
     signUpModal.close(); 
     logInModal.showModal();
 });
+
+// function autocomplete() {
+//     // gets the partial search string to send to api
+//     let searchString = document.getElementById("search").value;
+//     // only search if string is longer than 2 chars
+//     if (searchString.length >= 3) {
+//         // send searchString to backend
+//         fetch("/autocomplete")
+//         console.log(searchString);
+//     }
+// }

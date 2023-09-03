@@ -1,5 +1,6 @@
 import os
 import requests
+import json
 from flask import (
     Flask, flash, render_template, redirect, request, session, url_for)
 from flask_pymongo import PyMongo
@@ -105,10 +106,30 @@ def search():
         }
     # store the url response
     response = requests.get(url, headers=headers)
-    data = response.text
-    print(data)
-    return render_template("search-result.html", data=data)
+    movie_data = response.text
+    json_data = json.loads(movie_data)
+    print(json_data)
+    return render_template("search-result.html", json_data=json_data)
 
+
+
+# @app.route("/autocomplete", methods=["POST"])
+# def autocomplete():
+#     title = request.form.get("search")
+#     # store the api url with the title included
+#     url = f"""https://api.themoviedb.org/3/search/multi?query={title}&
+#         include_adult=false&language=en-US&page=1"""
+#     # api authorisation
+#     api_bearer = os.environ.get("API_BEARER")
+#     headers = {
+#         "accept": "application/json",
+#         "Authorization": f"{api_bearer}"
+#         }
+#     # store the url response
+#     response = requests.get(url, headers=headers)
+#     data = response.text
+#     print(data)
+#     return render_template("search-result.html", data=data)
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
