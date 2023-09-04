@@ -22,8 +22,43 @@ mongo = PyMongo(app)
 @app.route("/")
 @app.route("/home")
 def home():
-
-    return render_template("home.html")
+    # access popular movies from api
+    # store the api url with the title included
+    url = "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1"
+    # api authorisation
+    api_bearer = os.environ.get("API_BEARER")
+    headers = {
+        "accept": "application/json",
+        "Authorization": f"{api_bearer}"
+        }
+    # store the url response
+    movie_response = requests.get(url, headers=headers)
+    # convert response to text
+    popular_movie_text = movie_response.text
+    # convert text to json
+    popular_movie_data = json.loads(popular_movie_text)
+    # split object in first 5 results
+    popular_movie_data = popular_movie_data["results"][0:5]
+    # access popular tv shows from api
+    # store the api url with the title included
+    url = "https://api.themoviedb.org/3/tv/popular?language=en-US&page=1"
+    # api authorisation
+    api_bearer = os.environ.get("API_BEARER")
+    headers = {
+        "accept": "application/json",
+        "Authorization": f"{api_bearer}"
+        }
+    # store the url response
+    series_response = requests.get(url, headers=headers)
+    # convert response to text
+    popular_series_text = series_response.text
+    # convert text to json
+    popular_series_data = json.loads(popular_series_text)
+    # split object in first 5 results
+    popular_series_data = popular_series_data["results"][0:5]
+    return render_template(
+        "home.html", popular_series_data=popular_series_data,
+        popular_movie_data=popular_movie_data)
 
 
 @app.route("/register", methods=["POST"])
