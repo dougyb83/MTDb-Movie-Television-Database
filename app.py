@@ -41,7 +41,7 @@ def home():
     popular_movie_data = popular_movie_data["results"][0:5]
     # access popular tv shows from api
     # store the api url with the title included
-    url = "https://api.themoviedb.org/3/tv/popular?language=en-US&page=1"
+    url = "https://api.themoviedb.org/3/tv/popular?language=en-US&page=1&without_genres=10767"
     # api authorisation
     api_bearer = os.environ.get("API_BEARER")
     headers = {
