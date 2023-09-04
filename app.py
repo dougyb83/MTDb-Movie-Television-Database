@@ -20,8 +20,14 @@ mongo = PyMongo(app)
 
 
 @app.route("/")
-@app.route("/home", methods=["GET", "POST"])
+@app.route("/home")
 def home():
+
+    return render_template("home.html")
+
+
+@app.route("/register", methods=["POST"])
+def register():
     # register new account
     if request.method == "POST" and request.form.get("signup-username"):
         # check if username already exists in db
@@ -43,6 +49,9 @@ def home():
         flash("Registration Successful!")
         return redirect(url_for("library", username=session["user"]))
 
+
+@app.route("/login", methods=["POST"])
+def login():
     # log in
     if request.method == "POST" and request.form.get("login-username"):
         # check if username exists in db
@@ -68,8 +77,6 @@ def home():
             # username doesn't exist
             flash("Incorrect Username and/or Password")
             return redirect(url_for("home"))
-    movies = mongo.db.movies.find()
-    return render_template("home.html", movies=movies)
 
 
 @app.route("/logout")
@@ -108,7 +115,6 @@ def search():
     response = requests.get(url, headers=headers)
     movie_data = response.text
     json_data = json.loads(movie_data)
-    print(json_data)
     return render_template("search-result.html", json_data=json_data)
 
 

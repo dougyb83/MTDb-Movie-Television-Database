@@ -53,6 +53,9 @@ footer {
     margin-top: -66px;
     padding: 90px;
     text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
 }
 
 .welcome h1 {
@@ -100,7 +103,7 @@ dialog::backdrop {
     position: fixed;
 }
 
-.library-content {
+.main-content {
     height: 150vh;
     margin: 20px 20px 0 270px;
 }
@@ -146,3 +149,8 @@ dialog::backdrop {
     text-align: center;
     font-size: 20px;
 }
+
+.poster {
+    /* float: right; */
+}
+

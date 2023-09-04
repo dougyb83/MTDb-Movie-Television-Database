@@ -1,9 +1,37 @@
 {% extends "base.html" %}
 {% block content %}
 
+    <div class="side-menu card grey darken-4">
+        <div class="card-content white-text">
+            <ul>
+                <li>Home</li>
+                <li>Watchlist</li>
+                    <ol>
+                        <li>Films</li>
+                        <li>TV Shows</li>
+                    </ol>
+                <li>Seenlist</li>
+                    <ol>
+                        <li>Films</li>
+                        <li>TV Shows</li>
+                    </ol>
+            </ul>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="row">
+            <div class="col s6">
+                <h1>{{ json_data['results'][0]['original_title'] }}</h1>
+                <p>{{ json_data['results'][0]['overview'] }}</p>
+            </div>
+            <div class="col s6 poster">
+                <img src="https://image.tmdb.org/t/p/w500{{ json_data['results'][0]['poster_path'] }}" alt="">
+            </div>
+        </div>
+    </div>
     
-    <h1>{{ json_data['results'][0]['original_title'] }}</h1>
-    <img src="https://image.tmdb.org/t/p/w500{{ json_data['results'][0]['poster_path'] }}" alt="">
+
     
 
 {% endblock %}
