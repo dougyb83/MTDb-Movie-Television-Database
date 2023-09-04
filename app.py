@@ -153,7 +153,6 @@ def search():
     return render_template("search-result.html", json_data=json_data)
 
 
-
 # @app.route("/autocomplete", methods=["POST"])
 # def autocomplete():
 #     title = request.form.get("search")

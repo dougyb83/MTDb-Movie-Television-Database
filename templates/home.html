@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+    <!-- sign up modal -->
     <dialog data-modal id="sign-up-modal">
         <button type="button" class="close" sign-up-close-modal aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -48,6 +49,7 @@
         </div>
     </dialog>
 
+    <!-- log in modal -->
     <dialog data-modal id="log-in-modal">
         <button type="button" class="close" log-in-close-modal aria-label="Close">
             <span aria-hidden="true">&times;</span>
@@ -93,6 +95,7 @@
             </div>
         </div>    </dialog>
 
+    <!-- main title -->
     <div class="welcome">
         <div class="title-container">
             <h1 class="title left-aligned">The Movie</h1>
@@ -101,11 +104,13 @@
         </div>
     </div>
 
+    <!-- popular films and tv shows -->
     <div class="popular">
         <h2>Popular Films & TV Shows</h2>
-        <div class="row">
+        <!-- popular films -->
+        <div class="row popular-films">
             {% for movie in popular_movie_data %}
-                <div class="col l2">
+                <div class="col s2">
                     <div class="card card-poster">
                         <div class="card-image waves-effect waves-block waves-light">
                             <img src="https://image.tmdb.org/t/p/w500{{ movie['poster_path'] }}" alt="">
@@ -114,7 +119,7 @@
                             <span class="feature-title card-title activator grey-text text-lighten-4">{{ movie['original_title'] }}<i class="material-icons right">more_vert</i></span>
                         </div>
                         <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4">{{ movie['original_title'] }}<i class="card-close material-icons right">close</i></span>
+                            <span class="card-title grey-text text-lighten-4">{{ movie['original_title'] }}<i class="card-close material-icons right">close</i></span>
                             <div class="controls">
                                 <i class="fa-regular fa-circle-check"></i>
                                 <i class="fa-solid fa-pen"></i>
@@ -125,9 +130,11 @@
                 </div>
             {% endfor %}
         </div>
-        <div class="row">
+
+        <!-- tv shows -->
+        <div class="row popular-shows">
             {% for tv_show in popular_series_data %}
-                <div class="col l2">
+                <div class="col s2 poster-col">
                     <div class="card card-poster">
                         <div class="card-image waves-effect waves-block waves-light">
                             <img src="https://image.tmdb.org/t/p/w500{{ tv_show['poster_path'] }}" alt="">
@@ -136,7 +143,7 @@
                             <span class="feature-title card-title activator grey-text text-lighten-4">{{ tv_show['name'] }}<i class="material-icons right">more_vert</i></span>
                         </div>
                         <div class="card-reveal">
-                            <span class="card-title grey-text text-darken-4">{{ tv_show['original_title'] }}<i class="card-close material-icons right">close</i></span>
+                            <span class="card-title grey-text text-lighten-4">{{ tv_show['name'] }}<i class="card-close material-icons right">close</i></span>
                             <div class="controls">
                                 <i class="fa-regular fa-circle-check"></i>
                                 <i class="fa-solid fa-pen"></i>

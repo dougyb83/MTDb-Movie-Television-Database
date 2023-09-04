@@ -81,12 +81,22 @@ footer {
 }
 
 .popular {
-    /* height: 80vh; */
     background-color: black;
     color: white;
+    text-align: center;
+    height: 110vh;
 }
 
 .popular h2 {
+    margin: 0;
+}
+
+.popular-films, .popular-shows {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.row .col.s2 {
     margin: 0;
 }
 
@@ -111,6 +121,7 @@ dialog::backdrop {
 .card-poster {
     background-color: transparent;
     box-shadow: none;
+    margin: 45px 0;
 }
 
 .card .card-image img {
@@ -124,8 +135,9 @@ dialog::backdrop {
 
 .feature-title {
     position: absolute;
+    text-align: left;
     left: 5px;
-    bottom: 2px;
+    top: 3px;
     width: 100%;
 }
 
@@ -150,7 +162,6 @@ dialog::backdrop {
     font-size: 20px;
 }
 
-.poster {
-    /* float: right; */
-}
-
+/* .poster {
+    float: right;
+} */
