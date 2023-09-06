@@ -31,20 +31,16 @@ def home():
     # access popular movies from api
     # store the api url with the title included
     url = "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1"
-    # store the url response
-    movie_response = requests.get(url, headers=headers)
-    # convert response to json
-    popular_movie_data = movie_response.json()
+    # get json data
+    popular_movie_data = get_api_data(url)
     # split object in first 5 results
     popular_movie_data = popular_movie_data["results"][0:5]
     # access popular tv shows from api
     # store the api url with the title included
     url = """https://api.themoviedb.org/3/tv/popular?language=en-US&page=1
         &without_genres=10767"""
-    # store the url response
-    series_response = requests.get(url, headers=headers)
-    # convert response to json
-    popular_series_data = series_response.json()
+    # get json data
+    popular_series_data = get_api_data(url)
     # split object into first 5 results
     popular_series_data = popular_series_data["results"][0:5]
     return render_template(
@@ -132,10 +128,8 @@ def search():
     # get the movie/show ID from the API
     url = f"""https://api.themoviedb.org/3/search/multi?query={title}&
         include_adult=false&language=en-US&page=1"""
-    # store the url response
-    response = requests.get(url, headers=headers)
-    # convert response to json
-    json_data = response.json()
+    # get json data
+    json_data = get_api_data(url)
     # get the movie or show id fron json results
     media_id = json_data['results'][0]['id']
     # get media type
@@ -144,9 +138,13 @@ def search():
     media_data = get_media_details(media_id, media_type)
     media_certificate = get_media_certificate(media_id, media_type)
     if media_type == "movie":
-        return render_template("movie-search-result.html", media_data=media_data, media_certificate=media_certificate)
+        return render_template(
+            "movie-search-result.html", media_data=media_data,
+            media_certificate=media_certificate)
     if media_type == "tv":
-        return render_template("tv-search-result.html", media_data=media_data, media_certificate=media_certificate)
+        return render_template(
+            "tv-search-result.html", media_data=media_data,
+            media_certificate=media_certificate)
 
 
 # use different API request format to get extended details
@@ -158,9 +156,8 @@ def get_media_details(media_id, media_type):
     if media_type == "tv":
         url = f"""https://api.themoviedb.org/3/{media_type}/
                 {media_id}?language=en-US"""
-    # store the url response
-    response = requests.get(url, headers=headers)
-    json_data = response.json()
+    # get json data
+    json_data = get_api_data(url)
     return json_data
 
 
@@ -168,20 +165,25 @@ def get_media_details(media_id, media_type):
 def get_media_certificate(media_id, media_type):
     if media_type == "movie":
         url = f"https://api.themoviedb.org/3/movie/{media_id}/release_dates"
-        response = requests.get(url, headers=headers)
-        json_data = response.json()
+        # get json data
+        json_data = get_api_data(url)
         for item in json_data["results"]:
             if item["iso_3166_1"] == "GB":
                 return item["release_dates"][0]["certification"]
     if media_type == "tv":
         url = f"https://api.themoviedb.org/3/tv/{media_id}/content_ratings"
-        response = requests.get(url, headers=headers)
-        json_data = response.json()
+        # get json data
+        json_data = get_api_data(url)
         for item in json_data["results"]:
             if item["iso_3166_1"] == "GB":
                 return item["rating"]
-    
-        
+
+
+# get API request data
+def get_api_data(url):
+    # store the url response
+    response = requests.get(url, headers=headers)
+    return response.json()
 
 # @app.route("/autocomplete", methods=["POST"])
 # def autocomplete():
@@ -189,10 +191,8 @@ def get_media_certificate(media_id, media_type):
 #     # store the api url with the title included
 #     url = f"""https://api.themoviedb.org/3/search/multi?query={title}&
 #         include_adult=false&language=en-US&page=1"""
-#     # store the url response
-#     response = requests.get(url, headers=headers)
-#     movie_data = response.text
-#     json_data = json.loads(movie_data)
+#     # get json data
+#     json_data = get_api_data(url)
 #     return render_template("search-result.html", json_data=json_data)
 
 
@@ -210,6 +210,7 @@ def add_watchlist():
         flash("Task Successfully Added")
         return redirect(url_for("home"))    
     return render_template("library.html")
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
