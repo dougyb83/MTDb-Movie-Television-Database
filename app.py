@@ -136,7 +136,6 @@ def search():
     response = requests.get(url, headers=headers)
     # convert response to json
     json_data = response.json()
-    print(json_data)
     # get the movie or show id fron json results
     media_id = json_data['results'][0]['id']
     # get media type
@@ -145,12 +144,12 @@ def search():
     media_data = get_media_details(media_id, media_type)
     media_certificate = get_media_certificate(media_id, media_type)
     if media_type == "movie":
-        return render_template("movie-search-result.html", media_data=media_data)
+        return render_template("movie-search-result.html", media_data=media_data, media_certificate=media_certificate)
     if media_type == "tv":
-        return render_template("tv-search-result.html", media_data=media_data)
-    return render_template("search-result.html", media_data=media_data)
+        return render_template("tv-search-result.html", media_data=media_data, media_certificate=media_certificate)
 
 
+# use different API request format to get extended details
 def get_media_details(media_id, media_type):
     # get the movie/show ID from the API
     if media_type == "movie":
@@ -162,15 +161,25 @@ def get_media_details(media_id, media_type):
     # store the url response
     response = requests.get(url, headers=headers)
     json_data = response.json()
-    print(json_data)
     return json_data
 
 
+# use different API request format to get movie/show certificate
 def get_media_certificate(media_id, media_type):
     if media_type == "movie":
-        url = "https://api.themoviedb.org/3/movie/{media_id}/release_dates"
+        url = f"https://api.themoviedb.org/3/movie/{media_id}/release_dates"
+        response = requests.get(url, headers=headers)
+        json_data = response.json()
+        for item in json_data["results"]:
+            if item["iso_3166_1"] == "GB":
+                return item["release_dates"][0]["certification"]
     if media_type == "tv":
-        url = "https://api.themoviedb.org/3/tv/{media_id}/content_ratings"
+        url = f"https://api.themoviedb.org/3/tv/{media_id}/content_ratings"
+        response = requests.get(url, headers=headers)
+        json_data = response.json()
+        for item in json_data["results"]:
+            if item["iso_3166_1"] == "GB":
+                return item["rating"]
     
         
 
@@ -184,9 +193,23 @@ def get_media_certificate(media_id, media_type):
 #     response = requests.get(url, headers=headers)
 #     movie_data = response.text
 #     json_data = json.loads(movie_data)
-#     print(json_data)
 #     return render_template("search-result.html", json_data=json_data)
 
+
+@app.route("/add_watchlist", methods=["GET", "POST"])
+def add_watchlist():
+    if request.method == "POST" and request.mimetype == "movie":
+        movies = {
+            "original_title": request.form.get("original_title"),
+            "release_date": request.form.get("release_date"),
+            "task_description": request.form.get("task_description"),
+            "is_urgent": is_urgent,
+            "due_date": request.form.get("due_date"),
+            "created_by": session["user"]
+         }
+        flash("Task Successfully Added")
+        return redirect(url_for("home"))    
+    return render_template("library.html")
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
