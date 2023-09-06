@@ -9,6 +9,12 @@ from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env
 
+# api authorisation
+api_bearer = os.environ.get("API_BEARER")
+headers = {
+    "accept": "application/json",
+    "Authorization": f"{api_bearer}"
+    }
 
 app = Flask(__name__)
 
@@ -25,36 +31,21 @@ def home():
     # access popular movies from api
     # store the api url with the title included
     url = "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1"
-    # api authorisation
-    api_bearer = os.environ.get("API_BEARER")
-    headers = {
-        "accept": "application/json",
-        "Authorization": f"{api_bearer}"
-        }
     # store the url response
     movie_response = requests.get(url, headers=headers)
-    # convert response to text
-    popular_movie_text = movie_response.text
-    # convert text to json
-    popular_movie_data = json.loads(popular_movie_text)
+    # convert response to json
+    popular_movie_data = movie_response.json()
     # split object in first 5 results
     popular_movie_data = popular_movie_data["results"][0:5]
     # access popular tv shows from api
     # store the api url with the title included
-    url = "https://api.themoviedb.org/3/tv/popular?language=en-US&page=1&without_genres=10767"
-    # api authorisation
-    api_bearer = os.environ.get("API_BEARER")
-    headers = {
-        "accept": "application/json",
-        "Authorization": f"{api_bearer}"
-        }
+    url = """https://api.themoviedb.org/3/tv/popular?language=en-US&page=1
+        &without_genres=10767"""
     # store the url response
     series_response = requests.get(url, headers=headers)
-    # convert response to text
-    popular_series_text = series_response.text
-    # convert text to json
-    popular_series_data = json.loads(popular_series_text)
-    # split object in first 5 results
+    # convert response to json
+    popular_series_data = series_response.json()
+    # split object into first 5 results
     popular_series_data = popular_series_data["results"][0:5]
     return render_template(
         "home.html", popular_series_data=popular_series_data,
@@ -136,22 +127,48 @@ def library(username):
 
 @app.route("/search", methods=["GET", "POST"])
 def search():
+    # get the movie/show title from the search input
     title = request.form.get("search")
-    # store the api url with the title included
+    # get the movie/show ID from the API
     url = f"""https://api.themoviedb.org/3/search/multi?query={title}&
         include_adult=false&language=en-US&page=1"""
-    # api authorisation
-    api_bearer = os.environ.get("API_BEARER")
-    headers = {
-        "accept": "application/json",
-        "Authorization": f"{api_bearer}"
-        }
     # store the url response
     response = requests.get(url, headers=headers)
-    movie_data = response.text
-    json_data = json.loads(movie_data)
-    return render_template("search-result.html", json_data=json_data)
+    # convert response to json
+    json_data = response.json()
+    print(json_data)
+    # get the movie or show id fron json results
+    media_id = json_data['results'][0]['id']
+    # get media type
+    media_type = json_data['results'][0]['media_type']
+    # get the movie or show details
+    media_data = get_media_details(media_id, media_type)
+    media_certificate = get_media_certificate(media_id, media_type)
+    return render_template("search-result.html", media_data=media_data)
 
+
+def get_media_details(media_id, media_type):
+    # get the movie/show ID from the API
+    if media_type == "movie":
+        url = f"""https://api.themoviedb.org/3/{media_type}/
+                {media_id}?language=en-US"""
+    if media_type == "tv":
+        url = f"""https://api.themoviedb.org/3/{media_type}/
+                {media_id}?language=en-US"""
+    # store the url response
+    response = requests.get(url, headers=headers)
+    json_data = response.json()
+    print(json_data)
+    return json_data
+
+
+def get_media_certificate(media_id, media_type):
+    if media_type == "movie":
+        url = "https://api.themoviedb.org/3/movie/{media_id}/release_dates"
+    if media_type == "tv":
+        url = "https://api.themoviedb.org/3/tv/{media_id}/content_ratings"
+    
+        
 
 # @app.route("/autocomplete", methods=["POST"])
 # def autocomplete():
@@ -159,17 +176,13 @@ def search():
 #     # store the api url with the title included
 #     url = f"""https://api.themoviedb.org/3/search/multi?query={title}&
 #         include_adult=false&language=en-US&page=1"""
-#     # api authorisation
-#     api_bearer = os.environ.get("API_BEARER")
-#     headers = {
-#         "accept": "application/json",
-#         "Authorization": f"{api_bearer}"
-#         }
 #     # store the url response
 #     response = requests.get(url, headers=headers)
-#     data = response.text
-#     print(data)
-#     return render_template("search-result.html", data=data)
+#     movie_data = response.text
+#     json_data = json.loads(movie_data)
+#     print(json_data)
+#     return render_template("search-result.html", json_data=json_data)
+
 
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),

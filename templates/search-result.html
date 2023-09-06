@@ -19,14 +19,31 @@
         </div>
     </div>
 
-    <div class="main-content">
+    <div class="main-content grey-text text-lighten-4">
         <div class="row">
-            <div class="col s6">
-                <h1>{{ json_data['results'][0]['original_title'] }}</h1>
-                <p>{{ json_data['results'][0]['overview'] }}</p>
-            </div>
+            <form class="col s6" method="POST" action="{{ url_for('add_watchlist') }}" mimetype="{{ media_data['media_type'] }}">
+                <h1>{{ media_data['title'] }}</h1>
+                <span>
+                    {% for genre in media_data['genres'] %}
+                        {{ genre["name"] }}
+                        {% if not loop.last %}
+                            , 
+                        {% endif %}
+                    {% endfor %}
+
+                </span>
+                <p>{{ media_data['overview'] }}</p>
+                <p>{{ media_data['release_date'][0:4] }}</p>
+                <p>{{ media_data['runtime'] }} mins</p>
+                <button class="btn-floating waves-effect waves-light" type="submit">
+                    <i class="fa-regular fa-bookmark"></i>
+                </button>
+                <button class="btn-floating waves-effect waves-light" type="submit">
+                    <i class="fa-regular fa-circle-check"></i>
+                </button>
+            </form>
             <div class="col s6 poster">
-                <img src="https://image.tmdb.org/t/p/w500{{ json_data['results'][0]['poster_path'] }}" alt="">
+                <img src="https://image.tmdb.org/t/p/w500{{ media_data['poster_path'] }}" alt="">
             </div>
         </div>
     </div>
