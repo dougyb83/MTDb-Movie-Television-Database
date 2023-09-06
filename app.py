@@ -130,6 +130,7 @@ def search():
         include_adult=false&language=en-US&page=1"""
     # get json data
     json_data = get_api_data(url)
+    print(json_data)
     # get the movie or show id fron json results
     media_id = json_data['results'][0]['id']
     # get media type
@@ -140,8 +141,9 @@ def search():
     if media_type == "movie":
         return render_template(
             "movie-search-result.html", media_data=media_data,
-            media_certificate=media_certificate)
+            media_certificate=media_certificate, media_type=media_type)
     if media_type == "tv":
+        print(media_data)
         return render_template(
             "tv-search-result.html", media_data=media_data,
             media_certificate=media_certificate)
@@ -198,15 +200,18 @@ def get_api_data(url):
 
 @app.route("/add_watchlist", methods=["GET", "POST"])
 def add_watchlist():
-    if request.method == "POST" and request.mimetype == "movie":
-        movies = {
-            "original_title": request.form.get("original_title"),
+    print(request.form.get("media_type"))
+    if request.method == "POST" and request.form.get("media_type") == "movie":
+        movie = {
+            "title": request.form.get("title"),
+            "genres": request.form.get("genres"),
+            "overview": request.form.get("overview"),
+            "certificate": request.form.get("certificate"),
             "release_date": request.form.get("release_date"),
-            "task_description": request.form.get("task_description"),
-            "is_urgent": is_urgent,
-            "due_date": request.form.get("due_date"),
+            "runtime": request.form.get("runtime"),
             "created_by": session["user"]
          }
+        mongo.db.movies.insert_one(movie)
         flash("Task Successfully Added")
         return redirect(url_for("home"))    
     return render_template("library.html")
