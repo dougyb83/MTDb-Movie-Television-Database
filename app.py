@@ -62,7 +62,8 @@ def register():
 
         register = {
             "username": request.form.get("signup-username").lower(),
-            "password": generate_password_hash(request.form.get("password"))
+            "password": generate_password_hash(
+                        request.form.get("signup-password"))
         }
         mongo.db.users.insert_one(register)
 
@@ -83,7 +84,8 @@ def login():
         if existing_user:
             # ensure hashed password matches user input
             if check_password_hash(
-                    existing_user["password"], request.form.get("password")):
+                    existing_user["password"], 
+                    request.form.get("login-password")):
                 session["user"] = request.form.get(
                     "login-username").lower()
                 flash("Welcome, {}".format(
@@ -114,11 +116,8 @@ def library(username):
     # grab the session user's username from db
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
-
     if session["user"]:
         return render_template("library.html", username=username)
-
-    return redirect(url_for("home"))
 
 
 @app.route("/search", methods=["GET", "POST"])
@@ -209,6 +208,7 @@ def add_watchlist():
             "certificate": request.form.get("certificate"),
             "release_date": request.form.get("release_date"),
             "runtime": request.form.get("runtime"),
+            "poster": request.form.get("poster"),
             "created_by": session["user"]
          }
         mongo.db.movies.insert_one(movie)

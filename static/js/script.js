@@ -2,6 +2,10 @@
 
 $(document).ready(function(){
     $('.sidenav').sidenav({edge: "right"});
+    if (document.getElementById("genres")) {
+        let genres = document.getElementById("genres").textContent
+        document.getElementById("genre-input").setAttribute("value", genres)
+    }
   });
 
 
