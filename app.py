@@ -111,8 +111,8 @@ def logout():
     return redirect(url_for("home"))
 
 
-@app.route("/library/<username>", methods=["GET", "POST"])
-def library(username):
+@app.route("/library")
+def library():
     movies = list(mongo.db.movies.find().sort("movies", 1))
     tv_shows = list(mongo.db.tv_shows.find().sort("tv_shows", 1))
     return render_template("library.html", movies=movies, tv_shows=tv_shows)
@@ -127,7 +127,6 @@ def search():
         include_adult=false&language=en-US&page=1"""
     # get json data
     json_data = get_api_data(url)
-    print(json_data)
     # get the movie or show id fron json results
     media_id = json_data['results'][0]['id']
     # get media type
@@ -140,10 +139,9 @@ def search():
             "movie-search-result.html", media_data=media_data,
             media_certificate=media_certificate, media_type=media_type)
     if media_type == "tv":
-        print(media_data)
         return render_template(
             "tv-search-result.html", media_data=media_data,
-            media_certificate=media_certificate)
+            media_certificate=media_certificate, media_type=media_type)
 
 
 # use different API request format to get extended details
@@ -197,7 +195,6 @@ def get_api_data(url):
 
 @app.route("/add_watchlist", methods=["GET", "POST"])
 def add_watchlist():
-    print(request.form.get("media_type"))
     if request.method == "POST" and request.form.get("media_type") == "movie":
         movie = {
             "title": request.form.get("title"),
@@ -211,8 +208,23 @@ def add_watchlist():
          }
         mongo.db.movies.insert_one(movie)
         flash("Task Successfully Added")
-        return redirect(url_for("home"))    
-    return render_template("library.html")
+        return redirect(url_for("library"))
+
+    if request.method == "POST" and request.form.get(
+            "media_type") == "tv":
+        tv_show = {
+            "title": request.form.get("title"),
+            "genres": request.form.get("genres"),
+            "overview": request.form.get("overview"),
+            "certificate": request.form.get("certificate"),
+            "release_date": request.form.get("release_date"),
+            "runtime": request.form.get("runtime"),
+            "poster": request.form.get("poster"),
+            "created_by": session["user"]
+         }
+        mongo.db.tv_shows.insert_one(tv_show)
+        flash("Task Successfully Added")
+        return redirect(url_for("library"))
 
 
 if __name__ == "__main__":
