@@ -6,6 +6,9 @@ $(document).ready(function(){
         let genres = document.getElementById("genres").textContent
         document.getElementById("genre-input").setAttribute("value", genres)
     }
+    $(".modal").modal();
+    $(".flash-modal").modal();
+    $(".flash-modal").modal("open");
   });
 
 

@@ -84,7 +84,7 @@ def login():
         if existing_user:
             # ensure hashed password matches user input
             if check_password_hash(
-                    existing_user["password"], 
+                    existing_user["password"],
                     request.form.get("login-password")):
                 session["user"] = request.form.get(
                     "login-username").lower()
@@ -139,6 +139,7 @@ def search():
             "movie-search-result.html", media_data=media_data,
             media_certificate=media_certificate, media_type=media_type)
     if media_type == "tv":
+        print(media_data)
         return render_template(
             "tv-search-result.html", media_data=media_data,
             media_certificate=media_certificate, media_type=media_type)
