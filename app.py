@@ -113,11 +113,9 @@ def logout():
 
 @app.route("/library/<username>", methods=["GET", "POST"])
 def library(username):
-    # grab the session user's username from db
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"]
-    if session["user"]:
-        return render_template("library.html", username=username)
+    movies = list(mongo.db.movies.find().sort("movies", 1))
+    tv_shows = list(mongo.db.tv_shows.find().sort("tv_shows", 1))
+    return render_template("library.html", movies=movies, tv_shows=tv_shows)
 
 
 @app.route("/search", methods=["GET", "POST"])
