@@ -6,7 +6,14 @@ $(document).ready(function(){
         let genres = document.getElementById("genres").textContent
         document.getElementById("genre-input").setAttribute("value", genres)
     }
-    $(".modal").modal();
+    $(".log-in-modal").modal();
+    $(".log-in-button").click(function () {    
+        $(".log-in-modal").modal("open");
+    });
+    $(".sign-up-modal").modal();
+    $(".sign-up-button").click(function () {    
+        $(".sign-up-modal").modal("open");
+    });
     $(".flash-modal").modal();
     $(".flash-modal").modal("open");
   });
@@ -28,20 +35,10 @@ logInCloseButton.addEventListener("click", () => {
     logInModal.close(); 
 });
 
-// // closes sign up modal by clicking anywhere on screen
-// signUpModal.addEventListener("click", () => {
-//     signUpModal.close();    
-// });
-
-// // closes log in modal by clicking anywhere on screen
-// logInModal.addEventListener("click", () => {
-//     logInModal.close();    
-// });
-
 // displays sign up modal
-$(".sign-up-button").click(function () {    
-    signUpModal.showModal();
-});
+// $(".sign-up-button").click(function () {    
+//     $(".sign-up-modal").modal("open");
+// });
 
 // displays log in modal
 $(".log-in-button").click(function () {
