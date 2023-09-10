@@ -117,7 +117,12 @@
                             <img src="https://image.tmdb.org/t/p/w500{{ movie['poster_path'] }}" alt="">
                         </div>
                         <div class="card-title-container card-content">
-                            <span class="feature-title card-title activator grey-text text-lighten-4">{{ movie['original_title'] }}<i class="material-icons right">more_vert</i></span>
+                            <div>
+                                <span class="feature-title card-title grey-text text-lighten-4">{{ movie['original_title'] }}</span>
+                            </div>
+                            <div class="card-menu activator grey-text text-lighten-4">
+                                <i class="material-icons right">more_vert</i>
+                            </div>
                         </div>
                         <div class="card-reveal">
                             <span class="card-title grey-text text-lighten-4">{{ movie['original_title'] }}<i class="card-close material-icons right">close</i></span>
@@ -141,7 +146,12 @@
                             <img src="https://image.tmdb.org/t/p/w500{{ tv_show['poster_path'] }}" alt="">
                         </div>
                         <div class="card-title-container card-content">
-                            <span class="feature-title card-title activator grey-text text-lighten-4">{{ tv_show['name'] }}<i class="material-icons right">more_vert</i></span>
+                            <div>
+                                <span class="feature-title card-title grey-text text-lighten-4">{{ tv_show['name'] }}</span>
+                            </div>
+                            <div class="card-menu activator grey-text text-lighten-4">
+                                <i class="material-icons right">more_vert</i>
+                            </div> 
                         </div>
                         <div class="card-reveal">
                             <span class="card-title grey-text text-lighten-4">{{ tv_show['name'] }}<i class="card-close material-icons right">close</i></span>
