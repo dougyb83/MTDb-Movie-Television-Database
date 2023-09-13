@@ -228,6 +228,27 @@ def add_watchlist():
         return redirect(url_for("library"))
 
 
+@app.route("/edit_movie/<movie_id>", methods=["GET", "POST"])
+def edit_movie(movie_id):
+    if request.method == "POST":
+        submit = {
+            "title": request.form.get("title"),
+            "genres": request.form.get("genres"),
+            "overview": request.form.get("overview"),
+            "certificate": request.form.get("certificate"),
+            "release_date": request.form.get("release_date"),
+            "runtime": request.form.get("runtime"),
+            "poster": request.form.get("poster"),
+            "created_by": session["user"]
+        }
+        mongo.db.movies.update({"_id": ObjectId(movie_id)}, submit)
+        flash("Task Successfully Updated")
+
+    movie = mongo.db.movies.find_one({"_id": ObjectId(movie_id)})
+    details = mongo.db.movies.find().sort("title", 1)
+    return render_template("edit-details.html", movie=movie, details=details)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
