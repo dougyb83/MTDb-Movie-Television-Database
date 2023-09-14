@@ -100,8 +100,19 @@ footer {
     margin: 0;
 }
 
-dialog::backdrop {
-    background: rgba(0, 0, 0, 0.6);
+.modal {
+    width: 30vw;
+}
+
+.auth-form {
+    width: 80%;
+    text-align: center;
+}
+
+.input-field .prefix {
+    position: relative;
+    top: 40px;
+    right: 122px;
 }
 
 /* library page */

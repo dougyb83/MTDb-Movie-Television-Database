@@ -10,52 +10,23 @@ $(document).ready(function(){
     $(".log-in-button").click(function () {    
         $(".log-in-modal").modal("open");
     });
+    $("#log-in").click(function () {
+        $(".sign-up-modal").modal("close");
+        $(".log-in-modal").modal("open");
+    });
     $(".sign-up-modal").modal();
     $(".sign-up-button").click(function () {    
         $(".sign-up-modal").modal("open");
     });
+    $("#sign-up").click(function () {
+        $(".log-in-modal").modal("close");
+        $(".sign-up-modal").modal("open");        
+    });
     $(".flash-modal").modal();
     $(".flash-modal").modal("open");
+    
   });
 
-
-// modal variables
-const signUpModal = document.getElementById("sign-up-modal");
-const logInModal = document.getElementById("log-in-modal");
-const signUpCloseButton = document.querySelector("[sign-up-close-modal]");
-const logInCloseButton = document.querySelector("[log-in-close-modal]");
-
-// closes sign up modal when button pressed
-signUpCloseButton.addEventListener("click", () => {
-    signUpModal.close();    
-});
-
-// closes log in modal when button pressed
-logInCloseButton.addEventListener("click", () => {
-    logInModal.close(); 
-});
-
-// displays sign up modal
-// $(".sign-up-button").click(function () {    
-//     $(".sign-up-modal").modal("open");
-// });
-
-// displays log in modal
-$(".log-in-button").click(function () {
-    logInModal.showModal();
-});
-
-// closes log in modal anddisplays sign up modal
-$("#sign-up").click(function () {
-    logInModal.close(); 
-    signUpModal.showModal();
-});
-
-// closes sign in modal and displays log in modal
-$("#log-in").click(function () {
-    signUpModal.close(); 
-    logInModal.showModal();
-});
 
 // function autocomplete() {
 //     // gets the partial search string to send to api
