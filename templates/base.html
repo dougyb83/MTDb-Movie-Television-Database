@@ -45,18 +45,17 @@
         </nav>
       </div>
         <!-- mobile sidenav -->
-        <ul class="sidenav" id="mobile-demo">
-          <li><h4 class="center-align light-blue-text text-darken-4">Task Manager</h4></li>
-          <li><a href="{{ url_for('home') }}">Home</a></li>                
+        <ul class="sidenav grey darken-4" id="mobile-demo">
+          <li><a href="{{ url_for('home') }}">Home</a></li>
           {% if session.user %}          
           <li><a href="{{ url_for('library', username=session['user']) }}">Library</a></li>
-            {% if session.user|lower == "admin"|lower %}
-              <li><a href="#">Manage Categories</a></li>
-            {% endif %}              
-            <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+          {% if session.user|lower == "admin"|lower %}
+            <li><a href="#">Manage Categories</a></li>
+          {% endif %}
+          <li><a href="{{ url_for('logout') }}">Log Out</a></li>
           {% else %}
-            <li><a href="#">Log In</a></li>
-            <li><a href="#"></a>Register</a></li>
+            <li class="log-in-button"><a href="#">Log In</a></li>
+            <li class="sign-up-button"><a href="#">Sign up</a></li>
           {% endif%}
         </ul>
   </header>

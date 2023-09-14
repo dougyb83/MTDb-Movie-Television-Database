@@ -7,6 +7,7 @@
 /* base.html */
 body {
     background-image: radial-gradient(farthest-side at 90% -0%, #6b0e87, rgb(36 5 71), #0f0219);
+    background-repeat: no-repeat;
 }
 
 nav {
@@ -38,6 +39,15 @@ nav {
 #search {
     border-radius: 30px;
     background-color: rgba(240, 248, 255, 0.37);
+}
+
+.sidenav {
+    width: 150px;
+}
+
+.sidenav li>a {
+    text-align: center;
+    color: whitesmoke;
 }
 
 footer {
@@ -192,4 +202,34 @@ footer {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+
+/* media queries */
+@media only screen and (max-width: 768px) {
+    nav .brand-logo {
+        left: 44px;
+    }
+
+    .search-bar {
+        width: 60%;
+    }
+
+    .modal {
+        width: 50vw;
+    }
+}
+
+@media only screen and (max-width: 425px) {
+    nav .brand-logo {
+        left: 44px;
+    }
+
+    .search-bar {
+        width: 60%;
+    }
+
+    .modal {
+        width: 80vw;
+    }
 }
