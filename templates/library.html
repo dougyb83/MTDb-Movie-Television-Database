@@ -41,8 +41,7 @@
                                 <div class="controls">
                                     <i class="fa-regular fa-circle-check"></i>
                                     <a href="{{ url_for('feature_details', feature_id=movie._id, media_type=movie.media_type) }}"><i class="fa-solid fa-pen"></i></a>
-                                    <i class="fa-solid fa-trash"></i>          
-                                </div>            
+                                    <a href="{{ url_for('delete_feature', feature_id=movie._id, media_type=movie.media_type) }}"><i class="fa-solid fa-trash"></i></a>                                </div>            
                             </div>
                         </div>                
                     </div>
@@ -72,7 +71,7 @@
                                 <div class="controls">
                                     <i class="fa-regular fa-circle-check"></i>
                                     <a href="{{ url_for('feature_details', feature_id=tv_show._id, media_type=tv_show.media_type) }}"><i class="fa-solid fa-pen"></i></a>
-                                    <i class="fa-solid fa-trash"></i>          
+                                    <a href="{{ url_for('delete_feature', feature_id=tv_show._id, media_type=tv_show.media_type) }}"><i class="fa-solid fa-trash"></i></a>        
                                 </div>            
                             </div>
                         </div>                

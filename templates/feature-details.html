@@ -64,6 +64,11 @@
                         <i class="fa-regular fa-circle-check"></i>
                     </button>
                 </form>
+                <a href="{{ url_for('delete_feature', feature_id=media_data._id, media_type=media_data.media_type) }}">
+                    <button class="btn-floating waves-effect waves-light">
+                        <i class="fa-solid fa-trash"></i>
+                    </button>
+                </a>   
             </div>
 
             <div class="col s6 poster">

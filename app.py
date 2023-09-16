@@ -280,6 +280,17 @@ def feature_details(feature_id, media_type):
         return render_template("feature-details.html", media_data=media_data)
 
 
+@app.route("/delete_feature/<feature_id>/<media_type>")
+def delete_feature(feature_id, media_type):
+    if media_type == "movie":
+        mongo.db.movies.remove({"_id": ObjectId(feature_id)})
+    else:
+        mongo.db.tv_shows.remove({"_id": ObjectId(feature_id)})
+
+    flash("Task Successfully Deleted")
+    return redirect(url_for("library"))
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
