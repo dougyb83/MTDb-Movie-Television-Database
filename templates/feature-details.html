@@ -18,115 +18,58 @@
             </ul>
         </div>
     </div>
-    {% if media_data.media_type == "movie" %}
-        <div class="main-content grey-text text-lighten-4">
-            <div class="row">
-                <div class="col s6">
-                    <h1 id="title">{{ media_data.title }}</h1>
-                    <span id="genres">{{ media_data.genres }}</span>
-                    <p id="overview">{{ media_data.overview }}</p>
-                    <div class="details">
-                        <p id="certificate">{{ media_data.certificate }}</p>
-                        <p id="release_date">{{ media_data.release_date }}</p>
-                        <p id="runtime">{{ media_data.runtime }}</p>
-                    </div>
-                    <div class="personalised-info">
-                        <div class="rating">
-                            <h6>Rate it!</h6>
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-                        </div>
-                    </div>
-                    <div class="personal-comments">
-        
-                    </div>
 
-                    <form method="POST" action="{{ url_for('add_seenlist', feature_id=media_data._id) }}">
-                        <input type="hidden" name="title" value="{{ media_data.title }}">
-                        <input type="hidden" name="genres" id="genre-input">
-                        <input type="hidden" name="overview" value="{{ media_data.overview }}">
-                        <input type="hidden" name="certificate" value="{{ media_data.certificate }}">
-                        <input type="hidden" name="release_date" value="{{ media_data.release_date }}">
-                        <input type="hidden" name="runtime" value="{{ media_data.runtime }}">
-                        <input type="hidden" name="media_type" value="{{ media_data.media_type }}">
-                        <input type="hidden" name="poster" value="{{ media_data.poster }}">
-                        <div class="row">
-                            <div class="input-field col s6">
-                            <textarea id="textarea1" class="materialize-textarea"></textarea>
-                            <label for="textarea1">Textarea</label>
-                            </div>
-                        </div>
+    <div class="main-content grey-text text-lighten-4">
+        <div class="row">
+            <div class="col s6">
+                <h1 id="title">{{ media_data.title }}</h1>
+                <span id="genres">{{ media_data.genres }}</span>
+                <p id="overview">{{ media_data.overview }}</p>
+                <div class="details">
+                    <p id="certificate">{{ media_data.certificate }}</p>
+                    <p id="release_date">{{ media_data.release_date }}</p>
+                    <p id="runtime">{{ media_data.runtime }}</p>
+                </div>
+                <div class="personalised-info">
+                    <div class="rating">
+                        <h6>Rate it!</h6>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                        <i class="fa-regular fa-star"></i>
+                    </div>
+                </div>
+                <div class="personal-comments">
 
-                        <button class="btn-floating waves-effect waves-light" type="submit">
-                            <i class="fa-regular fa-circle-check"></i>
-                        </button>
-                    </form>
                 </div>
 
-                <div class="col s6 poster">
-                    <img src="{{ media_data.poster }}" alt="">
-                </div>
+                <form method="POST" action="{{ url_for('add_seenlist', feature_id=media_data._id) }}">
+                    <input type="hidden" name="title" value="{{ media_data.title }}">
+                    <input type="hidden" name="genres" id="genre-input">
+                    <input type="hidden" name="overview" value="{{ media_data.overview }}">
+                    <input type="hidden" name="certificate" value="{{ media_data.certificate }}">
+                    <input type="hidden" name="release_date" value="{{ media_data.release_date }}">
+                    <input type="hidden" name="runtime" value="{{ media_data.runtime }}">
+                    <input type="hidden" name="media_type" value="{{ media_data.media_type }}">
+                    <input type="hidden" name="poster" value="{{ media_data.poster }}">
+                    <div class="row">
+                        <div class="input-field col s6">
+                        <textarea id="textarea1" class="materialize-textarea"></textarea>
+                        <label for="textarea1">Textarea</label>
+                        </div>
+                    </div>
+
+                    <button class="btn-floating waves-effect waves-light" type="submit">
+                        <i class="fa-regular fa-circle-check"></i>
+                    </button>
+                </form>
+            </div>
+
+            <div class="col s6 poster">
+                <img src="{{ media_data.poster }}" alt="">
             </div>
         </div>
-    {% endif %}
-
-    {% if media_data.media_type == "tv" %}
-        <div class="main-content grey-text text-lighten-4">
-            <div class="row">
-                <div class="col s6">
-                    <h1 id="title">{{ media_data.title }}</h1>
-                    <span id="genres">{{ media_data.genres }}</span>
-                    <p id="overview">{{ media_data.overview }}</p>
-                    <div class="details">
-                        <p id="certificate">{{ media_data.certificate }}</p>
-                        <p id="release_date">{{ media_data.release_date }}</p>
-                        <p id="runtime">{{ media_data.runtime }}</p>
-                    </div>
-                    <div class="personalised-info">
-                        <div class="rating">
-                            <h6>Rate it!</h6>
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-                            <i class="fa-regular fa-star"></i>
-                        </div>
-                    </div>
-                    <div class="personal-comments">
-        
-                    </div>
-
-                    <form method="POST" action="{{ url_for('add_seenlist', feature_id=media_data._id) }}">
-                        <input type="hidden" name="title" value="{{ media_data.title }}">
-                        <input type="hidden" name="genres" id="genre-input">
-                        <input type="hidden" name="overview" value="{{ media_data.overview }}">
-                        <input type="hidden" name="certificate" value="{{ media_data.certificate }}">
-                        <input type="hidden" name="release_date" value="{{ media_data.release_date }}">
-                        <input type="hidden" name="runtime" value="{{ media_data.runtime }}">
-                        <input type="hidden" name="media_type" value="{{ media_data.media_type }}">
-                        <input type="hidden" name="poster" value="{{ media_data.poster }}">
-                        <div class="row">
-                            <div class="input-field col s6">
-                            <textarea id="textarea1" class="materialize-textarea"></textarea>
-                            <label for="textarea1">Textarea</label>
-                            </div>
-                        </div>
-
-                        <button class="btn-floating waves-effect waves-light" type="submit">
-                            <i class="fa-regular fa-circle-check"></i>
-                        </button>
-                    </form>
-                </div>
-
-                <div class="col s6 poster">
-                    <img src="{{ media_data.poster }}" alt="">
-                </div>
-            </div>
-        </div>
-    {% endif %}
-
+    </div>
 
 {% endblock %}
