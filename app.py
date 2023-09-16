@@ -134,14 +134,8 @@ def search():
     # get the movie or show details
     media_data = get_media_details(media_id, media_type)
     media_certificate = get_media_certificate(media_id, media_type)
-    if media_type == "movie":
-        return render_template(
-            "movie-search-result.html", media_data=media_data,
-            media_certificate=media_certificate, media_type=media_type)
-    if media_type == "tv":
-        print(media_data)
-        return render_template(
-            "tv-search-result.html", media_data=media_data,
+    return render_template(
+            "search-result.html", media_data=media_data,
             media_certificate=media_certificate, media_type=media_type)
 
 
@@ -249,7 +243,9 @@ def add_seenlist(feature_id):
          }
         mongo.db.movies.update({"_id": ObjectId(feature_id)}, submit)
         flash("Task Successfully Added")
-        return redirect(url_for("feature_details", feature_id=feature_id, media_type=request.form.get("media_type")))
+        return redirect(url_for(
+            "feature_details", feature_id=feature_id,
+            media_type=request.form.get("media_type")))
 
     if request.method == "POST" and request.form.get(
             "media_type") == "tv":
@@ -267,11 +263,14 @@ def add_seenlist(feature_id):
          }
         mongo.db.tv_shows.update({"_id": ObjectId(feature_id)}, submit)
         flash("Task Successfully Added")
-        return redirect(url_for("feature_details", feature_id=feature_id, media_type=request.form.get("media_type")))
+        return redirect(url_for(
+            "feature_details", feature_id=feature_id,
+            media_type=request.form.get("media_type")))
     return redirect(url_for("library"))
 
 
-@app.route("/feature_details/<feature_id>/<media_type>", methods=["GET", "POST"])
+@app.route(
+    "/feature_details/<feature_id>/<media_type>", methods=["GET", "POST"])
 def feature_details(feature_id, media_type):
     if media_type == "movie":
         media_data = mongo.db.movies.find_one({"_id": ObjectId(feature_id)})
