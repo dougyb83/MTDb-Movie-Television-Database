@@ -15,8 +15,22 @@ nav {
     width: 98%;
     border-radius: 10px;
     margin-top: 10px;
-    margin-left: 11px;
     padding-left: 10px;
+}
+
+nav ul a {
+    font-size: 1.6em;
+}
+
+.nav-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.navbar-center {
+    display: flex;
+    justify-content: center;
 }
 
 .search-bar {
@@ -89,15 +103,31 @@ footer {
     text-align: right;
 }
 
-.popular {
+.popular-container {
+    display: flex;
+    justify-content: center;
     background-color: black;
     color: white;
     text-align: center;
-    height: 110vh;
+    padding-bottom: 30px;
+    padding-top: 30px;
+}
+
+.popular .card-poster {
+    margin-top: 0;
 }
 
 .popular h2 {
     margin: 0;
+}
+
+.popular h3 {
+    margin-top: 40px;
+    margin-left: 50px;
+}
+
+.popular-title {
+    font-size: 1.8em !important;
 }
 
 .popular-films, .popular-shows {
@@ -133,9 +163,13 @@ footer {
     position: fixed;
 }
 
-.main-content {
+.library-content {
     height: 150vh;
     margin: 20px 20px 0 270px;
+}
+
+.library-content .feature-title {
+    font-size: 1.2em !important;
 }
 
 .card-poster {
@@ -156,10 +190,10 @@ footer {
 .feature-title {
     position: absolute;
     text-align: left;
+    padding-bottom: 4px;
     left: 5px;
     top: 3px;
     width: 80%;
-    font-size: 1.2em !important;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -167,7 +201,7 @@ footer {
 
 .card-menu {
     position: absolute;
-    right: 0px;
+    right: -7px;
     top: 10px;
     cursor: pointer;
 }
@@ -205,6 +239,61 @@ footer {
 
 
 /* media queries */
+@media only screen and (min-width: 1441px) {
+    .popular, nav {
+        width: 80%;
+    }
+
+    .title-container {
+        width: 60%;
+    }
+}
+
+@media only screen and (max-width: 1024px) {
+    nav {
+        height: 56px;
+    }
+    nav ul a {
+        font-size: 1.2em;
+    }
+
+    nav .brand-logo {
+        font-size: 1.9em;
+    }
+
+    .fa-magnifying-glass {
+        font-size: 1.3em;
+        position: relative;
+        top: -4px;
+    }
+
+    .popular h2 {
+        font-size: 40px;
+    }
+
+    .popular h3 {
+        font-size: 30px;
+        margin-top: 10px;
+        margin-left: 30px;
+    }
+
+    .popular-title {
+        font-size: 1.3em !important;
+    }
+
+    .card-menu {
+        top: 8px;
+    }
+
+    .title-container {
+        width: 90%;
+    }
+
+    .title-container h1 {        
+        font-size: 3rem;
+    }
+}
+
 @media only screen and (max-width: 768px) {
     nav .brand-logo {
         left: 44px;
@@ -217,15 +306,41 @@ footer {
     .modal {
         width: 50vw;
     }
+
+    .popular h2 {
+        font-size: 35px;
+    }
+
+    .popular h3 {
+        font-size: 25px;
+    }
+
+    .popular-title {
+        font-size: 1.2em !important;
+    }
 }
 
 @media only screen and (max-width: 425px) {
+    nav {
+        width: 95%;
+    }
     nav .brand-logo {
-        left: 44px;
+        font-size: 1.6em;
+        left: 30px;
+    }
+
+    .fa-magnifying-glass {
+        font-size: 1.3em;
+        position: relative;
+        top: 2px;
     }
 
     .search-bar {
         width: 60%;
+    }
+
+    .search-bar, .label-icon {
+        margin-left: 55px;
     }
 
     .modal {

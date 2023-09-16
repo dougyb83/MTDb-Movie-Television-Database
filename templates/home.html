@@ -106,66 +106,68 @@
     </div>
 
     <!-- popular films and tv shows -->
-    <div class="popular">
-        <h2>Popular Films & TV Shows</h2>
-        <!-- popular films -->
-        <h3>Films</h3>
-        <div class="row popular-films">
-            {% for movie in popular_movie_data %}
-                <div class="col s2">
-                    <div class="card card-poster">
-                        <div class="card-image waves-effect waves-block waves-light">
-                            <img src="https://image.tmdb.org/t/p/w500{{ movie['poster_path'] }}" alt="">
-                        </div>
-                        <div class="card-title-container card-content">
-                            <div>
-                                <span class="feature-title card-title grey-text text-lighten-4">{{ movie['original_title'] }}</span>
+    <div class="popular-container">
+        <div class="popular">
+            <h2>Popular Films & TV Shows</h2>
+            <!-- popular films -->
+            <h3 class="left-aligned">Films</h3>
+            <div class="row popular-films">
+                {% for movie in popular_movie_data %}
+                    <div class="col s2">
+                        <div class="card card-poster">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <img src="https://image.tmdb.org/t/p/w500{{ movie['poster_path'] }}" alt="">
                             </div>
-                            <div class="card-menu activator grey-text text-lighten-4">
-                                <i class="material-icons right">more_vert</i>
+                            <div class="card-title-container card-content">
+                                <div>
+                                    <span class="feature-title popular-title card-title grey-text text-lighten-4">{{ movie['original_title'] }}</span>
+                                </div>
+                                <div class="card-menu activator grey-text text-lighten-4">
+                                    <i class="material-icons right">more_vert</i>
+                                </div>
                             </div>
-                        </div>
-                        <div class="card-reveal">
-                            <span class="card-title grey-text text-lighten-4">{{ movie['original_title'] }}<i class="card-close material-icons right">close</i></span>
-                            <div class="controls">
-                                <i class="fa-regular fa-circle-check"></i>
-                                <i class="fa-solid fa-pen"></i>
-                                <i class="fa-solid fa-trash"></i>          
-                            </div>            
-                        </div>
-                    </div>                
-                </div>
-            {% endfor %}
-        </div>
-
-        <!-- tv shows -->
-        <h3>TV Shows</h3>
-        <div class="row popular-shows">
-            {% for tv_show in popular_series_data %}
-                <div class="col s2 poster-col">
-                    <div class="card card-poster">
-                        <div class="card-image waves-effect waves-block waves-light">
-                            <img src="https://image.tmdb.org/t/p/w500{{ tv_show['poster_path'] }}" alt="">
-                        </div>
-                        <div class="card-title-container card-content">
-                            <div>
-                                <span class="feature-title card-title grey-text text-lighten-4">{{ tv_show['name'] }}</span>
+                            <div class="card-reveal">
+                                <span class="card-title grey-text text-lighten-4">{{ movie['original_title'] }}<i class="card-close material-icons right">close</i></span>
+                                <div class="controls">
+                                    <i class="fa-regular fa-circle-check"></i>
+                                    <i class="fa-solid fa-pen"></i>
+                                    <i class="fa-solid fa-trash"></i>          
+                                </div>            
                             </div>
-                            <div class="card-menu activator grey-text text-lighten-4">
-                                <i class="material-icons right">more_vert</i>
-                            </div> 
-                        </div>
-                        <div class="card-reveal">
-                            <span class="card-title grey-text text-lighten-4">{{ tv_show['name'] }}<i class="card-close material-icons right">close</i></span>
-                            <div class="controls">
-                                <i class="fa-regular fa-circle-check"></i>
-                                <i class="fa-solid fa-pen"></i>
-                                <i class="fa-solid fa-trash"></i>          
-                            </div>            
-                        </div>
-                    </div>                
-                </div>
-            {% endfor %}
+                        </div>                
+                    </div>
+                {% endfor %}
+            </div>
+            
+            <!-- tv shows -->
+            <h3 class="left-aligned">TV Shows</h3>
+            <div class="row popular-shows">
+                {% for tv_show in popular_series_data %}
+                    <div class="col s2 poster-col">
+                        <div class="card card-poster">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <img src="https://image.tmdb.org/t/p/w500{{ tv_show['poster_path'] }}" alt="">
+                            </div>
+                            <div class="card-title-container card-content">
+                                <div>
+                                    <span class="feature-title popular-title card-title grey-text text-lighten-4">{{ tv_show['name'] }}</span>
+                                </div>
+                                <div class="card-menu activator grey-text text-lighten-4">
+                                    <i class="material-icons right">more_vert</i>
+                                </div> 
+                            </div>
+                            <div class="card-reveal">
+                                <span class="card-title grey-text text-lighten-4">{{ tv_show['name'] }}<i class="card-close material-icons right">close</i></span>
+                                <div class="controls">
+                                    <i class="fa-regular fa-circle-check"></i>
+                                    <i class="fa-solid fa-pen"></i>
+                                    <i class="fa-solid fa-trash"></i>          
+                                </div>            
+                            </div>
+                        </div>                
+                    </div>
+                {% endfor %}
+            </div>
         </div>
     </div>
 
