@@ -32,7 +32,7 @@
                 <p id="overview">{{ media_data['overview'] }}</p>
                 <p id="certificate">{{ media_certificate }}</p>
                 <p id="release_date">{{ media_data['first_air_date'][0:4] }}</p>
-                {% if media_data['episode_run_time'][0]|length > 0 %}
+                {% if media_data['episode_run_time'] %}
                     <p id="runtime">{{ media_data['episode_run_time'][0] }} mins</p>
                 {% endif %}                
 

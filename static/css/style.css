@@ -237,6 +237,22 @@ footer {
     text-overflow: ellipsis;
 }
 
+/* feature display pages - search results and edit feature */
+.main-content {
+    height: 150vh;
+    margin: 40px 20px 0 270px;
+}
+
+.details {
+    display: flex;
+    justify-content: space-between;
+    padding-right: 10px;
+}
+
+.poster img {
+    width: 30vw;
+}
+
 
 /* media queries */
 @media only screen and (min-width: 1441px) {
@@ -246,6 +262,11 @@ footer {
 
     .title-container {
         width: 60%;
+    }
+
+    .library-content {
+        width: 80%;
+        margin-left: 350px;
     }
 }
 

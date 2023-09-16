@@ -205,6 +205,8 @@ def add_watchlist():
             "release_date": request.form.get("release_date"),
             "runtime": request.form.get("runtime"),
             "poster": request.form.get("poster"),
+            "media_type": request.form.get("media_type"),
+            "list_type": "watchlist",
             "created_by": session["user"]
          }
         mongo.db.movies.insert_one(movie)
@@ -221,6 +223,8 @@ def add_watchlist():
             "release_date": request.form.get("release_date"),
             "runtime": request.form.get("runtime"),
             "poster": request.form.get("poster"),
+            "media_type": request.form.get("media_type"),
+            "list_type": "watchlist",
             "created_by": session["user"]
          }
         mongo.db.tv_shows.insert_one(tv_show)
@@ -228,9 +232,9 @@ def add_watchlist():
         return redirect(url_for("library"))
 
 
-@app.route("/edit_movie/<movie_id>", methods=["GET", "POST"])
-def edit_movie(movie_id):
-    if request.method == "POST":
+@app.route("/add_seenlist/<feature_id>", methods=["GET", "POST"])
+def add_seenlist(feature_id):
+    if request.method == "POST" and request.form.get("media_type") == "movie":
         submit = {
             "title": request.form.get("title"),
             "genres": request.form.get("genres"),
@@ -239,14 +243,36 @@ def edit_movie(movie_id):
             "release_date": request.form.get("release_date"),
             "runtime": request.form.get("runtime"),
             "poster": request.form.get("poster"),
+            "media_type": request.form.get("media_type"),
+            "list_type": "seenlist",
             "created_by": session["user"]
-        }
-        mongo.db.movies.update({"_id": ObjectId(movie_id)}, submit)
-        flash("Task Successfully Updated")
+         }
+        mongo.db.movies.update({"_id": ObjectId(feature_id)}, submit)
+        flash("Task Successfully Added")
+        return redirect(url_for("feature_details", feature_id=feature_id))
 
-    movie = mongo.db.movies.find_one({"_id": ObjectId(movie_id)})
-    details = mongo.db.movies.find().sort("title", 1)
-    return render_template("edit-details.html", movie=movie, details=details)
+    if request.method == "POST" and request.form.get(
+            "media_type") == "tv":
+        tv_show = {
+            "title": request.form.get("title"),
+            "genres": request.form.get("genres"),
+            "overview": request.form.get("overview"),
+            "certificate": request.form.get("certificate"),
+            "release_date": request.form.get("release_date"),
+            "runtime": request.form.get("runtime"),
+            "poster": request.form.get("poster"),
+            "created_by": session["user"]
+         }
+        mongo.db.tv_shows.insert_one(tv_show)
+        flash("Task Successfully Added")
+        return redirect(url_for("feature_details", feature_id=feature_id))
+    return redirect(url_for("library"))
+
+
+@app.route("/feature_details/<feature_id>", methods=["GET", "POST"])
+def feature_details(feature_id):
+    media_data = mongo.db.movies.find_one({"_id": ObjectId(feature_id)})
+    return render_template("feature-details.html", media_data=media_data)
 
 
 if __name__ == "__main__":

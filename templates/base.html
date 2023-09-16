@@ -20,7 +20,7 @@
       <div class="navbar-fixed navbar-center">
         <nav class="text-shadow grey darken-4">
           <div class="nav-wrapper">
-            <a href="#" class="brand-logo">MTDb</a>
+            <a href="{{ url_for('home') }}" class="brand-logo">MTDb</a>
             <form class="search-bar" method="POST" action="{{ url_for('search') }}">
               <div class="input-field">
                 <input id="search" name="search" type="search" required>
