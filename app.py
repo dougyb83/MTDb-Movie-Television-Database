@@ -249,11 +249,11 @@ def add_seenlist(feature_id):
          }
         mongo.db.movies.update({"_id": ObjectId(feature_id)}, submit)
         flash("Task Successfully Added")
-        return redirect(url_for("feature_details", feature_id=feature_id))
+        return redirect(url_for("feature_details", feature_id=feature_id, media_type=request.form.get("media_type")))
 
     if request.method == "POST" and request.form.get(
             "media_type") == "tv":
-        tv_show = {
+        submit = {
             "title": request.form.get("title"),
             "genres": request.form.get("genres"),
             "overview": request.form.get("overview"),
@@ -261,18 +261,24 @@ def add_seenlist(feature_id):
             "release_date": request.form.get("release_date"),
             "runtime": request.form.get("runtime"),
             "poster": request.form.get("poster"),
+            "media_type": request.form.get("media_type"),
+            "list_type": "seenlist",
             "created_by": session["user"]
          }
-        mongo.db.tv_shows.insert_one(tv_show)
+        mongo.db.tv_shows.update({"_id": ObjectId(feature_id)}, submit)
         flash("Task Successfully Added")
-        return redirect(url_for("feature_details", feature_id=feature_id))
+        return redirect(url_for("feature_details", feature_id=feature_id, media_type=request.form.get("media_type")))
     return redirect(url_for("library"))
 
 
-@app.route("/feature_details/<feature_id>", methods=["GET", "POST"])
-def feature_details(feature_id):
-    media_data = mongo.db.movies.find_one({"_id": ObjectId(feature_id)})
-    return render_template("feature-details.html", media_data=media_data)
+@app.route("/feature_details/<feature_id>/<media_type>", methods=["GET", "POST"])
+def feature_details(feature_id, media_type):
+    if media_type == "movie":
+        media_data = mongo.db.movies.find_one({"_id": ObjectId(feature_id)})
+        return render_template("feature-details.html", media_data=media_data)
+    else:
+        media_data = mongo.db.tv_shows.find_one({"_id": ObjectId(feature_id)})
+        return render_template("feature-details.html", media_data=media_data)
 
 
 if __name__ == "__main__":
