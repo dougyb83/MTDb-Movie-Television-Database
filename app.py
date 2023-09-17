@@ -217,6 +217,7 @@ def get_api_data(url):
 
 @app.route("/add_watchlist", methods=["GET", "POST"])
 def add_watchlist():
+    print("watchlist")
     if request.method == "POST" and request.form.get("media_type") == "movie":
         movie = {
             "title": request.form.get("title"),
@@ -253,46 +254,62 @@ def add_watchlist():
         return redirect(url_for("library", username=session["user"]))
 
 
-@app.route("/add_seenlist/<feature_id>", methods=["GET", "POST"])
-def add_seenlist(feature_id):
+@app.route("/add_seenlist", methods=["GET", "POST"])
+def add_seenlist():
+    print("seenlist")
     if request.method == "POST" and request.form.get("media_type") == "movie":
-        submit = {
-            "title": request.form.get("title"),
-            "genres": request.form.get("genres"),
-            "overview": request.form.get("overview"),
-            "certificate": request.form.get("certificate"),
-            "release_date": request.form.get("release_date"),
-            "runtime": request.form.get("runtime"),
-            "poster": request.form.get("poster"),
-            "media_type": request.form.get("media_type"),
-            "list_type": "seenlist",
-            "created_by": session["user"]
-         }
-        mongo.db.movies.update({"_id": ObjectId(feature_id)}, submit)
-        flash("Task Successfully Added")
-        return redirect(url_for(
-            "feature_details", feature_id=feature_id,
-            media_type=request.form.get("media_type")))
+        if request.form.get("feature_id"):
+            feature_id = request.form.get("feature_id")
+            mongo.db.movies.update_one({"_id": ObjectId(feature_id)}, {
+                "$set": {"list_type": "seenlist"}})
+            flash("Task Successfully Added")
+            return redirect(url_for(
+                "feature_details", feature_id=feature_id,
+                media_type=request.form.get("media_type")))
+        else:
+            submit = {
+                "title": request.form.get("title"),
+                "genres": request.form.get("genres"),
+                "overview": request.form.get("overview"),
+                "certificate": request.form.get("certificate"),
+                "release_date": request.form.get("release_date"),
+                "runtime": request.form.get("runtime"),
+                "poster": request.form.get("poster"),
+                "media_type": request.form.get("media_type"),
+                "list_type": "seenlist",
+                "created_by": session["user"]
+            }
+            mongo.db.movies.insert_one(submit)
+            flash("Added to Seenlist")
+            return redirect(url_for("library", username=session["user"]))
 
     if request.method == "POST" and request.form.get(
             "media_type") == "tv":
-        submit = {
-            "title": request.form.get("title"),
-            "genres": request.form.get("genres"),
-            "overview": request.form.get("overview"),
-            "certificate": request.form.get("certificate"),
-            "release_date": request.form.get("release_date"),
-            "runtime": request.form.get("runtime"),
-            "poster": request.form.get("poster"),
-            "media_type": request.form.get("media_type"),
-            "list_type": "seenlist",
-            "created_by": session["user"]
-         }
-        mongo.db.tv_shows.update({"_id": ObjectId(feature_id)}, submit)
-        flash("Task Successfully Added")
-        return redirect(url_for(
-            "feature_details", feature_id=feature_id,
-            media_type=request.form.get("media_type")))
+        if request.form.get("feature_id"):
+            feature_id = request.form.get("feature_id")            
+            mongo.db.tv_shows.update_one({"_id": ObjectId(feature_id)}, {
+                "$set": {"list_type": "seenlist"}})
+            flash("Task Successfully Added")
+            return redirect(url_for(
+                "feature_details", feature_id=feature_id,
+                media_type=request.form.get("media_type")))
+        else:
+            submit = {
+                "title": request.form.get("title"),
+                "genres": request.form.get("genres"),
+                "overview": request.form.get("overview"),
+                "certificate": request.form.get("certificate"),
+                "release_date": request.form.get("release_date"),
+                "runtime": request.form.get("runtime"),
+                "poster": request.form.get("poster"),
+                "media_type": request.form.get("media_type"),
+                "list_type": "seenlist",
+                "created_by": session["user"]
+            }
+            mongo.db.tv_shows.insert_one(submit)
+            flash("Added to Seenlist")
+            return redirect(url_for("library", username=session["user"]))
+
     return redirect(url_for("library", username=session["user"]))
 
 

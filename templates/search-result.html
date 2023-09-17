@@ -42,18 +42,27 @@
                         <input type="hidden" name="certificate" value="{{ media_certificate }}">
                         <input type="hidden" name="release_date" value="{{ media_data['release_date'][0:4] }}">
                         <input type="hidden" name="runtime" value="{{ media_data['runtime'] }} mins">
-                        <input type="hidden" name="list_type" value="watchlist">
                         <input type="hidden" name="media_type" value="{{ media_type }}">
                         <input type="hidden" name="poster" value="https://image.tmdb.org/t/p/w500{{ media_data['poster_path'] }}">
         
                         <button class="btn-floating waves-effect waves-light" type="submit">
                             <i class="fa-regular fa-bookmark"></i>
                         </button>
+                    </form>
+                    <form method="POST" action="{{ url_for('add_seenlist') }}">
+                        <input type="hidden" name="title" value="{{ media_data['title'] }}">
+                        <input type="hidden" name="genres" id="genre-input">
+                        <input type="hidden" name="overview" value="{{ media_data['overview'] }}">
+                        <input type="hidden" name="certificate" value="{{ media_certificate }}">
+                        <input type="hidden" name="release_date" value="{{ media_data['release_date'][0:4] }}">
+                        <input type="hidden" name="runtime" value="{{ media_data['runtime'] }} mins">
+                        <input type="hidden" name="media_type" value="{{ media_type }}">
+                        <input type="hidden" name="poster" value="https://image.tmdb.org/t/p/w500{{ media_data['poster_path'] }}">
+        
                         <button class="btn-floating waves-effect waves-light" type="submit">
                             <i class="fa-regular fa-circle-check"></i>
                         </button>
                     </form>
-                </div>
 
                 <div class="col s6 poster">
                     <img src="https://image.tmdb.org/t/p/w500{{ media_data['poster_path'] }}" alt="">
@@ -91,6 +100,16 @@
                         <button class="btn-floating waves-effect waves-light" type="submit">
                             <i class="fa-regular fa-bookmark"></i>
                         </button>
+                    </form>
+                    <form method="POST" action="{{ url_for('add_seenlist') }}">
+                        <input type="hidden" name="title" value="{{ media_data['name'] }}">
+                        <input type="hidden" name="genres" id="genre-input">
+                        <input type="hidden" name="overview" value="{{ media_data['overview'] }}">
+                        <input type="hidden" name="certificate" value="{{ media_certificate }}">
+                        <input type="hidden" name="release_date" value="{{ media_data['first_air_date'][0:4] }}">
+                        <input type="hidden" name="runtime" value="{{ media_data['episode_run_time'][0] }} mins">
+                        <input type="hidden" name="media_type" value="{{ media_type }}">
+                        <input type="hidden" name="poster" value="https://image.tmdb.org/t/p/w500{{ media_data['poster_path'] }}">
                         <button class="btn-floating waves-effect waves-light" type="submit">
                             <i class="fa-regular fa-circle-check"></i>
                         </button>

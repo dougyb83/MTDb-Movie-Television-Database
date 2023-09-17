@@ -44,7 +44,8 @@
 
                 </div>
 
-                <form method="POST" action="{{ url_for('add_seenlist', feature_id=media_data._id) }}">
+                <form method="POST" action="{{ url_for('add_seenlist') }}">                    
+                    <input type="hidden" name="feature_id" value="{{ media_data._id }}">                    
                     <input type="hidden" name="title" value="{{ media_data.title }}">
                     <input type="hidden" name="genres" id="genre-input">
                     <input type="hidden" name="overview" value="{{ media_data.overview }}">
