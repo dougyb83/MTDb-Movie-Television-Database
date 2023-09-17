@@ -149,6 +149,11 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
     margin-left: 26px;
 }
 
+.message {
+    text-align: center;
+    color: red;
+}
+
 
 /* library page */
 .side-menu {

@@ -27,6 +27,13 @@ $(document).ready(function(){
   $(".flash-modal").modal();
   $(".flash-modal").modal("open");
 
+  $(".non-session-activity").click(function () {
+    $(".message").text("You must be logged in to perfom that action")
+  });
+  $(".modal-close").click(function () {
+    $(".message").text("")
+  });
+
 
 // function autocomplete() {
 //     // gets the partial search string to send to api
