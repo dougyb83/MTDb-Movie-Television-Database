@@ -160,6 +160,7 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
 }
 
 .library-content {
+    min-height: 85vh;
     padding-bottom: 20px;
     margin: 20px 20px 0 270px;
 }
@@ -230,7 +231,7 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
 
 /* feature display pages - search results and edit feature */
 .main-content {
-    height: 150vh;
+    min-height: 85vh;
     margin: 40px 20px 0 270px;
 }
 
@@ -262,9 +263,17 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
         left: -111px;
     }
 
+    .main-content {
+        margin-left: 370px;
+    }
+
     .library-content {
         width: 80%;
         margin-left: 350px;
+    }
+
+    .poster img {
+        width: 28vw;
     }
 
     .auth-form .input-field i {
