@@ -116,7 +116,7 @@
                     <div class="col s2">
                         <div class="card card-poster">
                             <div class="card-image waves-effect waves-block waves-light">
-                                <img src="https://image.tmdb.org/t/p/w500{{ movie['poster_path'] }}" alt="{{ movie['original_title'] }}">
+                                <a href="{{ url_for('popular_feature', title=movie['original_title'])}}"><img src="https://image.tmdb.org/t/p/w500{{ movie['poster_path'] }}" alt="{{ movie['original_title'] }}"></a>
                             </div>
                             <div class="card-title-container card-content">
                                 <div>
@@ -128,10 +128,9 @@
                             </div>
                             <div class="card-reveal">
                                 <span class="card-title grey-text text-lighten-4">{{ movie['original_title'] }}<i class="card-close material-icons right">close</i></span>
-                                <div class="controls">
+                                <div class="controls pop-controls">
                                     <i class="fa-regular fa-circle-check"></i>
-                                    <i class="fa-solid fa-pen"></i>
-                                    <i class="fa-solid fa-trash"></i>          
+                                    <i class="fa-regular fa-bookmark"></i>         
                                 </div>            
                             </div>
                         </div>                
@@ -146,7 +145,7 @@
                     <div class="col s2 poster-col">
                         <div class="card card-poster">
                             <div class="card-image waves-effect waves-block waves-light">
-                                <img src="https://image.tmdb.org/t/p/w500{{ tv_show['poster_path'] }}" alt="{{ tv_show['name'] }}">
+                                <a href="{{ url_for('popular_feature', title=tv_show['name'])}}"><img src="https://image.tmdb.org/t/p/w500{{ tv_show['poster_path'] }}" alt="{{ tv_show['name'] }}"></a>
                             </div>
                             <div class="card-title-container card-content">
                                 <div>
@@ -158,10 +157,9 @@
                             </div>
                             <div class="card-reveal">
                                 <span class="card-title grey-text text-lighten-4">{{ tv_show['name'] }}<i class="card-close material-icons right">close</i></span>
-                                <div class="controls">
+                                <div class="controls pop-controls">
                                     <i class="fa-regular fa-circle-check"></i>
-                                    <i class="fa-solid fa-pen"></i>
-                                    <i class="fa-solid fa-trash"></i>          
+                                    <i class="fa-regular fa-bookmark"></i>         
                                 </div>            
                             </div>
                         </div>                

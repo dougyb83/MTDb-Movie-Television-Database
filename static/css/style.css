@@ -223,14 +223,9 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
     font-size: 20px;
 }
 
-.test {
-    color: whitesmoke;
-    font-size: 20px;
-    width: 30px;
-    height: 34px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
+.pop-controls {
+    display: flex;
+    justify-content: space-around;
 }
 
 /* feature display pages - search results and edit feature */

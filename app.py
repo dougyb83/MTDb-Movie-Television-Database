@@ -111,17 +111,44 @@ def logout():
     return redirect(url_for("home"))
 
 
-@app.route("/library")
-def library():
-    movies = list(mongo.db.movies.find().sort("movies", 1))
-    tv_shows = list(mongo.db.tv_shows.find().sort("tv_shows", 1))
-    return render_template("library.html", movies=movies, tv_shows=tv_shows)
+@app.route("/library/<username>")
+def library(username):
+    # grab the session user's username from db
+    username = mongo.db.users.find_one(
+        {"username": session["user"]})["username"]
+
+    if session["user"]:
+        movies = list(mongo.db.movies.find().sort("movies", 1))
+        tv_shows = list(mongo.db.tv_shows.find().sort("tv_shows", 1))
+        return render_template(
+            "library.html", username=username,
+            movies=movies, tv_shows=tv_shows)
+    return render_template("home.html")
 
 
 @app.route("/search", methods=["GET", "POST"])
 def search():
     # get the movie/show title from the search input
     title = request.form.get("search")
+    # get the movie/show ID from the API
+    url = f"""https://api.themoviedb.org/3/search/multi?query={title}&
+        include_adult=false&language=en-US&page=1"""
+    # get json data
+    json_data = get_api_data(url)
+    # get the movie or show id fron json results
+    media_id = json_data['results'][0]['id']
+    # get media type
+    media_type = json_data['results'][0]['media_type']
+    # get the movie or show details
+    media_data = get_media_details(media_id, media_type)
+    media_certificate = get_media_certificate(media_id, media_type)
+    return render_template(
+            "search-result.html", media_data=media_data,
+            media_certificate=media_certificate, media_type=media_type)
+
+
+@app.route("/popular_feature/<title>")
+def popular_feature(title):
     # get the movie/show ID from the API
     url = f"""https://api.themoviedb.org/3/search/multi?query={title}&
         include_adult=false&language=en-US&page=1"""
@@ -205,7 +232,7 @@ def add_watchlist():
          }
         mongo.db.movies.insert_one(movie)
         flash("Task Successfully Added")
-        return redirect(url_for("library"))
+        return redirect(url_for("library", username=session["user"]))
 
     if request.method == "POST" and request.form.get(
             "media_type") == "tv":
@@ -223,7 +250,7 @@ def add_watchlist():
          }
         mongo.db.tv_shows.insert_one(tv_show)
         flash("Task Successfully Added")
-        return redirect(url_for("library"))
+        return redirect(url_for("library", username=session["user"]))
 
 
 @app.route("/add_seenlist/<feature_id>", methods=["GET", "POST"])
@@ -266,7 +293,7 @@ def add_seenlist(feature_id):
         return redirect(url_for(
             "feature_details", feature_id=feature_id,
             media_type=request.form.get("media_type")))
-    return redirect(url_for("library"))
+    return redirect(url_for("library", username=session["user"]))
 
 
 @app.route(
@@ -288,7 +315,7 @@ def delete_feature(feature_id, media_type):
         mongo.db.tv_shows.remove({"_id": ObjectId(feature_id)})
 
     flash("Task Successfully Deleted")
-    return redirect(url_for("library"))
+    return redirect(url_for("library", username=session["user"]))
 
 
 if __name__ == "__main__":
