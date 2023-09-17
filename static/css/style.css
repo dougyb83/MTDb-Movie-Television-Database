@@ -1,4 +1,4 @@
-/* flash messages */
+flash messages
 .flashes {
     position: absolute;
     width: 100%;
@@ -36,10 +36,6 @@ nav ul a {
 .search-bar {
     float: left;    
     padding: 15px;
-}
-
-.input-field {
-    display: contents;
 }
 
 .search-bar, .label-icon {
@@ -135,10 +131,6 @@ footer {
     justify-content: space-evenly;
 }
 
-.row .col.s2 {
-    margin: 0;
-}
-
 .modal {
     width: 30vw;
 }
@@ -148,11 +140,15 @@ footer {
     text-align: center;
 }
 
-.input-field .prefix {
-    position: relative;
-    top: 40px;
-    right: 122px;
+.auth-form .input-field i {
+    left: 0;
 }
+
+input#login-password, input#login-username,input#signup-username,input#signup-password {
+    padding-left: 10px;
+    margin-left: 26px;
+}
+
 
 /* library page */
 .side-menu {
@@ -264,9 +260,29 @@ footer {
         width: 60%;
     }
 
+    .fa-magnifying-glass {
+        font-size: 1.3em;
+        position: relative;
+        top: -12px;
+        left: -111px;
+    }
+
     .library-content {
         width: 80%;
         margin-left: 350px;
+    }
+
+    .auth-form .input-field i {
+        left: 0;
+    }
+}
+
+@media only screen and (max-width: 1440px) {
+    .fa-magnifying-glass {
+        font-size: 1.3em;
+        position: relative;
+        top: -14px;
+        left: -111px;
     }
 }
 
@@ -283,9 +299,12 @@ footer {
     }
 
     .fa-magnifying-glass {
-        font-size: 1.3em;
-        position: relative;
-        top: -4px;
+        top: -19px;
+        left: -115px;
+    }
+
+    .modal {
+        width: 42vw;
     }
 
     .popular h2 {
@@ -325,8 +344,10 @@ footer {
     }
 
     .modal {
-        width: 50vw;
+        width: 59vw;
     }
+
+
 
     .popular h2 {
         font-size: 35px;
@@ -351,9 +372,8 @@ footer {
     }
 
     .fa-magnifying-glass {
-        font-size: 1.3em;
-        position: relative;
-        top: 2px;
+        top: -13px;
+        left: -71px;
     }
 
     .search-bar {
@@ -367,4 +387,12 @@ footer {
     .modal {
         width: 80vw;
     }
+}
+
+@media only screen and (max-width: 375px) {
+
+}
+
+@media only screen and (max-width: 320px) {
+
 }

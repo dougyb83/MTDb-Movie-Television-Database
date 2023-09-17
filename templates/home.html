@@ -116,7 +116,7 @@
                     <div class="col s2">
                         <div class="card card-poster">
                             <div class="card-image waves-effect waves-block waves-light">
-                                <img src="https://image.tmdb.org/t/p/w500{{ movie['poster_path'] }}" alt="">
+                                <img src="https://image.tmdb.org/t/p/w500{{ movie['poster_path'] }}" alt="{{ movie['original_title'] }}">
                             </div>
                             <div class="card-title-container card-content">
                                 <div>
@@ -146,7 +146,7 @@
                     <div class="col s2 poster-col">
                         <div class="card card-poster">
                             <div class="card-image waves-effect waves-block waves-light">
-                                <img src="https://image.tmdb.org/t/p/w500{{ tv_show['poster_path'] }}" alt="">
+                                <img src="https://image.tmdb.org/t/p/w500{{ tv_show['poster_path'] }}" alt="{{ tv_show['name'] }}">
                             </div>
                             <div class="card-title-container card-content">
                                 <div>
