@@ -232,7 +232,7 @@ def add_watchlist():
             "created_by": session["user"]
          }
         mongo.db.movies.insert_one(movie)
-        flash("Task Successfully Added")
+        flash("Added to Watchlist")
         return redirect(url_for("library", username=session["user"]))
 
     if request.method == "POST" and request.form.get(
@@ -250,7 +250,7 @@ def add_watchlist():
             "created_by": session["user"]
          }
         mongo.db.tv_shows.insert_one(tv_show)
-        flash("Task Successfully Added")
+        flash("Added to Watchlist")
         return redirect(url_for("library", username=session["user"]))
 
 
@@ -262,10 +262,8 @@ def add_seenlist():
             feature_id = request.form.get("feature_id")
             mongo.db.movies.update_one({"_id": ObjectId(feature_id)}, {
                 "$set": {"list_type": "seenlist"}})
-            flash("Task Successfully Added")
-            return redirect(url_for(
-                "feature_details", feature_id=feature_id,
-                media_type=request.form.get("media_type")))
+            flash("Added to Seenlist")
+            return redirect(url_for("library", username=session["user"]))
         else:
             submit = {
                 "title": request.form.get("title"),
@@ -289,10 +287,8 @@ def add_seenlist():
             feature_id = request.form.get("feature_id")            
             mongo.db.tv_shows.update_one({"_id": ObjectId(feature_id)}, {
                 "$set": {"list_type": "seenlist"}})
-            flash("Task Successfully Added")
-            return redirect(url_for(
-                "feature_details", feature_id=feature_id,
-                media_type=request.form.get("media_type")))
+            flash("Added to Seenlist")
+            return redirect(url_for("library", username=session["user"]))
         else:
             submit = {
                 "title": request.form.get("title"),
@@ -309,8 +305,6 @@ def add_seenlist():
             mongo.db.tv_shows.insert_one(submit)
             flash("Added to Seenlist")
             return redirect(url_for("library", username=session["user"]))
-
-    return redirect(url_for("library", username=session["user"]))
 
 
 @app.route(
@@ -331,7 +325,7 @@ def delete_feature(feature_id, media_type):
     else:
         mongo.db.tv_shows.remove({"_id": ObjectId(feature_id)})
 
-    flash("Task Successfully Deleted")
+    flash("Deleted from Library")
     return redirect(url_for("library", username=session["user"]))
 
 
