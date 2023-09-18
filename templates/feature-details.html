@@ -30,44 +30,49 @@
                     <p id="release_date">{{ media_data.release_date }}</p>
                     <p id="runtime">{{ media_data.runtime }}</p>
                 </div>
-                <div class="personalised-info">
-                    <div class="rating">
-                        <h6>Rate it!</h6>
-                        <i class="fa-regular fa-star"></i>
-                        <i class="fa-regular fa-star"></i>
-                        <i class="fa-regular fa-star"></i>
-                        <i class="fa-regular fa-star"></i>
-                        <i class="fa-regular fa-star"></i>
-                    </div>
-                </div>
-                <div class="personal-comments">
-
-                </div>
-
-                <form method="POST" action="{{ url_for('add_seenlist') }}">                    
-                    <input type="hidden" name="feature_id" value="{{ media_data._id }}">                    
-                    <input type="hidden" name="media_type" value="{{ media_data.media_type }}">
-                    <div class="row">
-                        <div class="input-field col s6">
-                        <textarea id="textarea1" class="materialize-textarea"></textarea>
-                        <label for="textarea1">Textarea</label>
+                <div class=" personalised-info">
+                    <div class="row rating">                        
+                        <div class="col s12 rating">
+                            <h6>Rate it!</h6>
+                            <input type="radio" id="star5" name="rating" value="5" />
+                            <label class="star" for="star5" title="Awesome" aria-hidden="true"></label>
+                            <input type="radio" id="star4" name="rating" value="4" />
+                            <label class="star" for="star4" title="Great" aria-hidden="true"></label>
+                            <input type="radio" id="star3" name="rating" value="3" />
+                            <label class="star" for="star3" title="Very good" aria-hidden="true"></label>
+                            <input type="radio" id="star2" name="rating" value="2" />
+                            <label class="star" for="star2" title="Good" aria-hidden="true"></label>
+                            <input type="radio" id="star1" name="rating" value="1" />
+                            <label class="star" for="star1" title="Bad" aria-hidden="true"></label>
                         </div>
                     </div>
-
-                    <button class="btn-floating waves-effect waves-light" type="submit">
-                        <i class="fa-regular fa-circle-check"></i>
-                    </button>
-                </form>
-                <a href="{{ url_for('delete_feature', feature_id=media_data._id, media_type=media_data.media_type) }}">
-                    <button class="btn-floating waves-effect waves-light">
-                        <i class="fa-solid fa-trash"></i>
-                    </button>
-                </a>   
+                    <div class="row">
+                        <div class="col s12 input-field">
+                        <textarea id="review" class="materialize-textarea"></textarea>
+                        <label for="review">Your Review!</label>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col s12">
+                            <form method="POST" action="{{ url_for('add_seenlist') }}">                    
+                                <input type="hidden" name="feature_id" value="{{ media_data._id }}">                    
+                                <input type="hidden" name="media_type" value="{{ media_data.media_type }}">
+                                <button class="btn-floating waves-effect waves-light" type="submit">
+                                    <i class="fa-regular fa-circle-check"></i>
+                                </button>
+                            </form>
+                            <a href="{{ url_for('delete_feature', feature_id=media_data._id, media_type=media_data.media_type) }}">
+                                <button class="btn-floating waves-effect waves-light">
+                                    <i class="fa-solid fa-trash"></i>
+                                </button>
+                            </a> 
+                        </div>
+                    </div>
+                </div>
             </div>
-
             <div class="col s6 poster">
                 <img src="{{ media_data.poster }}" alt="">
-            </div>
+            </div>            
         </div>
     </div>
 

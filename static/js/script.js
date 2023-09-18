@@ -34,6 +34,18 @@ $(document).ready(function(){
     $(".message").text("")
   });
 
+  if (document.getElementById('star1').checked) {
+
+  } else if (document.getElementById('star2').checked) {
+
+  } else if (document.getElementById('star3').checked) {
+
+  } else if (document.getElementById('star4').checked) {
+
+  } else {
+
+  }
+
 
 // function autocomplete() {
 //     // gets the partial search string to send to api

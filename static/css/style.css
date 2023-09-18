@@ -262,6 +262,43 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
     width: 30vw;
 }
 
+/* 5 star rating */
+.rating {
+    margin-top: 5px;
+    border: none;
+    float: left;
+  }
+  
+  .rating > label {
+    color: #90A0A3;
+    float: right;
+  }
+  
+  .rating > label:before {
+    margin: 5px;
+    font-size: 1.7em;
+    font-family: FontAwesome;
+    content: "\f005";
+    display: inline-block;
+  }
+  
+  .rating > input {
+    display: none;
+  }
+  
+  .rating > input:checked ~ label,
+  .rating:not(:checked) > label:hover,
+  .rating:not(:checked) > label:hover ~ label {
+    color: #F79426;
+  }
+  
+  .rating > input:checked + label:hover,
+  .rating > input:checked ~ label:hover,
+  .rating > label:hover ~ input:checked ~ label,
+  .rating > input:checked ~ label:hover ~ label {
+    color: #FECE31;
+  }
+
 
 /* media queries */
 @media only screen and (min-width: 1441px) {
