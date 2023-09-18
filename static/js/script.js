@@ -2,10 +2,20 @@
 
 $(document).ready(function(){
     $('.sidenav').sidenav({edge: "right"});
+    $('.modal').modal();
     if (document.getElementById("genres")) {
         let genres = document.getElementById("genres").textContent
-        document.getElementById("genre-input").setAttribute("value", genres)
-    }    
+        let genreElement = document.getElementsByClassName("genre-input")
+        for (let element of genreElement) {
+          element.setAttribute("value", genres)
+        }
+    } 
+    $('.log-in-modal').modal({
+      onCloseEnd: function() { // Callback for Modal close
+        $(".message").text("") 
+        } 
+      }
+    );
   });
 
   $(".log-in-modal").modal();
@@ -29,22 +39,28 @@ $(document).ready(function(){
 
   $(".non-session-activity").click(function () {
     $(".message").text("You must be logged in to perfom that action")
+    $(".log-in-modal").modal("open");
   });
-  $(".modal-close").click(function () {
-    $(".message").text("")
-  });
+  $('.log-inmodal').modal({
+    onCloseEnd: function() { // Callback for Modal close
+      alert('Closed');  
+      } 
+    }
+  );
 
-  if (document.getElementById('star1').checked) {
 
-  } else if (document.getElementById('star2').checked) {
 
-  } else if (document.getElementById('star3').checked) {
+  // if (document.getElementById('star1').checked) {
 
-  } else if (document.getElementById('star4').checked) {
+  // } else if (document.getElementById('star2').checked) {
 
-  } else {
+  // } else if (document.getElementById('star3').checked) {
 
-  }
+  // } else if (document.getElementById('star4').checked) {
+
+  // } else {
+
+  // }
 
 
 // function autocomplete() {
