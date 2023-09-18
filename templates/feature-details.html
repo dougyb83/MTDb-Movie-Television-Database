@@ -22,10 +22,12 @@
     <div class="main-content grey-text text-lighten-4">
         <div class="row">
             <div class="col s6">
-                <h1 id="title">{{ media_data.title }}</h1>
-                <span id="genres">{{ media_data.genres }}</span>
+                <div class="title-genre">
+                    <h1 id="title">{{ media_data.title }}</h1>
+                    <span class="right-aligned" id="genres">{{ media_data.genres }}</span>
+                </div>
                 <p id="overview">{{ media_data.overview }}</p>
-                <div class="details">
+                <div class="cert-year-runtime">
                     <p id="certificate">{{ media_data.certificate }}</p>
                     <p id="release_date">{{ media_data.release_date }}</p>
                     <p id="runtime">{{ media_data.runtime }}</p>
@@ -48,21 +50,21 @@
                     </div>
                     <div class="row">
                         <div class="col s12 input-field">
-                        <textarea id="review" class="materialize-textarea"></textarea>
+                        <textarea id="review" class="review materialize-textarea" maxlength="290" placeholder="290 character limit"></textarea>
                         <label for="review">Your Review!</label>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col s12">
+                        <div class="button-container col s12">
                             <form method="POST" action="{{ url_for('add_seenlist') }}">                    
                                 <input type="hidden" name="feature_id" value="{{ media_data._id }}">                    
                                 <input type="hidden" name="media_type" value="{{ media_data.media_type }}">
-                                <button class="btn-floating waves-effect waves-light" type="submit">
+                                <button class="btn-floating waves-effect waves-light" title="Add to Seenlist" type="submit">
                                     <i class="fa-regular fa-circle-check"></i>
                                 </button>
                             </form>
                             <a href="{{ url_for('delete_feature', feature_id=media_data._id, media_type=media_data.media_type) }}">
-                                <button class="btn-floating waves-effect waves-light">
+                                <button class="btn-floating waves-effect waves-light" title="Add to Watchlist">
                                     <i class="fa-solid fa-trash"></i>
                                 </button>
                             </a> 

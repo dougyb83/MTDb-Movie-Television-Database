@@ -252,19 +252,62 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
     margin: 40px 20px 0 270px;
 }
 
-.details {
+.title-genre {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.title-genre h1 {
+    margin: 0;
+}
+
+.title-genre #genres {
+    padding-top: 20px;
+    width: 50%;
+}
+
+.cert-year-runtime {
     display: flex;
     justify-content: space-between;
     padding-right: 10px;
 }
 
+#overview {
+    margin-top: 28px;
+}
+
 .poster img {
-    width: 30vw;
+    width: 36vw;
+}
+
+.review {
+    height: 100px !important;
+    color: whitesmoke;
+}
+
+textarea::placeholder {
+    opacity: 50%;
+}
+
+textarea:focus::placeholder {
+    color: transparent;
+  }
+
+.button-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.button-container button {
+    margin: 10px;
 }
 
 /* 5 star rating */
 .rating {
     margin-top: 5px;
+    padding: 0;
     border: none;
     float: left;
   }
