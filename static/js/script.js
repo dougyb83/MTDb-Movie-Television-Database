@@ -15,31 +15,32 @@ $(document).ready(function(){
         } 
       }
     );
+    $(".log-in-modal").modal();
+    $(".log-in-button").click(function () {    
+        $(".log-in-modal").modal("open");
+    });
+    $("#log-in").click(function () {
+        $(".sign-up-modal").modal("close");
+        $(".log-in-modal").modal("open");
+    });
+    $(".sign-up-modal").modal();
+    $(".sign-up-button").click(function () {    
+        $(".sign-up-modal").modal("open");
+    });
+    $("#sign-up").click(function () {
+        $(".log-in-modal").modal("close");
+        $(".sign-up-modal").modal("open");        
+    });
+    $(".flash-modal").modal();
+    $(".flash-modal").modal("open");
+  
+    $(".non-session-activity").click(function () {
+      $(".message").text("You must be logged in to perfom that action")
+      $(".log-in-modal").modal("open");
+    });
   });
 
-  $(".log-in-modal").modal();
-  $(".log-in-button").click(function () {    
-      $(".log-in-modal").modal("open");
-  });
-  $("#log-in").click(function () {
-      $(".sign-up-modal").modal("close");
-      $(".log-in-modal").modal("open");
-  });
-  $(".sign-up-modal").modal();
-  $(".sign-up-button").click(function () {    
-      $(".sign-up-modal").modal("open");
-  });
-  $("#sign-up").click(function () {
-      $(".log-in-modal").modal("close");
-      $(".sign-up-modal").modal("open");        
-  });
-  $(".flash-modal").modal();
-  $(".flash-modal").modal("open");
 
-  $(".non-session-activity").click(function () {
-    $(".message").text("You must be logged in to perfom that action")
-    $(".log-in-modal").modal("open");
-  });
 
 
 
