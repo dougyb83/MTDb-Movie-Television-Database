@@ -49,9 +49,28 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col s12 input-field">
-                        <textarea id="review" class="review materialize-textarea" maxlength="290" placeholder="290 character limit"></textarea>
-                        <label for="review">Your Review!</label>
+                        <div class="col s12">
+                            {% if media_data.review|length == 0 %}
+                                <form method="POST" action="{{ url_for('add_review', feature_id=media_data._id, media_type=media_data.media_type) }}">
+                                    <div class="input-field">
+                                        <label for="review">Your Review!</label>
+                                        <textarea id="review" name="review" class="review materialize-textarea" maxlength="290" placeholder="290 character limit"></textarea>                            
+                                        <button class="btn waves-effect waves-light right" title="Add Review" type="submit">
+                                            Submit Review
+                                        </button>
+                                    </div>
+                                </form>
+                            {% elif media_data.review|length > 0 %}
+                                <form method="POST" action="{{ url_for('add_review', feature_id=media_data._id, media_type=media_data.media_type) }}">
+                                    <div class="edit-review" id="edit-review">
+                                        <p>Your Review!</p>
+                                        <p id="review">{{ media_data.review }}</p>
+                                        <button id="edit-review-btn" class="btn waves-effect waves-light right" title="Edit Review">
+                                            Edit Review
+                                        </button>
+                                    </div>
+                                </form>
+                            {% endif %}
                         </div>
                     </div>
                     <div class="row">

@@ -9,12 +9,6 @@ $(document).ready(function(){
           element.setAttribute("value", genres)
         }
     } 
-    $('.log-in-modal').modal({
-      onCloseEnd: function() { // Callback for Modal close
-        $(".message").text("") 
-        } 
-      }
-    );
     $(".log-in-modal").modal();
     $(".log-in-button").click(function () {    
         $(".log-in-modal").modal("open");
@@ -37,6 +31,24 @@ $(document).ready(function(){
     $(".non-session-activity").click(function () {
       $(".message").text("You must be logged in to perfom that action")
       $(".log-in-modal").modal("open");
+    });
+    $('.log-in-modal').modal({
+      onCloseEnd: function() { // Callback for Modal close
+        $(".message").text("") 
+        } 
+      }
+    );
+    $("#edit-review-btn").click(function () {
+      let reviewText = $("#review").text();
+      $("#edit-review").html(`
+        <div class="input-field">
+          <label for="review" class="active">Your Review!</label>
+          <textarea id="review" name="review" class="review materialize-textarea" maxlength="290">${reviewText}</textarea>                                
+          <button class="btn waves-effect waves-light right" title="Add Review" type="submit">
+              Submit Review
+          </button>
+        </div>
+      `);
     });
   });
 

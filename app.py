@@ -215,9 +215,20 @@ def get_api_data(url):
 #     return render_template("search-result.html", json_data=json_data)
 
 
+@app.route("/add_review/<feature_id>/<media_type>", methods=["GET", "POST"])
+def add_review(feature_id, media_type):
+    print("in function")
+    if request.method == "POST" and media_type == "movie":
+        review = request.form.get("review")
+        mongo.db.movies.update_one({"_id": ObjectId(feature_id)}, {
+                "$set": {"review": review}})
+        flash("Review Edited")
+        return redirect(url_for(
+            "feature_details", feature_id=feature_id, media_type=media_type))
+
+
 @app.route("/add_watchlist", methods=["GET", "POST"])
 def add_watchlist():
-    print("watchlist")
     if request.method == "POST" and request.form.get("media_type") == "movie":
         movie = {
             "title": request.form.get("title"),
@@ -256,7 +267,6 @@ def add_watchlist():
 
 @app.route("/add_seenlist", methods=["GET", "POST"])
 def add_seenlist():
-    print("seenlist")
     if request.method == "POST" and request.form.get("media_type") == "movie":
         if request.form.get("feature_id"):
             feature_id = request.form.get("feature_id")

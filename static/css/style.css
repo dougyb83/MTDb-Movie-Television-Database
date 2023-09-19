@@ -290,7 +290,7 @@ textarea::placeholder {
     opacity: 50%;
 }
 
-textarea:focus::placeholder {
+#review:focus::placeholder {
     color: transparent;
   }
 
