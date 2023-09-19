@@ -2,7 +2,6 @@
 
 $(document).ready(function(){
     $('.sidenav').sidenav({edge: "right"});
-    $('.modal').modal();
     if (document.getElementById("genres")) {
         let genres = document.getElementById("genres").textContent
         let genreElement = document.getElementsByClassName("genre-input")
@@ -41,12 +40,7 @@ $(document).ready(function(){
     $(".message").text("You must be logged in to perfom that action")
     $(".log-in-modal").modal("open");
   });
-  $('.log-inmodal').modal({
-    onCloseEnd: function() { // Callback for Modal close
-      alert('Closed');  
-      } 
-    }
-  );
+
 
 
 
