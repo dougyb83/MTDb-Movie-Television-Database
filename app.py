@@ -65,7 +65,9 @@ def register():
             "password": generate_password_hash(
                         request.form.get("signup-password")),
             "movie_list": [],
-            "tv_list": []
+            "tv_list": [],
+            "watchlist": [],
+            "seenlist": []
         }
         mongo.db.users.insert_one(register)
 
@@ -234,7 +236,7 @@ def add_watchlist():
     # get user data from DB
     user = mongo.db.users.find_one({"username": session["user"]})
     if request.method == "POST" and request.form.get("media_type") == "movie":
-        # if movie title is in the movies collection assign it to movie_in_db
+        # if movie is in the movie_data collection assign it to movie_in_db
         movie_in_db = mongo.db.movie_data.find_one(
             {"title": request.form.get("title")})
         # if movie_in_db has a value
@@ -244,23 +246,27 @@ def add_watchlist():
             # get the movie title
             title = request.form.get("title")
             # check if title is already in watchlist
-            for item in user["movie_list"]:
-                if title in item["title"] and item["list_type"] == "watchlist":
+            for item in user["watchlist"]:
+                if title in item["title"]:
                     flash("Already in Watchlist")
                     return redirect(url_for(
                         "library", username=session["user"]))
             # create dict object to be added to DB
-            watchlist_item = {
-                "_id": ObjectId(movie_id),
-                "title": request.form.get("title"),
-                "list_type": "watchlist"
+            movie = {
+                "movie_id": ObjectId(movie_id),
+                "title": request.form.get("title")
                 }
-            # append the watchlist_item dict to the movie_list array in user
-            user["movie_list"].append(watchlist_item)
-            # update the DB movie_list array with the new one
-            mongo.db.users.update_one(
+            # add movie to the watchlist
+            user["watchlist"].append(movie)
+            # add movie to the movie_list
+            user["movie_list"].append(movie)
+            # update the DB movie_list & watchliat
+            mongo.db.users.update_many(
                 {"username": session["user"]},
-                {"$set": {"movie_list": user["movie_list"]}}
+                {"$set": {
+                    "movie_list": user["movie_list"],
+                    "watchlist": user["watchlist"]
+                    }}
                 )
         # if movie_in_db has a None value
         else:
@@ -279,23 +285,28 @@ def add_watchlist():
             movie_id = mongo.db.movie_data.find_one(
                 {"title": request.form.get("title")})["_id"]
             # create dict object to be added to DB
-            watchlist_item = {
-                "_id": ObjectId(movie_id),
+            movie = {
+                "movie_id": ObjectId(movie_id),
                 "title": request.form.get("title"),
-                "list_type": "watchlist"
+                "media_type": request.form.get("media_type")
                 }
-            # append the watchlist_item dict to the movie_list array in user
-            user["movie_list"].append(watchlist_item)
-            # update the DB movie_list array with the new one
-            mongo.db.users.update_one(
+            # add movie to the watchlist
+            user["watchlist"].append(movie)
+            # add movie to the movie_list
+            user["movie_list"].append(movie)
+            # update the DB movie_list & watchliat
+            mongo.db.users.update_many(
                 {"username": session["user"]},
-                {"$set": {"movie_list": user["movie_list"]}}
+                {"$set": {
+                    "movie_list": user["movie_list"],
+                    "watchlist": user["watchlist"]
+                    }}
                 )
         flash("Added to Watchlist")
         return redirect(url_for("library", username=session["user"]))
 
     if request.method == "POST" and request.form.get("media_type") == "tv":
-        # if tv show exists in tv_show collection assign it to tv_show_in_db
+        # if show exists in tv_show_data collection assign it to tv_show_in_db
         tv_show_in_db = mongo.db.tv_show_data.find_one(
             {"title": request.form.get("title")})
         # if tv_show_in_db has a value
@@ -305,23 +316,28 @@ def add_watchlist():
             # get the tv show title
             title = request.form.get("title")
             # check title already in watchlist
-            for item in user["tv_list"]:
-                if title in item["title"] and item["list_type"] == "watchlist":
+            for item in user["watchlist"]:
+                if title in item["title"]:
                     flash("Already in Watchlist")
                     return redirect(url_for(
                         "library", username=session["user"]))
             # create dict object to be added to DB
-            watchlist_item = {
-                "_id": ObjectId(tv_show_id),
+            tv_show = {
+                "tv_show_id": ObjectId(tv_show_id),
                 "title": request.form.get("title"),
-                "list_type": "watchlist"
+                "media_type": request.form.get("media_type")
                 }
+            # add to the watchlist
+            user["watchlist"].append(tv_show)
             # append the watchlist_item dict to the watchlist array in user
-            user["tv_list"].append(watchlist_item)
+            user["tv_list"].append(tv_show)
             # update the DB watchlist array with the new one
-            mongo.db.users.update_one(
+            mongo.db.users.update_many(
                 {"username": session["user"]},
-                {"$set": {"tv_list": user["tv_list"]}}
+                {"$set": {
+                    "tv_list": user["tv_list"],
+                    "watchlist": user["watchlist"]
+                    }}
                 )
         # if tv_show_in_db has a None value
         else:
@@ -333,24 +349,29 @@ def add_watchlist():
                 "certificate": request.form.get("certificate"),
                 "release_date": request.form.get("release_date"),
                 "runtime": request.form.get("runtime"),
-                "poster": request.form.get("poster"),
-                "media_type": request.form.get("media_type"),
+                "poster": request.form.get("poster")
             }
             mongo.db.tv_show_data.insert_one(tv_show)
             # now that the tv show exists in the database, grab the ObjectId
-            tv_show_id = tv_show_in_db["_id"]
+            tv_show_id = mongo.db.tv_show_data.find_one(
+                {"title": request.form.get("title")})["_id"]
             # create dict object to be added to DB
-            watchlist_item = {
-                "_id": ObjectId(tv_show_id),
+            tv_show = {
+                "tv_show_id": ObjectId(tv_show_id),
                 "title": request.form.get("title"),
                 "list_type": "watchlist"
                 }
+            # add to the watchlist
+            user["watchlist"].append(tv_show)
             # append the watchlist_item dict to the watchlist array in user
-            user["tv_list"].append(watchlist_item)
+            user["tv_list"].append(tv_show)
             # update the DB watchlist array with the new one
-            mongo.db.users.update_one(
+            mongo.db.users.update_many(
                 {"username": session["user"]},
-                {"$set": {"tv_list": user["tv_list"]}}
+                {"$set": {
+                    "tv_list": user["tv_list"],
+                    "watchlist": user["watchlist"]
+                    }}
                 )
         flash("Added to Watchlist")
         return redirect(url_for("library", username=session["user"]))
@@ -412,10 +433,12 @@ def add_seenlist():
     "/feature_details/<feature_id>/<media_type>", methods=["GET", "POST"])
 def feature_details(feature_id, media_type):
     if media_type == "movie":
-        media_data = mongo.db.movie_data.find_one({"_id": ObjectId(feature_id)})
+        media_data = mongo.db.movie_data.find_one(
+            {"_id": ObjectId(feature_id)})
         return render_template("feature-details.html", media_data=media_data)
     else:
-        media_data = mongo.db.tv_show_data.find_one({"_id": ObjectId(feature_id)})
+        media_data = mongo.db.tv_show_data.find_one(
+            {"_id": ObjectId(feature_id)})
         return render_template("feature-details.html", media_data=media_data)
 
 
