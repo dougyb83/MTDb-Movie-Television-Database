@@ -22,38 +22,36 @@
     <div class="library-content">
         <h5 class="library-sub-title">All Films</h5>
         <div class="row">
-            {% if movies|length > 0 %}
-                {% for movie in movies %}
-                    {% if session.user|lower == movie.created_by|lower %}
-                        <div class="col l2">
-                            <div class="card card-poster">
-                                <div class="card-image waves-effect waves-block waves-light">
-                                    <a href="{{ url_for('feature_details', feature_id=movie._id, media_type=movie.media_type) }}"><img src="{{ movie.poster }}" alt="{{ movie.title }}"></a>
+            {% if movie_data|length > 0 %}
+                {% for movie in movie_data %}
+                    <div class="col l2 m3 s4">
+                        <div class="card card-poster">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <a href="{{ url_for('feature_details', feature_id=movie._id, media_type=movie.media_type) }}"><img src="{{ movie.poster }}" alt="{{ movie.title }}"></a>
+                            </div>
+                            <div class="card-title-container card-content">
+                                <div>
+                                    <span class="feature-title card-title grey-text text-lighten-4">{{ movie.title }}</span>
                                 </div>
-                                <div class="card-title-container card-content">
-                                    <div>
-                                        <span class="feature-title card-title grey-text text-lighten-4">{{ movie.title }}</span>
-                                    </div>
-                                    <div class="card-menu activator grey-text text-lighten-4">
-                                        <i class="material-icons right">more_vert</i>
-                                    </div>                                
-                                </div>
-                                <div class="card-reveal">
-                                    <span class="card-title grey-text text-lighten-4"><i class="card-close material-icons right">close</i></span>
-                                    <div class="controls">
-                                        <form method="POST" action="{{ url_for('add_seenlist') }}">                    
-                                            <input type="hidden" name="feature_id" value="{{ movie._id }}">                    
-                                            <input type="hidden" name="media_type" value="{{ movie.media_type }}">                 
-                                            <button type="submit">
-                                                <a href="#"><i class="fa-regular fa-circle-check"></i></a>
-                                            </button>
-                                        </form>
-                                        <a href="{{ url_for('feature_details', feature_id=movie._id, media_type=movie.media_type) }}"><i class="fa-solid fa-pen"></i></a>
-                                        <a href="{{ url_for('delete_feature', feature_id=movie._id, media_type=movie.media_type) }}"><i class="fa-solid fa-trash"></i></a>                                </div>            
-                                </div>
-                            </div>                
-                        </div>
-                    {% endif %}
+                                <div class="card-menu activator grey-text text-lighten-4">
+                                    <i class="material-icons right">more_vert</i>
+                                </div>                                
+                            </div>
+                            <div class="card-reveal">
+                                <span class="card-title grey-text text-lighten-4"><i class="card-close material-icons right">close</i></span>
+                                <div class="controls">
+                                    <form method="POST" action="{{ url_for('add_seenlist') }}">                    
+                                        <input type="hidden" name="feature_id" value="{{ movie._id }}">                    
+                                        <input type="hidden" name="media_type" value="{{ movie.media_type }}">                 
+                                        <button type="submit">
+                                            <a href="#"><i class="fa-regular fa-circle-check"></i></a>
+                                        </button>
+                                    </form>
+                                    <a href="{{ url_for('feature_details', feature_id=movie._id, media_type=movie.media_type) }}"><i class="fa-solid fa-pen"></i></a>
+                                    <a href="{{ url_for('delete_feature', feature_id=movie._id, media_type=movie.media_type) }}"><i class="fa-solid fa-trash"></i></a>                                </div>            
+                            </div>
+                        </div>                
+                    </div>
                 {% endfor %}
             {% else %}
                     <h2 class="grey-text text-lighten-4">Much Empty</h2>
@@ -61,39 +59,37 @@
         </div>
         <h5 class="library-sub-title">All TV Shows</h5>
         <div class="row">
-            {% if tv_shows|length > 0 %}
-                {% for tv_show in tv_shows %}
-                {% if session.user|lower == tv_show.created_by|lower %}
-                        <div class="col l2">
-                            <div class="card card-poster">
-                                <div class="card-image waves-effect waves-block waves-light">
-                                    <a href="{{ url_for('feature_details', feature_id=tv_show._id, media_type=tv_show.media_type) }}"><img src="{{ tv_show.poster }}" alt="{{ tv_show.title }}"></a>
+            {% if tv_data|length > 0 %}
+                {% for tv_show in tv_data %}
+                    <div class="col l2 m3 s4">
+                        <div class="card card-poster">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <a href="{{ url_for('feature_details', feature_id=tv_show._id, media_type=tv_show.media_type) }}"><img src="{{ tv_show.poster }}" alt="{{ tv_show.title }}"></a>
+                            </div>
+                            <div class="card-title-container card-content">
+                                <div>
+                                    <span class="feature-title card-title grey-text text-lighten-4">{{ tv_show.title }}</span>
                                 </div>
-                                <div class="card-title-container card-content">
-                                    <div>
-                                        <span class="feature-title card-title grey-text text-lighten-4">{{ tv_show.title }}</span>
-                                    </div>
-                                    <div class="card-menu activator grey-text text-lighten-4">
-                                        <i class="material-icons right">more_vert</i>
-                                    </div>
+                                <div class="card-menu activator grey-text text-lighten-4">
+                                    <i class="material-icons right">more_vert</i>
                                 </div>
-                                <div class="card-reveal">
-                                    <span class="card-title grey-text text-lighten-4"><i class="card-close material-icons right">close</i></span>
-                                    <div class="controls">
-                                        <form method="POST" action="{{ url_for('add_seenlist') }}">                    
-                                            <input type="hidden" name="feature_id" value="{{ tv_show._id }}">                    
-                                            <input type="hidden" name="media_type" value="{{ tv_show.media_type }}">                 
-                                            <button type="submit">
-                                                <a href="#"><i class="fa-regular fa-circle-check"></i></a>
-                                            </button>
-                                        </form>
-                                        <a href="{{ url_for('feature_details', feature_id=tv_show._id, media_type=tv_show.media_type) }}"><i class="fa-solid fa-pen"></i></a>
-                                        <a href="{{ url_for('delete_feature', feature_id=tv_show._id, media_type=tv_show.media_type) }}"><i class="fa-solid fa-trash"></i></a>        
-                                    </div>            
-                                </div>
-                            </div>                
-                        </div>
-                    {% endif %}    
+                            </div>
+                            <div class="card-reveal">
+                                <span class="card-title grey-text text-lighten-4"><i class="card-close material-icons right">close</i></span>
+                                <div class="controls">
+                                    <form method="POST" action="{{ url_for('add_seenlist') }}">                    
+                                        <input type="hidden" name="feature_id" value="{{ tv_show._id }}">                    
+                                        <input type="hidden" name="media_type" value="{{ tv_show.media_type }}">                 
+                                        <button type="submit">
+                                            <a href="#"><i class="fa-regular fa-circle-check"></i></a>
+                                        </button>
+                                    </form>
+                                    <a href="{{ url_for('feature_details', feature_id=tv_show._id, media_type=tv_show.media_type) }}"><i class="fa-solid fa-pen"></i></a>
+                                    <a href="{{ url_for('delete_feature', feature_id=tv_show._id, media_type=tv_show.media_type) }}"><i class="fa-solid fa-trash"></i></a>        
+                                </div>            
+                            </div>
+                        </div>                
+                    </div>  
                 {% endfor %}
             {% else %}
                 <h2 class="grey-text text-lighten-4">Much Empty</h2>

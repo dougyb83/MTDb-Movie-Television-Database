@@ -356,8 +356,8 @@ textarea::placeholder {
     .fa-magnifying-glass {
         font-size: 1.3em;
         position: relative;
-        top: -12px;
-        left: -111px;
+        top: -14px;
+        left: -115px;
     }
 
     .main-content {
@@ -382,8 +382,8 @@ textarea::placeholder {
     .fa-magnifying-glass {
         font-size: 1.3em;
         position: relative;
-        top: -14px;
-        left: -111px;
+        top: -13px;
+        left: -115px;
     }
 }
 
@@ -400,8 +400,8 @@ textarea::placeholder {
     }
 
     .fa-magnifying-glass {
-        top: -19px;
-        left: -115px;
+        top: -18px;
+        left: -117px;
     }
 
     .modal {
@@ -433,6 +433,23 @@ textarea::placeholder {
     .title-container h1 {        
         font-size: 3rem;
     }
+
+    .library-content {
+        margin-left: 175px;
+    }
+
+    .card-poster {
+        margin: 46px 0 12px;
+    }
+
+    .library-content .feature-title {
+        font-size: 1em !important;
+    }
+
+    i.right {
+        font-size: 1.5em;
+    }
+    
 }
 
 @media only screen and (max-width: 768px) {
@@ -448,8 +465,6 @@ textarea::placeholder {
         width: 59vw;
     }
 
-
-
     .popular h2 {
         font-size: 35px;
     }
@@ -460,6 +475,14 @@ textarea::placeholder {
 
     .popular-title {
         font-size: 1.2em !important;
+    }
+
+    .side-menu {
+        width: 19vw;
+    }
+
+    .card .card-content {
+        padding: 18px;
     }
 }
 
