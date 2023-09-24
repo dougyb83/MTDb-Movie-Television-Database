@@ -33,6 +33,10 @@ nav ul a {
     justify-content: center;
 }
 
+.side-trigger {
+    color: whitesmoke;
+}
+
 .search-bar {
     float: left;    
     padding: 15px;
@@ -156,12 +160,24 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
 
 
 /* library page */
+.sidenav.sidenav-fixed.right-aligned {
+    left: 0;
+    margin-top: 89px;
+    width: 15vw;
+}
+
+.sidenav.sidenav-fixed.right-aligned {
+    text-align: left;
+    padding: 0 10px ;
+}
+
 .side-menu {
-    margin-top: 5px;
+    text-align: left;
+    /* margin-top: 5px;
     margin-left: 10px;
     height: 85vh;
     width: 15vw;
-    position: fixed;
+    position: fixed; */
 }
 
 .library-content {
@@ -453,8 +469,25 @@ textarea::placeholder {
 }
 
 @media only screen and (max-width: 768px) {
-    nav .brand-logo {
-        left: 44px;
+    nav .input-field {
+        width: 80%;
+        left: 80px;
+    }
+
+    .side-menu .sidenav-trigger {
+        position: absolute;
+        z-index: 2000;
+        top: 27px;
+        left: 15px;
+        font-size: 20px;
+    }
+
+    .side-menu a {
+        color: whitesmoke
+    }
+
+    nav .brand-logo.left {
+        left: 65px;
     }
 
     .search-bar {
@@ -477,12 +510,12 @@ textarea::placeholder {
         font-size: 1.2em !important;
     }
 
-    .side-menu {
-        width: 19vw;
-    }
-
     .card .card-content {
         padding: 18px;
+    }
+
+    .library-content {
+        margin-left: 20px;
     }
 }
 
@@ -492,7 +525,6 @@ textarea::placeholder {
     }
     nav .brand-logo {
         font-size: 1.6em;
-        left: 30px;
     }
 
     .fa-magnifying-glass {

@@ -2,6 +2,7 @@
 
 $(document).ready(function(){
     $('.sidenav').sidenav({edge: "right"});
+    $('#slide-out').sidenav({edge: "left"});
     if (document.getElementById("genres")) {
         let genres = document.getElementById("genres").textContent
         let genreElement = document.getElementsByClassName("genre-input")

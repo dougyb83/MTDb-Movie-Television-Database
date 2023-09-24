@@ -1,7 +1,23 @@
 {% extends "base.html" %}
 {% block content %}
+<div class="side-menu">
+    <ul id="slide-out" class="sidenav sidenav-fixed grey darken-4 white-text">
+    <li>Home</li>
+    <li>Watchlist</li>
+        <ol>
+            <li>Films</li>
+            <li>TV Shows</li>
+        </ol>
+    <li>Seenlist</li>
+        <ol>
+            <li>Films</li>
+            <li>TV Shows</li>
+        </ol>
+    </ul>
+    <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="hide-on-large-only material-icons">more_vert</i></a>
+</div>
 
-    <div class="side-menu card grey darken-4">
+    <!-- <div class="side-menu card grey darken-4">
         <div class="card-content white-text">
             <ul>
                 <li>Home</li>
@@ -17,14 +33,14 @@
                     </ol>
             </ul>
         </div>
-    </div>
+    </div> -->
 
     <div class="library-content">
         <h5 class="library-sub-title">All Films</h5>
         <div class="row">
             {% if movie_data|length > 0 %}
                 {% for movie in movie_data %}
-                    <div class="col l2 m3 s4">
+                    <div class="col l2 m2 s4">
                         <div class="card card-poster">
                             <div class="card-image waves-effect waves-block waves-light">
                                 <a href="{{ url_for('feature_details', feature_id=movie._id, media_type=movie.media_type) }}"><img src="{{ movie.poster }}" alt="{{ movie.title }}"></a>
