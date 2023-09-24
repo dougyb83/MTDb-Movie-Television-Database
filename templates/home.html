@@ -18,7 +18,11 @@
             <h3 class="left-aligned">Films</h3>
             <div class="row popular-films">
                 {% for movie in popular_movie_data %}
-                    <div class="col s2">
+                    {% if loop.index > 3 %}
+                        <div class="col s4 m2 l2 hide-on-small-only">
+                    {% else %}
+                        <div class="col s4 m2 l2">
+                    {% endif %}      
                         <div class="card card-poster">
                             <div class="card-image waves-effect waves-block waves-light">
                                 <a href="{{ url_for('popular_feature', title=movie['original_title'])}}"><img src="https://image.tmdb.org/t/p/w500{{ movie['poster_path'] }}" alt="{{ movie['original_title'] }}"></a>
@@ -37,7 +41,11 @@
             <h3 class="left-aligned">TV Shows</h3>
             <div class="row popular-shows">
                 {% for tv_show in popular_series_data %}
-                    <div class="col s2 poster-col">
+                    {% if loop.index > 3 %}
+                        <div class="col s4 m2 l2 hide-on-small-only">
+                    {% else %}
+                        <div class="col s4 m2 l2">
+                    {% endif %}                    
                         <div class="card card-poster">
                             <div class="card-image waves-effect waves-block waves-light">
                                 <a href="{{ url_for('popular_feature', title=tv_show['name'])}}"><img src="https://image.tmdb.org/t/p/w500{{ tv_show['poster_path'] }}" alt="{{ tv_show['name'] }}"></a>
