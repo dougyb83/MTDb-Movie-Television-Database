@@ -473,18 +473,14 @@ textarea::placeholder {
 
     .side-menu .sidenav-trigger {
         position: absolute;
-        z-index: 2000;
-        top: 27px;
+        z-index: 999;
+        top: 85px;
         left: 15px;
         font-size: 20px;
     }
 
     .side-menu a {
         color: whitesmoke
-    }
-
-    nav .brand-logo.left {
-        left: 65px;
     }
 
     .search-bar {

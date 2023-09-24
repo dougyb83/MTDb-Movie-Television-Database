@@ -1,22 +1,21 @@
 {% extends "base.html" %}
 {% block content %}
 
-    <div class="side-menu card grey darken-4">
-        <div class="card-content white-text">
-            <ul>
-                <li>Home</li>
-                <li>Watchlist</li>
-                    <ol>
-                        <li>Films</li>
-                        <li>TV Shows</li>
-                    </ol>
-                <li>Seenlist</li>
-                    <ol>
-                        <li>Films</li>
-                        <li>TV Shows</li>
-                    </ol>
-            </ul>
-        </div>
+    <div class="side-menu">
+        <ul id="slide-out" class="sidenav sidenav-fixed grey darken-4 white-text">
+        <li>Home</li>
+        <li>Watchlist</li>
+            <ol>
+                <li>Films</li>
+                <li>TV Shows</li>
+            </ol>
+        <li>Seenlist</li>
+            <ol>
+                <li>Films</li>
+                <li>TV Shows</li>
+            </ol>
+        </ul>
+        <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="hide-on-large-only material-icons">more_horiz</i></a>
     </div>
 
     <div class="main-content grey-text text-lighten-4">
