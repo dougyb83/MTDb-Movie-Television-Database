@@ -117,7 +117,6 @@ def logout():
 
 @app.route("/library/")
 def library():
-    
     if session["user"]:
         # get user data from DB
         user = mongo.db.users.find_one({"username": session["user"]})
@@ -267,7 +266,7 @@ def add_watchlist():
             # create dict object to be added to DB
             movie = {
                 "feature_id": ObjectId(movie_id),
-                "title": request.form.get("title"),                
+                "title": request.form.get("title"),
                 "media_type": request.form.get("media_type")
                 }
             # add movie to the watchlist
@@ -470,7 +469,7 @@ def add_seenlist():
             "media_type") == "tv":
         print("its a tv show")
         # get user data from DB
-        user = mongo.db.users.find_one({"username": session["user"]})        
+        user = mongo.db.users.find_one({"username": session["user"]})
         # if the movie data already exists in the DB
         if request.form.get("feature_id"):
             feature_id = request.form.get("feature_id")

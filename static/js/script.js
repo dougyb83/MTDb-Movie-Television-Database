@@ -1,7 +1,7 @@
 /* jshint esversion: 11, jquery: true */
 
 $(document).ready(function(){
-    $('.sidenav').sidenav({edge: "right"});
+    $('#nav-menu').sidenav({edge: "right"});
     $('#slide-out').sidenav({edge: "left"});
     if (document.getElementById("genres")) {
         let genres = document.getElementById("genres").textContent

@@ -160,13 +160,10 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
 
 
 /* library page */
-.sidenav.sidenav-fixed.right-aligned {
+.sidenav.sidenav-fixed {
     left: 0;
     margin-top: 89px;
     width: 15vw;
-}
-
-.sidenav.sidenav-fixed.right-aligned {
     text-align: left;
     padding: 0 10px ;
 }
