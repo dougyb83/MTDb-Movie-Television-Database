@@ -38,7 +38,6 @@ nav ul a {
 }
 
 .search-bar {
-    float: left;    
     padding: 15px;
 }
 
@@ -165,16 +164,7 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
     margin-top: 89px;
     width: 15vw;
     text-align: left;
-    padding: 0 10px ;
-}
-
-.side-menu {
-    text-align: left;
-    /* margin-top: 5px;
-    margin-left: 10px;
-    height: 85vh;
-    width: 15vw;
-    position: fixed; */
+    padding: 0 45px ;
 }
 
 .library-content {
@@ -421,6 +411,10 @@ textarea::placeholder {
         width: 42vw;
     }
 
+    .main-content {
+        margin-left: 230px;
+    }
+
     .popular h2 {
         font-size: 40px;
     }
@@ -463,6 +457,10 @@ textarea::placeholder {
         font-size: 1.5em;
     }
     
+    .sidenav.sidenav-fixed {
+        width: 20vw;
+    }
+    
 }
 
 @media only screen and (max-width: 768px) {
@@ -491,6 +489,10 @@ textarea::placeholder {
         width: 59vw;
     }
 
+    .main-content {
+        margin-left: 25px;
+    }
+
     .popular h2 {
         font-size: 35px;
     }
@@ -510,6 +512,10 @@ textarea::placeholder {
     .library-content {
         margin-left: 20px;
     }
+
+    .poster img {
+        width: 45vw;
+    }
 }
 
 @media only screen and (max-width: 425px) {
@@ -518,6 +524,11 @@ textarea::placeholder {
     }
     nav .brand-logo {
         font-size: 1.6em;
+    }
+
+    nav .input-field {
+        width: 100%;
+        left: 20px;
     }
 
     .fa-magnifying-glass {
@@ -539,7 +550,13 @@ textarea::placeholder {
 }
 
 @media only screen and (max-width: 375px) {
+    nav .brand-logo.left {
+        left: -2px;
+    }
 
+    nav .input-field {
+        left: 5px;
+    }
 }
 
 @media only screen and (max-width: 320px) {

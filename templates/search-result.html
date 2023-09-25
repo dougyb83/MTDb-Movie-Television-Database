@@ -21,7 +21,7 @@
     {% if media_type == "movie" %}
         <div class="main-content grey-text text-lighten-4">
             <div class="row">
-                <div class="col s6" method="POST" action="{{ url_for('add_watchlist') }}">
+                <div class="col s8 m6 l6" method="POST" action="{{ url_for('add_watchlist') }}">
                     <div class="title-genre">
                         <h1 id="title">{{ media_data['title'] }}</h1>
                         <span class="right-aligned" id="genres">
@@ -79,7 +79,7 @@
                         </div>
                     </div>
                 </div> 
-                <div class="col s6 poster">
+                <div class="col s4 m6 l6 poster">
                     <img src="https://image.tmdb.org/t/p/w500{{ media_data['poster_path'] }}" alt="{{ media_data['title'] }}">
                 </div>
             </div>
@@ -87,7 +87,7 @@
     {% else %}
         <div class="main-content grey-text text-lighten-4">
             <div class="row">
-                <div class="col s6" method="POST" action="{{ url_for('add_watchlist') }}">
+                <div class="col s8 m6 l6" method="POST" action="{{ url_for('add_watchlist') }}">
                     <div class="title-genre">
                         <h1 id="title">{{ media_data['name'] }}</h1>
                         <span id="genres">
@@ -147,7 +147,7 @@
                     </div>    
                 </div>
 
-                <div class="col s6 poster">
+                <div class="col s4 m6 l6 poster">
                     <img src="https://image.tmdb.org/t/p/w500{{ media_data['poster_path'] }}" alt="{{ media_data['name'] }}">
                 </div>
             </div>
