@@ -25,6 +25,13 @@ app.secret_key = os.environ.get("SECRET_KEY")
 mongo = PyMongo(app)
 
 
+# get API request data
+def get_api_data(url):
+    # store the url response
+    response = requests.get(url, headers=headers)
+    return response.json()
+
+
 @app.route("/")
 @app.route("/home")
 def home():
@@ -37,8 +44,7 @@ def home():
     popular_movie_data = popular_movie_data["results"][0:5]
     # access popular tv shows from api
     # store the api url with the title included
-    url = """https://api.themoviedb.org/3/tv/popular?language=en-US&page=1
-        &without_genres=10767"""
+    url = """https://api.themoviedb.org/3/tv/popular?language=en-US&page=1&without_genres=10767"""  # noqa
     # get json data
     popular_series_data = get_api_data(url)
     # split object into first 5 results
@@ -117,28 +123,27 @@ def logout():
 
 @app.route("/library/")
 def library():
-    if session["user"]:
+    if "user" in session:
         # get user data from DB
         user = mongo.db.users.find_one({"username": session["user"]})
         # split the db lists from user
-        movies = user["movie_list"]
-        tv_shows = user["tv_list"]
+        movie_list = user["movie_list"]
+        tv_list = user["tv_list"]
+
         # get movie data
         movie_data = []
-        for movie in movies:
-            movie_id = movie["feature_id"]
-            movie = mongo.db.movie_data.find_one(
-                {"_id": ObjectId(movie_id)})
+        for id in movie_list:
+            movie = get_media_details(id, "movie")
             movie_data.append(movie)
-        tv_data = []
         # get tv data
-        for tv_show in tv_shows:
-            tv_show_id = tv_show["feature_id"]
-            tv_show = mongo.db.tv_show_data.find_one(
-                {"_id": ObjectId(tv_show_id)})
+        tv_data = []
+        for id in tv_list:
+            tv_show = get_media_details(id, "tv")
             tv_data.append(tv_show)
         return render_template(
             "library.html", movie_data=movie_data, tv_data=tv_data)
+
+    # user is not logged in - display home page
     return render_template("home.html")
 
 
@@ -214,12 +219,6 @@ def get_media_certificate(media_id, media_type):
                 return item["rating"]
 
 
-# get API request data
-def get_api_data(url):
-    # store the url response
-    response = requests.get(url, headers=headers)
-    return response.json()
-
 # @app.route("/autocomplete", methods=["POST"])
 # def autocomplete():
 #     title = request.form.get("search")
@@ -233,7 +232,6 @@ def get_api_data(url):
 
 @app.route("/add_review/<feature_id>/<media_type>", methods=["GET", "POST"])
 def add_review(feature_id, media_type):
-    print("in function")
     if request.method == "POST" and media_type == "movie":
         review = request.form.get("review")
         mongo.db.movie_data.update_one({"_id": ObjectId(feature_id)}, {
