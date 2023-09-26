@@ -255,19 +255,25 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
     margin: 40px 20px 0 270px;
 }
 
+.feature-container {
+    display: flex;
+    align-items: center;
+}
+
 .title-genre {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
 
-.title-genre h1 {
+.title-genre h3 {
     margin: 0;
+    width: 70%;
 }
 
 .title-genre #genres {
     padding-top: 20px;
-    width: 50%;
+    width: 30%;
 }
 
 .cert-year-runtime {
@@ -281,7 +287,7 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
 }
 
 .poster img {
-    width: 36vw;
+    width: 33vw;
 }
 
 .review {
@@ -413,6 +419,7 @@ textarea::placeholder {
 
     .main-content {
         margin-left: 230px;
+        min-height: 80vh;
     }
 
     .popular h2 {
@@ -449,6 +456,10 @@ textarea::placeholder {
         margin: 46px 0 12px;
     }
 
+    .poster img {
+        width: 38vw;
+    }
+
     .library-content .feature-title {
         font-size: 1em !important;
     }
@@ -469,6 +480,10 @@ textarea::placeholder {
         left: 80px;
     }
 
+    .poster img {
+        width: 46vw;
+    }
+
     .side-menu .sidenav-trigger {
         position: absolute;
         z-index: 999;
@@ -479,6 +494,10 @@ textarea::placeholder {
 
     .side-menu a {
         color: whitesmoke
+    }
+
+    .sidenav.sidenav-fixed {
+        width: 25vw;
     }
 
     .search-bar {
@@ -531,6 +550,10 @@ textarea::placeholder {
         left: 20px;
     }
 
+    .sidenav.sidenav-fixed {
+        width: 40vw;
+    }
+
     .fa-magnifying-glass {
         top: -13px;
         left: -71px;
@@ -554,11 +577,17 @@ textarea::placeholder {
         left: -2px;
     }
 
+    .sidenav.sidenav-fixed {
+        width: 45vw;
+    }
+
     nav .input-field {
         left: 5px;
     }
 }
 
 @media only screen and (max-width: 320px) {
-
+    .sidenav.sidenav-fixed {
+        width: 50vw;
+    }
 }
