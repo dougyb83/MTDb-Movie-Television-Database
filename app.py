@@ -156,15 +156,19 @@ def search():
     # get json data
     json_data = get_api_data(url)
     # get the movie or show id from json results
-    media_id = json_data['results'][0]['id']
-    # get media type
-    media_type = json_data['results'][0]['media_type']
-    # get the movie or show details
-    media_data = get_media_details(media_id, media_type)
-    media_certificate = get_media_certificate(media_id, media_type)
-    return render_template(
+    if json_data["total_results"] > 0:
+        media_id = json_data['results'][0]['id']
+        # get media type
+        media_type = json_data['results'][0]['media_type']
+        # get the movie or show details
+        media_data = get_media_details(media_id, media_type)
+        media_certificate = get_media_certificate(media_id, media_type)
+        return render_template(
             "search-result.html", media_data=media_data,
             media_certificate=media_certificate, media_type=media_type)
+    else:
+        flash(f'No results found for "{title}"')
+        return render_template("home.html")
 
 
 @app.route("/popular_feature/<title>")
