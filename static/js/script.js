@@ -1,57 +1,63 @@
 /* jshint esversion: 11, jquery: true */
 
 $(document).ready(function(){
-    $('#nav-menu').sidenav({edge: "right"});
-    $('#slide-out').sidenav({edge: "left"});
-    if (document.getElementById("genres")) {
-        let genres = document.getElementById("genres").textContent
-        let genreElement = document.getElementsByClassName("genre-input")
-        for (let element of genreElement) {
-          element.setAttribute("value", genres)
-        }
-    } 
-    $(".log-in-modal").modal();
-    $(".log-in-button").click(function () {    
-        $(".log-in-modal").modal("open");
-    });
-    $("#log-in").click(function () {
-        $(".sign-up-modal").modal("close");
-        $(".log-in-modal").modal("open");
-    });
-    $(".sign-up-modal").modal();
-    $(".sign-up-button").click(function () {    
-        $(".sign-up-modal").modal("open");
-    });
-    $("#sign-up").click(function () {
-        $(".log-in-modal").modal("close");
-        $(".sign-up-modal").modal("open");        
-    });
-    $(".flash-modal").modal();
-    $(".flash-modal").modal("open");
-  
-    $(".non-session-activity").click(function () {
-      $(".message").text("You must be logged in to perfom that action")
-      $(".log-in-modal").modal("open");
-    });
-    $('.log-in-modal').modal({
-      onCloseEnd: function() { // Callback for Modal close
-        $(".message").text("") 
-        } 
+  // modal initialisation
+  $('.modal').modal();
+  // initialise and set position for side navs
+  $('#nav-menu').sidenav({edge: "right"});
+  $('#slide-out').sidenav({edge: "left"});
+  if (document.getElementById("genres")) {
+      let genres = document.getElementById("genres").textContent
+      let genreElement = document.getElementsByClassName("genre-input")
+      for (let element of genreElement) {
+        element.setAttribute("value", genres)
       }
-    );
-    $("#edit-review-btn").click(function () {
-      let reviewText = $("#review").text();
-      $("#edit-review").html(`
-        <div class="input-field">
-          <label for="review" class="active">Your Review!</label>
-          <textarea id="review" name="review" class="review materialize-textarea" maxlength="290">${reviewText}</textarea>                                
-          <button class="btn waves-effect waves-light right" title="Add Review" type="submit">
-              Submit Review
-          </button>
-        </div>
-      `);
-    });
+  } 
+  // open log-in modal when navbar log in clicked
+  $(".log-in-button").click(function () {    
+      $(".log-in-modal").modal("open");
   });
+  // if signup modal 'already registered' is clicked, close sign up & open sign in modal
+  $("#log-in").click(function () {
+      $(".sign-up-modal").modal("close");
+      $(".log-in-modal").modal("open");
+  });
+  // open sign-up modal when navbar sign up clicked
+  $(".sign-up-button").click(function () {    
+      $(".sign-up-modal").modal("open");
+  });
+  // if login modal 'register account' is clicked, close open sign & open sign up in modal
+  $("#sign-up").click(function () {
+      $(".log-in-modal").modal("close");
+      $(".sign-up-modal").modal("open");        
+  });
+  // if a flash message exists, open a modal
+  $(".flash-modal").modal("open");
+  // if a non registered user performs a register user action display a warning and prompt login
+  $(".non-session-activity").click(function () {
+    $(".message").text("You must be logged in to perfom that action")
+    $(".log-in-modal").modal("open");
+  });
+  // if the above message is displayed on the login modal and the user doesn't log in - clear the message
+  $('.log-in-modal').modal({
+    onCloseEnd: function() { // Callback for Modal close
+      $(".message").text("") 
+      } 
+    }
+  );
+  $("#edit-review-btn").click(function () {
+    let reviewText = $("#review").text();
+    $("#edit-review").html(`
+      <div class="input-field">
+        <label for="review" class="active">Your Review!</label>
+        <textarea id="review" name="review" class="review materialize-textarea" maxlength="290">${reviewText}</textarea>                                
+        <button class="btn waves-effect waves-light right" title="Add Review" type="submit">
+            Submit Review
+        </button>
+      </div>
+    `);
+  });
+});
 
 
 
