@@ -535,14 +535,12 @@ def add_seenlist():
 @app.route(
     "/feature_details/<feature_id>/<media_type>", methods=["GET", "POST"])
 def feature_details(feature_id, media_type):
-    if media_type == "movie":
-        media_data = mongo.db.movie_data.find_one(
-            {"_id": ObjectId(feature_id)})
-        return render_template("feature-details.html", media_data=media_data)
-    else:
-        media_data = mongo.db.tv_show_data.find_one(
-            {"_id": ObjectId(feature_id)})
-        return render_template("feature-details.html", media_data=media_data)
+    media_data = get_media_details(feature_id, media_type)
+    media_certificate = get_media_certificate(feature_id, media_type)
+    return render_template(
+        "feature-details.html", media_data=media_data,
+        media_type=media_type, media_certificate=media_certificate
+    )
 
 
 @app.route("/delete_feature/<feature_id>/<media_type>")

@@ -22,35 +22,61 @@
         <div class="row feature-container">
             <div class="col s6">
                 <div class="title-genre">
-                    <h3 id="title">{{ media_data.title }}</h3>
-                    <span class="right-aligned" id="genres">{{ media_data.genres }}</span>
+                    <h3 id="title">
+                        {% if media_type == "movie" %}
+                            {{ media_data['title'] }}
+                        {% else %}
+                            {{ media_data['name'] }}
+                        {% endif %}
+                    </h3>
+                    <span class="right-aligned" id="genres">
+                        {% for genre in media_data['genres'] %}
+                            {{ genre['name'] }}{% if not loop.last %}, {% endif %}
+                        {% endfor %}
+                    </span>
                 </div>
-                <p id="overview">{{ media_data.overview }}</p>
+                <p id="overview">{{ media_data['overview'] }}</p>
                 <div class="cert-year-runtime">
-                    <p id="certificate">{{ media_data.certificate }}</p>
-                    <p id="release_date">{{ media_data.release_date }}</p>
-                    <p id="runtime">{{ media_data.runtime }}</p>
+                    <p id="certificate">{{ media_certificate }}</p>
+                    <p id="release_date">
+                        {% if media_type == "movie" %}
+                            {{ media_data['release_date'][0:4] }}
+                        {% else %}
+                            {{ media_data['first_air_date'][0:4] }}
+                        {% endif %}
+                    </p>
+                    <p id="runtime">
+                        {% if media_type == "movie" %}
+                            {{ media_data['runtime'] }} mins
+                        {% else %}
+                            {% if media_data['episode_run_time'] %}
+                                {{ media_data['episode_run_time'][0] }} mins
+                            {% else %}
+                                unknown runtime
+                            {% endif %}
+                        {% endif %}
+                    </p>
                 </div>
                 <div class=" personalised-info">
                     <div class="row rating">                        
                         <div class="col s12 rating">
                             <h6>Rate it!</h6>
-                            <input type="radio" id="star5" name="rating" value="5" />
+                            <input type="radio" id="star5" name="rating" value="5">
                             <label class="star" for="star5" title="Awesome" aria-hidden="true"></label>
-                            <input type="radio" id="star4" name="rating" value="4" />
+                            <input type="radio" id="star4" name="rating" value="4">
                             <label class="star" for="star4" title="Great" aria-hidden="true"></label>
-                            <input type="radio" id="star3" name="rating" value="3" />
+                            <input type="radio" id="star3" name="rating" value="3">
                             <label class="star" for="star3" title="Very good" aria-hidden="true"></label>
-                            <input type="radio" id="star2" name="rating" value="2" />
+                            <input type="radio" id="star2" name="rating" value="2">
                             <label class="star" for="star2" title="Good" aria-hidden="true"></label>
-                            <input type="radio" id="star1" name="rating" value="1" />
+                            <input type="radio" id="star1" name="rating" value="1">
                             <label class="star" for="star1" title="Bad" aria-hidden="true"></label>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col s12">
                             {% if media_data.review|length == 0 %}
-                                <form method="POST" action="{{ url_for('add_review', feature_id=media_data._id, media_type=media_data.media_type) }}">
+                                <form method="POST" action="{{ url_for('add_review', feature_id=media_data._id, media_type=media_type) }}">
                                     <div class="input-field">
                                         <label for="review">Your Review!</label>
                                         <textarea id="review" name="review" class="review materialize-textarea" maxlength="290" placeholder="290 character limit"></textarea>                            
@@ -60,7 +86,7 @@
                                     </div>
                                 </form>
                             {% elif media_data.review|length > 0 %}
-                                <form method="POST" action="{{ url_for('add_review', feature_id=media_data._id, media_type=media_data.media_type) }}">
+                                <form method="POST" action="{{ url_for('add_review', feature_id=media_data._id, media_type=media_type) }}">
                                     <div class="edit-review" id="edit-review">
                                         <p>Your Review!</p>
                                         <p id="review">{{ media_data.review }}</p>
@@ -74,24 +100,30 @@
                     </div>
                     <div class="row">
                         <div class="button-container col s12">
+                            <form method="POST" action="{{ url_for('add_watchlist') }}">                    
+                                <input type="hidden" name="id" value="{{ media_data['id'] }}">                  
+                                <input type="hidden" name="title" value="{% if media_type == 'movie' %}{{ media_data['title'] }}{% else %}{{ media_data['name'] }}{% endif %}">
+                                <input type="hidden" name="media_type" value="{{ media_type }}">
+                                <button class="btn-floating waves-effect waves-light" title="Add to Watchlist" type="submit">
+                                    <i class="fa-regular fa-bookmark"></i>
+                                </button>
+                            </form>
                             <form method="POST" action="{{ url_for('add_seenlist') }}">                    
-                                <input type="hidden" name="feature_id" value="{{ media_data._id }}">                    
-                                <input type="hidden" name="media_type" value="{{ media_data.media_type }}">
+                                <input type="hidden" name="id" value="{{ media_data['id'] }}">                  
+                                <input type="hidden" name="title" value="{% if media_type == 'movie' %}{{ media_data['title'] }}{% else %}{{ media_data['name'] }}{% endif %}">
+                                <input type="hidden" name="media_type" value="{{ media_type }}">
                                 <button class="btn-floating waves-effect waves-light" title="Add to Seenlist" type="submit">
                                     <i class="fa-regular fa-circle-check"></i>
                                 </button>
                             </form>
-                            <a href="{{ url_for('delete_feature', feature_id=media_data._id, media_type=media_data.media_type) }}">
-                                <button class="btn-floating waves-effect waves-light" title="Add to Watchlist">
-                                    <i class="fa-solid fa-trash"></i>
-                                </button>
-                            </a> 
+                            <a href="#modal-delete-{{ media_data['id'] }}" class="modal-trigger btn-floating waves-effect waves-light"><i class="fa-solid fa-trash"></i></a>
                         </div>
                     </div>
                 </div>
             </div>
             <div class="col s6 poster">
-                <img src="{{ media_data.poster }}" alt="">
+                <img src="https://image.tmdb.org/t/p/w500{{ media_data['poster_path'] }}"
+                    alt="{% if media_type == 'movie' %}{{ media_data['title'] }}{% else %}{{ media_data['name'] }}{% endif %}">
             </div>            
         </div>
     </div>
