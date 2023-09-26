@@ -44,7 +44,7 @@ def home():
     popular_movie_data = popular_movie_data["results"][0:5]
     # access popular tv shows from api
     # store the api url with the title included
-    url = """https://api.themoviedb.org/3/tv/popular?language=en-US&page=1&without_genres=10767"""  # noqa
+    url = "https://api.themoviedb.org/3/tv/popular?language=en-US&page=1&without_genres=10767"  # noqa
     # get json data
     popular_series_data = get_api_data(url)
     # split object into first 5 results
@@ -152,11 +152,10 @@ def search():
     # get the movie/show title from the search input
     title = request.form.get("search")
     # get the movie/show ID from the API
-    url = f"""https://api.themoviedb.org/3/search/multi?query={title}&
-        include_adult=false&language=en-US&page=1"""
+    url = f"https://api.themoviedb.org/3/search/multi?query={title}&include_adult=false&language=en-US&page=1"  # noqa
     # get json data
     json_data = get_api_data(url)
-    # get the movie or show id fron json results
+    # get the movie or show id from json results
     media_id = json_data['results'][0]['id']
     # get media type
     media_type = json_data['results'][0]['media_type']
@@ -171,11 +170,10 @@ def search():
 @app.route("/popular_feature/<title>")
 def popular_feature(title):
     # get the movie/show ID from the API
-    url = f"""https://api.themoviedb.org/3/search/multi?query={title}&
-        include_adult=false&language=en-US&page=1"""
+    url = f"https://api.themoviedb.org/3/search/multi?query={title}&include_adult=false&language=en-US&page=1"  # noqa
     # get json data
     json_data = get_api_data(url)
-    # get the movie or show id fron json results
+    # get the movie or show id from json results
     media_id = json_data['results'][0]['id']
     # get media type
     media_type = json_data['results'][0]['media_type']
@@ -190,12 +188,8 @@ def popular_feature(title):
 # use different API request format to get extended details
 def get_media_details(media_id, media_type):
     # get the movie/show ID from the API
-    if media_type == "movie":
-        url = f"""https://api.themoviedb.org/3/{media_type}/
-                {media_id}?language=en-US"""
-    if media_type == "tv":
-        url = f"""https://api.themoviedb.org/3/{media_type}/
-                {media_id}?language=en-US"""
+    if media_type == "movie" or media_type == "tv":
+        url = f"https://api.themoviedb.org/3/{media_type}/{media_id}?language=en-US"  # noqa
     # get json data
     json_data = get_api_data(url)
     return json_data
@@ -223,8 +217,7 @@ def get_media_certificate(media_id, media_type):
 # def autocomplete():
 #     title = request.form.get("search")
 #     # store the api url with the title included
-#     url = f"""https://api.themoviedb.org/3/search/multi?query={title}&
-#         include_adult=false&language=en-US&page=1"""
+#     url = f"https://api.themoviedb.org/3/search/multi?query={title}&include_adult=false&language=en-US&page=1"  # noqa
 #     # get json data
 #     json_data = get_api_data(url)
 #     return render_template("search-result.html", json_data=json_data)
