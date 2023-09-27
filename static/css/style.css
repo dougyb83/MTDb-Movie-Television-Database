@@ -309,7 +309,8 @@ textarea::placeholder {
     justify-content: center;
 }
 
-.button-container button {
+.button-container button,
+.button-container a {
     margin: 10px;
 }
 
