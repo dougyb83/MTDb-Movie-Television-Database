@@ -119,6 +119,18 @@
                             <a href="#modal-delete-{{ media_data['id'] }}" class="modal-trigger btn-floating waves-effect waves-light"><i class="fa-solid fa-trash"></i></a>
                         </div>
                     </div>
+                    <!-- Modal: delete media -->
+                    <div id="modal-delete-{{ media_data['id'] }}" class="modal">
+                        <div class="modal-content black-text">
+                        <h4>Delete Record</h4>
+                        <p>Are you sure you want to delete {% if media_type == 'movie' %}{{ media_data['title'] }}{% else %}{{ media_data['name'] }}{% endif %}?</p>
+                        <small>This action is permanent, and cannot be undone.</small>
+                        </div>
+                        <div class="modal-footer">
+                            <a href="#!" class="modal-close waves-effect waves-green btn green">No</a>
+                            <a href="{{ url_for('delete', feature_id=media_data['id'], media_type=media_type) }}" class="modal-close waves-effect waves-green btn red">Yes</a>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="col s6 poster">

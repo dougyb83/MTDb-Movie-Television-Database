@@ -52,6 +52,18 @@
                                     <a href="#modal-delete-{{ movie['id'] }}" class="modal-trigger"><i class="fa-solid fa-trash"></i></a>
                                 </div>            
                             </div>
+                            <!-- Modal: delete movie -->
+                            <div id="modal-delete-{{ movie['id'] }}" class="modal">
+                                <div class="modal-content">
+                                <h4>Delete Movie</h4>
+                                <p>Are you sure you want to delete {{ movie['title'] }}?</p>
+                                <small>This action is permanent, and cannot be undone.</small>
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="#!" class="modal-close waves-effect waves-green btn green">No</a>
+                                    <a href="{{ url_for('delete', feature_id=movie['id'], media_type='movie') }}" class="modal-close waves-effect waves-green btn red">Yes</a>
+                                </div>
+                            </div>
                         </div>                
                     </div>
                 {% endfor %}
@@ -92,6 +104,18 @@
                                     <a href="{{ url_for('feature_details', feature_id=tv_show['id'], media_type='tv') }}"><i class="fa-solid fa-pen"></i></a>
                                     <a href="#modal-delete-{{ tv_show['id'] }}" class="modal-trigger"><i class="fa-solid fa-trash"></i></a>
                                 </div>            
+                            </div>
+                            <!-- Modal: delete tv show -->
+                            <div id="modal-delete-{{ tv_show['id'] }}" class="modal">
+                                <div class="modal-content">
+                                <h4>Delete TV Show</h4>
+                                <p>Are you sure you want to delete {{ tv_show['name'] }}?</p>
+                                <small>This action is permanent, and cannot be undone.</small>
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="#!" class="modal-close waves-effect waves-green btn green">No</a>
+                                    <a href="{{ url_for('delete', feature_id=tv_show['id'], media_type='tv') }}" class="modal-close waves-effect waves-green btn red">Yes</a>
+                                </div>
                             </div>
                         </div>                
                     </div>  

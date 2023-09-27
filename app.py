@@ -362,14 +362,58 @@ def feature_details(feature_id, media_type):
     )
 
 
-@app.route("/delete_feature/<feature_id>/<media_type>")
-def delete_feature(feature_id, media_type):
+@app.route("/delete/<feature_id>/<media_type>")
+def delete(feature_id, media_type):
+    # get title before deleting from user's database
+    feature = get_media_details(feature_id, media_type)
     if media_type == "movie":
-        mongo.db.movie_data.delete_one({"_id": ObjectId(feature_id)})
+        title = feature["title"]
     else:
-        mongo.db.tv_show_data.delete_one({"_id": ObjectId(feature_id)})
+        title = feature["name"]
 
-    flash("Deleted from Library")
+    # get user data from DB
+    user = mongo.db.users.find_one({"username": session["user"]})
+
+    # if in watchlist, remove it
+    for id in user["watchlist"]:
+        if id == feature_id:
+            # match found, remove from watchlist
+            list_index = user["watchlist"].index(id)
+            user["watchlist"].pop(list_index)
+
+    # if in seenlist, remove it
+    for id in user["seenlist"]:
+        if id == feature_id:
+            # match found, remove from seenlist
+            list_index = user["seenlist"].index(id)
+            user["seenlist"].pop(list_index)
+
+    # if in movie_list, remove it
+    for id in user["movie_list"]:
+        if id == feature_id:
+            # match found, remove from movie_list
+            list_index = user["movie_list"].index(id)
+            user["movie_list"].pop(list_index)
+
+    # if in tv_list, remove it
+    for id in user["tv_list"]:
+        if id == feature_id:
+            # match found, remove from tv_list
+            list_index = user["tv_list"].index(id)
+            user["tv_list"].pop(list_index)
+
+    # save database changes
+    mongo.db.users.update_many(
+        {"username": session["user"]},
+        {"$set": {
+            "movie_list": user["movie_list"],
+            "tv_list": user["tv_list"],
+            "watchlist": user["watchlist"],
+            "seenlist": user["seenlist"]
+        }}
+    )
+
+    flash(f'"{title}" deleted from your Library')
     return redirect(url_for("library", username=session["user"]))
 
 
