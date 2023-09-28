@@ -163,6 +163,7 @@ def search():
         # get the movie or show details
         media_data = get_media_details(media_id, media_type)
         media_certificate = get_media_certificate(media_id, media_type)
+        print(media_data)
         return render_template(
             "search-result.html", media_data=media_data,
             media_certificate=media_certificate, media_type=media_type)
