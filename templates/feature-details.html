@@ -58,46 +58,46 @@
                     </p>
                 </div>
                 <div class=" personalised-info">
-                    <div class="row rating">                        
-                        <div class="col s12 rating">
-                            <h6>Rate it!</h6>
-                            <input type="radio" id="star5" name="rating" value="5">
-                            <label class="star" for="star5" title="Awesome" aria-hidden="true"></label>
-                            <input type="radio" id="star4" name="rating" value="4">
-                            <label class="star" for="star4" title="Great" aria-hidden="true"></label>
-                            <input type="radio" id="star3" name="rating" value="3">
-                            <label class="star" for="star3" title="Very good" aria-hidden="true"></label>
-                            <input type="radio" id="star2" name="rating" value="2">
-                            <label class="star" for="star2" title="Good" aria-hidden="true"></label>
-                            <input type="radio" id="star1" name="rating" value="1">
-                            <label class="star" for="star1" title="Bad" aria-hidden="true"></label>
+                    <form method="POST" action="{{ url_for('add_rating_review', media_type=media_type) }}">
+                        <input type="hidden" name="id" value="{{ media_data['id'] }}">
+                        <div class="row rating">                        
+                            <div class="col s12 rating">
+                                <h6>Rate it!</h6>
+                                <input type="radio" id="star5" name="rating" value="5">
+                                <label class="star" for="star5" title="Awesome" aria-hidden="true"></label>
+                                <input type="radio" id="star4" name="rating" value="4">
+                                <label class="star" for="star4" title="Great" aria-hidden="true"></label>
+                                <input type="radio" id="star3" name="rating" value="3">
+                                <label class="star" for="star3" title="Very good" aria-hidden="true"></label>
+                                <input type="radio" id="star2" name="rating" value="2">
+                                <label class="star" for="star2" title="Good" aria-hidden="true"></label>
+                                <input type="radio" id="star1" name="rating" value="1">
+                                <label class="star" for="star1" title="Bad" aria-hidden="true"></label>
+                            </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col s12">
-                            {% if media_data.review|length == 0 %}
-                                <form method="POST" action="{{ url_for('add_review', feature_id=media_data._id, media_type=media_type) }}">
+                        <div class="row">
+                            <div class="col s12">
+                                {% if rating_review %}
+                                    <div class="edit-review" id="edit-review">
+                                        <p>Your Review!</p>
+                                        <!-- <textarea id="review" name="review" class="review materialize-textarea" maxlength="290" placeholder="290 character limit">{{ rating_review.review }}</textarea> -->
+                                        <p id="review">{{ rating_review.review }}</p>
+                                        <button id="edit-review-btn" class="btn waves-effect waves-light right" title="Edit Review">
+                                            Edit Rating/Review
+                                        </button>
+                                    </div>                                                          
+                                {% else %}                                    
                                     <div class="input-field">
                                         <label for="review">Your Review!</label>
                                         <textarea id="review" name="review" class="review materialize-textarea" maxlength="290" placeholder="290 character limit"></textarea>                            
-                                        <button class="btn waves-effect waves-light right" title="Add Review" type="submit">
-                                            Submit Review
+                                        <button class="btn waves-effect waves-light right" title="Add Review">
+                                            Submit Rating/Review
                                         </button>
-                                    </div>
-                                </form>
-                            {% elif media_data.review|length > 0 %}
-                                <form method="POST" action="{{ url_for('add_review', feature_id=media_data._id, media_type=media_type) }}">
-                                    <div class="edit-review" id="edit-review">
-                                        <p>Your Review!</p>
-                                        <p id="review">{{ media_data.review }}</p>
-                                        <button id="edit-review-btn" class="btn waves-effect waves-light right" title="Edit Review">
-                                            Edit Review
-                                        </button>
-                                    </div>
-                                </form>
-                            {% endif %}
+                                    </div>  
+                                {% endif %}
+                            </div>
                         </div>
-                    </div>
+                    </form>
                     <div class="row">
                         <div class="button-container col s12">
                             <form method="POST" action="{{ url_for('add_watchlist') }}">                    

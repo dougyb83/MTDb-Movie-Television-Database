@@ -163,7 +163,6 @@ def search():
         # get the movie or show details
         media_data = get_media_details(media_id, media_type)
         media_certificate = get_media_certificate(media_id, media_type)
-        print(media_data)
         return render_template(
             "search-result.html", media_data=media_data,
             media_certificate=media_certificate, media_type=media_type)
@@ -228,14 +227,37 @@ def get_media_certificate(media_id, media_type):
 #     return render_template("search-result.html", json_data=json_data)
 
 
-@app.route("/add_review/<feature_id>/<media_type>", methods=["GET", "POST"])
-def add_review(feature_id, media_type):
-    if request.method == "POST" and media_type == "movie":
-        review = request.form.get("review")
-        mongo.db.movie_data.update_one({"_id": ObjectId(feature_id)}, {
-                "$set": {"review": review}})
-        flash("Review Edited")
-
+@app.route("/add_rating_review/<media_type>", methods=["GET", "POST"])
+def add_rating_review(media_type):
+    if request.method == "POST":
+        # get user data from DB
+        user = mongo.db.users.find_one({"username": session["user"]})
+        # get the feature id
+        feature_id = request.form.get("id")
+        # check if rating/review exist in DB
+        rating_review = mongo.db.rating_review.find_one({
+            "$and": [
+                {"user_id": ObjectId(user["_id"])},
+                {"feature_id": feature_id}
+            ]})
+        # if rating/review exists in the DB, update the DB
+        if rating_review:
+            mongo.db.rating_review.update_many(
+                {"_id": ObjectId(rating_review["_id"])},
+                {"$set": {
+                    "rating": request.form.get("rating"),
+                    "review": request.form.get("review")
+                }})
+        # insert rating/review if none exists in the DB
+        else:
+            review_submit = {
+                "user_id": user["_id"],
+                "feature_id": feature_id,
+                "rating": request.form.get("rating"),
+                "review": request.form.get("review")
+            }
+            mongo.db.rating_review.insert_one(review_submit)
+            flash("Your Rating/Review have been Added")
         return redirect(url_for(
             "feature_details", feature_id=feature_id, media_type=media_type))
 
@@ -355,11 +377,22 @@ def add_seenlist():
 @app.route(
     "/feature_details/<feature_id>/<media_type>", methods=["GET", "POST"])
 def feature_details(feature_id, media_type):
+    # get user data from DB
+    user = mongo.db.users.find_one({"username": session["user"]})
+    # get the movie or show details
     media_data = get_media_details(feature_id, media_type)
     media_certificate = get_media_certificate(feature_id, media_type)
+    # get user rating data from DB
+    rating_review = mongo.db.rating_review.find_one({
+        "$and": [
+            {"user_id": ObjectId(user["_id"])},
+            {"feature_id": feature_id}
+            ]})
+
     return render_template(
         "feature-details.html", media_data=media_data,
-        media_type=media_type, media_certificate=media_certificate
+        media_type=media_type, media_certificate=media_certificate,
+        rating_review=rating_review
     )
 
 
