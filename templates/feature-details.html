@@ -80,7 +80,6 @@
                                 {% if rating_review %}
                                     <div class="edit-review" id="edit-review">
                                         <p>Your Review!</p>
-                                        <!-- <textarea id="review" name="review" class="review materialize-textarea" maxlength="290" placeholder="290 character limit">{{ rating_review.review }}</textarea> -->
                                         <p id="review">{{ rating_review['review'] }}</p>
                                         <button id="edit-review-btn" class="btn waves-effect waves-light right" title="Edit Review">
                                             Edit Rating/Review
@@ -134,8 +133,12 @@
                 </div>
             </div>
             <div class="col s6 poster">
-                <img src="https://image.tmdb.org/t/p/w500{{ media_data['poster_path'] }}"
-                    alt="{% if media_type == 'movie' %}{{ media_data['title'] }}{% else %}{{ media_data['name'] }}{% endif %}">
+                {% if media_data['poster_path'] == None %}                    
+                    <img src="{{ url_for('static', filename='images/no-image-placeholder.png') }}" alt="No Image Available">
+                {% else %}
+                    <img src="https://image.tmdb.org/t/p/w500{{ media_data['poster_path'] }}"
+                        alt="{% if media_type == 'movie' %}{{ media_data['title'] }}{% else %}{{ media_data['name'] }}{% endif %}">
+                {% endif %}
             </div>            
         </div>
     </div>

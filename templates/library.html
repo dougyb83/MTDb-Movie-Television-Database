@@ -26,7 +26,11 @@
                         <div class="card card-poster">
                             <div class="card-image waves-effect waves-block waves-light">
                                 <a href="{{ url_for('feature_details', feature_id=movie['id'], media_type='movie') }}">
-                                    <img src="https://image.tmdb.org/t/p/w500{{ movie['poster_path'] }}" alt="{{ movie['name'] }}">
+                                    {% if movie['poster_path'] == None %}                    
+                                        <img src="{{ url_for('static', filename='images/no-image-placeholder.png') }}" alt="No Image Available">
+                                    {% else %}
+                                        <img src="https://image.tmdb.org/t/p/w500{{ movie['poster_path'] }}" alt="{{ movie['name'] }}">
+                                    {% endif %} 
                                 </a>
                             </div>
                             <div class="card-title-container card-content">
@@ -79,7 +83,11 @@
                         <div class="card card-poster">
                             <div class="card-image waves-effect waves-block waves-light">
                                 <a href="{{ url_for('feature_details', feature_id=tv_show['id'], media_type='tv') }}">
-                                    <img src="https://image.tmdb.org/t/p/w500{{ tv_show['poster_path'] }}" alt="{{ tv_show['name'] }}">
+                                    {% if tv_show['poster_path'] == None %}                    
+                                        <img src="{{ url_for('static', filename='images/no-image-placeholder.png') }}" alt="No Image Available">
+                                    {% else %}
+                                        <img src="https://image.tmdb.org/t/p/w500{{ tv_show['poster_path'] }}" alt="{{ tv_show['name'] }}">
+                                    {% endif %}
                                 </a>
                             </div>
                             <div class="card-title-container card-content">

@@ -69,7 +69,7 @@
                 </div> 
                 <div class="col s4 m6 l6 poster">
                     {% if media_data['poster_path'] == None %}                    
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg" alt="No Image Available">
+                        <img src="{{ url_for('static', filename='images/no-image-placeholder.png') }}" alt="No Image Available">
                     {% else %}
                         <img src="https://image.tmdb.org/t/p/w500{{ media_data['poster_path'] }}" alt="{{ media_data['title'] }}">
                     {% endif %}
@@ -129,8 +129,8 @@
                 </div>
 
                 <div class="col s4 m6 l6 poster">
-                    {% if media_data['poster'] == None %}                    
-                        <img src="https://upload.wikimedia.org/wikipedia/commons/6/65/No-Image-Placeholder.svg" alt="No Image Available">
+                    {% if media_data['poster_path'] == None %}                    
+                        <img src="{{ url_for('static', filename='images/no-image-placeholder.png') }}" alt="No Image Available">
                     {% else %}
                         <img src="https://image.tmdb.org/t/p/w500{{ media_data['poster_path'] }}" alt="{{ media_data['name'] }}">
                     {% endif %}
