@@ -6,13 +6,13 @@ $(document).ready(function(){
   // initialise and set position for side navs
   $('#nav-menu').sidenav({edge: "right"});
   $('#slide-out').sidenav({edge: "left"});
-  if (document.getElementById("genres")) {
-      let genres = document.getElementById("genres").textContent
-      let genreElement = document.getElementsByClassName("genre-input")
-      for (let element of genreElement) {
-        element.setAttribute("value", genres)
-      }
-  } 
+  // if (document.getElementById("genres")) {
+  //     let genres = document.getElementById("genres").textContent
+  //     let genreElement = document.getElementsByClassName("genre-input")
+  //     for (let element of genreElement) {
+  //       element.setAttribute("value", genres)
+  //     }
+  // } 
   // open log-in modal when navbar log in clicked
   $(".log-in-button").click(function () {    
       $(".log-in-modal").modal("open");
@@ -45,6 +45,7 @@ $(document).ready(function(){
       } 
     }
   );
+  // when the edit review button is clicked, make the text editable
   $("#edit-review-btn").click(function () {
     let reviewText = $("#review").text();
     $("#edit-review").html(`
@@ -57,6 +58,10 @@ $(document).ready(function(){
       </div>
     `);
   });
+  // if the current page contains an id of 'rating' and the rating variable has a value then check the radio button
+  if (document.getElementById("rating") && rating) {
+    document.getElementById("star" + rating.toString()).setAttribute("checked", "checked");
+  }
 });
 
 

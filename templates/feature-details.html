@@ -60,7 +60,7 @@
                 <div class=" personalised-info">
                     <form method="POST" action="{{ url_for('add_rating_review', media_type=media_type) }}">
                         <input type="hidden" name="id" value="{{ media_data['id'] }}">
-                        <div class="row rating">                        
+                        <div class="row rating" id="rating">                        
                             <div class="col s12 rating">
                                 <h6>Rate it!</h6>
                                 <input type="radio" id="star5" name="rating" value="5">
@@ -81,7 +81,7 @@
                                     <div class="edit-review" id="edit-review">
                                         <p>Your Review!</p>
                                         <!-- <textarea id="review" name="review" class="review materialize-textarea" maxlength="290" placeholder="290 character limit">{{ rating_review.review }}</textarea> -->
-                                        <p id="review">{{ rating_review.review }}</p>
+                                        <p id="review">{{ rating_review['review'] }}</p>
                                         <button id="edit-review-btn" class="btn waves-effect waves-light right" title="Edit Review">
                                             Edit Rating/Review
                                         </button>
@@ -140,4 +140,9 @@
         </div>
     </div>
 
+{% endblock %}
+{% block scripts %}
+    <script type="text/javascript">
+        let rating = "{{ rating_review['rating'] }}"
+    </script>
 {% endblock %}
