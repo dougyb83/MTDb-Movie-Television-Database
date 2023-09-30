@@ -61,8 +61,17 @@ nav ul a {
 }
 
 .sidenav li>a {
-    text-align: center;
     color: whitesmoke;
+    padding: 0;
+}
+
+ul#nav-menu {
+    text-align: center;
+}
+
+.sub-list ul>li {
+    list-style-type: disc !important;
+    margin-left: 40px;
 }
 
 footer {
@@ -169,17 +178,17 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
     padding: 0 45px ;
 }
 
-.library-content {
+.library-content, .list-content {
     min-height: 85vh;
     padding-bottom: 20px;
     margin: 20px 20px 0 270px;
 }
 
-.library-content .feature-title {
+.library-content .feature-title, .list-content .feature-title {
     font-size: 1.2em !important;
 }
 
-.library-sub-title {
+.library-sub-title, .list-sub-title {
     color: whitesmoke;
     position: relative;
     margin-left: 10px;
@@ -376,7 +385,7 @@ textarea::placeholder {
         margin-left: 370px;
     }
 
-    .library-content {
+    .library-content, .list-content {
         width: 80%;
         margin-left: 350px;
     }
@@ -451,7 +460,7 @@ textarea::placeholder {
         font-size: 3rem;
     }
 
-    .library-content {
+    .library-content, .list-content {
         margin-left: 175px;
     }
 
@@ -463,7 +472,7 @@ textarea::placeholder {
         width: 38vw;
     }
 
-    .library-content .feature-title {
+    .library-content .feature-title, .list-content .feature-title {
         font-size: 1em !important;
     }
 
@@ -496,7 +505,7 @@ textarea::placeholder {
     }
 
     .side-menu a {
-        color: whitesmoke
+        color: whitesmoke;
     }
 
     .sidenav.sidenav-fixed {
@@ -531,7 +540,7 @@ textarea::placeholder {
         padding: 18px;
     }
 
-    .library-content {
+    .library-content, .list-content {
         margin-left: 20px;
     }
 
