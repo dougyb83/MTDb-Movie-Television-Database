@@ -168,7 +168,7 @@ def search():
             media_certificate=media_certificate, media_type=media_type)
     else:
         flash(f'No results found for "{title}"')
-        return render_template("home.html")
+        return redirect(url_for("home"))
 
 
 @app.route("/popular_feature/<title>")
@@ -216,9 +216,10 @@ def get_media_certificate(media_id, media_type):
         url = f"https://api.themoviedb.org/3/tv/{media_id}/content_ratings"
         # get json data
         json_data = get_api_data(url)
-        # step through the listed countries until GB is found and return certificate
+        # step through the listed countries until GB is foundreturn certificate
         for item in json_data["results"]:
             if item["iso_3166_1"] == "GB":
+                # return certificate
                 return item["rating"]
 
 
@@ -377,6 +378,29 @@ def add_seenlist():
             flash(f'"{title }" added to your Seenlist')
 
         return redirect(url_for("library", username=session["user"]))
+
+
+@app.route("/view_watchlist/<media_type>", methods=["GET", "POST"])
+def view_watchlist(media_type):
+    # get user data from DB
+    user = mongo.db.users.find_one({"username": session["user"]})
+    # get movie data
+    watchlist = user["watchlist"]
+    media_data = []
+    if media_type == "movie":
+        for id in watchlist:
+            if id in user["movie_list"]:
+                movie = get_media_details(id, "movie")
+                media_data.append(movie)
+    else:
+        for id in watchlist:
+            if id in user["tv_list"]:
+                tv_show = get_media_details(id, "tv")
+                media_data.append(tv_show)
+
+    return render_template(
+        "list.html", media_data=media_data,
+        media_type=media_type, list_type="watchlist")
 
 
 @app.route(

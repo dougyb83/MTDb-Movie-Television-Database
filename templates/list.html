@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% block content %}
+    <div class="side-menu">
+        <ul id="slide-out" class="sidenav sidenav-fixed grey darken-4 white-text">
+        <li>Home</li>
+        <li>Watchlist</li>
+            <ol>
+                <li>Films</li>
+                <li>TV Shows</li>
+            </ol>
+        <li>Seenlist</li>
+            <ol>
+                <li>Films</li>
+                <li>TV Shows</li>
+            </ol>
+        </ul>
+        <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="hide-on-large-only material-icons">more_horiz</i></a>
+    </div>
+
+    <div class="library-content">
+        <h5 class="library-sub-title">
+            {% if list_type == "watchlist" and media_type == "movie" %}
+                Films Watchlist
+            {% elif list_type == "watchlist"and media_type == "tv" %}
+                TV Watchlist
+            {% elif list_type == "seenlist" and media_type == "movie" %}
+                Films Seenlist
+            {% else %}
+                TV Seenlist
+            {% endif %}
+        </h5>
+        <div class="row">
+            {% if media_data|length > 0 %}
+                {% for item in media_data %}
+                    <div class="col l2 m2 s4">
+                        <div class="card card-poster">
+                            <div class="card-image waves-effect waves-block waves-light">
+                                <a href="{{ url_for('feature_details', feature_id=item['id'], media_type=media_type) }}">
+                                    {% if item['poster_path'] == None %}                    
+                                        <img src="{{ url_for('static', filename='images/no-image-placeholder.png') }}" alt="No Image Available">
+                                    {% else %}
+                                        <img src="https://image.tmdb.org/t/p/w500{{ item['poster_path'] }}" alt="{% if media_type == 'movie' %}{{ item['title'] }}{% else %}{{item['name']}}{% endif %}">
+                                    {% endif %} 
+                                </a>
+                            </div>
+                            <div class="card-title-container card-content">
+                                <div>
+                                    <span class="feature-title card-title grey-text text-lighten-4">{% if media_type == 'movie' %}{{ item['title'] }}{% else %}{{item['name']}}{% endif %}</span>
+                                </div>
+                                <div class="card-menu activator grey-text text-lighten-4">
+                                    <i class="material-icons right">more_vert</i>
+                                </div>                                
+                            </div>
+                            <div class="card-reveal">
+                                <span class="card-title grey-text text-lighten-4"><i class="card-close material-icons right">close</i></span>
+                                <div class="controls">
+                                    <form method="POST" action="{{ url_for('add_seenlist') }}">                    
+                                        <input type="hidden" name="id" value="{{ item['id'] }}">
+                                        <input type="hidden" name="title" value="{% if media_type == 'movie' %}{{ item['title'] }}{% else %}{{ item['name'] }}{% endif %}">
+                                        <input type="hidden" name="media_type" value="{{ media_type }}">                 
+                                        <button type="submit">
+                                            <a href="#"><i class="fa-regular fa-circle-check"></i></a>
+                                        </button>
+                                    </form>
+                                    <a href="{{ url_for('feature_details', feature_id=item['id'], media_type=media_type) }}"><i class="fa-solid fa-pen"></i></a>
+                                    <a href="#modal-delete-{{ item['id'] }}" class="modal-trigger"><i class="fa-solid fa-trash"></i></a>
+                                </div>            
+                            </div>
+                            <!-- Modal: delete movie -->
+                            <div id="modal-delete-{{ item['id'] }}" class="modal">
+                                <div class="modal-content">
+                                <h4>Delete Movie</h4>
+                                <p>Are you sure you want to delete {{ item['title'] }}?</p>
+                                <small>This action is permanent, and cannot be undone.</small>
+                                </div>
+                                <div class="modal-footer">
+                                    <a href="#!" class="modal-close waves-effect waves-green btn green">No</a>
+                                    <a href="{{ url_for('delete', feature_id=item['id'], media_type=media_type) }}" class="modal-close waves-effect waves-green btn red">Yes</a>
+                                </div>
+                            </div>
+                        </div>                
+                    </div>
+                {% endfor %}
+            {% else %}
+                    <h2 class="grey-text text-lighten-4">Much Empty</h2>
+            {% endif %}
+        </div>
+    </div>
+    
+
+{% endblock %}

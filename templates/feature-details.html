@@ -6,8 +6,8 @@
         <li>Home</li>
         <li>Watchlist</li>
             <ol>
-                <li>Films</li>
-                <li>TV Shows</li>
+                <li><a href="{{ url_for('view_watchlist', media_type='movie') }}">Films</a></li>
+                <li><a href="{{ url_for('view_watchlist', media_type='tv') }}">TV Shows</a></li>
             </ol>
         <li>Seenlist</li>
             <ol>
