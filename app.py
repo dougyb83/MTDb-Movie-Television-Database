@@ -403,6 +403,29 @@ def view_watchlist(media_type):
         media_type=media_type, list_type="watchlist")
 
 
+@app.route("/view_seenlist/<media_type>", methods=["GET", "POST"])
+def view_seenlist(media_type):
+    # get user data from DB
+    user = mongo.db.users.find_one({"username": session["user"]})
+    # get movie data
+    seenlist = user["seenlist"]
+    media_data = []
+    if media_type == "movie":
+        for id in seenlist:
+            if id in user["movie_list"]:
+                movie = get_media_details(id, "movie")
+                media_data.append(movie)
+    else:
+        for id in seenlist:
+            if id in user["tv_list"]:
+                tv_show = get_media_details(id, "tv")
+                media_data.append(tv_show)
+
+    return render_template(
+        "list.html", media_data=media_data,
+        media_type=media_type, list_type="seenlist")
+
+
 @app.route(
     "/feature_details/<feature_id>/<media_type>", methods=["GET", "POST"])
 def feature_details(feature_id, media_type):

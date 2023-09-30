@@ -5,13 +5,13 @@
         <li>Home</li>
         <li>Watchlist</li>
             <ol>
-                <li>Films</li>
-                <li>TV Shows</li>
+                <li><a href="{{ url_for('view_watchlist', media_type='movie') }}">Films</a></li>
+                <li><a href="{{ url_for('view_watchlist', media_type='tv') }}">TV Shows</a></li>
             </ol>
         <li>Seenlist</li>
             <ol>
-                <li>Films</li>
-                <li>TV Shows</li>
+                <li><a href="{{ url_for('view_seenlist', media_type='movie') }}">Films</a></li>
+                <li><a href="{{ url_for('view_seenlist', media_type='tv') }}">TV Shows</a></li>
             </ol>
         </ul>
         <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="hide-on-large-only material-icons">more_horiz</i></a>
