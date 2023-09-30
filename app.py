@@ -205,13 +205,18 @@ def get_media_certificate(media_id, media_type):
         url = f"https://api.themoviedb.org/3/movie/{media_id}/release_dates"
         # get json data
         json_data = get_api_data(url)
-        for item in json_data["results"]:
-            if item["iso_3166_1"] == "GB":
-                return item["release_dates"][0]["certification"]
+        # step through the listed countries until GB is found
+        for country in json_data["results"]:
+            if country["iso_3166_1"] == "GB":
+                # find a valid certificate and return it
+                for item in country["release_dates"]:
+                    if item["certification"]:
+                        return item["certification"]
     if media_type == "tv":
         url = f"https://api.themoviedb.org/3/tv/{media_id}/content_ratings"
         # get json data
         json_data = get_api_data(url)
+        # step through the listed countries until GB is found and return certificate
         for item in json_data["results"]:
             if item["iso_3166_1"] == "GB":
                 return item["rating"]
