@@ -21,10 +21,10 @@
         <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="hide-on-large-only material-icons">more_horiz</i></a>
     </div>
     
-    <div class="main-content grey-text text-lighten-4">
-        <div class="row feature-container">
-            <div class="col s6">
-                <div class="title-genre">
+    <div class="main-content container grey-text text-lighten-4">
+        <div class="feature-container">
+            <div class="row hide-on-med-and-up">
+                <div class="col s6 title-genre">
                     <h3 id="title">
                         {% if media_type == "movie" %}
                             {{ media_data['title'] }}
@@ -32,35 +32,21 @@
                             {{ media_data['name'] }}
                         {% endif %}
                     </h3>
+                    <div class="cert-year-runtime">
+                        <p id="release_date">
+                            {% if media_type == "movie" %}
+                                {{ media_data['release_date'][0:4] }}
+                            {% else %}
+                                {{ media_data['first_air_date'][0:4] }}
+                            {% endif %}
+                        </p>
+                        <p id="certificate">{{ media_certificate }}</p>
+                    </div> 
                     <span class="right-aligned" id="genres">
                         {% for genre in media_data['genres'] %}
                             {{ genre['name'] }}{% if not loop.last %}, {% endif %}
                         {% endfor %}
                     </span>
-                </div>
-                <p id="overview">{{ media_data['overview'] }}</p>
-                <div class="cert-year-runtime">
-                    <p id="certificate">{{ media_certificate }}</p>
-                    <p id="release_date">
-                        {% if media_type == "movie" %}
-                            {{ media_data['release_date'][0:4] }}
-                        {% else %}
-                            {{ media_data['first_air_date'][0:4] }}
-                        {% endif %}
-                    </p>
-                    <p id="runtime">
-                        {% if media_type == "movie" %}
-                            {{ media_data['runtime'] }} mins
-                        {% else %}
-                            {% if media_data['episode_run_time'] %}
-                                {{ media_data['episode_run_time'][0] }} mins
-                            {% else %}
-                                unknown runtime
-                            {% endif %}
-                        {% endif %}
-                    </p>
-                </div>            
-                <div class="row">
                     <div class="button-container col s12">
                         {% if session.user %}   
                             <form method="POST" action="{{ url_for('add_watchlist') }}">                    
@@ -89,14 +75,90 @@
                         {% endif %}
                     </div>
                 </div>
-            </div>                
-            <div class="col s4 m6 l6 poster">
-                {% if media_data['poster_path'] == None %}                    
-                    <img src="{{ url_for('static', filename='images/no-image-placeholder.png') }}" alt="No Image Available">
-                {% else %}
-                    <img src="https://image.tmdb.org/t/p/w500{{ media_data['poster_path'] }}" alt="{{ media_data['title'] }}">
-                {% endif %}
-            </div>          
+                <div class="col s6 poster right">
+                    {% if media_data['poster_path'] == None %}                    
+                        <img src="{{ url_for('static', filename='images/no-image-placeholder.png') }}" alt="No Image Available">
+                    {% else %}
+                        <img src="https://image.tmdb.org/t/p/w500{{ media_data['poster_path'] }}" alt="{{ media_data['title'] }}">
+                    {% endif %}
+                </div>  
+            </div>
+            <div class="row">          
+                <div class="col l6 m6 s12">
+                    <div class="title-genre hide-on-small-only">
+                        <h3 id="title">
+                            {% if media_type == "movie" %}
+                                {{ media_data['title'] }}
+                            {% else %}
+                                {{ media_data['name'] }}
+                            {% endif %}
+                        </h3>
+                        <span class="right-aligned" id="genres">
+                            {% for genre in media_data['genres'] %}
+                                {{ genre['name'] }}{% if not loop.last %}, {% endif %}
+                            {% endfor %}
+                        </span>
+                    </div>
+                    <p id="overview">{{ media_data['overview'] }}</p>
+                    <div class="cert-year-runtime hide-on-small-only">
+                        <p id="certificate">{{ media_certificate }}</p>
+                        <p id="release_date">
+                            {% if media_type == "movie" %}
+                                {{ media_data['release_date'][0:4] }}
+                            {% else %}
+                                {{ media_data['first_air_date'][0:4] }}
+                            {% endif %}
+                        </p>
+                        <p id="runtime">
+                            {% if media_type == "movie" %}
+                                {{ media_data['runtime'] }} mins
+                            {% else %}
+                                {% if media_data['episode_run_time'] %}
+                                    {{ media_data['episode_run_time'][0] }} mins
+                                {% else %}
+                                    unknown runtime
+                                {% endif %}
+                            {% endif %}
+                        </p>
+                    </div>            
+                    <div class="row">
+                        <div class="button-container col s12 hide-on-small-only">
+                            {% if session.user %}   
+                                <form method="POST" action="{{ url_for('add_watchlist') }}">                    
+                                    <input type="hidden" name="id" value="{{ media_data['id'] }}">                  
+                                    <input type="hidden" name="title" value="{% if media_type == 'movie' %}{{ media_data['title'] }}{% else %}{{ media_data['name'] }}{% endif %}">
+                                    <input type="hidden" name="media_type" value="{{ media_type }}">
+                                    <button class="btn-floating waves-effect waves-light" title="Add to Watchlist" type="submit">
+                                        <i class="fa-regular fa-bookmark"></i>
+                                    </button>
+                                </form>
+                                <form method="POST" action="{{ url_for('add_seenlist') }}">                    
+                                    <input type="hidden" name="id" value="{{ media_data['id'] }}">                  
+                                    <input type="hidden" name="title" value="{% if media_type == 'movie' %}{{ media_data['title'] }}{% else %}{{ media_data['name'] }}{% endif %}">
+                                    <input type="hidden" name="media_type" value="{{ media_type }}">
+                                    <button class="btn-floating waves-effect waves-light" title="Add to Seenlist" type="submit">
+                                        <i class="fa-regular fa-circle-check"></i>
+                                    </button>
+                                </form>
+                            {% else %}
+                                <button class="non-session-activity btn-floating waves-effect waves-light" title="Add to Watchlist">
+                                    <i class="fa-regular fa-bookmark"></i>
+                                </button>
+                                <button class="non-session-activity btn-floating waves-effect waves-light" title="Add to Seenlist">
+                                    <i class="fa-regular fa-circle-check"></i>
+                                </button>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>                
+                <div class="col s4 m6 l6 poster hide-on-small-only">
+                    {% if media_data['poster_path'] == None %}                    
+                        <img src="{{ url_for('static', filename='images/no-image-placeholder.png') }}" alt="No Image Available">
+                    {% else %}
+                        <img src="https://image.tmdb.org/t/p/w500{{ media_data['poster_path'] }}" alt="{{ media_data['title'] }}">
+                    {% endif %}
+                </div>          
+            </div>
         </div>
     </div>    
 

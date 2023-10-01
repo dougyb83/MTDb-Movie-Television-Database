@@ -263,7 +263,9 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
 /* feature display pages - search results and edit feature */
 .main-content {
     min-height: 85vh;
-    margin: 40px 20px 0 270px;
+    margin: 40px 20px 0 0;
+    position: relative;
+    left: 330px;
 }
 
 .feature-container {
@@ -326,6 +328,10 @@ textarea::placeholder {
 }
 
 /* 5 star rating */
+#rating {
+    float: left;
+}
+
 .rating {
     margin-top: 5px;
     padding: 0;
@@ -382,7 +388,7 @@ textarea::placeholder {
     }
 
     .main-content {
-        margin-left: 370px;
+        /* margin-left: 370px; */
     }
 
     .library-content, .list-content {
@@ -397,6 +403,11 @@ textarea::placeholder {
     .auth-form .input-field i {
         left: 0;
     }
+
+    .sidenav.sidenav-fixed {
+        width: 13vw;
+        padding: 0 75px;
+    }
 }
 
 @media only screen and (max-width: 1440px) {
@@ -405,6 +416,10 @@ textarea::placeholder {
         position: relative;
         top: -13px;
         left: -115px;
+    }
+
+    .main-content {
+        left: 305px;
     }
 }
 
@@ -430,7 +445,8 @@ textarea::placeholder {
     }
 
     .main-content {
-        margin-left: 230px;
+        /* margin-left: 230px; */
+        left: 210px;
         min-height: 80vh;
     }
 
@@ -481,7 +497,8 @@ textarea::placeholder {
     }
     
     .sidenav.sidenav-fixed {
-        width: 20vw;
+        width: 15vw;
+        padding: 0 22px;
     }
     
 }
@@ -493,7 +510,7 @@ textarea::placeholder {
     }
 
     .poster img {
-        width: 46vw;
+        width: 40vw;
     }
 
     .side-menu .sidenav-trigger {
@@ -521,7 +538,9 @@ textarea::placeholder {
     }
 
     .main-content {
-        margin-left: 25px;
+        left: unset;
+        margin: 20px auto 0;
+        width: 90%;
     }
 
     .popular h2 {
@@ -581,6 +600,64 @@ textarea::placeholder {
 
     .modal {
         width: 80vw;
+    }
+
+    .main-content {
+        left: unset;
+        margin: 55px auto 0;
+        width: 90%;
+        min-height: 50vh;
+    }
+
+    .feature-container {
+        display: block;
+    }
+
+    .title-genre {
+        display: block;
+        padding: 0;
+    }
+
+    .title-genre h3 {
+        width: 100%;
+        font-size: 1.4em;
+    }
+
+    .title-genre span {
+        margin-top: 13px;
+    }
+
+    .title-genre #genres {
+        padding: 0;
+        margin-top: 20px;
+        width: 50%;
+        font-size: .8em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .poster img {
+        width: 40vw;
+    }
+
+    #overview {
+        text-align: justify;
+        margin: 0;
+        font-size: .8em;
+    }
+
+    .cert-year-runtime {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .cert-year-runtime p {
+        margin-bottom: 0;
+    }
+
+    textarea#review {
+        font-size: .9em;
     }
 }
 
