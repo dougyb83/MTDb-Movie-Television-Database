@@ -263,14 +263,15 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
 /* feature display pages - search results and edit feature */
 .main-content {
     min-height: 85vh;
-    margin: 40px 20px 0 0;
+    margin: 40px 0 40px 0;
     position: relative;
     left: 330px;
 }
 
-.feature-container {
+.feature-container-library, .feature-container-search {
     display: flex;
     align-items: center;
+    height: 700px;
 }
 
 .title-genre {
@@ -281,12 +282,12 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
 
 .title-genre h3 {
     margin: 0;
-    width: 70%;
+    /* width: 70%; */
 }
 
 .title-genre #genres {
     padding-top: 20px;
-    width: 30%;
+    /* width: 30%; */
 }
 
 .cert-year-runtime {
@@ -301,6 +302,8 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
 
 .poster img {
     width: 33vw;
+    position: absolute;
+    top: 0;
 }
 
 .review {
@@ -324,10 +327,10 @@ textarea::placeholder {
 
 .button-container button,
 .button-container a {
-    margin: 10px;
+    margin: 50px 50px 0;
 }
 
-/* 5 star rating */
+/* 5 star rating from codepen.io */
 #rating {
     float: left;
 }
@@ -385,10 +388,6 @@ textarea::placeholder {
         position: relative;
         top: -14px;
         left: -115px;
-    }
-
-    .main-content {
-        /* margin-left: 370px; */
     }
 
     .library-content, .list-content {
@@ -485,6 +484,7 @@ textarea::placeholder {
     }
 
     .poster img {
+        position: relative;
         width: 38vw;
     }
 
@@ -500,7 +500,11 @@ textarea::placeholder {
         width: 15vw;
         padding: 0 22px;
     }
-    
+
+    .button-container button,
+    .button-container a {
+        margin: 20px 35px 0;
+    }
 }
 
 @media only screen and (max-width: 768px) {
@@ -539,8 +543,10 @@ textarea::placeholder {
 
     .main-content {
         left: unset;
-        margin: 20px auto 0;
+        margin: 75px auto 0;
         width: 90%;
+        display: flex;
+        justify-content: center;
     }
 
     .popular h2 {
@@ -565,6 +571,15 @@ textarea::placeholder {
 
     .poster img {
         width: 45vw;
+    }
+
+    .button-container button,
+    .button-container a {
+        margin: 20px 30px 0;
+    }
+
+    .feature-container-search {
+        height: 540px;
     }
 }
 
@@ -607,10 +622,15 @@ textarea::placeholder {
         margin: 55px auto 0;
         width: 90%;
         min-height: 50vh;
+        display: block;
     }
 
-    .feature-container {
-        display: block;
+    .feature-container-search {
+        height: 120px;
+    }
+
+    .feature-container-library {
+        height: 345px;
     }
 
     .title-genre {
@@ -629,7 +649,6 @@ textarea::placeholder {
 
     .title-genre #genres {
         padding: 0;
-        margin-top: 20px;
         width: 50%;
         font-size: .8em;
         white-space: nowrap;
@@ -648,16 +667,47 @@ textarea::placeholder {
     }
 
     .cert-year-runtime {
-        display: flex;
-        flex-direction: column;
+        width: 190px;
     }
 
     .cert-year-runtime p {
-        margin-bottom: 0;
+        margin-bottom: 10px;
     }
 
     textarea#review {
         font-size: .9em;
+    }
+
+    .button-container {
+        flex-direction: column;
+        justify-content: unset;
+        margin-top: 10px;
+    }
+
+    .button-container button,
+    .button-container a {
+        margin: 10px 0;
+    }
+
+    form#seenlist {
+        position: absolute;
+        left: 135px;
+    }
+
+    a.modal-trigger {
+        left: 56px;
+    }
+
+    #rating {
+        margin-bottom: 0;
+    }
+
+    .rating > label {
+        font-size: 8px;
+    }
+
+    .rating > h6 {
+        font-size: 15px;
     }
 }
 
@@ -673,10 +723,32 @@ textarea::placeholder {
     nav .input-field {
         left: 5px;
     }
+
+    .button-container button,
+    .button-container a {
+        margin: 10px 0;
+    }
+
+    form#seenlist {
+        position: absolute;
+        left: 110px;
+    }
+
+    a.modal-trigger {
+        left: 46px;
+    }
 }
 
 @media only screen and (max-width: 320px) {
     .sidenav.sidenav-fixed {
         width: 50vw;
+    }
+
+    .feature-container-search {
+        height: 150px;
+    }
+
+    .feature-container-library {
+        height: 310px;
     }
 }
