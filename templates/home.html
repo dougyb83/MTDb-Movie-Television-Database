@@ -25,7 +25,13 @@
                     {% endif %}      
                         <div class="card card-poster">
                             <div class="card-image waves-effect waves-block waves-light">
-                                <a href="{{ url_for('popular_feature', title=movie['original_title'])}}"><img src="https://image.tmdb.org/t/p/w500{{ movie['poster_path'] }}" alt="{{ movie['original_title'] }}"></a>
+                                <a href="{{ url_for('popular_feature', title=movie['original_title'])}}">
+                                    {% if movie['poster_path'] == None %}                    
+                                        <img src="{{ url_for('static', filename='images/no-image-placeholder.png') }}" alt="No Image Available">
+                                    {% else %}
+                                        <img src="https://image.tmdb.org/t/p/w500{{ movie['poster_path'] }}" alt="{{ movie['title'] }}">
+                                    {% endif %} 
+                                </a>
                             </div>
                             <div class="card-title-container card-content">
                                 <div>
@@ -48,7 +54,13 @@
                     {% endif %}                    
                         <div class="card card-poster">
                             <div class="card-image waves-effect waves-block waves-light">
-                                <a href="{{ url_for('popular_feature', title=tv_show['name'])}}"><img src="https://image.tmdb.org/t/p/w500{{ tv_show['poster_path'] }}" alt="{{ tv_show['name'] }}"></a>
+                                <a href="{{ url_for('popular_feature', title=tv_show['name'])}}">                                    
+                                    {% if tv_show['poster_path'] == None %}                    
+                                        <img src="{{ url_for('static', filename='images/no-image-placeholder.png') }}" alt="No Image Available">
+                                    {% else %}
+                                        <img src="https://image.tmdb.org/t/p/w500{{ tv_show['poster_path'] }}" alt="{{ tv_show['name'] }}">
+                                    {% endif %}
+                                </a>
                             </div>
                             <div class="card-title-container card-content">
                                 <div>
