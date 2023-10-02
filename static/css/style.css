@@ -69,11 +69,6 @@ ul#nav-menu {
     text-align: center;
 }
 
-.sub-list ul>li {
-    list-style-type: disc !important;
-    margin-left: 40px;
-}
-
 footer {
     position: relative;
     z-index: 10;
@@ -168,14 +163,31 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
     color: red;
 }
 
+.side-menu > i {
+    margin: 0 30px;
+}
+
+.menu-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+}
+
+.menu-item i {
+    margin-right: 10px;
+    font-size: 1.3em;
+}
+
+.sub-menu {
+    display: none;
+}
+
 
 /* library page */
 .sidenav.sidenav-fixed {
-    left: 0;
     margin-top: 89px;
     width: 15vw;
-    text-align: left;
-    padding: 0 45px ;
+    padding: 30px 45px ;
 }
 
 .library-content, .list-content {
@@ -401,11 +413,6 @@ textarea::placeholder {
 
     .auth-form .input-field i {
         left: 0;
-    }
-
-    .sidenav.sidenav-fixed {
-        width: 13vw;
-        padding: 0 75px;
     }
 }
 
