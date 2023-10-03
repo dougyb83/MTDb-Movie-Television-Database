@@ -1,54 +1,59 @@
 {% extends "base.html" %}
 {% block content %}
 
+
     <div class="side-menu">
         <ul id="slide-out" class="sidenav sidenav-fixed grey darken-4 white-text">
             <li>
                 <div class="menu-item">
                     <a href="{{ url_for('home') }}"><i class="fa-solid fa-house"></i></a>
-                    <a href="{{ url_for('home') }}">Home</i></a>
+                    <a href="{{ url_for('home') }}" class="list-item">Home</i></a>
                 </div>
             </li>
             <li>
                 <div class="menu-item">
                     <a href="{{ url_for('library') }}"><i class="fa-solid fa-lines-leaning"></i></a>
-                    <a href="{{ url_for('library') }}">Library</a>
+                    <a href="{{ url_for('library') }}" class="list-item">Library</a>
                 </div>
             </li>
             <li>
-                <div class="menu-item">
-                    <a href=""><i class="fa-regular fa-bookmark"></i></a>
-                    <a href="">Watchlists</a>
-                    <div class="sub-menu">
-                        <ul>
-                            <li>
+                <div class="menu-item" id="watchlists">
+                    <a href="#"><i class="fa-regular fa-bookmark"></i></a>
+                    <a href="#" class="list-item menu-item-text">Watchlists</a>
+                    <ul class="sub-menu watchlists">
+                        <li>
+                            <div class="sub-menu-item">
                                 <a href="{{ url_for('view_watchlist', media_type='movie') }}"><i class="fa-solid fa-film"></i></a>
-                                <a href="{{ url_for('view_watchlist', media_type='movie') }}">Films</a>
-                            </li>
-                            <li>
+                                <a href="{{ url_for('view_watchlist', media_type='movie') }}" class="list-item">Films</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="sub-menu-item">
                                 <a href="{{ url_for('view_watchlist', media_type='tv') }}"><i class="fa-solid fa-tv"></i></a>
-                                <a href="{{ url_for('view_watchlist', media_type='tv') }}">TV Shows</a>
-                            </li>
-                        </ul>
-                    </div>
+                                <a href="{{ url_for('view_watchlist', media_type='tv') }}" class="list-item">TV Shows</a>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </li>
             <li>
-                <div class="menu-item">
-                    <a href=""><i class="fa-solid fa-eye"></i></a>
-                    <a href="">Seenlists</a>
-                    <div class="sub-menu">
-                        <ul>
-                            <li>
+                <div class="menu-item" id="seenlists">
+                    <a href="#"><i class="fa-solid fa-eye"></i></a>
+                    <a href="#" class="list-item menu-item-text">Seenlists</a>
+                    <ul class="sub-menu seenlists">
+                        <li>
+                            <div class="sub-menu-item">
                                 <a href="{{ url_for('view_seenlist', media_type='movie') }}"><i class="fa-solid fa-film"></i></a>
-                                <a href="{{ url_for('view_seenlist', media_type='movie') }}">Films</a>
-                            </li>
-                            <li>
+                                <a href="{{ url_for('view_seenlist', media_type='movie') }}" class="list-item">Films</a>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="sub-menu-item">
                                 <a href="{{ url_for('view_seenlist', media_type='tv') }}"><i class="fa-solid fa-tv"></i></a>
-                                <a href="{{ url_for('view_seenlist', media_type='tv') }}">TV Shows</a>
-                            </li>
-                        </ul>
-                    </div>
+                                <a href="{{ url_for('view_seenlist', media_type='tv') }}" class="list-item">TV Shows</a>
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </li>
         </ul>

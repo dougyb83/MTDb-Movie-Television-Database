@@ -6,13 +6,6 @@ $(document).ready(function(){
   // initialise and set position for side navs
   $('#nav-menu').sidenav({edge: "right"});
   $('#slide-out').sidenav({edge: "left"});
-  // if (document.getElementById("genres")) {
-  //     let genres = document.getElementById("genres").textContent
-  //     let genreElement = document.getElementsByClassName("genre-input")
-  //     for (let element of genreElement) {
-  //       element.setAttribute("value", genres)
-  //     }
-  // } 
   // open log-in modal when navbar log in clicked
   $(".log-in-button").click(function () {    
       $(".log-in-modal").modal("open");
@@ -63,6 +56,21 @@ $(document).ready(function(){
     document.getElementById("star" + rating.toString()).setAttribute("checked", "checked");
   }
 });
+// hide the sublists and show them when clicked
+$(".watchlists").addClass("hide");
+$("#watchlists>a").click(function () {
+  $(".watchlists").toggleClass("hide")
+  $(".watchlists").toggleClass("show")
+});
+// hide the sublists and show them when clicked
+$(".seenlists").addClass("hide");
+$("#seenlists>a").click(function () {
+  $(".seenlists").toggleClass("hide")
+  $(".seenlists").toggleClass("show")
+});
+
+
+
 
 
 
