@@ -58,6 +58,11 @@ nav ul a {
 
 .sidenav {
     width: 150px;
+    padding-top: 20px;
+}
+
+.sidenav li>a {
+    color: whitesmoke;
 }
 
 .side-menu a {
