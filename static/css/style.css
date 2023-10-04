@@ -195,7 +195,6 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
 }
 
 .sub-menu {
-    /* display: none; */
     position: relative;
     right: 100px;
     top: 30px;
@@ -286,13 +285,12 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
 }
 
 .controls {
-    margin-top: 30px;
     display: flex;
     flex-direction: column;
-    height: 75%;
+    height: 90%;
     justify-content: space-between;
     text-align: center;
-    font-size: 20px;
+    font-size: 1.8em;
 }
 
 .controls button {
@@ -470,6 +468,17 @@ textarea::placeholder {
 }
 
 @media only screen and (max-width: 1024px) {
+    .controls {
+        font-size: 1.3em;
+        margin-top: 10px;
+    }
+    
+    .card-title .card-close {
+        font-size: 0.8em;
+        right: 5px;
+        top: 5px;
+    }
+
     nav {
         height: 56px;
     }
@@ -491,8 +500,7 @@ textarea::placeholder {
     }
 
     .main-content {
-        /* margin-left: 230px; */
-        left: 210px;
+        left: 255px;
         min-height: 80vh;
     }
 
@@ -526,9 +534,13 @@ textarea::placeholder {
         margin: 46px 0 12px;
     }
 
+    .card .card-reveal {
+        padding: 10px;
+    }
+
     .poster img {
         position: relative;
-        width: 38vw;
+        width: 34vw;
     }
 
     .library-content .feature-title, .list-content .feature-title {
@@ -607,6 +619,10 @@ textarea::placeholder {
 
     .card .card-content {
         padding: 18px;
+    }
+
+    .card-title .card-close {
+        font-size: 0.8em;
     }
 
     .library-content, .list-content {
@@ -898,5 +914,9 @@ textarea::placeholder {
         width: 135px;
     }
 
+    .controls {
+        font-size: 1em;
+        margin-top: 8px;
+    }
 
 }
