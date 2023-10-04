@@ -5,7 +5,7 @@ $(document).ready(function(){
   $('.modal').modal();
   // initialise and set position for side navs
   $('#nav-menu').sidenav({edge: "right"});
-  $('#slide-out').sidenav({edge: "left"});
+  $('#slide-out').sidenav({edge: "left",}, 'draggable', true);
   // open log-in modal when navbar log in clicked
   $(".log-in-button").click(function () {    
       $(".log-in-modal").modal("open");

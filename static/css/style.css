@@ -617,7 +617,7 @@ textarea::placeholder {
         margin: 20px 30px 0;
     }
 
-    .feature-container-search {
+    .feature-container-search, .feature-container-library {
         height: 540px;
     }
 
@@ -643,6 +643,7 @@ textarea::placeholder {
     }
 
     .menu-pull-out {
+        pointer-events: none;
         position: fixed;
         display: flex;
         width: 20px;
@@ -650,9 +651,7 @@ textarea::placeholder {
         margin: 0;
         left: 0;
         top: 140px;
-        /* border-radius: 0 20px 20px 0; */
         clip-path: polygon(0 0, 40% 10%, 40% 90%, 0 100%);
-        /* border: white solid; */
     }
 
     .menu-pull-out span {
