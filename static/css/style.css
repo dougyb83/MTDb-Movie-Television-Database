@@ -52,8 +52,10 @@ nav ul a {
 #search {
     border-radius: 30px;
     background-color: rgba(240, 248, 255, 0.37);
-    padding-left: 45px;
     color: whitesmoke;
+    width: 30vw;
+    text-align: center;
+    padding: 0;
 }
 
 .sidenav {
@@ -551,7 +553,7 @@ textarea::placeholder {
 @media only screen and (max-width: 768px) {
     nav .input-field {
         width: 80%;
-        left: 80px;
+        right: 10px;
     }
 
     .poster img {
@@ -573,6 +575,10 @@ textarea::placeholder {
 
     .search-bar {
         width: 60%;
+    }
+
+    #search {
+        width: 40vw;
     }
 
     .modal {
@@ -642,8 +648,12 @@ textarea::placeholder {
         margin: 0 40px;
     }
 
+    .drag-target {
+        z-index: 999;
+        width: 20px;
+    }
+
     .menu-pull-out {
-        pointer-events: none;
         position: fixed;
         display: flex;
         width: 20px;
@@ -690,7 +700,7 @@ textarea::placeholder {
 
     nav .input-field {
         width: 100%;
-        left: 20px;
+        left: 25px;
     }
 
     .sidenav.sidenav-fixed {
@@ -711,6 +721,11 @@ textarea::placeholder {
         margin-left: 55px;
     }
 
+    #search {
+        width: 50vw;
+        font-size: 1em;
+    }
+
     .modal {
         width: 80vw;
     }
@@ -724,7 +739,7 @@ textarea::placeholder {
     }
 
     .feature-container-search {
-        height: 120px;
+        height: 75px
     }
 
     .feature-container-library {
@@ -765,7 +780,7 @@ textarea::placeholder {
     }
 
     .cert-year-runtime {
-        width: 190px;
+        width: 175px;
     }
 
     .cert-year-runtime p {
@@ -823,7 +838,7 @@ textarea::placeholder {
     }
 
     nav .input-field {
-        left: 5px;
+        left: 10px;
     }
 
     .button-container button,
@@ -838,16 +853,24 @@ textarea::placeholder {
 
     a.modal-trigger {
         left: 46px;
+    }    
+    
+    .cert-year-runtime {
+        width: 160px;
     }
 }
 
 @media only screen and (max-width: 320px) {
+    nav .input-field {
+        left: 0px;
+    }
+
     .sidenav.sidenav-fixed {
         width: 50vw;
     }
 
     .feature-container-search {
-        height: 150px;
+        height: 65px;
     }
 
     .feature-container-library {
@@ -871,6 +894,9 @@ textarea::placeholder {
         margin-top: 10px;
     }
 
+    .cert-year-runtime {
+        width: 135px;
+    }
 
 
 }
