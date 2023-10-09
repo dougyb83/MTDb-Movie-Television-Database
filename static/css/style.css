@@ -63,16 +63,20 @@ nav ul a {
     padding-top: 20px;
 }
 
-.sidenav li>a {
-    color: whitesmoke;
+.sidenav a, nav ul a {
+    color: rgb(170, 169, 169);
 }
 
-.side-menu a {
+.sidenav li:hover  a {
     color: whitesmoke;
 }
 
 ul#nav-menu {
     text-align: center;
+}
+
+ul li:hover a {
+    color: #fffffffc;
 }
 
 footer {
