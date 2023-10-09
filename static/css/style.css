@@ -63,7 +63,7 @@ nav ul a {
     padding-top: 20px;
 }
 
-.sidenav a, nav ul a {
+.sidenav li a, nav ul a {
     color: rgb(170, 169, 169);
 }
 
@@ -126,10 +126,6 @@ footer {
     text-align: center;
     padding-bottom: 30px;
     padding-top: 30px;
-}
-
-.popular .card-poster {
-    margin-top: 0;
 }
 
 .popular h2 {
@@ -245,7 +241,7 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
 .card-poster {
     background-color: transparent;
     box-shadow: none;
-    margin: 45px 0;
+    height: 30vh;
 }
 
 .card .card-image img {
@@ -535,7 +531,7 @@ textarea::placeholder {
     }
 
     .card-poster {
-        margin: 46px 0 12px;
+        height: 24vh;
     }
 
     .card .card-reveal {
@@ -625,6 +621,10 @@ textarea::placeholder {
         padding: 18px;
     }
 
+    .card-poster {
+        height: 22vh;
+    }
+
     .card-title .card-close {
         font-size: 0.8em;
     }
@@ -700,11 +700,9 @@ textarea::placeholder {
 
     @keyframes pulse-animation {
         0% {
-            /* transform: scale(1); */
             width: 20px;
         }
         100% {
-            /* transform: scale(1.1); */
             width: 65px;
         }
     }
@@ -846,6 +844,10 @@ textarea::placeholder {
     .sub-menu-item {
         margin: 0 30px;
     }
+
+    .card-poster {
+        height: 24vh;
+    }
 }
 
 @media only screen and (max-width: 375px) {
@@ -877,6 +879,10 @@ textarea::placeholder {
     
     .cert-year-runtime {
         width: 160px;
+    }
+
+    .card-poster {
+        height: 21vh;
     }
 }
 
@@ -923,4 +929,7 @@ textarea::placeholder {
         margin-top: 8px;
     }
 
+    .card-poster {
+        height: 18vh;
+    }
 }

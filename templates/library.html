@@ -7,7 +7,7 @@
             <li>
                 <div class="menu-item">
                     <a href="{{ url_for('home') }}"><i class="fa-solid fa-house"></i></a>
-                    <a href="{{ url_for('home') }}" class="list-item">Home</i></a>
+                    <a href="{{ url_for('home') }}" class="list-item">Home</a>
                 </div>
             </li>
             <li>
@@ -96,7 +96,7 @@
                                         <input type="hidden" name="title" value="{{ movie['title'] }}">
                                         <input type="hidden" name="media_type" value="movie">                 
                                         <button type="submit">
-                                            <a href="#"><i class="fa-regular fa-circle-check"></i></a>
+                                            <i class="fa-regular fa-circle-check"></i>
                                         </button>
                                     </form>
                                     <a href="{{ url_for('feature_details', feature_id=movie['id'], media_type='movie') }}"><i class="fa-solid fa-pen"></i></a>
@@ -153,7 +153,7 @@
                                         <input type="hidden" name="title" value="{{ tv_show['name'] }}">                 
                                         <input type="hidden" name="media_type" value="tv">                 
                                         <button type="submit">
-                                            <a href="#"><i class="fa-regular fa-circle-check"></i></a>
+                                            <i class="fa-regular fa-circle-check"></i>
                                         </button>
                                     </form>
                                     <a href="{{ url_for('feature_details', feature_id=tv_show['id'], media_type='tv') }}"><i class="fa-solid fa-pen"></i></a>

@@ -26,6 +26,7 @@
                             <input id="search" name="search" type="search" required>
                             <label class="label-icon" for="search">
                             <i class="fa-solid fa-magnifying-glass"></i>
+                            </label>
                         </div>
                     </form>
                     <a href="#" data-target="nav-menu" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
@@ -66,7 +67,7 @@
     {% with messages = get_flashed_messages() %}
         {% if messages %}
             {% for message in messages %}
-            <div id="modal" class="modal flash-modal">
+            <div id="flash-modal" class="modal flash-modal">
                 <div class="modal-content flash-modal-content">
                     <p>{{ message }}</p>
                 </div>
@@ -80,7 +81,7 @@
     </section>
 
     <!-- sign up modal -->
-    <div id="modal" class="modal sign-up-modal">
+    <div id="sign-up-modal" class="modal sign-up-modal">
         <div class="modal-content sign-up-modal-content">
             <a class="modal-close waves-effect btn cyan lighten-1">&times;</a>
         
@@ -104,7 +105,7 @@
                                 <i class="fa-solid fa-lock prefix light-blue-text text-darken-4"></i>
                                 <input id="signup-password" name="signup-password" type="password" minlength="5"
                                     maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
-                                <label for="password">Password</label>
+                                <label for="signup-password">Password</label>
                             </div>
                         </div>
                         <!-- register -->
@@ -129,7 +130,7 @@
     </div>
 
     <!-- log in modal -->
-    <div id="modal" class="modal log-in-modal">
+    <div id="log-in-modal" class="modal log-in-modal">
         <div class="modal-content log-in-modal-content">
             <a class="modal-close waves-effect btn cyan lighten-1">&times;</a>
             <p class="message"></p>
@@ -153,7 +154,7 @@
                                 <i class="fa-solid fa-lock prefix light-blue-text text-darken-4"></i>
                                 <input id="login-password" name="login-password" type="password" minlength="5"
                                     maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" class="validate" required>
-                                <label for="password">Password</label>
+                                <label for="login-password">Password</label>
                             </div>
                         </div>
                         <!-- login -->
