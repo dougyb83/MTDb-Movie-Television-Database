@@ -4,6 +4,11 @@ flash messages
     width: 100%;
 }
 
+.menu-item .active, .active a {
+    background-color: unset;
+    color: #F79426;
+}
+
 /* base.html */
 body {
     background-image: radial-gradient(farthest-side at 90% -0%, #6b0e87, rgb(36 5 71), #0f0219);
@@ -67,15 +72,11 @@ nav ul a {
     color: rgb(170, 169, 169);
 }
 
-.sidenav li:hover  a {
-    color: whitesmoke;
-}
-
 ul#nav-menu {
     text-align: center;
 }
 
-ul li:hover a {
+ul li div:hover > a, nav ul li:hover a {
     color: #fffffffc;
 }
 
@@ -236,6 +237,10 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
     position: relative;
     margin-left: 10px;
     top: 40px;
+}
+
+.list-container {
+    margin-top: 60px;
 }
 
 .card-poster {
@@ -448,6 +453,10 @@ textarea::placeholder {
     .sidenav.sidenav-fixed {
         width: 16vw;
     }
+
+    .card-poster {
+        height: 35vh;
+    }
 }
 
 @media only screen and (max-width: 1440px) {
@@ -531,7 +540,7 @@ textarea::placeholder {
     }
 
     .card-poster {
-        height: 24vh;
+        height: 22vh;
     }
 
     .card .card-reveal {

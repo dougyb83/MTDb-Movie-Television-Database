@@ -20,17 +20,25 @@
                 <div class="menu-item" id="watchlists">
                     <a href="#"><i class="fa-regular fa-bookmark"></i></a>
                     <a href="#" class="list-item menu-item-text">Watchlists</a>
-                    <ul class="sub-menu watchlists">
+                    <ul class="sub-menu watchlists hide">
                         <li>
                             <div class="sub-menu-item">
-                                <a href="{{ url_for('view_watchlist', media_type='movie') }}"><i class="fa-solid fa-film"></i></a>
-                                <a href="{{ url_for('view_watchlist', media_type='movie') }}" class="list-item">Films</a>
+                                <a href="{{ url_for('view_watchlist', media_type='movie') }}" {% if request.path == url_for('view_watchlist', media_type="movie") %}class="active" {% endif %}>
+                                    <i class="fa-solid fa-film"></i>
+                                </a>
+                                <a href="{{ url_for('view_watchlist', media_type='movie') }}" {% if request.path == url_for('view_watchlist', media_type="movie") %}class="active list-item" {% else %} class="list-item" {% endif %}>
+                                    Films
+                                </a>
                             </div>
                         </li>
                         <li>
                             <div class="sub-menu-item">
-                                <a href="{{ url_for('view_watchlist', media_type='tv') }}"><i class="fa-solid fa-tv"></i></a>
-                                <a href="{{ url_for('view_watchlist', media_type='tv') }}" class="list-item">TV Shows</a>
+                                <a href="{{ url_for('view_watchlist', media_type='tv') }}" {% if request.path == url_for('view_watchlist', media_type="tv") %}class="active" {% endif %}>
+                                    <i class="fa-solid fa-tv"></i>
+                                </a>
+                                <a href="{{ url_for('view_watchlist', media_type='tv') }}" {% if request.path == url_for('view_watchlist', media_type="tv") %}class="active list-item" {% else %} class="list-item" {% endif %}>
+                                    TV Shows
+                                </a>
                             </div>
                         </li>
                     </ul>
@@ -40,17 +48,25 @@
                 <div class="menu-item" id="seenlists">
                     <a href="#"><i class="fa-solid fa-eye"></i></a>
                     <a href="#" class="list-item menu-item-text">Seenlists</a>
-                    <ul class="sub-menu seenlists">
+                    <ul class="sub-menu seenlists hide">
                         <li>
                             <div class="sub-menu-item">
-                                <a href="{{ url_for('view_seenlist', media_type='movie') }}"><i class="fa-solid fa-film"></i></a>
-                                <a href="{{ url_for('view_seenlist', media_type='movie') }}" class="list-item">Films</a>
+                                <a href="{{ url_for('view_seenlist', media_type='movie') }}" {% if request.path == url_for('view_seenlist', media_type="movie") %}class="active" {% endif %}>
+                                    <i class="fa-solid fa-film"></i>
+                                </a>
+                                <a href="{{ url_for('view_seenlist', media_type='movie') }}" {% if request.path == url_for('view_seenlist', media_type="movie") %}class="active list-item" {% else %} class="list-item" {% endif %}>
+                                    Films
+                                </a>
                             </div>
                         </li>
                         <li>
                             <div class="sub-menu-item">
-                                <a href="{{ url_for('view_seenlist', media_type='tv') }}"><i class="fa-solid fa-tv"></i></a>
-                                <a href="{{ url_for('view_seenlist', media_type='tv') }}" class="list-item">TV Shows</a>
+                                <a href="{{ url_for('view_seenlist', media_type='tv') }}" {% if request.path == url_for('view_seenlist', media_type="tv") %}class="active" {% endif %}>
+                                    <i class="fa-solid fa-tv"></i>
+                                </a>
+                                <a href="{{ url_for('view_seenlist', media_type='tv') }}" {% if request.path == url_for('view_seenlist', media_type="tv") %}class="active list-item" {% else %} class="list-item" {% endif %}>
+                                    TV Shows
+                                </a>
                             </div>
                         </li>
                     </ul>
@@ -65,7 +81,7 @@
     </div>
 
     <div class="list-content container">
-        <h5 class="list-sub-title">
+        <h5 class="list-sub-title" id="list-sub-title">
             {% if list_type == "watchlist" and media_type == "movie" %}
                 Films Watchlist
             {% elif list_type == "watchlist"and media_type == "tv" %}
@@ -76,7 +92,7 @@
                 TV Seenlist
             {% endif %}
         </h5>
-        <div class="row">
+        <div class="row list-container">
             {% if media_data|length > 0 %}
                 {% for item in media_data %}
                     <div class="col l2 m2 s4">

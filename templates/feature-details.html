@@ -20,7 +20,7 @@
                 <div class="menu-item" id="watchlists">
                     <a href="#"><i class="fa-regular fa-bookmark"></i></a>
                     <a href="#" class="list-item menu-item-text">Watchlists</a>
-                    <ul class="sub-menu watchlists">
+                    <ul class="sub-menu hide watchlists">
                         <li>
                             <div class="sub-menu-item">
                                 <a href="{{ url_for('view_watchlist', media_type='movie') }}"><i class="fa-solid fa-film"></i></a>
@@ -40,7 +40,7 @@
                 <div class="menu-item" id="seenlists">
                     <a href="#"><i class="fa-solid fa-eye"></i></a>
                     <a href="#" class="list-item menu-item-text">Seenlists</a>
-                    <ul class="sub-menu seenlists">
+                    <ul class="sub-menu hide seenlists">
                         <li>
                             <div class="sub-menu-item">
                                 <a href="{{ url_for('view_seenlist', media_type='movie') }}"><i class="fa-solid fa-film"></i></a>

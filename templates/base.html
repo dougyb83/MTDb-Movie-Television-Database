@@ -31,9 +31,9 @@
                     </form>
                     <a href="#" data-target="nav-menu" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
                     <ul class="hide-on-med-and-down">
-                        <li><a href="{{ url_for('home') }}">Home</a></li>
+                        <li {% if request.path == url_for('home') %}class="active" {% endif %}><a href="{{ url_for('home') }}">Home</a></li>
                         {% if session.user %}          
-                        <li><a href="{{ url_for('library') }}">Library</a></li>
+                        <li {% if request.path == url_for('library') %}class="active" {% endif %}><a href="{{ url_for('library') }}">Library</a></li>
                         {% if session.user|lower == "admin"|lower %}
                             <li><a href="#">Manage Categories</a></li>
                         {% endif %}
