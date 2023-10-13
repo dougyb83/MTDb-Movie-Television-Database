@@ -107,6 +107,38 @@ footer {
     margin: 0 auto;
 }
 
+img#movie-reel {
+    position: absolute;
+    right: 115px;
+    top: 70px;
+    width: 30vw;
+}
+
+img#tv-set {
+    position: absolute;
+    left: 112px;
+    bottom: 227px;
+    width: 23vw;
+    mix-blend-mode: lighten;
+    transform: rotate(355deg);
+}
+
+img#popcorn-1 {
+    position: absolute;
+    left: 42px;
+    top: 76px;
+    width: 23vw;
+    transform: rotate(352deg);
+}
+
+img#popcorn-2 {
+    position: absolute;
+    right: 52px;
+    bottom: 200px;
+    width: 23vw;
+    transform: rotate(10deg);
+}
+
 .left-aligned {
     text-align: left;
 }
@@ -457,6 +489,31 @@ textarea::placeholder {
     .card-poster {
         height: 35vh;
     }
+
+    img#movie-reel {
+        position: absolute;
+        right: 155px;
+        top: 107px;
+        width: 18vw;
+    }
+    
+    img#tv-set {
+        left: 190px;
+        bottom: 227px;
+        width: 14vw;
+    }
+    
+    img#popcorn-1 {
+        left: 105px;
+        top: 115px;
+        width: 15vw;
+    }
+    
+    img#popcorn-2 {
+        right: 120px;
+        bottom: 200px;
+        width: 15vw;
+    }
 }
 
 @media only screen and (max-width: 1440px) {
@@ -473,6 +530,31 @@ textarea::placeholder {
 
     .sidenav.sidenav-fixed {
         width: 18vw;
+    }
+
+    img#movie-reel {
+        position: absolute;
+        right: 115px;
+        top: 117px;
+        width: 22vw;
+    }
+    
+    img#tv-set {
+        left: 112px;
+        bottom: 227px;
+        width: 17vw;
+    }
+    
+    img#popcorn-1 {
+        left: 42px;
+        top: 76px;
+        width: 15vw;
+    }
+    
+    img#popcorn-2 {
+        right: 52px;
+        bottom: 200px;
+        width: 15vw;
     }
 }
 
@@ -568,6 +650,31 @@ textarea::placeholder {
     .button-container button,
     .button-container a {
         margin: 20px 35px 0;
+    }
+
+    img#movie-reel {
+        position: absolute;
+        right: 115px;
+        top: 117px;
+        width: 22vw;
+    }
+    
+    img#tv-set {
+        left: 112px;
+        bottom: 227px;
+        width: 17vw;
+    }
+    
+    img#popcorn-1 {
+        left: 42px;
+        top: 76px;
+        width: 15vw;
+    }
+    
+    img#popcorn-2 {
+        right: 52px;
+        bottom: 200px;
+        width: 15vw;
     }
 }
 
