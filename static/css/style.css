@@ -85,6 +85,68 @@ footer {
     z-index: 1000;
 }
 
+.bottom-nav nav {
+    border-radius: unset;
+    width: 100%;
+    opacity: 100%;
+    bottom: -1px;
+    padding: 0;
+}
+
+.bottom-nav nav ul {
+    display: flex;
+    justify-content: space-between;
+    
+}
+
+.menu-item {
+    display: flex;
+    flex-direction: column;
+    margin: 0 40px;
+    text-align: center;
+}
+
+a.icon {
+    position: relative;
+    top: -11px;
+}
+
+.menu-item .list-item {
+    position: relative;
+    top: -64px;
+}
+
+.dropdown-content li>a>i {
+    float: unset;
+    margin: 0;
+    width: unset;
+}
+
+ul.dropdown-content {
+    top: 72px;
+    width: 106px;
+}
+
+.sub-menu-item a {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+.sub-icon i {
+    position: relative;
+    top: 14px;
+}
+
+a.sub-list-item {
+    top: -8px;
+    position: relative;
+}
+
+.list-item {
+    width: 103px;
+}
+
 /* home page */
 .welcome {
     height: 80vh;
@@ -202,48 +264,12 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
     color: red;
 }
 
-.menu-item {
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
-    margin: 20px 0;
-}
-
-.sub-menu-item {
-    display: flex;
-    flex-direction: row;
-    justify-content: left;
-    margin: 20px 20px;
-}
-
-.menu-item i {
-    margin-right: 10px;
-    font-size: 1.8em;
-    width: 40px;
-}
-
-.list-item {
-    font-size: 1.5em;
-    width: max-content;
-}
-
-.sub-menu {
-    position: relative;
-    right: 100px;
-    top: 30px;
-    margin: 25px 0;
-}
-
 .hide {
     display: none;
 }
 
 .show {
     display: block;
-}
-
-.menu-item-text {
-    width: 50px;
 }
 
 /* library page */
@@ -361,12 +387,10 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
 
 .title-genre h3 {
     margin: 0;
-    /* width: 70%; */
 }
 
 .title-genre #genres {
     padding-top: 20px;
-    /* width: 30%; */
 }
 
 .cert-year-runtime {
@@ -763,25 +787,8 @@ textarea::placeholder {
         height: 540px;
     }
 
-    .menu-item i {
-        font-size: 1.4em;
-        width: 25px;
-    }
-
-    .list-item {
-        font-size: 1.3em;
-    }
-
-    .menu-item {
-        margin: 10px 0;
-    }
-
     .side-menu ul {
         margin-top: 20px;
-    }
-
-    .sub-menu-item {
-        margin: 0 40px;
     }
 
     .drag-target {
@@ -957,10 +964,6 @@ textarea::placeholder {
         font-size: 15px;
     }
 
-    .sub-menu-item {
-        margin: 0 30px;
-    }
-
     .card-poster {
         height: 24vh;
     }
@@ -1017,19 +1020,6 @@ textarea::placeholder {
 
     .feature-container-library {
         height: 310px;
-    }
-
-    .menu-item i {
-        font-size: 1.2em;
-        width: 22px;
-    }
-
-    .list-item {
-        font-size: 1.1em;
-    }
-
-    .menu-item {
-        margin: 0 0;
     }
 
     .side-menu ul {
