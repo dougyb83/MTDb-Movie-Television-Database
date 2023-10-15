@@ -55,7 +55,26 @@ $(document).ready(function(){
   if (document.getElementById("rating") && rating) {
     document.getElementById("star" + rating.toString()).setAttribute("checked", "checked");
   }
+  // hide the sublists and show them when clicked
+  $("#watchlists>a").click(function () {
+    $(".watchlists").toggleClass("hide show")
+  });
+  // hide the sublists and show them when clicked
+  $("#seenlists>a").click(function () {
+    $(".seenlists").toggleClass("hide show")
+  });
+  // Keep sublists visible when viewing relevant data on list.html
+  if ($("#list-sub-title").text().trim() == "Films Watchlist" || $("#list-sub-title").text().trim() == "TV Watchlist") {
+    $(".watchlists").toggleClass("hide show");
+  }
+  else if ($("#list-sub-title").text().trim() == "Films Seenlist" || $("#list-sub-title").text().trim() == "TV Seenlist") {
+      $(".seenlists").toggleClass("hide show");
+    }
   $(".dropdown-trigger").dropdown();
+  // Hide the side menu on the home screen
+  if (document.getElementById("welcome")) {
+    document.getElementById("side-menu").classList.add("hide");
+  }
 });
 
 
