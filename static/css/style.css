@@ -21,6 +21,7 @@ nav {
     border-radius: 10px;
     margin-top: 10px;
     padding-left: 10px;
+    z-index: 2000;
 }
 
 nav ul a {
@@ -114,7 +115,7 @@ ul.sub-menu li {
 
 footer {
     position: relative;
-    z-index: 1000;
+    z-index: 999;
 }
 
 /* home page */
@@ -274,11 +275,13 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
 .card-poster {
     background-color: transparent;
     box-shadow: none;
-    height: 30vh;
+    height: 22vh;
+    margin-bottom: 50px;
 }
 
 .card .card-image img {
     border-radius: 3px;
+    margin-bottom: 5px;
 }
 
 .card-title-container {
@@ -328,6 +331,10 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
 
 .controls button {
     all: unset;
+}
+
+.controls i {
+    color: whitesmoke;
 }
 
 .pop-controls {
@@ -522,6 +529,10 @@ textarea::placeholder {
         left: 305px;
     }
 
+    .card-poster {
+        margin-bottom: 85px;
+    }
+
     .sidenav.sidenav-fixed {
         width: 18vw;
     }
@@ -585,7 +596,7 @@ textarea::placeholder {
     }
 
     .main-content {
-        left: 255px;
+        left: 277px;
         min-height: 80vh;
     }
 
@@ -616,7 +627,8 @@ textarea::placeholder {
     }
 
     .card-poster {
-        height: 22vh;
+        height: 18vh;
+        margin-bottom: 50px;
     }
 
     .card .card-reveal {
@@ -672,7 +684,7 @@ textarea::placeholder {
     }
 }
 
-@media only screen and (max-width: 1023px) {
+@media only screen and (max-width: 768px) {
     nav .input-field {
         width: 80%;
         right: 10px;
@@ -695,6 +707,16 @@ textarea::placeholder {
         z-index: 1000;
     }
 
+    ul#nav-menu {
+        padding-top: 30px;
+        width: 195px;
+    }
+
+    .sidenav li a{
+        font-size: 25px;
+        padding: 35px;
+    }
+
     .search-bar {
         width: 60%;
     }
@@ -709,7 +731,7 @@ textarea::placeholder {
 
     .main-content {
         left: unset;
-        margin: 75px auto 0;
+        margin: 15px auto 0;
         width: 90%;
         display: flex;
         justify-content: center;
@@ -732,7 +754,8 @@ textarea::placeholder {
     }
 
     .card-poster {
-        height: 22vh;
+        height: 14vh;
+        margin-bottom: 70px;
     }
 
     .card-title .card-close {
@@ -742,6 +765,8 @@ textarea::placeholder {
     .library-content, .list-content {
         width: 90vw;
         margin: 0 auto;
+        position: relative;
+        top: -80px;
     }
 
     .poster img {
@@ -826,6 +851,10 @@ textarea::placeholder {
         width: 103px;
     }
     
+    footer {
+        margin-bottom: 50px;
+        z-index: 99;
+    }
 }
 
 @media only screen and (max-width: 425px) {
@@ -870,7 +899,7 @@ textarea::placeholder {
 
     .main-content {
         left: unset;
-        margin: 55px auto 0;
+        margin: -10px auto 0;
         width: 90%;
         min-height: 50vh;
         display: block;
@@ -915,6 +944,8 @@ textarea::placeholder {
         text-align: justify;
         margin: 0;
         font-size: .8em;
+        position: relative;
+        top: 20px;
     }
 
     .cert-year-runtime {
@@ -962,7 +993,7 @@ textarea::placeholder {
     }
 
     .card-poster {
-        height: 24vh;
+        height: 16vh;
     }
 
     .menu-item a, .sub-menu-item .sub-list-item {
@@ -1030,7 +1061,7 @@ textarea::placeholder {
     }
 
     .card-poster {
-        height: 21vh;
+        height: 14vh;
     }
 
     .menu-item a, .sub-menu-item .sub-list-item {
@@ -1073,6 +1104,10 @@ textarea::placeholder {
     }
 
     .card-poster {
-        height: 18vh;
+        height: 11vh;
+    }
+
+    #overview {
+        top: 40px;
     }
 }
