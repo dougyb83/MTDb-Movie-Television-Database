@@ -47,8 +47,16 @@ nav ul a:hover {
     color: whitesmoke;
 }
 
+img.logo-img {
+    width: 60px;
+    top: 8px;
+    position: relative;
+}
+
 .search-bar {
     padding: 15px;
+    position: relative;
+    left: 75px;
 }
 
 .search-bar, .label-icon {
@@ -66,10 +74,6 @@ nav ul a:hover {
     width: 30vw;
     text-align: center;
     padding: 0;
-}
-
-ul.sidenav.sidenav-fixed.grey.darken-4.white-text {
-    padding-right: 0;
 }
 
 .sidenav li a, nav ul a {
@@ -244,13 +248,6 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
 }
 
 /* library page */
-.sidenav.sidenav-fixed {
-    border-radius: 0 10px 0 0;
-    margin-top: 89px;
-    width: 20vw;
-    padding: 30px 45px ;
-}
-
 .library-content, .list-content {
     min-height: 85vh;
     padding-bottom: 20px;
@@ -483,10 +480,6 @@ textarea::placeholder {
         left: 0;
     }
 
-    .sidenav.sidenav-fixed {
-        width: 16vw;
-    }
-
     .card-poster {
         height: 35vh;
     }
@@ -531,10 +524,6 @@ textarea::placeholder {
 
     .card-poster {
         margin-bottom: 85px;
-    }
-
-    .sidenav.sidenav-fixed {
-        width: 18vw;
     }
 
     img#movie-reel {
@@ -584,6 +573,14 @@ textarea::placeholder {
 
     nav .brand-logo {
         font-size: 1.9em;
+    }
+
+    img.logo-img {
+        width: 55px;
+    }
+    
+    .search-bar {
+        left: 65px;
     }
 
     .fa-magnifying-glass {
@@ -647,11 +644,6 @@ textarea::placeholder {
     i.right {
         font-size: 1.5em;
     }
-    
-    .sidenav.sidenav-fixed {
-        width: 26vw;
-        padding: 25px 35px;
-    }
 
     .button-container button,
     .button-container a {
@@ -702,11 +694,6 @@ textarea::placeholder {
         font-size: 20px;
     }
 
-    .sidenav.sidenav-fixed {
-        width: 27vw;  
-        z-index: 1000;
-    }
-
     ul#nav-menu {
         padding-top: 30px;
         width: 195px;
@@ -717,6 +704,10 @@ textarea::placeholder {
         padding: 35px;
     }
 
+    img.logo-img {
+        width: 50px;
+    }
+    
     .search-bar {
         width: 60%;
     }
@@ -861,8 +852,9 @@ textarea::placeholder {
     nav {
         width: 95%;
     }
-    nav .brand-logo {
+    nav .brand-logo.left {
         font-size: 1.6em;
+        left: 1px;
     }
 
     nav .input-field {
@@ -870,9 +862,9 @@ textarea::placeholder {
         left: 25px;
     }
 
-    .sidenav.sidenav-fixed {
-        width: 44vw;
-        padding: 25px 30px;
+    .sidenav li a {
+        font-size: 18px;
+        padding: 35px 0;
     }
 
     .fa-magnifying-glass {
@@ -880,8 +872,13 @@ textarea::placeholder {
         left: -71px;
     }
 
+    img.logo-img {
+        display: none;
+    }
+    
     .search-bar {
         width: 60%;
+        left: -3px;
     }
 
     .search-bar, .label-icon {
@@ -996,6 +993,11 @@ textarea::placeholder {
         height: 16vh;
     }
 
+    ul#nav-menu {
+        width: 132px;
+        padding-top: 0;
+    }
+
     .menu-item a, .sub-menu-item .sub-list-item {
         font-size: 15px;
     }
@@ -1027,19 +1029,29 @@ textarea::placeholder {
     a.icon {
         top: -6px;
     }
+
+    img#movie-reel {
+        right: 22px;
+        top: 84px;
+    }
+
+    img#tv-set {
+        left: 28px;
+        bottom: 201px;
+    }
 }
 
 @media only screen and (max-width: 375px) {
     nav .brand-logo.left {
-        left: -2px;
-    }
-
-    .sidenav.sidenav-fixed {
-        width: 50vw;
+        left: 1px;
     }
 
     nav .input-field {
         left: 10px;
+    }
+
+    nav .brand-logo.left {
+        font-size: 20px;
     }
 
     .button-container button,
@@ -1078,8 +1090,17 @@ textarea::placeholder {
         left: 0px;
     }
 
-    .sidenav.sidenav-fixed {
-        width: 50vw;
+    nav .brand-logo.left {
+        font-size: 18px;
+        left: 0;
+    }
+
+    .search-bar {
+        left: -13px;
+    }
+
+    #search {
+        width: 58vw;
     }
 
     .feature-container-search {
