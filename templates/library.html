@@ -3,6 +3,7 @@
 
     <div class="library-content container">
         <h5 class="library-sub-title">All Films</h5>
+        <a href="#all-tv-shows" id="all-films" class="right">Jump to TV Shows</a>
         <div class="row list-container">
             {% if movie_data|length > 0 %}
                 {% for movie in movie_data %}
@@ -56,10 +57,11 @@
                     </div>
                 {% endfor %}
             {% else %}
-                    <h2 class="grey-text text-lighten-4">Much Empty</h2>
+                    <h2 class="grey-text text-lighten-4">Much Empty - Use the search bar to begin adding your favourite titles</h2>
             {% endif %}
         </div>
         <h5 class="library-sub-title">All TV Shows</h5>
+        <a href="#all-films" id="all-tv-shows" class="right">Back to Films</a>
         <div class="row list-container">
             {% if tv_data|length > 0 %}
                 {% for tv_show in tv_data %}
@@ -113,7 +115,7 @@
                     </div>  
                 {% endfor %}
             {% else %}
-                <h2 class="grey-text text-lighten-4">Much Empty</h2>
+                <h2 class="grey-text text-lighten-4">Much Empty - Use the search bar to begin adding your favourite titles</h2>
             {% endif %}
         </div>
     </div>

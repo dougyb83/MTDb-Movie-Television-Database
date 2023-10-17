@@ -76,6 +76,10 @@ img.logo-img {
     padding: 0;
 }
 
+ul.sidenav.sidenav-fixed.grey.darken-4.white-text {
+    padding-right: 0;
+}
+
 .sidenav li a, nav ul a {
     color: rgb(170, 169, 169);
 }
@@ -248,6 +252,13 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
 }
 
 /* library page */
+.sidenav.sidenav-fixed {
+    border-radius: 0 10px 0 0;
+    margin-top: 89px;
+    width: 20vw;
+    padding: 30px 45px ;
+}
+
 .library-content, .list-content {
     min-height: 85vh;
     padding-bottom: 20px;
@@ -337,6 +348,18 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
 .pop-controls {
     display: flex;
     justify-content: space-around;
+}
+
+#all-tv-shows, #all-films {
+    color: rgb(170, 169, 169);
+    font-size: 20px;
+    right: 10px;
+    position: relative;
+    right: 25px;
+}
+
+#all-tv-shows:hover, #all-films:hover {
+    color: whitesmoke;
 }
 
 /* feature display pages - search results and edit feature */
@@ -480,6 +503,10 @@ textarea::placeholder {
         left: 0;
     }
 
+    .sidenav.sidenav-fixed {
+        width: 16vw;
+    }
+
     .card-poster {
         height: 35vh;
     }
@@ -524,6 +551,10 @@ textarea::placeholder {
 
     .card-poster {
         margin-bottom: 85px;
+    }
+
+    .sidenav.sidenav-fixed {
+        width: 18vw;
     }
 
     img#movie-reel {
@@ -644,6 +675,11 @@ textarea::placeholder {
     i.right {
         font-size: 1.5em;
     }
+    
+    .sidenav.sidenav-fixed {
+        width: 26vw;
+        padding: 25px 35px;
+    }
 
     .button-container button,
     .button-container a {
@@ -674,6 +710,10 @@ textarea::placeholder {
         bottom: 200px;
         width: 15vw;
     }
+
+    #all-tv-shows, #all-films {
+        font-size: 17px;
+    }
 }
 
 @media only screen and (max-width: 768px) {
@@ -692,6 +732,11 @@ textarea::placeholder {
         top: 85px;
         left: 15px;
         font-size: 20px;
+    }
+
+    .sidenav.sidenav-fixed {
+        width: 27vw;  
+        z-index: 1000;
     }
 
     ul#nav-menu {
@@ -846,6 +891,10 @@ textarea::placeholder {
         margin-bottom: 50px;
         z-index: 99;
     }
+
+    #all-tv-shows, #all-films {
+        font-size: 15px;
+    }
 }
 
 @media only screen and (max-width: 425px) {
@@ -860,6 +909,11 @@ textarea::placeholder {
     nav .input-field {
         width: 100%;
         left: 25px;
+    }
+
+    .sidenav.sidenav-fixed {
+        width: 44vw;
+        padding: 25px 30px;
     }
 
     .sidenav li a {
@@ -957,6 +1011,11 @@ textarea::placeholder {
         font-size: .9em;
     }
 
+    ul#nav-menu {
+        width: 132px;
+        padding-top: 0;
+    }
+
     .button-container {
         flex-direction: column;
         justify-content: unset;
@@ -991,11 +1050,6 @@ textarea::placeholder {
 
     .card-poster {
         height: 16vh;
-    }
-
-    ul#nav-menu {
-        width: 132px;
-        padding-top: 0;
     }
 
     .menu-item a, .sub-menu-item .sub-list-item {
@@ -1039,11 +1093,21 @@ textarea::placeholder {
         left: 28px;
         bottom: 201px;
     }
+
+    #all-tv-shows, #all-films {
+        font-size: 13px;
+        right: 17px;
+        top: 8px;
+    }    
 }
 
 @media only screen and (max-width: 375px) {
     nav .brand-logo.left {
         left: 1px;
+    }
+
+    .sidenav.sidenav-fixed {
+        width: 50vw;
     }
 
     nav .input-field {
@@ -1101,6 +1165,10 @@ textarea::placeholder {
 
     #search {
         width: 58vw;
+    }
+
+    .sidenav.sidenav-fixed {
+        width: 50vw;
     }
 
     .feature-container-search {
