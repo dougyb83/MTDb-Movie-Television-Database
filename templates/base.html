@@ -69,7 +69,7 @@
     </header>
 
     {% if session.user %} 
-        <div class="side-menu" id="side-menu">
+        <div {% if request.path == url_for('home') or request.path == '/' %} class="hide side-menu" {% else %} class="side-menu" {% endif %} id="side-menu">
             <ul class="sidenav sidenav-fixed grey darken-4 white-text">
                 <li>
                     <div class="menu-item">
@@ -126,7 +126,7 @@
             </ul>
         </div>
     {% else %}
-        <div class="side-menu">
+        <div {% if request.path == url_for('home') or request.path == '/' %} class="hide side-menu" {% else %} class="side-menu" {% endif %}>
             <ul class="non-session-activity sidenav sidenav-fixed grey darken-4 white-text">
                 <li>
                     <div class="menu-item">

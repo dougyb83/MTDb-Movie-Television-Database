@@ -3,7 +3,7 @@
 
     <div class="library-content container">
         <h5 class="library-sub-title">All Films</h5>
-        <a href="#all-tv-shows" id="all-films" class="right">Jump to TV Shows</a>
+        <a href="#all-tv-shows" id="all-films" class="right">Jump to TV Shows  <i class="fa-regular fa-circle-down"></i></a>
         <div class="row list-container">
             {% if movie_data|length > 0 %}
                 {% for movie in movie_data %}
@@ -61,7 +61,7 @@
             {% endif %}
         </div>
         <h5 class="library-sub-title">All TV Shows</h5>
-        <a href="#all-films" id="all-tv-shows" class="right">Back to Films</a>
+        <a href="#all-films" id="all-tv-shows" class="right">Back to Films  <i class="fa-regular fa-circle-up"></i></a>
         <div class="row list-container">
             {% if tv_data|length > 0 %}
                 {% for tv_show in tv_data %}

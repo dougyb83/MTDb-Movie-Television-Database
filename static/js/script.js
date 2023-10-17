@@ -71,10 +71,6 @@ $(document).ready(function(){
       $(".seenlists").toggleClass("hide show");
     }
   $(".dropdown-trigger").dropdown();
-  // Hide the side menu on the home screen
-  if (document.getElementById("welcome")) {
-    document.getElementById("side-menu").classList.add("hide");
-  }
 });
 
 
