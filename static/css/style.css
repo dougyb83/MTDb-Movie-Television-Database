@@ -1,4 +1,4 @@
-flash messages
+/* flash messages */
 .flashes {
     position: absolute;
     width: 100%;
@@ -137,6 +137,7 @@ footer {
     display: flex;
     flex-wrap: wrap;
     align-content: center;
+    justify-content: center;
 }
 
 .welcome h1 {
@@ -250,6 +251,41 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
 .show {
     display: block;
 }
+
+.user-login-signup {
+    width: 25vw;
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    top: 55px;
+}
+
+/* button from https://getcssscan.com/css-buttons-examples - button-33 */
+.button-login-signup {
+    background-color: #f79426;
+    border-radius: 100px;
+    box-shadow: rgba(255, 138, 5, 5) 0 -25px 18px -14px inset,rgba(247,148,38, .15) 0 1px 2px,rgba(247,148,38, .15) 0 2px 4px,rgba(247,148,38, .15) 0 4px 8px,rgba(247,148,38, .15) 0 8px 16px,rgba(247,148,38, .15) 0 16px 32px;
+    color: black;
+    cursor: pointer;
+    display: inline-block;
+    font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
+    padding: 7px 20px;
+    text-align: center;
+    text-decoration: none;
+    transition: all 250ms;
+    border: 0;
+    font-size: 21px;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    width: 10vw;
+    height: 5vh;
+  }
+  
+  .button-login-signup:hover {
+    box-shadow: rgba(247,148,38,.35) 0 -25px 18px -14px inset,rgba(247,148,38,.25) 0 1px 2px,rgba(247,148,38,.25) 0 2px 4px,rgba(247,148,38,.25) 0 4px 8px,rgba(247,148,38,.25) 0 8px 16px,rgba(247,148,38,.25) 0 16px 32px;
+    transform: scale(1.05) rotate(-1deg);
+  }
 
 /* library page */
 .sidenav.sidenav-fixed {
@@ -480,7 +516,8 @@ textarea::placeholder {
     }
 
     .title-container {
-        width: 60%;
+        width: 90%;
+        padding: 0 330px;
     }
 
     .fa-magnifying-glass {
@@ -714,6 +751,16 @@ textarea::placeholder {
     #all-tv-shows, #all-films {
         font-size: 17px;
     }
+
+    .user-login-signup {
+        width: 30vw;
+        top: 115px;
+    }
+    
+    .button-login-signup {
+        font-size: 17px;
+        width: 12vw;
+    }
 }
 
 @media only screen and (max-width: 768px) {
@@ -892,12 +939,29 @@ textarea::placeholder {
         z-index: 99;
     }
 
+    img#tv-set {
+        bottom: 310px;
+    }
+
     #all-tv-shows, #all-films {
         font-size: 15px;
+    }
+
+    .user-login-signup {
+        width: 35vw;
+        top: 125px;
+    }
+    
+    .button-login-signup {
+        font-size: 17px;
+        width: 15vw;
     }
 }
 
 @media only screen and (max-width: 425px) {
+    .welcome {
+        padding: 25px;
+    }
     nav {
         width: 95%;
     }
@@ -1091,14 +1155,24 @@ textarea::placeholder {
 
     img#tv-set {
         left: 28px;
-        bottom: 201px;
+        bottom: 320px;
     }
 
     #all-tv-shows, #all-films {
         font-size: 13px;
         right: 17px;
         top: 8px;
-    }    
+    }
+
+    .user-login-signup {
+        width: 65vw;
+        top: 125px;
+    }
+    
+    .button-login-signup {
+        font-size: 17px;
+        width: 26vw;
+    }
 }
 
 @media only screen and (max-width: 375px) {
@@ -1146,6 +1220,16 @@ textarea::placeholder {
 
     .menu-item a i, .sub-menu-item a i {
         font-size: 19px;
+    }
+
+    .user-login-signup {
+        width: 70vw;
+        top: 135px;
+    }
+    
+    .button-login-signup {
+        font-size: 17px;
+        width: 28vw;
     }
 }
 
@@ -1198,5 +1282,15 @@ textarea::placeholder {
 
     #overview {
         top: 40px;
+    }
+
+    .user-login-signup {
+        width: 76vw;
+        top: 135px;
+    }
+    
+    .button-login-signup {
+        font-size: 17px;
+        width: 32vw;
     }
 }

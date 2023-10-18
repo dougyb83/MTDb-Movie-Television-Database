@@ -66,7 +66,7 @@ def register():
             flash("Username already exists")
             return redirect(url_for("home"))
 
-        register = {
+        register_user = {
             "username": request.form.get("signup-username").lower(),
             "password": generate_password_hash(
                         request.form.get("signup-password")),
@@ -75,7 +75,7 @@ def register():
             "watchlist": [],
             "seenlist": []
         }
-        mongo.db.users.insert_one(register)
+        mongo.db.users.insert_one(register_user)
 
         # put the new user into 'session' cookie
         session["user"] = request.form.get("signup-username").lower()
