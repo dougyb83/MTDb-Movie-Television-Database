@@ -32,7 +32,8 @@
                                     <form method="POST" action="{{ url_for('add_seenlist') }}">                    
                                         <input type="hidden" name="id" value="{{ movie['id'] }}">
                                         <input type="hidden" name="title" value="{{ movie['title'] }}">
-                                        <input type="hidden" name="media_type" value="movie">                 
+                                        <input type="hidden" name="media_type" value="movie">
+                                        <input type="hidden" name="poster" value="{{ movie['poster_path'] }}">                
                                         <button type="submit">
                                             <i class="fa-regular fa-circle-check"></i>
                                         </button>
@@ -90,7 +91,8 @@
                                     <form method="POST" action="{{ url_for('add_seenlist') }}">                    
                                         <input type="hidden" name="id" value="{{ tv_show['id'] }}">                 
                                         <input type="hidden" name="title" value="{{ tv_show['name'] }}">                 
-                                        <input type="hidden" name="media_type" value="tv">                 
+                                        <input type="hidden" name="media_type" value="tv"> 
+                                        <input type="hidden" name="poster" value="{{ tv_show['poster_path'] }}">                
                                         <button type="submit">
                                             <i class="fa-regular fa-circle-check"></i>
                                         </button>

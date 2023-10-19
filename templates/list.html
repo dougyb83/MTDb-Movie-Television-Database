@@ -41,7 +41,8 @@
                                     <form method="POST" action="{{ url_for('add_seenlist') }}">                    
                                         <input type="hidden" name="id" value="{{ item['id'] }}">
                                         <input type="hidden" name="title" value="{% if media_type == 'movie' %}{{ item['title'] }}{% else %}{{ item['name'] }}{% endif %}">
-                                        <input type="hidden" name="media_type" value="{{ media_type }}">                 
+                                        <input type="hidden" name="media_type" value="{{ media_type }}">
+                                        <input type="hidden" name="poster" value="{{ media_data['poster_path'] }}">                 
                                         <button type="submit">
                                             <a href="#"><i class="fa-regular fa-circle-check"></i></a>
                                         </button>

@@ -273,9 +273,10 @@ def add_watchlist():
     # get user data from DB
     user = mongo.db.users.find_one({"username": session["user"]})
     if request.method == "POST":
-        # get the id and title
+        # get the id, title and poster path
         id = request.form.get("id")
         title = request.form.get("title")
+        poster = request.form.get("poster")
         # check if id is already in watchlist
         if id in user["watchlist"]:
             # already exists
@@ -319,6 +320,17 @@ def add_watchlist():
                     "seenlist": user["seenlist"]
                 }}
             )
+            # add/update the all_added_titles collection
+            feature_info = {
+                "id": id,
+                "title": title,
+                "poster": poster
+            }
+            if mongo.db.all_added_titles.find_one({"id": id}):
+                mongo.db.all_added_titles.update({"id": id}, feature_info)
+                print("done")
+            else:
+                mongo.db.all_added_titles.insert_one(feature_info)
             flash(f'"{title }" added to your Watchlist')
 
         return redirect(url_for("library", username=session["user"]))
@@ -329,9 +341,10 @@ def add_seenlist():
     # get user data from DB
     user = mongo.db.users.find_one({"username": session["user"]})
     if request.method == "POST":
-        # get the id and title
+        # get the id, title and poster path
         id = request.form.get("id")
         title = request.form.get("title")
+        poster = request.form.get("poster")
         # check if id is already in seenlist
         if id in user["seenlist"]:
             # already exists
@@ -375,6 +388,17 @@ def add_seenlist():
                     "seenlist": user["seenlist"]
                 }}
             )
+            # add/update the all_added_titles collection
+            feature_info = {
+                "id": id,
+                "title": title,
+                "poster": poster
+            }
+            if mongo.db.all_added_titles.find_one({"id": id}):
+                mongo.db.all_added_titles.update({"id": id}, feature_info)
+                print("done")
+            else:
+                mongo.db.all_added_titles.insert_one(feature_info)
             flash(f'"{title }" added to your Seenlist')
 
         return redirect(url_for("library", username=session["user"]))
