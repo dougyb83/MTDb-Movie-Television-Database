@@ -12,10 +12,16 @@
             <img id="popcorn-1" class="hide-on-med-and-down" src="{{ url_for('static', filename='images/popcorn.png') }}" alt="Image of a bucket of popcorn spilling over">
             <img id="popcorn-2" class="hide-on-med-and-down" src="{{ url_for('static', filename='images/popcorn.png') }}" alt="Image of a bucket of popcorn spilling over">
         </div>
-        <div class="user-login-signup">
-            <button class="log-in-button button-login-signup" role="button"><strong>Log In</strong></button>
-            <button class="sign-up-button button-login-signup" role="button"><strong>Sign Up</strong></button>
-        </div>
+        {% if not session.user %}  
+            <div class="user-login-signup">
+                <button class="log-in-button button-title" role="button"><strong>Log In</strong></button>
+                <button class="sign-up-button button-title" role="button"><strong>Sign Up</strong></button>
+            </div>
+        {% else %}
+            <div class="go-to-library">
+                <button class="go-to-library-button button-title" role="button"><strong>Go to Library</strong></button>
+            </div>
+        {% endif %}
     </div>
 
     <!-- popular films and tv shows -->

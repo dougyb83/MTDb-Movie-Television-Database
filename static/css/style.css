@@ -43,6 +43,10 @@ nav ul a:hover {
     justify-content: center;
 }
 
+nav ul li.active {
+    background-color: unset;
+}
+
 .side-trigger {
     color: whitesmoke;
 }
@@ -213,7 +217,7 @@ img#popcorn-2 {
 }
 
 .popular-title {
-    font-size: 1.8em !important;
+    font-size: 1.4em !important;
 }
 
 .popular-films, .popular-shows {
@@ -260,8 +264,16 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
     top: 55px;
 }
 
+.go-to-library {
+    width: 25vw;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 55px;
+}
+
 /* button from https://getcssscan.com/css-buttons-examples - button-33 */
-.button-login-signup {
+.button-title {
     background-color: #f79426;
     border-radius: 100px;
     box-shadow: rgba(255, 138, 5, 5) 0 -25px 18px -14px inset,rgba(247,148,38, .15) 0 1px 2px,rgba(247,148,38, .15) 0 2px 4px,rgba(247,148,38, .15) 0 4px 8px,rgba(247,148,38, .15) 0 8px 16px,rgba(247,148,38, .15) 0 16px 32px;
@@ -282,10 +294,14 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
     height: 5vh;
   }
   
-  .button-login-signup:hover {
+  .button-title:hover {
     box-shadow: rgba(247,148,38,.35) 0 -25px 18px -14px inset,rgba(247,148,38,.25) 0 1px 2px,rgba(247,148,38,.25) 0 2px 4px,rgba(247,148,38,.25) 0 4px 8px,rgba(247,148,38,.25) 0 8px 16px,rgba(247,148,38,.25) 0 16px 32px;
     transform: scale(1.05) rotate(-1deg);
   }
+
+  .go-to-library-button {
+    width: 21vw;
+}
 
 /* library page */
 .sidenav.sidenav-fixed {
@@ -667,6 +683,7 @@ textarea::placeholder {
 
     .popular h2 {
         font-size: 40px;
+        margin-bottom: 30px;
     }
 
     .popular h3 {
@@ -676,7 +693,7 @@ textarea::placeholder {
     }
 
     .popular-title {
-        font-size: 1.3em !important;
+        font-size: 1.1em !important;
     }
 
     .card-menu {
@@ -757,13 +774,17 @@ textarea::placeholder {
         top: 115px;
     }
     
-    .button-login-signup {
+    .log-in-button, .sign-up-button {
         font-size: 17px;
         width: 12vw;
     }
 }
 
 @media only screen and (max-width: 768px) {
+    .welcome {
+        margin-top: -135px;
+    }
+
     nav .input-field {
         width: 80%;
         right: 10px;
@@ -828,10 +849,6 @@ textarea::placeholder {
         font-size: 25px;
     }
 
-    .popular-title {
-        font-size: 1.2em !important;
-    }
-
     .card .card-content {
         padding: 18px;
     }
@@ -849,7 +866,7 @@ textarea::placeholder {
         width: 90vw;
         margin: 0 auto;
         position: relative;
-        top: -80px;
+        top: -20px;
     }
 
     .poster img {
@@ -940,7 +957,12 @@ textarea::placeholder {
     }
 
     img#tv-set {
-        bottom: 310px;
+        bottom: 300px;
+        left: 65px;
+    }
+
+    img#movie-reel {
+        right: 55px;
     }
 
     #all-tv-shows, #all-films {
@@ -952,16 +974,39 @@ textarea::placeholder {
         top: 125px;
     }
     
-    .button-login-signup {
+    .log-in-button, .sign-up-button {
         font-size: 17px;
         width: 15vw;
+    }
+
+    .go-to-library {
+        width: 50vw;
+        top: 95px;
+    }
+
+    .go-to-library-button {
+        width: 28vw;
     }
 }
 
 @media only screen and (max-width: 425px) {
     .welcome {
         padding: 25px;
+        margin-top: -125px;
     }
+
+    .popular h2 {
+        font-size: 30px;
+    }
+
+    .popular h3 {
+        margin-left: 10px;
+    }
+
+    .popular-title {
+        font-size: 0.9em !important;
+    }
+
     nav {
         width: 95%;
     }
@@ -1155,7 +1200,7 @@ textarea::placeholder {
 
     img#tv-set {
         left: 28px;
-        bottom: 320px;
+        bottom: 390px;
     }
 
     #all-tv-shows, #all-films {
@@ -1169,13 +1214,26 @@ textarea::placeholder {
         top: 125px;
     }
     
-    .button-login-signup {
+    .log-in-button, .sign-up-button {
         font-size: 17px;
         width: 26vw;
+    }
+
+    .go-to-library {
+        width: 90vw;
+        top: 115px;
+    }
+
+    .go-to-library-button {
+        width: 40vw;
     }
 }
 
 @media only screen and (max-width: 375px) {
+    .popular h2 {
+        font-size: 27px;
+    }
+
     nav .brand-logo.left {
         left: 1px;
     }
@@ -1227,13 +1285,21 @@ textarea::placeholder {
         top: 135px;
     }
     
-    .button-login-signup {
+    .log-in-button, .sign-up-button {
         font-size: 17px;
         width: 28vw;
+    }
+
+    .go-to-library-button {
+        width: 55vw;
     }
 }
 
 @media only screen and (max-width: 320px) {
+    .popular h2 {
+        font-size: 24px;
+    }
+
     nav .input-field {
         left: 0px;
     }
@@ -1289,7 +1355,7 @@ textarea::placeholder {
         top: 135px;
     }
     
-    .button-login-signup {
+    .log-in-button, .sign-up-button {
         font-size: 17px;
         width: 32vw;
     }
