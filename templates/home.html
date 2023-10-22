@@ -19,7 +19,9 @@
             </div>
         {% else %}
             <div class="go-to-library">
-                <button class="go-to-library-button button-title" role="button"><strong>Go to Library</strong></button>
+                <a href="{{ url_for('library') }}">
+                    <button class="go-to-library-button button-title" role="button"><strong>Go to Library</strong></button>
+                </a>
             </div>
         {% endif %}
     </div>
