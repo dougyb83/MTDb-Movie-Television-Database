@@ -133,18 +133,70 @@ def library():
         # get movie data
         movie_data = []
         for id in movie_list:
-            movie = get_media_details(id, "movie")
-            movie_data.append(movie)
+            # get the movie title and poster from DB
+            details = mongo.db.all_added_titles.find_one({"id": id})            
+            movie_data.append(details)
+            # movie = get_media_details(id, "movie")
+            # title = movie["title"]
+            # poster = movie["poster_path"]
+            # feature_info = {
+            #     "id": id,
+            #     "title": title,
+            #     "poster_path": poster
+            # }
+            # if mongo.db.all_added_titles.find_one({"id": id}):
+            #     mongo.db.all_added_titles.update({"id": id}, feature_info)
+            # else:
+            #     mongo.db.all_added_titles.insert_one(feature_info)
         # get tv data
         tv_data = []
         for id in tv_list:
-            tv_show = get_media_details(id, "tv")
-            tv_data.append(tv_show)
+            # get the movie title and poster from DB
+            details = mongo.db.all_added_titles.find_one({"id": id})
+            tv_data.append(details)
+
+            # tv_show = get_media_details(id, "tv")
+            # title = tv_show["name"]
+            # poster = tv_show["poster_path"]
+            # feature_info = {
+            #     "id": id,
+            #     "title": title,
+            #     "poster_path": poster
+            # }
+            # if mongo.db.all_added_titles.find_one({"id": id}):
+            #     mongo.db.all_added_titles.update({"id": id}, feature_info)
+            # else:
+            #     mongo.db.all_added_titles.insert_one(feature_info)
         return render_template(
             "library.html", movie_data=movie_data, tv_data=tv_data)
 
     # user is not logged in - display home page
     return render_template("home.html")
+
+
+# def library():
+#     if "user" in session:
+#         # get user data from DB
+#         user = mongo.db.users.find_one({"username": session["user"]})
+#         # split the db lists from user
+#         movie_list = user["movie_list"]
+#         tv_list = user["tv_list"]
+
+#         # get movie data
+#         movie_data = []
+#         for id in movie_list:
+#             movie = get_media_details(id, "movie")
+#             movie_data.append(movie)
+#         # get tv data
+#         tv_data = []
+#         for id in tv_list:
+#             tv_show = get_media_details(id, "tv")
+#             tv_data.append(tv_show)
+#         return render_template(
+#             "library.html", movie_data=movie_data, tv_data=tv_data)
+
+#     # user is not logged in - display home page
+#     return render_template("home.html")
 
 
 @app.route("/search", methods=["GET", "POST"])
@@ -324,11 +376,10 @@ def add_watchlist():
             feature_info = {
                 "id": id,
                 "title": title,
-                "poster": poster
+                "poster_path": poster
             }
             if mongo.db.all_added_titles.find_one({"id": id}):
                 mongo.db.all_added_titles.update({"id": id}, feature_info)
-                print("done")
             else:
                 mongo.db.all_added_titles.insert_one(feature_info)
             flash(f'"{title }" added to your Watchlist')
@@ -392,7 +443,7 @@ def add_seenlist():
             feature_info = {
                 "id": id,
                 "title": title,
-                "poster": poster
+                "poster_path": poster
             }
             if mongo.db.all_added_titles.find_one({"id": id}):
                 mongo.db.all_added_titles.update({"id": id}, feature_info)

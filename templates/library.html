@@ -73,13 +73,13 @@
                                     {% if tv_show['poster_path'] == None %}                    
                                         <img src="{{ url_for('static', filename='images/no-image-placeholder.png') }}" alt="No Image Available">
                                     {% else %}
-                                        <img src="https://image.tmdb.org/t/p/w500{{ tv_show['poster_path'] }}" alt="{{ tv_show['name'] }}">
+                                        <img src="https://image.tmdb.org/t/p/w500{{ tv_show['poster_path'] }}" alt="{{ tv_show['title'] }}">
                                     {% endif %}
                                 </a>
                             </div>
                             <div class="card-title-container card-content">
                                 <div>
-                                    <span class="feature-title card-title grey-text text-lighten-4">{{ tv_show['name'] }}</span>
+                                    <span class="feature-title card-title grey-text text-lighten-4">{{ tv_show['title'] }}</span>
                                 </div>
                                 <div class="card-menu activator grey-text text-lighten-4">
                                     <i class="material-icons right">more_vert</i>
@@ -90,7 +90,7 @@
                                 <div class="controls">
                                     <form method="POST" action="{{ url_for('add_seenlist') }}">                    
                                         <input type="hidden" name="id" value="{{ tv_show['id'] }}">                 
-                                        <input type="hidden" name="title" value="{{ tv_show['name'] }}">                 
+                                        <input type="hidden" name="title" value="{{ tv_show['title'] }}">                 
                                         <input type="hidden" name="media_type" value="tv"> 
                                         <input type="hidden" name="poster" value="{{ tv_show['poster_path'] }}">                
                                         <button type="submit">
@@ -105,7 +105,7 @@
                             <div id="modal-delete-{{ tv_show['id'] }}" class="modal">
                                 <div class="modal-content">
                                 <h4>Delete TV Show</h4>
-                                <p>Are you sure you want to delete {{ tv_show['name'] }}?</p>
+                                <p>Are you sure you want to delete {{ tv_show['title'] }}?</p>
                                 <small>This action is permanent, and cannot be undone.</small>
                                 </div>
                                 <div class="modal-footer">
