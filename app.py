@@ -133,8 +133,9 @@ def library():
         # get movie data
         movie_data = []
         for id in movie_list:
+            
             # get the movie title and poster from DB
-            details = mongo.db.all_added_titles.find_one({"id": id})            
+            details = mongo.db.all_added_titles.find_one({"id": id})
             movie_data.append(details)
             # movie = get_media_details(id, "movie")
             # title = movie["title"]
@@ -465,13 +466,21 @@ def view_watchlist(media_type):
     if media_type == "movie":
         for id in watchlist:
             if id in user["movie_list"]:
-                movie = get_media_details(id, "movie")
-                media_data.append(movie)
+                # movie = get_media_details(id, "movie")
+
+                # get the movie title and poster from DB
+                details = mongo.db.all_added_titles.find_one({"id": id})
+                media_data.append(details)
+                # media_data.append(movie)
     else:
         for id in watchlist:
             if id in user["tv_list"]:
-                tv_show = get_media_details(id, "tv")
-                media_data.append(tv_show)
+                # tv_show = get_media_details(id, "tv")
+                
+                # get the movie title and poster from DB
+                details = mongo.db.all_added_titles.find_one({"id": id})
+                media_data.append(details)
+                # media_data.append(tv_show)
 
     return render_template(
         "list.html", media_data=media_data,
@@ -488,13 +497,21 @@ def view_seenlist(media_type):
     if media_type == "movie":
         for id in seenlist:
             if id in user["movie_list"]:
-                movie = get_media_details(id, "movie")
-                media_data.append(movie)
+                # movie = get_media_details(id, "movie")
+
+                # get the movie title and poster from DB
+                details = mongo.db.all_added_titles.find_one({"id": id})
+                media_data.append(details)
+                # media_data.append(movie)
     else:
         for id in seenlist:
             if id in user["tv_list"]:
-                tv_show = get_media_details(id, "tv")
-                media_data.append(tv_show)
+                # tv_show = get_media_details(id, "tv")
+
+                # get the movie title and poster from DB
+                details = mongo.db.all_added_titles.find_one({"id": id})
+                media_data.append(details)
+                # media_data.append(tv_show)
 
     return render_template(
         "list.html", media_data=media_data,
