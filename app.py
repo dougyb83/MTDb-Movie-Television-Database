@@ -138,31 +138,18 @@ def library():
                 # get the movie title and poster from DB
                 details = mongo.db.all_added_titles.find_one({"id": id})
                 movie_data.append(details)
-                # movie = get_media_details(id, "movie")
-                # title = movie["title"]
-                # poster = movie["poster_path"]
-                # feature_info = {
-                #     "id": id,
-                #     "title": title,
-                #     "poster_path": poster
-                # }
-                # if mongo.db.all_added_titles.find_one({"id": id}):
-                #     mongo.db.all_added_titles.update({"id": id}, feature_info)
-                # else:
-                #     mongo.db.all_added_titles.insert_one(feature_info)
             # if id is not in all_added_titles collection
             else:
                 # get details from the API
                 movie = get_media_details(id, "movie")
                 feature_info = {
-                    "id": movie["id"],
+                    "id": str(movie["id"]),
                     "title": movie["title"],
                     "poster_path": movie["poster_path"]
                 }
                 # insert details into all_added_titles collection
                 mongo.db.all_added_titles.insert_one(feature_info)
-                movie_data.append(movie)
-                        
+                movie_data.append(feature_info)
         # get tv data
         tv_data = []
         for id in tv_list:
@@ -171,61 +158,23 @@ def library():
                 # get the movie title and poster from DB
                 details = mongo.db.all_added_titles.find_one({"id": id})
                 tv_data.append(details)
-
-                # tv_show = get_media_details(id, "tv")
-                # title = tv_show["name"]
-                # poster = tv_show["poster_path"]
-                # feature_info = {
-                #     "id": id,
-                #     "title": title,
-                #     "poster_path": poster
-                # }
-                # if mongo.db.all_added_titles.find_one({"id": id}):
-                #     mongo.db.all_added_titles.update({"id": id}, feature_info)
-                # else:
-                #     mongo.db.all_added_titles.insert_one(feature_info)
             # if id is not in all_added_titles collection
             else:
                 # get details from the API
                 tv_show = get_media_details(id, "tv")
                 feature_info = {
-                    "id": tv_show["id"],
+                    "id": str(tv_show["id"]),
                     "title": tv_show["name"],
                     "poster_path": tv_show["poster_path"]
                 }
                 # insert details into all_added_titles collection
                 mongo.db.all_added_titles.insert_one(feature_info)
-                movie_data.append(tv_show)
+                tv_data.append(feature_info)
         return render_template(
             "library.html", movie_data=movie_data, tv_data=tv_data)
 
     # user is not logged in - display home page
     return render_template("home.html")
-
-
-# def library():
-#     if "user" in session:
-#         # get user data from DB
-#         user = mongo.db.users.find_one({"username": session["user"]})
-#         # split the db lists from user
-#         movie_list = user["movie_list"]
-#         tv_list = user["tv_list"]
-
-#         # get movie data
-#         movie_data = []
-#         for id in movie_list:
-#             movie = get_media_details(id, "movie")
-#             movie_data.append(movie)
-#         # get tv data
-#         tv_data = []
-#         for id in tv_list:
-#             tv_show = get_media_details(id, "tv")
-#             tv_data.append(tv_show)
-#         return render_template(
-#             "library.html", movie_data=movie_data, tv_data=tv_data)
-
-#     # user is not logged in - display home page
-#     return render_template("home.html")
 
 
 @app.route("/search", methods=["GET", "POST"])
@@ -476,7 +425,6 @@ def add_seenlist():
             }
             if mongo.db.all_added_titles.find_one({"id": id}):
                 mongo.db.all_added_titles.update({"id": id}, feature_info)
-                print("done")
             else:
                 mongo.db.all_added_titles.insert_one(feature_info)
             flash(f'"{title }" added to your Seenlist')
@@ -496,45 +444,39 @@ def view_watchlist(media_type):
             if id in user["movie_list"]:
                 # make sure id is in all_added_titles collection
                 if mongo.db.all_added_titles.find_one({"id": id}):
-                    # movie = get_media_details(id, "movie")
-
                     # get the movie title and poster from DB
                     details = mongo.db.all_added_titles.find_one({"id": id})
                     media_data.append(details)
-                    # media_data.append(movie)
                 else:
                     # get details from the API
                     movie = get_media_details(id, "movie")
                     feature_info = {
-                        "id": movie["id"],
+                        "id": str(movie["id"]),
                         "title": movie["title"],
                         "poster_path": movie["poster_path"]
                     }
                     # insert details into all_added_titles collection
                     mongo.db.all_added_titles.insert_one(feature_info)
-                    media_data.append(movie)
+                    media_data.append(feature_info)
     else:
         for id in watchlist:
             if id in user["tv_list"]:
                 # make sure id is in all_added_titles collection
                 if mongo.db.all_added_titles.find_one({"id": id}):
-                    # tv_show = get_media_details(id, "tv")
-                    
                     # get the movie title and poster from DB
                     details = mongo.db.all_added_titles.find_one({"id": id})
                     media_data.append(details)
-                    # media_data.append(tv_show)
                 else:
                     # get details from the API
                     tv_show = get_media_details(id, "tv")
                     feature_info = {
-                        "id": tv_show["id"],
+                        "id": str(tv_show["id"]),
                         "title": tv_show["name"],
                         "poster_path": tv_show["poster_path"]
                     }
                     # insert details into all_added_titles collection
                     mongo.db.all_added_titles.insert_one(feature_info)
-                    media_data.append(tv_show)
+                    media_data.append(feature_info)
 
     return render_template(
         "list.html", media_data=media_data,
@@ -553,45 +495,39 @@ def view_seenlist(media_type):
             if id in user["movie_list"]:
                 # make sure id is in all_added_titles collection
                 if mongo.db.all_added_titles.find_one({"id": id}):
-                    # movie = get_media_details(id, "movie")
-
                     # get the movie title and poster from DB
                     details = mongo.db.all_added_titles.find_one({"id": id})
                     media_data.append(details)
-                    # media_data.append(movie)
                 else:
                     # get details from the API
                     movie = get_media_details(id, "movie")
                     feature_info = {
-                        "id": movie["id"],
+                        "id": str(movie["id"]),
                         "title": movie["title"],
                         "poster_path": movie["poster_path"]
                     }
                     # insert details into all_added_titles collection
                     mongo.db.all_added_titles.insert_one(feature_info)
-                    media_data.append(movie)
+                    media_data.append(feature_info)
     else:
         for id in seenlist:
             if id in user["tv_list"]:
                 # make sure id is in all_added_titles collection
                 if mongo.db.all_added_titles.find_one({"id": id}):
-                    # tv_show = get_media_details(id, "tv")
-
                     # get the movie title and poster from DB
                     details = mongo.db.all_added_titles.find_one({"id": id})
                     media_data.append(details)
-                    # media_data.append(tv_show)
                 else:
                     # get details from the API
                     tv_show = get_media_details(id, "tv")
                     feature_info = {
-                        "id": tv_show["id"],
+                        "id": str(tv_show["id"]),
                         "title": tv_show["name"],
                         "poster_path": tv_show["poster_path"]
                     }
                     # insert details into all_added_titles collection
                     mongo.db.all_added_titles.insert_one(feature_info)
-                    media_data.append(tv_show)
+                    media_data.append(feature_info)
 
     return render_template(
         "list.html", media_data=media_data,

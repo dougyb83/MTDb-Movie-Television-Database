@@ -557,7 +557,7 @@ textarea::placeholder {
     }
 
     .sidenav.sidenav-fixed {
-        width: 16vw;
+        width: 260px;
     }
 
     .card-poster {
@@ -953,7 +953,7 @@ textarea::placeholder {
     }
     
     footer {
-        margin-bottom: 50px;
+        margin-bottom: -11px;
         z-index: 99;
     }
 
