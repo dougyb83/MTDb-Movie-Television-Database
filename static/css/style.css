@@ -1,3 +1,7 @@
+html {
+    scroll-behavior: smooth;
+}
+
 /* flash messages */
 .flashes {
     position: absolute;
@@ -397,7 +401,7 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
 .sidenav.sidenav-fixed {
     border-radius: 0 10px 0 0;
     margin-top: 89px;
-    width: 20vw;
+    width: 265px;
     padding: 30px 45px ;
 }
 
@@ -646,13 +650,9 @@ textarea::placeholder {
         left: 0;
     }
 
-    .sidenav.sidenav-fixed {
-        width: 260px;
-    }
-
     .card-poster {
-        height: 35vh;
-        margin-bottom: 73px;
+        /* height: 35vh;
+        margin-bottom: 73px; */
     }
 
     img#movie-reel {
@@ -694,11 +694,7 @@ textarea::placeholder {
     }
 
     .card-poster {
-        margin-bottom: 85px;
-    }
-
-    .sidenav.sidenav-fixed {
-        width: 18vw;
+        /* margin-bottom: 85px; */
     }
 
     img#movie-reel {
@@ -800,8 +796,8 @@ textarea::placeholder {
     }
 
     .card-poster {
-        height: 18vh;
-        margin-bottom: 50px;
+        /* height: 18vh;
+        margin-bottom: 50px; */
     }
 
     .card .card-reveal {
@@ -822,7 +818,6 @@ textarea::placeholder {
     }
     
     .sidenav.sidenav-fixed {
-        width: 26vw;
         padding: 25px 35px;
     }
 
@@ -871,7 +866,7 @@ textarea::placeholder {
     }
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 992px) {
     .welcome {
         margin-top: -135px;
     }
@@ -894,7 +889,6 @@ textarea::placeholder {
     }
 
     .sidenav.sidenav-fixed {
-        width: 27vw;  
         z-index: 1000;
     }
 
@@ -945,8 +939,8 @@ textarea::placeholder {
     }
 
     .card-poster {
-        height: 14vh;
-        margin-bottom: 70px;
+        /* height: 14vh;
+        margin-bottom: 120px; */
     }
 
     .card-title .card-close {
@@ -1112,7 +1106,6 @@ textarea::placeholder {
     }
 
     .sidenav.sidenav-fixed {
-        width: 44vw;
         padding: 25px 30px;
     }
 
@@ -1249,7 +1242,7 @@ textarea::placeholder {
     }
 
     .card-poster {
-        height: 16vh;
+        /* height: 16vh; */
     }
 
     .menu-item a, .sub-menu-item .sub-list-item {
@@ -1329,10 +1322,6 @@ textarea::placeholder {
         left: 1px;
     }
 
-    .sidenav.sidenav-fixed {
-        width: 50vw;
-    }
-
     nav .input-field {
         left: 10px;
     }
@@ -1360,7 +1349,7 @@ textarea::placeholder {
     }
 
     .card-poster {
-        height: 14vh;
+        /* height: 14vh; */
     }
 
     .menu-item a, .sub-menu-item .sub-list-item {
@@ -1408,10 +1397,6 @@ textarea::placeholder {
         width: 58vw;
     }
 
-    .sidenav.sidenav-fixed {
-        width: 50vw;
-    }
-
     .feature-container-search {
         height: 65px;
     }
@@ -1434,7 +1419,7 @@ textarea::placeholder {
     }
 
     .card-poster {
-        height: 11vh;
+        /* height: 11vh; */
     }
 
     #overview {
