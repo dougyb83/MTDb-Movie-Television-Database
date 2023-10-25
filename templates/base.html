@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='/images/favicon/favicon-32x32.png') }}">
-    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='/images/favicon/favicon-16x16.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for('static', filename='images/favicon/favicon-32x32.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for('static', filename='images/favicon/favicon-16x16.png') }}">
     <meta name="description" content="Keep track of all you favourite movies and shows with the Movie and Television Database">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" 
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" 
@@ -24,7 +24,7 @@
             <nav class="text-shadow grey darken-4">
                 <div class="nav-wrapper">                    
                     <a href="{{ url_for('home') }}" class="brand-logo left">
-                        <img src="{{ url_for('static', filename='/images/mtdb-logo.png') }}" alt="Logo for MTDB" class="logo-img">
+                        <img src="{{ url_for('static', filename='images/mtdb-logo.png') }}" alt="Logo for MTDB" class="logo-img">
                         MTDb
                     </a>
                     <form class="search-bar" method="POST" action="{{ url_for('search') }}">
@@ -310,7 +310,7 @@
             <div class="row">
                 <div class="col l6 s12">
                     <a href="{{ url_for('home') }}" class="brand-logo left">
-                        <img src="{{ url_for('static', filename='/images/mtdb-logo.png') }}" alt="Logo for MTDB" class="footer-logo-img">
+                        <img src="{{ url_for('static', filename='images/mtdb-logo.png') }}" alt="Logo for MTDB" class="footer-logo-img">
                     </a>
                     <h4 class="white-text">MTDB</h4>
                 </div>

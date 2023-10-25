@@ -39,7 +39,7 @@
                                 <i class="fa-regular fa-bookmark"></i>
                             </button>
                         </form>
-                        <form method="POST" action="{{ url_for('add_seenlist') }}" id="seenlist">                    
+                        <form method="POST" action="{{ url_for('add_seenlist') }}">                    
                             <input type="hidden" name="id" value="{{ media_data['id'] }}">                  
                             <input type="hidden" name="title" value="{% if media_type == 'movie' %}{{ media_data['title'] }}{% else %}{{ media_data['name'] }}{% endif %}">
                             <input type="hidden" name="media_type" value="{{ media_type }}">
@@ -118,7 +118,7 @@
                                     <i class="fa-regular fa-bookmark"></i>
                                 </button>
                             </form>
-                            <form method="POST" action="{{ url_for('add_seenlist') }}" id="seenlist">                    
+                            <form method="POST" action="{{ url_for('add_seenlist') }}">                    
                                 <input type="hidden" name="id" value="{{ media_data['id'] }}">                  
                                 <input type="hidden" name="title" value="{% if media_type == 'movie' %}{{ media_data['title'] }}{% else %}{{ media_data['name'] }}{% endif %}">
                                 <input type="hidden" name="media_type" value="{{ media_type }}">
