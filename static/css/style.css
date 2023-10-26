@@ -991,7 +991,15 @@ textarea::placeholder {
     .dropdown-content li>a>i {
         float: unset;
         margin: 0;
-        width: unset;
+        width: unset;             
+    }
+
+    .dropdown-content li>a {
+        color: rgb(170, 169, 169); 
+    }
+
+    .sub-menu-item:hover a {
+        color: rgb(46, 45, 45); 
     }
     
     ul.dropdown-content {

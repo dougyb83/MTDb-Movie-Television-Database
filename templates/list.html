@@ -16,7 +16,7 @@
         <div class="row list-container">
             {% if media_data|length > 0 %}
                 {% for item in media_data %}
-                    <div class="col l2 m2 s4">
+                    <div class="col s6 m3 l2">
                         <div class="card card-poster">
                             <div class="card-image waves-effect waves-block waves-light">
                                 <a href="{{ url_for('feature_details', feature_id=item['id'], media_type=media_type) }}">
