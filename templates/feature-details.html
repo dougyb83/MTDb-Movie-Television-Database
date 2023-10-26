@@ -35,20 +35,20 @@
                         <input type="hidden" name="title" value="{% if media_type == 'movie' %}{{ media_data['title'] }}{% else %}{{ media_data['name'] }}{% endif %}">
                         <input type="hidden" name="media_type" value="{{ media_type }}">
                         <input type="hidden" name="poster" value="{{ media_data['poster_path'] }}">
-                        <button class="btn-floating waves-effect waves-light" title="Add to Watchlist" type="submit">
+                        <button class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Add to Watchlist" type="submit">
                             <i class="fa-regular fa-bookmark"></i>
                         </button>
                     </form>
-                    <form method="POST" action="{{ url_for('add_seenlist') }}" id="seenlist">                    
+                    <form method="POST" action="{{ url_for('add_seenlist') }}">                    
                         <input type="hidden" name="id" value="{{ media_data['id'] }}">                  
                         <input type="hidden" name="title" value="{% if media_type == 'movie' %}{{ media_data['title'] }}{% else %}{{ media_data['name'] }}{% endif %}">
                         <input type="hidden" name="media_type" value="{{ media_type }}">
                         <input type="hidden" name="poster" value="{{ media_data['poster_path'] }}">
-                        <button class="btn-floating waves-effect waves-light" title="Add to Seenlist" type="submit">
+                        <button class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Add to Seenlist" type="submit">
                             <i class="fa-regular fa-circle-check"></i>
                         </button>
                     </form>
-                    <a href="#modal-delete-{{ media_data['id'] }}" class="modal-trigger btn-floating waves-effect waves-light"><i class="fa-solid fa-trash"></i></a>
+                    <a href="#modal-delete-{{ media_data['id'] }}" class="modal-trigger btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Delete"><i class="fa-solid fa-trash"></i></a>
                 </div>
             </div>
             <div class="col s6 poster right">
@@ -147,7 +147,7 @@
                                 <input type="hidden" name="title" value="{% if media_type == 'movie' %}{{ media_data['title'] }}{% else %}{{ media_data['name'] }}{% endif %}">
                                 <input type="hidden" name="media_type" value="{{ media_type }}">
                                 <input type="hidden" name="poster" value="{{ media_data['poster_path'] }}">
-                                <button class="btn-floating waves-effect waves-light" title="Add to Watchlist" type="submit">
+                                <button class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Add to Watchlist" type="submit">
                                     <i class="fa-regular fa-bookmark"></i>
                                 </button>
                             </form>
@@ -156,11 +156,11 @@
                                 <input type="hidden" name="title" value="{% if media_type == 'movie' %}{{ media_data['title'] }}{% else %}{{ media_data['name'] }}{% endif %}">
                                 <input type="hidden" name="media_type" value="{{ media_type }}">
                                 <input type="hidden" name="poster" value="{{ media_data['poster_path'] }}">
-                                <button class="btn-floating waves-effect waves-light" title="Add to Seenlist" type="submit">
+                                <button class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Add to Seenlist" type="submit">
                                     <i class="fa-regular fa-circle-check"></i>
                                 </button>
                             </form>
-                            <a href="#modal-delete-{{ media_data['id'] }}" class="modal-trigger btn-floating waves-effect waves-light"><i class="fa-solid fa-trash"></i></a>
+                            <a href="#modal-delete-{{ media_data['id'] }}" class="modal-trigger btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Delete"><i class="fa-solid fa-trash"></i></a>
                         </div>
                     </div>
                     <!-- Modal: delete media -->

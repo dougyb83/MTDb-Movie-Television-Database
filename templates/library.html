@@ -7,7 +7,7 @@
         <div class="row list-container">
             {% if movie_data|length > 0 %}
                 {% for movie in movie_data %}
-                    <div class="col l2 m2 s4">
+                    <div class="col s6 m3 l2">
                         <div class="card card-poster">
                             <div class="card-image waves-effect waves-block waves-light">
                                 <a href="{{ url_for('feature_details', feature_id=movie['id'], media_type='movie') }}">
@@ -29,17 +29,8 @@
                             <div class="card-reveal">
                                 <span class="card-title grey-text text-lighten-4"><i class="card-close material-icons right">close</i></span>
                                 <div class="controls">
-                                    <form method="POST" action="{{ url_for('add_seenlist') }}">                    
-                                        <input type="hidden" name="id" value="{{ movie['id'] }}">
-                                        <input type="hidden" name="title" value="{{ movie['title'] }}">
-                                        <input type="hidden" name="media_type" value="movie">
-                                        <input type="hidden" name="poster" value="{{ movie['poster_path'] }}">                
-                                        <button type="submit">
-                                            <i class="fa-regular fa-circle-check"></i>
-                                        </button>
-                                    </form>
-                                    <a href="{{ url_for('feature_details', feature_id=movie['id'], media_type='movie') }}"><i class="fa-solid fa-pen"></i></a>
-                                    <a href="#modal-delete-{{ movie['id'] }}" class="modal-trigger"><i class="fa-solid fa-trash"></i></a>
+                                    <a href="{{ url_for('feature_details', feature_id=movie['id'], media_type='movie') }}" class="tooltipped" data-position="top" data-tooltip="Edit Details"><i class="fa-solid fa-pen"></i></a>
+                                    <a href="#modal-delete-{{ movie['id'] }}" class="modal-trigger tooltipped" data-position="top" data-tooltip="Delete"><i class="fa-solid fa-trash"></i></a>
                                 </div>            
                             </div>
                             <!-- Modal: delete movie -->
@@ -66,7 +57,7 @@
         <div class="row list-container">
             {% if tv_data|length > 0 %}
                 {% for tv_show in tv_data %}
-                    <div class="col l2 m2 s4">
+                    <div class="col s6 m3 l2">
                         <div class="card card-poster">
                             <div class="card-image waves-effect waves-block waves-light">
                                 <a href="{{ url_for('feature_details', feature_id=tv_show['id'], media_type='tv') }}">
@@ -88,17 +79,8 @@
                             <div class="card-reveal">
                                 <span class="card-title grey-text text-lighten-4"><i class="card-close material-icons right">close</i></span>
                                 <div class="controls">
-                                    <form method="POST" action="{{ url_for('add_seenlist') }}">                    
-                                        <input type="hidden" name="id" value="{{ tv_show['id'] }}">                 
-                                        <input type="hidden" name="title" value="{{ tv_show['title'] }}">                 
-                                        <input type="hidden" name="media_type" value="tv"> 
-                                        <input type="hidden" name="poster" value="{{ tv_show['poster_path'] }}">                
-                                        <button type="submit">
-                                            <i class="fa-regular fa-circle-check"></i>
-                                        </button>
-                                    </form>
-                                    <a href="{{ url_for('feature_details', feature_id=tv_show['id'], media_type='tv') }}"><i class="fa-solid fa-pen"></i></a>
-                                    <a href="#modal-delete-{{ tv_show['id'] }}" class="modal-trigger"><i class="fa-solid fa-trash"></i></a>
+                                    <a href="{{ url_for('feature_details', feature_id=tv_show['id'], media_type='tv') }}" class="tooltipped" data-position="top" data-tooltip="Edit Details"><i class="fa-solid fa-pen"></i></a>
+                                    <a href="#modal-delete-{{ tv_show['id'] }}" class="modal-trigger tooltipped" data-position="top" data-tooltip="Delete"><i class="fa-solid fa-trash"></i></a>
                                 </div>            
                             </div>
                             <!-- Modal: delete tv show -->

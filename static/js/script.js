@@ -71,6 +71,7 @@ $(document).ready(function(){
       $(".seenlists").toggleClass("hide show");
     }
   $(".dropdown-trigger").dropdown();
+  $('.tooltipped').tooltip();
 });
 
 

@@ -38,17 +38,8 @@
                             <div class="card-reveal">
                                 <span class="card-title grey-text text-lighten-4"><i class="card-close material-icons right">close</i></span>
                                 <div class="controls">
-                                    <form method="POST" action="{{ url_for('add_seenlist') }}">                    
-                                        <input type="hidden" name="id" value="{{ item['id'] }}">
-                                        <input type="hidden" name="title" value="{% if media_type == 'movie' %}{{ item['title'] }}{% else %}{{ item['name'] }}{% endif %}">
-                                        <input type="hidden" name="media_type" value="{{ media_type }}">
-                                        <input type="hidden" name="poster" value="{{ media_data['poster_path'] }}">                 
-                                        <button type="submit">
-                                            <a href="#"><i class="fa-regular fa-circle-check"></i></a>
-                                        </button>
-                                    </form>
-                                    <a href="{{ url_for('feature_details', feature_id=item['id'], media_type=media_type) }}"><i class="fa-solid fa-pen"></i></a>
-                                    <a href="#modal-delete-{{ item['id'] }}" class="modal-trigger"><i class="fa-solid fa-trash"></i></a>
+                                    <a href="{{ url_for('feature_details', feature_id=item['id'], media_type=media_type) }}" class="tooltipped" data-position="top" data-tooltip="Edit Details"><i class="fa-solid fa-pen"></i></a>
+                                    <a href="#modal-delete-{{ item['id'] }}" class="modal-trigger tooltipped" data-position="top" data-tooltip="Delete"><i class="fa-solid fa-trash"></i></a>
                                 </div>            
                             </div>
                             <!-- Modal: delete movie -->
@@ -67,7 +58,7 @@
                     </div>
                 {% endfor %}
             {% else %}
-                    <h2 class="grey-text text-lighten-4">Much Empty</h2>
+                    <h2 class="grey-text text-lighten-4">Much Empty - Use the search bar to begin adding your favourite titles</h2>
             {% endif %}
         </div>
     </div>

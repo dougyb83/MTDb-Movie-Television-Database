@@ -35,7 +35,7 @@
                             <input type="hidden" name="title" value="{% if media_type == 'movie' %}{{ media_data['title'] }}{% else %}{{ media_data['name'] }}{% endif %}">
                             <input type="hidden" name="media_type" value="{{ media_type }}">
                             <input type="hidden" name="poster" value="{{ media_data['poster_path'] }}">
-                            <button class="btn-floating waves-effect waves-light" title="Add to Watchlist" type="submit">
+                            <button class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Add to Watchlist" type="submit">
                                 <i class="fa-regular fa-bookmark"></i>
                             </button>
                         </form>
@@ -44,15 +44,15 @@
                             <input type="hidden" name="title" value="{% if media_type == 'movie' %}{{ media_data['title'] }}{% else %}{{ media_data['name'] }}{% endif %}">
                             <input type="hidden" name="media_type" value="{{ media_type }}">
                             <input type="hidden" name="poster" value="{{ media_data['poster_path'] }}">
-                            <button class="btn-floating waves-effect waves-light" title="Add to Seenlist" type="submit">
+                            <button class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Add to Seenlist" type="submit">
                                 <i class="fa-regular fa-circle-check"></i>
                             </button>
                         </form>
                     {% else %}
-                        <button class="non-session-activity btn-floating waves-effect waves-light" title="Add to Watchlist">
+                        <button class="non-session-activity btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Add to Watchlist">
                             <i class="fa-regular fa-bookmark"></i>
                         </button>
-                        <button class="non-session-activity btn-floating waves-effect waves-light" title="Add to Seenlist">
+                        <button class="non-session-activity btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Add to Seenlist" >
                             <i class="fa-regular fa-circle-check"></i>
                         </button>
                     {% endif %}
@@ -114,7 +114,7 @@
                                 <input type="hidden" name="title" value="{% if media_type == 'movie' %}{{ media_data['title'] }}{% else %}{{ media_data['name'] }}{% endif %}">
                                 <input type="hidden" name="media_type" value="{{ media_type }}">
                                 <input type="hidden" name="poster" value="{{ media_data['poster_path'] }}">
-                                <button class="btn-floating waves-effect waves-light" title="Add to Watchlist" type="submit">
+                                <button class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Add to Watchlist" type="submit">
                                     <i class="fa-regular fa-bookmark"></i>
                                 </button>
                             </form>
@@ -123,15 +123,15 @@
                                 <input type="hidden" name="title" value="{% if media_type == 'movie' %}{{ media_data['title'] }}{% else %}{{ media_data['name'] }}{% endif %}">
                                 <input type="hidden" name="media_type" value="{{ media_type }}">
                                 <input type="hidden" name="poster" value="{{ media_data['poster_path'] }}">
-                                <button class="btn-floating waves-effect waves-light" title="Add to Seenlist" type="submit">
+                                <button class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Add to Seenlist" type="submit">
                                     <i class="fa-regular fa-circle-check"></i>
                                 </button>
                             </form>
                         {% else %}
-                            <button class="non-session-activity btn-floating waves-effect waves-light" title="Add to Watchlist">
+                            <button class="non-session-activity btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Add to Watchlist">
                                 <i class="fa-regular fa-bookmark"></i>
                             </button>
-                            <button class="non-session-activity btn-floating waves-effect waves-light" title="Add to Seenlist">
+                            <button class="non-session-activity btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Add to Seenlist" >
                                 <i class="fa-regular fa-circle-check"></i>
                             </button>
                         {% endif %}

@@ -429,13 +429,15 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
 .card-poster {
     background-color: transparent;
     box-shadow: none;
-    height: 22vh;
+    /* height: 22vh; */
     margin-bottom: 50px;
 }
 
 .card .card-image img {
     border-radius: 3px;
     margin-bottom: 5px;
+    height: 22vh;
+    object-fit: cover;
 }
 
 .card-title-container {
