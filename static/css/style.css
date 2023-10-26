@@ -129,9 +129,15 @@ ul.sub-menu li {
     margin-top: 8px;
 }
 
+/* footer */
 footer {
     position: relative;
     z-index: 999;
+}
+
+.page-footer .row {
+    display: flex;
+    align-items: center;
 }
 
 .footer-logo-img {
@@ -140,7 +146,15 @@ footer {
     position: relative;
 }
 
-/* footer social icons styling from  codepen https://codepen.io/robsonvinicius/pen/bGpKQrw */
+.footer-copyright {
+    text-align: center;
+}
+
+.icon-list {
+    margin-bottom: 0;
+}
+
+/* social icons styling from  codepen https://codepen.io/robsonvinicius/pen/bGpKQrw */
 :root {
     --bg: #dcdde1;     
     --color-icon: #535c68;  
@@ -851,6 +865,11 @@ textarea::placeholder {
         font-size: 17px;
         width: 12vw;
     }
+
+    .icon-link {  
+        font-size: 2rem;  
+        width: 4.5rem;
+      }
 }
 
 @media only screen and (max-width: 992px) {
@@ -1061,6 +1080,21 @@ textarea::placeholder {
 
     .go-to-library-button {
         width: 28vw;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+    .icon-link {  
+        font-size: 1.5rem;  
+        width: 4rem;
+    }
+
+    .footer-logo-img {
+        width: 65px;
+    }
+
+    .footer-logo-title h4 {
+        font-size: 25px;
     }
 }
 
@@ -1296,6 +1330,21 @@ textarea::placeholder {
 
     .go-to-library-button {
         width: 40vw;
+    }
+
+    .footer-logo-title {
+        display: flex;
+        justify-content: center;
+    }
+    
+    .page-footer .row {
+        margin: 0;
+        display: block;
+    }
+
+    .socials {
+        display: flex;
+        justify-content: center;
     }
 }
 
