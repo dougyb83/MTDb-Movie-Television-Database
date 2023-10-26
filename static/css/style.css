@@ -429,15 +429,14 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
 .card-poster {
     background-color: transparent;
     box-shadow: none;
-    /* height: 22vh; */
     margin-bottom: 50px;
 }
 
 .card .card-image img {
     border-radius: 3px;
     margin-bottom: 5px;
-    height: 22vh;
-    object-fit: cover;
+
+    aspect-ratio: 2 / 3;
 }
 
 .card-title-container {
@@ -652,11 +651,6 @@ textarea::placeholder {
         left: 0;
     }
 
-    .card-poster {
-        /* height: 35vh;
-        margin-bottom: 73px; */
-    }
-
     img#movie-reel {
         position: absolute;
         right: 155px;
@@ -693,10 +687,6 @@ textarea::placeholder {
 
     .main-content {
         left: 305px;
-    }
-
-    .card-poster {
-        /* margin-bottom: 85px; */
     }
 
     img#movie-reel {
@@ -795,11 +785,6 @@ textarea::placeholder {
 
     .title-container h1 {        
         font-size: 3rem;
-    }
-
-    .card-poster {
-        /* height: 18vh;
-        margin-bottom: 50px; */
     }
 
     .card .card-reveal {
@@ -938,11 +923,6 @@ textarea::placeholder {
 
     .card .card-content {
         padding: 18px;
-    }
-
-    .card-poster {
-        /* height: 14vh;
-        margin-bottom: 120px; */
     }
 
     .card-title .card-close {
@@ -1243,10 +1223,6 @@ textarea::placeholder {
         font-size: 15px;
     }
 
-    .card-poster {
-        /* height: 16vh; */
-    }
-
     .menu-item a, .sub-menu-item .sub-list-item {
         font-size: 15px;
     }
@@ -1350,10 +1326,6 @@ textarea::placeholder {
         width: 160px;
     }
 
-    .card-poster {
-        /* height: 14vh; */
-    }
-
     .menu-item a, .sub-menu-item .sub-list-item {
         font-size: 12px;
     }
@@ -1418,10 +1390,6 @@ textarea::placeholder {
     .controls {
         font-size: 1em;
         margin-top: 8px;
-    }
-
-    .card-poster {
-        /* height: 11vh; */
     }
 
     #overview {
