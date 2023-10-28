@@ -19,6 +19,10 @@ body {
     background-repeat: no-repeat;
 }
 
+main {
+    min-height: 65vh;
+}
+
 nav {
     opacity: 90%;
     width: 98%;
@@ -49,10 +53,6 @@ nav ul a:hover {
 
 nav ul li.active {
     background-color: unset;
-}
-
-.side-trigger {
-    color: whitesmoke;
 }
 
 img.logo-img {
@@ -449,7 +449,6 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
 .card .card-image img {
     border-radius: 3px;
     margin-bottom: 5px;
-
     aspect-ratio: 2 / 3;
 }
 
@@ -489,28 +488,6 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
     color: whitesmoke;
 }
 
-.controls {
-    display: flex;
-    flex-direction: column;
-    height: 90%;
-    justify-content: space-between;
-    text-align: center;
-    font-size: 1.8em;
-}
-
-.controls button {
-    all: unset;
-}
-
-.controls i {
-    color: whitesmoke;
-}
-
-.pop-controls {
-    display: flex;
-    justify-content: space-around;
-}
-
 #all-tv-shows, #all-films {
     color: rgb(170, 169, 169);
     font-size: 20px;
@@ -531,30 +508,16 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
     left: 330px;
 }
 
-.feature-container-library, .feature-container-search {
-    display: flex;
-    align-items: center;
-    height: 700px;
-}
-
-.title-genre {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
-.title-genre h3 {
-    margin: 0;
-}
-
-.title-genre #genres {
-    padding-top: 20px;
+#title {
+    margin-top: 0;
+    font-size: 39px;
 }
 
 .cert-year-runtime {
     display: flex;
     justify-content: space-between;
     padding-right: 10px;
+    margin-top: 20px;
 }
 
 #overview {
@@ -562,9 +525,7 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
 }
 
 .poster img {
-    width: 33vw;
-    position: absolute;
-    top: 0;
+    width: 29vw;
 }
 
 .review {
@@ -577,18 +538,14 @@ textarea::placeholder {
 }
 
 #review:focus::placeholder {
-    color: transparent;
+    /* color: transparent; */
   }
 
 .button-container {
     display: flex;
     flex-direction: row;
-    justify-content: center;
-}
-
-.button-container button,
-.button-container a {
-    margin: 50px 50px 0;
+    justify-content: space-around;
+    margin-top: 25px;
 }
 
 /* 5 star rating from codepen.io */
@@ -655,10 +612,6 @@ textarea::placeholder {
     .library-content, .list-content {
         width: 80%;
         margin-left: 270px;
-    }
-
-    .poster img {
-        width: 28vw;
     }
 
     .auth-form .input-field i {
@@ -729,12 +682,7 @@ textarea::placeholder {
     }
 }
 
-@media only screen and (max-width: 1024px) {
-    .controls {
-        font-size: 1.3em;
-        margin-top: 10px;
-    }
-    
+@media only screen and (max-width: 1024px) {    
     .card-title .card-close {
         font-size: 0.8em;
         right: 5px;
@@ -805,11 +753,6 @@ textarea::placeholder {
         padding: 10px;
     }
 
-    .poster img {
-        position: relative;
-        width: 34vw;
-    }
-
     .library-content .feature-title, .list-content .feature-title {
         font-size: 1em !important;
     }
@@ -820,11 +763,6 @@ textarea::placeholder {
     
     .sidenav.sidenav-fixed {
         padding: 25px 35px;
-    }
-
-    .button-container button,
-    .button-container a {
-        margin: 20px 35px 0;
     }
 
     img#movie-reel {
@@ -870,6 +808,10 @@ textarea::placeholder {
         font-size: 2rem;  
         width: 4.5rem;
       }
+
+    #title {
+        font-size: 35px;
+    }
 }
 
 @media only screen and (max-width: 992px) {
@@ -883,7 +825,7 @@ textarea::placeholder {
     }
 
     .poster img {
-        width: 40vw;
+        width: 36vw;
     }
 
     .side-menu .sidenav-trigger {
@@ -926,10 +868,8 @@ textarea::placeholder {
 
     .main-content {
         left: unset;
-        margin: 15px auto 0;
+        margin: 75px auto 0;
         width: 90%;
-        display: flex;
-        justify-content: center;
     }
 
     .popular h2 {
@@ -953,19 +893,6 @@ textarea::placeholder {
         margin: 0 auto;
         position: relative;
         top: -20px;
-    }
-
-    .poster img {
-        width: 45vw;
-    }
-
-    .button-container button,
-    .button-container a {
-        margin: 20px 30px 0;
-    }
-
-    .feature-container-search, .feature-container-library {
-        height: 540px;
     }
 
     .bottom-nav nav {
@@ -1084,6 +1011,12 @@ textarea::placeholder {
 }
 
 @media only screen and (max-width: 768px) {
+    #title {
+        font-size: 29px;
+    }
+}
+
+@media only screen and (max-width: 600px) {
     .icon-link {  
         font-size: 1.5rem;  
         width: 4rem;
@@ -1095,6 +1028,14 @@ textarea::placeholder {
 
     .footer-logo-title h4 {
         font-size: 25px;
+    }
+
+    .button-container {
+        margin-top:40px;
+    }
+
+    #title {
+        font-size: 22px;
     }
 }
 
@@ -1167,7 +1108,7 @@ textarea::placeholder {
 
     .main-content {
         left: unset;
-        margin: -10px auto 0;
+        margin: 40px auto 0;
         width: 90%;
         min-height: 50vh;
         display: block;
@@ -1177,22 +1118,8 @@ textarea::placeholder {
         height: 75px
     }
 
-    .feature-container-library {
-        height: 345px;
-    }
-
-    .title-genre {
-        display: block;
-        padding: 0;
-    }
-
     .title-genre h3 {
-        width: 100%;
-        font-size: 1.4em;
-    }
-
-    .title-genre span {
-        margin-top: 13px;
+        font-size: 2.5em;
     }
 
     .title-genre #genres {
@@ -1205,23 +1132,23 @@ textarea::placeholder {
     }
 
     .poster img {
-        width: 40vw;
+        width: 41vw;
     }
 
-    #overview {
+    .overview {
         text-align: justify;
-        margin: 0;
+        margin: 10px 0 0 0;
         font-size: .8em;
         position: relative;
         top: 20px;
     }
 
     .cert-year-runtime {
-        width: 175px;
+        flex-direction: column;
     }
 
     .cert-year-runtime p {
-        margin-bottom: 10px;
+        margin: 10px 0 0 0;
     }
 
     textarea#review {
@@ -1233,24 +1160,9 @@ textarea::placeholder {
         padding-top: 0;
     }
 
-    .button-container {
-        flex-direction: column;
-        justify-content: unset;
-        margin-top: 10px;
-    }
-
-    .button-container button,
-    .button-container a {
-        margin: 10px 0;
-    }
-
     form#seenlist {
         position: absolute;
         left: 135px;
-    }
-
-    a.modal-trigger {
-        left: 56px;
     }
 
     #rating {
@@ -1365,24 +1277,11 @@ textarea::placeholder {
         font-size: 20px;
     }
 
-    .button-container button,
-    .button-container a {
-        margin: 10px 0;
-    }
-
     form#seenlist {
         position: absolute;
         left: 110px;
     }
-
-    a.modal-trigger {
-        left: 46px;
-    }    
     
-    .cert-year-runtime {
-        width: 160px;
-    }
-
     .menu-item a, .sub-menu-item .sub-list-item {
         font-size: 12px;
     }
@@ -1432,21 +1331,12 @@ textarea::placeholder {
         height: 65px;
     }
 
-    .feature-container-library {
-        height: 310px;
-    }
-
     .side-menu ul {
         margin-top: 10px;
     }
 
-    .cert-year-runtime {
-        width: 135px;
-    }
-
-    .controls {
-        font-size: 1em;
-        margin-top: 8px;
+    .title-genre h3 {
+        font-size: 1.9em;
     }
 
     #overview {
