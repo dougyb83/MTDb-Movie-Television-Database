@@ -1,6 +1,6 @@
 import os
-import requests
 import json
+import requests
 from flask import (
     Flask, flash, render_template, redirect, request, session, url_for)
 from flask_pymongo import PyMongo
@@ -174,30 +174,35 @@ def library():
             "library.html", movie_data=movie_data, tv_data=tv_data)
 
     # user is not logged in - display home page
-    return render_template("home.html")
+    return redirect(url_for("home"))
 
 
 @app.route("/search", methods=["GET", "POST"])
 def search():
     # get the movie/show title from the search input
     title = request.form.get("search")
-    # get the movie/show ID from the API
-    url = f"https://api.themoviedb.org/3/search/multi?query={title}&include_adult=false&language=en-US&page=1"  # noqa
-    # get json data
-    json_data = get_api_data(url)
-    # get the movie or show id from json results
-    if json_data["total_results"] > 0:
-        media_id = json_data['results'][0]['id']
-        # get media type
-        media_type = json_data['results'][0]['media_type']
-        # get the movie or show details
-        media_data = get_media_details(media_id, media_type)
-        media_certificate = get_media_certificate(media_id, media_type)
-        return render_template(
-            "search-result.html", media_data=media_data,
-            media_certificate=media_certificate, media_type=media_type)
+    # check if title has a value
+    if title:
+        # get the movie/show ID from the API
+        url = f"https://api.themoviedb.org/3/search/multi?query={title}&include_adult=false&language=en-US&page=1"  # noqa
+        # get json data
+        json_data = get_api_data(url)
+        # get the movie or show id from json results
+        if json_data["total_results"] > 0:
+            media_id = json_data['results'][0]['id']
+            # get media type
+            media_type = json_data['results'][0]['media_type']
+            # get the movie or show details
+            media_data = get_media_details(media_id, media_type)
+            media_certificate = get_media_certificate(media_id, media_type)
+            return render_template(
+                "search-result.html", media_data=media_data,
+                media_certificate=media_certificate, media_type=media_type)
+        else:
+            flash(f'No results found for "{title}"')
+            return redirect(url_for("home"))
     else:
-        flash(f'No results found for "{title}"')
+        # title has no value - display home page
         return redirect(url_for("home"))
 
 
@@ -251,16 +256,6 @@ def get_media_certificate(media_id, media_type):
             if item["iso_3166_1"] == "GB":
                 # return certificate
                 return item["rating"]
-
-
-# @app.route("/autocomplete", methods=["POST"])
-# def autocomplete():
-#     title = request.form.get("search")
-#     # store the api url with the title included
-#     url = f"https://api.themoviedb.org/3/search/multi?query={title}&include_adult=false&language=en-US&page=1"  # noqa
-#     # get json data
-#     json_data = get_api_data(url)
-#     return render_template("search-result.html", json_data=json_data)
 
 
 @app.route("/add_rating_review/<media_type>", methods=["GET", "POST"])
@@ -434,126 +429,138 @@ def add_seenlist():
 
 @app.route("/view_watchlist/<media_type>", methods=["GET", "POST"])
 def view_watchlist(media_type):
-    # get user data from DB
-    user = mongo.db.users.find_one({"username": session["user"]})
-    # get movie data
-    watchlist = user["watchlist"]
-    media_data = []
-    if media_type == "movie":
-        for id in watchlist:
-            if id in user["movie_list"]:
-                # make sure id is in all_added_titles collection
-                if mongo.db.all_added_titles.find_one({"id": id}):
-                    # get the movie title and poster from DB
-                    details = mongo.db.all_added_titles.find_one({"id": id})
-                    media_data.append(details)
-                else:
-                    # get details from the API
-                    movie = get_media_details(id, "movie")
-                    feature_info = {
-                        "id": str(movie["id"]),
-                        "title": movie["title"],
-                        "poster_path": movie["poster_path"]
-                    }
-                    # insert details into all_added_titles collection
-                    mongo.db.all_added_titles.insert_one(feature_info)
-                    media_data.append(feature_info)
-    else:
-        for id in watchlist:
-            if id in user["tv_list"]:
-                # make sure id is in all_added_titles collection
-                if mongo.db.all_added_titles.find_one({"id": id}):
-                    # get the movie title and poster from DB
-                    details = mongo.db.all_added_titles.find_one({"id": id})
-                    media_data.append(details)
-                else:
-                    # get details from the API
-                    tv_show = get_media_details(id, "tv")
-                    feature_info = {
-                        "id": str(tv_show["id"]),
-                        "title": tv_show["name"],
-                        "poster_path": tv_show["poster_path"]
-                    }
-                    # insert details into all_added_titles collection
-                    mongo.db.all_added_titles.insert_one(feature_info)
-                    media_data.append(feature_info)
+    if "user" in session:
+        # get user data from DB
+        user = mongo.db.users.find_one({"username": session["user"]})
+        # get movie data
+        watchlist = user["watchlist"]
+        media_data = []
+        if media_type == "movie":
+            for id in watchlist:
+                if id in user["movie_list"]:
+                    # make sure id is in all_added_titles collection
+                    if mongo.db.all_added_titles.find_one({"id": id}):
+                        # get the movie title and poster from DB
+                        details = mongo.db.all_added_titles.find_one({"id": id})
+                        media_data.append(details)
+                    else:
+                        # get details from the API
+                        movie = get_media_details(id, "movie")
+                        feature_info = {
+                            "id": str(movie["id"]),
+                            "title": movie["title"],
+                            "poster_path": movie["poster_path"]
+                        }
+                        # insert details into all_added_titles collection
+                        mongo.db.all_added_titles.insert_one(feature_info)
+                        media_data.append(feature_info)
+        else:
+            for id in watchlist:
+                if id in user["tv_list"]:
+                    # make sure id is in all_added_titles collection
+                    if mongo.db.all_added_titles.find_one({"id": id}):
+                        # get the movie title and poster from DB
+                        details = mongo.db.all_added_titles.find_one({"id": id})
+                        media_data.append(details)
+                    else:
+                        # get details from the API
+                        tv_show = get_media_details(id, "tv")
+                        feature_info = {
+                            "id": str(tv_show["id"]),
+                            "title": tv_show["name"],
+                            "poster_path": tv_show["poster_path"]
+                        }
+                        # insert details into all_added_titles collection
+                        mongo.db.all_added_titles.insert_one(feature_info)
+                        media_data.append(feature_info)
 
-    return render_template(
-        "list.html", media_data=media_data,
-        media_type=media_type, list_type="watchlist")
+        return render_template(
+            "list.html", media_data=media_data,
+            media_type=media_type, list_type="watchlist")
+    else:
+        # user is not logged in - display home page
+        return redirect(url_for("home"))
 
 
 @app.route("/view_seenlist/<media_type>", methods=["GET", "POST"])
 def view_seenlist(media_type):
-    # get user data from DB
-    user = mongo.db.users.find_one({"username": session["user"]})
-    # get movie data
-    seenlist = user["seenlist"]
-    media_data = []
-    if media_type == "movie":
-        for id in seenlist:
-            if id in user["movie_list"]:
-                # make sure id is in all_added_titles collection
-                if mongo.db.all_added_titles.find_one({"id": id}):
-                    # get the movie title and poster from DB
-                    details = mongo.db.all_added_titles.find_one({"id": id})
-                    media_data.append(details)
-                else:
-                    # get details from the API
-                    movie = get_media_details(id, "movie")
-                    feature_info = {
-                        "id": str(movie["id"]),
-                        "title": movie["title"],
-                        "poster_path": movie["poster_path"]
-                    }
-                    # insert details into all_added_titles collection
-                    mongo.db.all_added_titles.insert_one(feature_info)
-                    media_data.append(feature_info)
-    else:
-        for id in seenlist:
-            if id in user["tv_list"]:
-                # make sure id is in all_added_titles collection
-                if mongo.db.all_added_titles.find_one({"id": id}):
-                    # get the movie title and poster from DB
-                    details = mongo.db.all_added_titles.find_one({"id": id})
-                    media_data.append(details)
-                else:
-                    # get details from the API
-                    tv_show = get_media_details(id, "tv")
-                    feature_info = {
-                        "id": str(tv_show["id"]),
-                        "title": tv_show["name"],
-                        "poster_path": tv_show["poster_path"]
-                    }
-                    # insert details into all_added_titles collection
-                    mongo.db.all_added_titles.insert_one(feature_info)
-                    media_data.append(feature_info)
+    if "user" in session:
+        # get user data from DB
+        user = mongo.db.users.find_one({"username": session["user"]})
+        # get movie data
+        seenlist = user["seenlist"]
+        media_data = []
+        if media_type == "movie":
+            for id in seenlist:
+                if id in user["movie_list"]:
+                    # make sure id is in all_added_titles collection
+                    if mongo.db.all_added_titles.find_one({"id": id}):
+                        # get the movie title and poster from DB
+                        details = mongo.db.all_added_titles.find_one({"id": id})
+                        media_data.append(details)
+                    else:
+                        # get details from the API
+                        movie = get_media_details(id, "movie")
+                        feature_info = {
+                            "id": str(movie["id"]),
+                            "title": movie["title"],
+                            "poster_path": movie["poster_path"]
+                        }
+                        # insert details into all_added_titles collection
+                        mongo.db.all_added_titles.insert_one(feature_info)
+                        media_data.append(feature_info)
+        else:
+            for id in seenlist:
+                if id in user["tv_list"]:
+                    # make sure id is in all_added_titles collection
+                    if mongo.db.all_added_titles.find_one({"id": id}):
+                        # get the movie title and poster from DB
+                        details = mongo.db.all_added_titles.find_one({"id": id})
+                        media_data.append(details)
+                    else:
+                        # get details from the API
+                        tv_show = get_media_details(id, "tv")
+                        feature_info = {
+                            "id": str(tv_show["id"]),
+                            "title": tv_show["name"],
+                            "poster_path": tv_show["poster_path"]
+                        }
+                        # insert details into all_added_titles collection
+                        mongo.db.all_added_titles.insert_one(feature_info)
+                        media_data.append(feature_info)
 
-    return render_template(
-        "list.html", media_data=media_data,
-        media_type=media_type, list_type="seenlist")
+        return render_template(
+            "list.html", media_data=media_data,
+            media_type=media_type, list_type="seenlist")
+    else:
+        # user is not logged in - display home page
+        return redirect(url_for("home"))
 
 
 @app.route(
     "/feature_details/<feature_id>/<media_type>", methods=["GET", "POST"])
 def feature_details(feature_id, media_type):
-    # get user data from DB
-    user = mongo.db.users.find_one({"username": session["user"]})
-    # get the movie or show details
-    media_data = get_media_details(feature_id, media_type)
-    media_certificate = get_media_certificate(feature_id, media_type)
-    # get user rating data from DB
-    rating_review = mongo.db.rating_review.find_one({
-        "$and": [
-            {"user_id": ObjectId(user["_id"])},
-            {"feature_id": feature_id}
-            ]})
+    if "user" in session:
+        # get user data from DB
+        user = mongo.db.users.find_one({"username": session["user"]})
+        # get the movie or show details
+        media_data = get_media_details(feature_id, media_type)
+        media_certificate = get_media_certificate(feature_id, media_type)
+        # get user rating data from DB
+        rating_review = mongo.db.rating_review.find_one({
+            "$and": [
+                {"user_id": ObjectId(user["_id"])},
+                {"feature_id": feature_id}
+                ]})
 
-    return render_template(
-        "feature-details.html", media_data=media_data,
-        media_type=media_type, media_certificate=media_certificate,
-        rating_review=rating_review
-    )
+        return render_template(
+            "feature-details.html", media_data=media_data,
+            media_type=media_type, media_certificate=media_certificate,
+            rating_review=rating_review
+        )
+    else:
+        # user is not logged in - display home page
+        return redirect(url_for("home"))
 
 
 @app.route("/delete/<feature_id>/<media_type>")
