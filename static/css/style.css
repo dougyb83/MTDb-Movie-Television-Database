@@ -481,6 +481,24 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
     width: 100%;
 }
 
+.controls {
+    display: flex;
+    flex-direction: column;
+    height: 90%;
+    justify-content: space-between;
+    text-align: center;
+    font-size: 1.8em;
+}
+
+.controls i {
+    padding: 18px;
+    color: rgb(170, 169, 169);
+}
+
+.controls i:hover {
+    color: whitesmoke;    
+}
+
 .feature-title {
     position: absolute;
     text-align: left;
@@ -502,8 +520,8 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
 
 .card-close {
     position: absolute;
-    top: 11px;
-    right: 15px;
+    top: 4px;
+    right: 3px;
     color: whitesmoke;
 }
 
@@ -561,15 +579,23 @@ textarea::placeholder {
     opacity: 50%;
 }
 
-#review:focus::placeholder {
-    /* color: transparent; */
-  }
-
 .button-container {
     display: flex;
     flex-direction: row;
     justify-content: space-around;
     margin-top: 25px;
+}
+
+.button-container button i {
+    background-color: #F79426;
+}
+
+.button-container a i {
+    background-color: red;
+}
+
+#edit-review button {
+    background-color: #F79426;
 }
 
 /* 5 star rating from codepen.io */
@@ -912,6 +938,10 @@ textarea::placeholder {
         font-size: 0.8em;
     }
 
+    .controls i {
+        padding: 55px;    
+    }
+
     .library-content, .list-content {
         width: 90vw;
         margin: 0 auto;
@@ -1038,6 +1068,10 @@ textarea::placeholder {
     #title {
         font-size: 29px;
     }
+
+    .controls i {
+        padding: 16px;    
+    }
 }
 
 @media only screen and (max-width: 600px) {
@@ -1060,6 +1094,10 @@ textarea::placeholder {
 
     #title {
         font-size: 22px;
+    }
+    
+    .controls i {
+        padding: 50px;    
     }
 }
 
@@ -1324,6 +1362,10 @@ textarea::placeholder {
         width: 28vw;
     }
 
+    .controls i {
+        padding: 35px;
+    }
+
     .go-to-library-button {
         width: 55vw;
     }
@@ -1375,5 +1417,9 @@ textarea::placeholder {
     .log-in-button, .sign-up-button {
         font-size: 17px;
         width: 32vw;
+    }
+    
+    .controls i {
+        padding: 29px;
     }
 }

@@ -288,7 +288,7 @@ def add_rating_review(media_type):
                 "review": request.form.get("review")
             }
             mongo.db.rating_review.insert_one(review_submit)
-            flash("Your Rating/Review have been Added")
+            flash("Your Rating/Review has been Added")
         return redirect(url_for(
             "feature_details", feature_id=feature_id, media_type=media_type))
 
