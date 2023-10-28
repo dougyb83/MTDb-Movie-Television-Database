@@ -1104,7 +1104,7 @@ textarea::placeholder {
 @media only screen and (max-width: 425px) {
     .welcome {
         padding: 25px;
-        margin-top: -125px;
+        margin-top: -93px;
     }
 
     .popular h2 {
@@ -1278,7 +1278,7 @@ textarea::placeholder {
 
     img#tv-set {
         left: 28px;
-        bottom: 390px;
+        bottom: 320px;
     }
 
     #all-tv-shows, #all-films {
@@ -1391,6 +1391,14 @@ textarea::placeholder {
 
     #search {
         width: 58vw;
+    }
+
+    .go-to-library {
+        top: 79px;
+    }
+
+    .button-title {
+        font-size: 19px;
     }
 
     .feature-container-search {
