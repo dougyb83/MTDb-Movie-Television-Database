@@ -45,8 +45,8 @@
                         {% endif %}
                         <li><a href="{{ url_for('logout') }}">Log Out</a></li>
                         {% else %}
-                            <li class="log-in-button"><a href="#">Log In</a></li>
-                            <li class="sign-up-button"><a href="#">Sign up</a></li>
+                            <li class="nav-log-in"><a href="#">Log In</a></li>
+                            <li class="nav-sign-up"><a href="#">Sign up</a></li>
                         {% endif%}
                     </ul>
                 </div>
@@ -57,13 +57,10 @@
             <li><a href="{{ url_for('home') }}">Home</a></li>
             {% if session.user %}          
                 <li><a href="{{ url_for('library') }}">Library</a></li>
-                {% if session.user|lower == "admin"|lower %}
-                    <li><a href="#">Manage Categories</a></li>
-                {% endif %}
-            <li><a href="{{ url_for('logout') }}">Log Out</a></li>
+                <li><a href="{{ url_for('logout') }}">Log Out</a></li>
             {% else %}
-                <li class="log-in-button"><a href="#">Log In</a></li>
-                <li class="sign-up-button"><a href="#">Sign up</a></li>
+                <li class="nav-log-in"><a href="#">Log In</a></li>
+                <li class="nav-sign-up"><a href="#">Sign up</a></li>
             {% endif %}
         </ul>
     </header>

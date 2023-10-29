@@ -389,7 +389,7 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
 }
 
 .user-login-signup {
-    width: 25vw;
+    width: 35vw;
     display: flex;
     justify-content: space-between;
     position: relative;
@@ -564,10 +564,11 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
 
 #overview {
     margin-top: 28px;
+    text-align: justify;
 }
 
 .poster img {
-    width: 29vw;
+    width: 330px;
 }
 
 .review {
@@ -845,13 +846,13 @@ textarea::placeholder {
     }
 
     .user-login-signup {
-        width: 30vw;
+        width: 42vw;
         top: 115px;
     }
     
     .log-in-button, .sign-up-button {
         font-size: 17px;
-        width: 12vw;
+        width: 16vw;
     }
 
     .icon-link {  
@@ -875,7 +876,7 @@ textarea::placeholder {
     }
 
     .poster img {
-        width: 36vw;
+        width: 32vw;
     }
 
     .side-menu .sidenav-trigger {
@@ -1037,7 +1038,7 @@ textarea::placeholder {
     }
 
     img#movie-reel {
-        right: 55px;
+        right: 13px;
     }
 
     #all-tv-shows, #all-films {
@@ -1045,13 +1046,12 @@ textarea::placeholder {
     }
 
     .user-login-signup {
-        width: 35vw;
+        width: 48vw;
         top: 125px;
     }
     
     .log-in-button, .sign-up-button {
         font-size: 17px;
-        width: 15vw;
     }
 
     .go-to-library {
@@ -1062,6 +1062,20 @@ textarea::placeholder {
     .go-to-library-button {
         width: 28vw;
     }
+
+    .watchlist-button, .seenlist-button, .delete-button {
+        display: flex;        
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .watchlist-button label, .seenlist-button label, .delete-button label {
+        width: 70%;
+        display: flex;
+        flex-wrap: wrap;
+        margin-top: 10px;
+    }
 }
 
 @media only screen and (max-width: 768px) {
@@ -1071,6 +1085,19 @@ textarea::placeholder {
 
     .controls i {
         padding: 16px;    
+    }
+
+    .user-login-signup {
+        width: 50vw;
+    }
+
+    .log-in-button, .sign-up-button {
+        font-size: 18px;
+        width: 23vw;
+    }
+
+    img#tv-set {
+        bottom: 343px;
     }
 }
 
@@ -1098,6 +1125,22 @@ textarea::placeholder {
     
     .controls i {
         padding: 50px;    
+    }
+
+    .cert-year-runtime {
+        flex-direction: column;
+    }
+
+    .overview {
+        margin: 10px 0 0 0;
+    }
+
+    .user-login-signup {
+        width: 52vw;
+    }
+
+    .log-in-button, .sign-up-button {
+        font-size: 16px;
     }
 }
 
@@ -1195,18 +1238,6 @@ textarea::placeholder {
 
     .poster img {
         width: 41vw;
-    }
-
-    .overview {
-        text-align: justify;
-        margin: 10px 0 0 0;
-        font-size: .8em;
-        position: relative;
-        top: 20px;
-    }
-
-    .cert-year-runtime {
-        flex-direction: column;
     }
 
     .cert-year-runtime p {
@@ -1359,7 +1390,7 @@ textarea::placeholder {
     
     .log-in-button, .sign-up-button {
         font-size: 17px;
-        width: 28vw;
+        width: 33vw;
     }
 
     .controls i {

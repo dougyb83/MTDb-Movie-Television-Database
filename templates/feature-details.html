@@ -44,25 +44,34 @@
                 </div> 
                 <p id="overview" class="hide-on-small-only overview">{{ media_data['overview'] }}</p>                                  
                 <div class="button-container hide-on-small-only">
-                    <form method="POST" action="{{ url_for('add_watchlist') }}">                    
+                    <form method="POST" action="{{ url_for('add_watchlist') }}">                   
                         <input type="hidden" name="id" value="{{ media_data['id'] }}">                  
                         <input type="hidden" name="title" value="{% if media_type == 'movie' %}{{ media_data['title'] }}{% else %}{{ media_data['name'] }}{% endif %}">
                         <input type="hidden" name="media_type" value="{{ media_type }}">
                         <input type="hidden" name="poster" value="{{ media_data['poster_path'] }}">
-                        <button class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Add to Watchlist" type="submit">
-                            <i class="fa-regular fa-bookmark"></i>
-                        </button>
+                        <div class="watchlist-button">
+                            <button id="watchlist-button" class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Add to Watchlist" type="submit">
+                                <i class="fa-regular fa-bookmark"></i>
+                            </button>
+                            <label class="hide-on-large-only" for="watchlist-button">Add to Watchlist</label>
+                        </div>
                     </form>
                     <form method="POST" action="{{ url_for('add_seenlist') }}">                    
                         <input type="hidden" name="id" value="{{ media_data['id'] }}">                  
                         <input type="hidden" name="title" value="{% if media_type == 'movie' %}{{ media_data['title'] }}{% else %}{{ media_data['name'] }}{% endif %}">
                         <input type="hidden" name="media_type" value="{{ media_type }}">
                         <input type="hidden" name="poster" value="{{ media_data['poster_path'] }}">
-                        <button class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Add to Seenlist" type="submit">
-                            <i class="fa-regular fa-circle-check"></i>
-                        </button>
+                        <div class="seenlist-button">
+                            <button id="seenlist-button" class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Add to Seenlist" type="submit">
+                                <i class="fa-regular fa-circle-check"></i>
+                            </button>
+                            <label class="hide-on-large-only" for="seenlist-button">Add to Seenlist</label>
+                        </div>
                     </form>
-                    <a href="#modal-delete-{{ media_data['id'] }}" class="modal-trigger btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Delete"><i class="fa-solid fa-trash"></i></a>
+                    <div class="delete-button">
+                        <a href="#modal-delete-{{ media_data['id'] }}" id="delete-button" class="modal-trigger btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Delete"><i class="fa-solid fa-trash"></i></a>
+                        <label class="hide-on-large-only" for="delete-button">Delete from list</label>
+                    </div>
                 </div>
             </div>
             <div class="col s6 m6 l6 poster">
@@ -79,20 +88,29 @@
                     <input type="hidden" name="title" value="{% if media_type == 'movie' %}{{ media_data['title'] }}{% else %}{{ media_data['name'] }}{% endif %}">
                     <input type="hidden" name="media_type" value="{{ media_type }}">
                     <input type="hidden" name="poster" value="{{ media_data['poster_path'] }}">
-                    <button class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Add to Watchlist" type="submit">
-                        <i class="fa-regular fa-bookmark"></i>
-                    </button>
+                    <div class="watchlist-button">
+                        <button id="watchlist-button" class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Add to Watchlist" type="submit">
+                            <i class="fa-regular fa-bookmark"></i>
+                        </button>
+                        <label class="hide-on-large-only" for="watchlist-button">Add to Watchlist</label>
+                    </div>
                 </form>
                 <form method="POST" action="{{ url_for('add_seenlist') }}">                    
                     <input type="hidden" name="id" value="{{ media_data['id'] }}">                  
                     <input type="hidden" name="title" value="{% if media_type == 'movie' %}{{ media_data['title'] }}{% else %}{{ media_data['name'] }}{% endif %}">
                     <input type="hidden" name="media_type" value="{{ media_type }}">
                     <input type="hidden" name="poster" value="{{ media_data['poster_path'] }}">
-                    <button class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Add to Seenlist" type="submit">
-                        <i class="fa-regular fa-circle-check"></i>
-                    </button>
+                    <div class="seenlist-button">
+                        <button id="seenlist-button" class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Add to Seenlist" type="submit">
+                            <i class="fa-regular fa-circle-check"></i>
+                        </button>
+                        <label class="hide-on-large-only" for="seenlist-button">Add to Seenlist</label>
+                    </div>
                 </form>
-                <a href="#modal-delete-{{ media_data['id'] }}" class="modal-trigger btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Delete"><i class="fa-solid fa-trash"></i></a>
+                <div class="delete-button">
+                    <a href="#modal-delete-{{ media_data['id'] }}" id="delete-button" class="modal-trigger btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Delete"><i class="fa-solid fa-trash"></i></a>
+                    <label class="hide-on-large-only" for="delete-button">Delete from list</label>
+                </div>
             </div>  
             <div class="col overview">
                 <p class="hide-on-med-and-up">{{ media_data['overview'] }}</p>
@@ -133,7 +151,7 @@
                         <div class="edit-review" id="edit-review">
                             <p>Your Review!</p>
                             <p id="review">{{ rating_review['review'] }}</p>
-                            <button id="edit-review-btn" class="btn waves-effect waves-light right" title="Edit Review">
+                            <button id="edit-review-btn" class="btn waves-effect waves-light left" title="Edit Review">
                                 Edit Rating/Review
                             </button>
                         </div>                                                          

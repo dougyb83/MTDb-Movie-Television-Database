@@ -50,26 +50,38 @@
                             <input type="hidden" name="title" value="{% if media_type == 'movie' %}{{ media_data['title'] }}{% else %}{{ media_data['name'] }}{% endif %}">
                             <input type="hidden" name="media_type" value="{{ media_type }}">
                             <input type="hidden" name="poster" value="{{ media_data['poster_path'] }}">
-                            <button class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Add to Watchlist" type="submit">
-                                <i class="fa-regular fa-bookmark"></i>
-                            </button>
+                            <div class="watchlist-button">
+                                <button class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Add to Watchlist" type="submit">
+                                    <i class="fa-regular fa-bookmark"></i>
+                                </button>
+                                <label class="hide-on-large-only" for="watchlist-button">Add to Watchlist</label>
+                            </div>
                         </form>
                         <form method="POST" action="{{ url_for('add_seenlist') }}">                    
                             <input type="hidden" name="id" value="{{ media_data['id'] }}">                  
                             <input type="hidden" name="title" value="{% if media_type == 'movie' %}{{ media_data['title'] }}{% else %}{{ media_data['name'] }}{% endif %}">
                             <input type="hidden" name="media_type" value="{{ media_type }}">
                             <input type="hidden" name="poster" value="{{ media_data['poster_path'] }}">
-                            <button class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Add to Seenlist" type="submit">
-                                <i class="fa-regular fa-circle-check"></i>
-                            </button>
+                            <div class="seenlist-button">
+                                <button class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Add to Seenlist" type="submit">
+                                    <i class="fa-regular fa-circle-check"></i>
+                                </button>
+                                <label class="hide-on-large-only" for="seenlist-button">Add to Seenlist</label>
+                            </div>
                         </form>
                     {% else %}
-                        <button class="non-session-activity btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Add to Watchlist">
-                            <i class="fa-regular fa-bookmark"></i>
-                        </button>
-                        <button class="non-session-activity btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Add to Seenlist" >
-                            <i class="fa-regular fa-circle-check"></i>
-                        </button>
+                        <div class="watchlist-button">
+                            <button class="non-session-activity btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Add to Watchlist">
+                                <i class="fa-regular fa-bookmark"></i>
+                            </button>
+                            <label class="hide-on-large-only" for="watchlist-button">Add to Watchlist</label>
+                        </div>
+                        <div class="seenlist-button">
+                            <button class="non-session-activity btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Add to Seenlist" >
+                                <i class="fa-regular fa-circle-check"></i>
+                            </button>
+                            <label class="hide-on-large-only" for="seenlist-button">Add to Seenlist</label>
+                        </div>
                     {% endif %}
                 </div>
             </div>
@@ -88,26 +100,38 @@
                         <input type="hidden" name="title" value="{% if media_type == 'movie' %}{{ media_data['title'] }}{% else %}{{ media_data['name'] }}{% endif %}">
                         <input type="hidden" name="media_type" value="{{ media_type }}">
                         <input type="hidden" name="poster" value="{{ media_data['poster_path'] }}">
-                        <button class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Add to Watchlist" type="submit">
-                            <i class="fa-regular fa-bookmark"></i>
-                        </button>
+                        <div class="watchlist-button">
+                            <button class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Add to Watchlist" type="submit">
+                                <i class="fa-regular fa-bookmark"></i>
+                            </button>
+                            <label class="hide-on-large-only" for="watchlist-button">Add to Watchlist</label>
+                        </div>
                     </form>
                     <form method="POST" action="{{ url_for('add_seenlist') }}">                    
                         <input type="hidden" name="id" value="{{ media_data['id'] }}">                  
                         <input type="hidden" name="title" value="{% if media_type == 'movie' %}{{ media_data['title'] }}{% else %}{{ media_data['name'] }}{% endif %}">
                         <input type="hidden" name="media_type" value="{{ media_type }}">
                         <input type="hidden" name="poster" value="{{ media_data['poster_path'] }}">
-                        <button class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Add to Seenlist" type="submit">
-                            <i class="fa-regular fa-circle-check"></i>
-                        </button>
+                        <div class="watchlist-button">
+                            <button class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Add to Seenlist" type="submit">
+                                <i class="fa-regular fa-circle-check"></i>
+                            </button>
+                            <label class="hide-on-large-only" for="seenlist-button">Add to Seenlist</label>
+                        </div>
                     </form>
                 {% else %}
-                    <button class="non-session-activity btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Add to Watchlist">
-                        <i class="fa-regular fa-bookmark"></i>
-                    </button>
-                    <button class="non-session-activity btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Add to Seenlist" >
-                        <i class="fa-regular fa-circle-check"></i>
-                    </button>
+                    <div class="watchlist-button">
+                        <button class="non-session-activity btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Add to Watchlist">
+                            <i class="fa-regular fa-bookmark"></i>
+                        </button>                                       
+                        <label class="hide-on-large-only" for="watchlist-button">Add to Watchlist</label>
+                    </div>
+                    <div class="watchlist-button">
+                        <button class="non-session-activity btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Add to Seenlist" >
+                            <i class="fa-regular fa-circle-check"></i>
+                        </button>
+                        <label class="hide-on-large-only" for="seenlist-button">Add to Seenlist</label>
+                    </div>
                 {% endif %}
             </div>  
             <div class="col overview">

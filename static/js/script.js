@@ -7,7 +7,7 @@ $(document).ready(function(){
   $('#nav-menu').sidenav({edge: "right"});
   $('#slide-out').sidenav({edge: "left",}, 'draggable', true);
   // open log-in modal when navbar log in clicked
-  $(".log-in-button").click(function () {    
+  $(".nav-log-in").click(function () {    
       $(".log-in-modal").modal("open");
   });
   // if signup modal 'already registered' is clicked, close sign up & open sign in modal
@@ -16,7 +16,7 @@ $(document).ready(function(){
       $(".log-in-modal").modal("open");
   });
   // open sign-up modal when navbar sign up clicked
-  $(".sign-up-button").click(function () {    
+  $(".nav-sign-up").click(function () {    
       $(".sign-up-modal").modal("open");
   });
   // if login modal 'register account' is clicked, close open sign & open sign up in modal
