@@ -56,6 +56,11 @@ nav {
     z-index: 2000;
 }
 
+nav .brand-logo {
+    font-family: 'Amatic SC', sans-serif;
+    font-size: 2.9em;
+}
+
 nav ul a {
     font-size: 1.6em;
 }
@@ -277,7 +282,10 @@ footer {
 }
 
 .welcome h1 {
-    color: white;
+    font-family: 'Amatic SC', sans-serif;
+    font-weight: 700;
+    font-size: 6em;
+    color: #F5F5F5;
 }
 
 .title-container {
@@ -333,7 +341,7 @@ img#popcorn-2 {
     display: flex;
     justify-content: center;
     background-color: black;
-    color: white;
+    color: #F5F5F5;
     text-align: center;
     padding-bottom: 30px;
     padding-top: 30px;
@@ -341,9 +349,12 @@ img#popcorn-2 {
 
 .popular h2 {
     margin: 0;
+    font-family: 'Amatic SC', sans-serif;
+    font-size: 5em;
 }
 
 .popular h3 {
+    font-family: 'Amatic SC', sans-serif;
     margin-top: 40px;
     margin-left: 50px;
 }
@@ -449,12 +460,28 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
     margin: 20px 20px 0 270px;
 }
 
+.feature-title {
+    position: absolute;
+    text-align: left;
+    font-family: 'roboto', sans-serif;
+    padding-bottom: 4px;
+    left: 5px;
+    top: 3px;
+    width: 80%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 .library-content .feature-title, .list-content .feature-title {
-    font-size: 1.2em !important;
+    font-size: 1.2em !important;    
+    font-family: 'roboto', sans-serif;
 }
 
 .library-sub-title, .list-sub-title {
     color: #f5f5f5;
+    font-family: 'Amatic SC', sans-serif;
+    font-size: 4em;
     position: relative;
     margin-left: 10px;
     top: 40px;
@@ -497,18 +524,6 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
 
 .controls i:hover {
     color: #f5f5f5;    
-}
-
-.feature-title {
-    position: absolute;
-    text-align: left;
-    padding-bottom: 4px;
-    left: 5px;
-    top: 3px;
-    width: 80%;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
 }
 
 .card-menu {
@@ -740,6 +755,10 @@ textarea::placeholder {
         top: 5px;
     }
 
+    .welcome h1 {
+        font-size: 4em;
+    }
+
     nav {
         height: 56px;
     }
@@ -748,7 +767,7 @@ textarea::placeholder {
     }
 
     nav .brand-logo {
-        font-size: 1.9em;
+        font-size: 2.5em;
     }
 
     img.logo-img {
@@ -774,7 +793,7 @@ textarea::placeholder {
     }
 
     .popular h2 {
-        font-size: 40px;
+        font-size: 4.5em;
         margin-bottom: 30px;
     }
 
@@ -794,10 +813,6 @@ textarea::placeholder {
 
     .title-container {
         width: 90%;
-    }
-
-    .title-container h1 {        
-        font-size: 3rem;
     }
 
     .card .card-reveal {
@@ -924,7 +939,7 @@ textarea::placeholder {
     }
 
     .popular h2 {
-        font-size: 35px;
+        font-size: 3.5em;
     }
 
     .popular h3 {
@@ -1102,6 +1117,10 @@ textarea::placeholder {
 }
 
 @media only screen and (max-width: 600px) {
+    .popular h2 {
+        font-size: 3em;
+    }
+
     .icon-link {  
         font-size: 1.5rem;  
         width: 4rem;
@@ -1151,7 +1170,7 @@ textarea::placeholder {
     }
 
     .popular h2 {
-        font-size: 30px;
+        font-size: 2.5em;
     }
 
     .popular h3 {
@@ -1166,7 +1185,6 @@ textarea::placeholder {
         width: 95%;
     }
     nav .brand-logo.left {
-        font-size: 1.6em;
         left: 1px;
     }
 
@@ -1354,20 +1372,8 @@ textarea::placeholder {
 }
 
 @media only screen and (max-width: 375px) {
-    .popular h2 {
-        font-size: 27px;
-    }
-
-    nav .brand-logo.left {
-        left: 1px;
-    }
-
     nav .input-field {
         left: 10px;
-    }
-
-    nav .brand-logo.left {
-        font-size: 20px;
     }
 
     form#seenlist {
@@ -1404,15 +1410,14 @@ textarea::placeholder {
 
 @media only screen and (max-width: 320px) {
     .popular h2 {
-        font-size: 24px;
-    }
+        font-size: 2.2em;    }
 
     nav .input-field {
         left: 0px;
     }
 
     nav .brand-logo.left {
-        font-size: 18px;
+        font-size: 2.2em;
         left: 0;
     }
 
