@@ -1,5 +1,4 @@
 import os
-import json
 import requests
 from flask import (
     Flask, flash, render_template, redirect, request, session, url_for)
@@ -28,7 +27,7 @@ mongo = PyMongo(app)
 # get API request data
 def get_api_data(url):
     """
-    Accesses the API with the supplied url, 
+    Accesses the API with the supplied url,
     gets the data and returns the data in json format
     """
     # store the url response
@@ -117,8 +116,7 @@ def login():
                     request.form.get("login-password")):
                 session["user"] = request.form.get(
                     "login-username").lower()
-                flash("Welcome, {}".format(
-                    request.form.get("login-username")))
+                flash(f"Welcome, {request.form.get('login-username')}")
                 return redirect(url_for(
                     "library", username=session["user"]))
             else:
@@ -159,16 +157,16 @@ def library():
 
         # get movie data
         movie_data = []
-        for id in movie_list:
+        for title_id in movie_list:
             # make sure id is in all_added_titles collection
-            if mongo.db.all_added_titles.find_one({"id": id}):
+            if mongo.db.all_added_titles.find_one({"id": title_id}):
                 # get the movie title and poster from DB
-                details = mongo.db.all_added_titles.find_one({"id": id})
+                details = mongo.db.all_added_titles.find_one({"id": title_id})
                 movie_data.append(details)
             # if id is not in all_added_titles collection
             else:
                 # get details from the API
-                movie = get_media_details(id, "movie")
+                movie = get_media_details(title_id, "movie")
                 feature_info = {
                     "id": str(movie["id"]),
                     "title": movie["title"],
@@ -179,16 +177,16 @@ def library():
                 movie_data.append(feature_info)
         # get tv data
         tv_data = []
-        for id in tv_list:
+        for title_id in tv_list:
             # make sure id is in all_added_titles collection
-            if mongo.db.all_added_titles.find_one({"id": id}):
+            if mongo.db.all_added_titles.find_one({"id": title_id}):
                 # get the movie title and poster from DB
-                details = mongo.db.all_added_titles.find_one({"id": id})
+                details = mongo.db.all_added_titles.find_one({"id": title_id})
                 tv_data.append(details)
             # if id is not in all_added_titles collection
             else:
                 # get details from the API
-                tv_show = get_media_details(id, "tv")
+                tv_show = get_media_details(title_id, "tv")
                 feature_info = {
                     "id": str(tv_show["id"]),
                     "title": tv_show["name"],
@@ -209,7 +207,8 @@ def search():
     """
     Allows the user to search for a movie or tv show from the search bar.
     If no result or no value supplied user is directed back to home.
-    if search is successful the user is shown the full details of the requsted title
+    if search is successful the user is shown the
+    full details of the requsted title
     """
     # get the movie/show title from the search input
     title = request.form.get("search")
@@ -243,7 +242,7 @@ def search():
 def feature_details(feature_id, media_type):
     """
     When the user to selects a movie or tv show from one of the lists
-    (library, watchlist or seenlist) the API is accessed to provide all the 
+    (library, watchlist or seenlist) the API is accessed to provide all the
     details of that title and are displayed to the user
     """
     if "user" in session:
@@ -274,7 +273,7 @@ def popular_feature(title):
     """
     This function is called when the user clicks on a poster
     img from the home pages popular films and tv show section.
-    It accesses the api to get the full details of the selected 
+    It accesses the api to get the full details of the selected
     title and loads the results for the user to see
     """
     # get the movie/show ID from the API
@@ -387,43 +386,43 @@ def add_watchlist():
     user = mongo.db.users.find_one({"username": session["user"]})
     if request.method == "POST":
         # get the id, title and poster path
-        id = request.form.get("id")
+        title_id = request.form.get("id")
         title = request.form.get("title")
         poster = request.form.get("poster")
         # check if id is already in watchlist
-        if id in user["watchlist"]:
+        if title_id in user["watchlist"]:
             # already exists
             flash(f'"{title}" is already in your Watchlist!')
 
         else:
             # check if it exists in the seenlist / if so, remove it
             for seen_id in user["seenlist"]:
-                if id == seen_id:
+                if title_id == seen_id:
                     # match found, remove from seenlist
                     list_index = user["seenlist"].index(seen_id)
                     user["seenlist"].pop(list_index)
             # add movie/tv show to the watchlist
-            user["watchlist"].append(id)
+            user["watchlist"].append(title_id)
             if request.form.get("media_type") == "movie":
                 # check if already in movie_list
                 found_movie_match = False
                 for movie_id in user["movie_list"]:
-                    if id == movie_id:
+                    if title_id == movie_id:
                         # yep, already exists in user's movie list
                         found_movie_match = True
                 if found_movie_match is False:
                     # movie not in list yet, add to movie_list
-                    user["movie_list"].append(id)
+                    user["movie_list"].append(title_id)
             elif request.form.get("media_type") == "tv":
                 # check if already in tv_list
                 found_tv_match = False
                 for tv_id in user["tv_list"]:
-                    if id == tv_id:
+                    if title_id == tv_id:
                         # yep, already exists in user's tv list
                         found_tv_match = True
                 if found_tv_match is False:
                     # tv not in the list yet, add to tv_list
-                    user["tv_list"].append(id)
+                    user["tv_list"].append(title_id)
             mongo.db.users.update_many(
                 {"username": session["user"]},
                 {"$set": {
@@ -435,12 +434,13 @@ def add_watchlist():
             )
             # add/update the all_added_titles collection
             feature_info = {
-                "id": id,
+                "id": title_id,
                 "title": title,
                 "poster_path": poster
             }
-            if mongo.db.all_added_titles.find_one({"id": id}):
-                mongo.db.all_added_titles.update({"id": id}, feature_info)
+            if mongo.db.all_added_titles.find_one({"id": title_id}):
+                mongo.db.all_added_titles.update(
+                    {"id": title_id}, feature_info)
             else:
                 mongo.db.all_added_titles.insert_one(feature_info)
             flash(f'"{title }" added to your Watchlist')
@@ -460,43 +460,43 @@ def add_seenlist():
     user = mongo.db.users.find_one({"username": session["user"]})
     if request.method == "POST":
         # get the id, title and poster path
-        id = request.form.get("id")
+        title_id = request.form.get("id")
         title = request.form.get("title")
         poster = request.form.get("poster")
         # check if id is already in seenlist
-        if id in user["seenlist"]:
+        if title_id in user["seenlist"]:
             # already exists
             flash(f'"{title}" is already in your Seenlist!')
 
         else:
             # check if it exists in the watchlist / if so, remove it
             for watch_id in user["watchlist"]:
-                if id == watch_id:
+                if title_id == watch_id:
                     # match found, remove from watchlist
                     list_index = user["watchlist"].index(watch_id)
                     user["watchlist"].pop(list_index)
             # add movie/tv show to the seenlist
-            user["seenlist"].append(id)
+            user["seenlist"].append(title_id)
             if request.form.get("media_type") == "movie":
                 # check if already in movie_list
                 found_movie_match = False
                 for movie_id in user["movie_list"]:
-                    if id == movie_id:
+                    if title_id == movie_id:
                         # yep, already exists in user's movie list
                         found_movie_match = True
                 if found_movie_match is False:
                     # movie not in list yet, add to movie_list
-                    user["movie_list"].append(id)
+                    user["movie_list"].append(title_id)
             elif request.form.get("media_type") == "tv":
                 # check if already in tv_list
                 found_tv_match = False
                 for tv_id in user["tv_list"]:
-                    if id == tv_id:
+                    if title_id == tv_id:
                         # yep, already exists in user's tv list
                         found_tv_match = True
                 if found_tv_match is False:
                     # tv not in the list yet, add to tv_list
-                    user["tv_list"].append(id)
+                    user["tv_list"].append(title_id)
             mongo.db.users.update_many(
                 {"username": session["user"]},
                 {"$set": {
@@ -508,12 +508,13 @@ def add_seenlist():
             )
             # add/update the all_added_titles collection
             feature_info = {
-                "id": id,
+                "id": title_id,
                 "title": title,
                 "poster_path": poster
             }
-            if mongo.db.all_added_titles.find_one({"id": id}):
-                mongo.db.all_added_titles.update({"id": id}, feature_info)
+            if mongo.db.all_added_titles.find_one({"id": title_id}):
+                mongo.db.all_added_titles.update(
+                    {"id": title_id}, feature_info)
             else:
                 mongo.db.all_added_titles.insert_one(feature_info)
             flash(f'"{title }" added to your Seenlist')
@@ -539,16 +540,17 @@ def view_watchlist(media_type):
         watchlist = user["watchlist"]
         media_data = []
         if media_type == "movie":
-            for id in watchlist:
-                if id in user["movie_list"]:
+            for title_id in watchlist:
+                if title_id in user["movie_list"]:
                     # make sure id is in all_added_titles collection
-                    if mongo.db.all_added_titles.find_one({"id": id}):
+                    if mongo.db.all_added_titles.find_one({"id": title_id}):
                         # get the movie title and poster from DB
-                        details = mongo.db.all_added_titles.find_one({"id": id})
+                        details = mongo.db.all_added_titles.find_one(
+                            {"id": title_id})
                         media_data.append(details)
                     else:
                         # get details from the API
-                        movie = get_media_details(id, "movie")
+                        movie = get_media_details(title_id, "movie")
                         feature_info = {
                             "id": str(movie["id"]),
                             "title": movie["title"],
@@ -558,16 +560,17 @@ def view_watchlist(media_type):
                         mongo.db.all_added_titles.insert_one(feature_info)
                         media_data.append(feature_info)
         else:
-            for id in watchlist:
+            for title_id in watchlist:
                 if id in user["tv_list"]:
                     # make sure id is in all_added_titles collection
-                    if mongo.db.all_added_titles.find_one({"id": id}):
+                    if mongo.db.all_added_titles.find_one({"id": title_id}):
                         # get the movie title and poster from DB
-                        details = mongo.db.all_added_titles.find_one({"id": id})
+                        details = mongo.db.all_added_titles.find_one(
+                            {"id": title_id})
                         media_data.append(details)
                     else:
                         # get details from the API
-                        tv_show = get_media_details(id, "tv")
+                        tv_show = get_media_details(title_id, "tv")
                         feature_info = {
                             "id": str(tv_show["id"]),
                             "title": tv_show["name"],
@@ -603,16 +606,17 @@ def view_seenlist(media_type):
         seenlist = user["seenlist"]
         media_data = []
         if media_type == "movie":
-            for id in seenlist:
-                if id in user["movie_list"]:
+            for title_id in seenlist:
+                if title_id in user["movie_list"]:
                     # make sure id is in all_added_titles collection
-                    if mongo.db.all_added_titles.find_one({"id": id}):
+                    if mongo.db.all_added_titles.find_one({"id": title_id}):
                         # get the movie title and poster from DB
-                        details = mongo.db.all_added_titles.find_one({"id": id})
+                        details = mongo.db.all_added_titles.find_one(
+                            {"id": title_id})
                         media_data.append(details)
                     else:
                         # get details from the API
-                        movie = get_media_details(id, "movie")
+                        movie = get_media_details(title_id, "movie")
                         feature_info = {
                             "id": str(movie["id"]),
                             "title": movie["title"],
@@ -622,16 +626,17 @@ def view_seenlist(media_type):
                         mongo.db.all_added_titles.insert_one(feature_info)
                         media_data.append(feature_info)
         else:
-            for id in seenlist:
-                if id in user["tv_list"]:
+            for title_id in seenlist:
+                if title_id in user["tv_list"]:
                     # make sure id is in all_added_titles collection
-                    if mongo.db.all_added_titles.find_one({"id": id}):
+                    if mongo.db.all_added_titles.find_one({"id": title_id}):
                         # get the movie title and poster from DB
-                        details = mongo.db.all_added_titles.find_one({"id": id})
+                        details = mongo.db.all_added_titles.find_one(
+                            {"id": title_id})
                         media_data.append(details)
                     else:
                         # get details from the API
-                        tv_show = get_media_details(id, "tv")
+                        tv_show = get_media_details(title_id, "tv")
                         feature_info = {
                             "id": str(tv_show["id"]),
                             "title": tv_show["name"],
@@ -647,6 +652,7 @@ def view_seenlist(media_type):
     else:
         # user is not logged in - display home page
         return redirect(url_for("home"))
+
 
 @app.route("/delete/<feature_id>/<media_type>")
 def delete(feature_id, media_type):
@@ -664,31 +670,31 @@ def delete(feature_id, media_type):
     user = mongo.db.users.find_one({"username": session["user"]})
 
     # if in watchlist, remove it
-    for id in user["watchlist"]:
-        if id == feature_id:
+    for title_id in user["watchlist"]:
+        if title_id == feature_id:
             # match found, remove from watchlist
-            list_index = user["watchlist"].index(id)
+            list_index = user["watchlist"].index(title_id)
             user["watchlist"].pop(list_index)
 
     # if in seenlist, remove it
-    for id in user["seenlist"]:
-        if id == feature_id:
+    for title_id in user["seenlist"]:
+        if title_id == feature_id:
             # match found, remove from seenlist
-            list_index = user["seenlist"].index(id)
+            list_index = user["seenlist"].index(title_id)
             user["seenlist"].pop(list_index)
 
     # if in movie_list, remove it
-    for id in user["movie_list"]:
-        if id == feature_id:
+    for title_id in user["movie_list"]:
+        if title_id == feature_id:
             # match found, remove from movie_list
-            list_index = user["movie_list"].index(id)
+            list_index = user["movie_list"].index(title_id)
             user["movie_list"].pop(list_index)
 
     # if in tv_list, remove it
-    for id in user["tv_list"]:
-        if id == feature_id:
+    for title_id in user["tv_list"]:
+        if title_id == feature_id:
             # match found, remove from tv_list
-            list_index = user["tv_list"].index(id)
+            list_index = user["tv_list"].index(title_id)
             user["tv_list"].pop(list_index)
 
     # save database changes
