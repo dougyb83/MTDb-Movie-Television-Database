@@ -1,36 +1,12 @@
 # MTDB - MOVIE & TELEVISION DATABASE
 
-⚠️⚠️⚠️⚠️⚠️ START OF NOTES (to be deleted) ⚠️⚠️⚠️⚠️⚠️
-
-In this section, you will include a few paragraphs providing an overview of your project.
-Essentially, this part is your "sales pitch".
-
-At this stage, you should have a name for your project so use it!
-Don't introduce the project as a "portfolio project" for the diploma.
-
-In this section, describe what the project hopes to accomplish, who it is intended to target, and how it will be useful to the target audience.
-
-Consider adding a mockup image using the "Am I Responsive" website.
-Here's your deployed site as an example:
-https://ui.dev/amiresponsive?url=https://mtdb-movie-television-database-ff116cae015a.herokuapp.com
-
-Screenshots for the README and testing should not be inside of `assets/` or `static/` image folders.
-(reminder: `assets/` and `static/` are for files used on the live site, not documentation)
-Consider adding a new folder called `documentation`, and add the amiresponsive screenshot inside of that folder.
-To add the image into your README, use this format:
-(assuming you have a new folder called `documentation` with an image called "mockup.png")
-
-![screenshot](documentation/mockup.png)
-
-Note: Markdown files (.md) should not contain HTML elements like `img`, `br`, `div`, `a`, etc, only Markdown formatting.
-Find out more about using Markdown elements here:
-https://pandao.github.io/editor.md/en.html
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
 Introducing MTDB - the Movie & Television Database, your ultimate solution for keeping track of what to watch next and what you've already seen. Say goodbye to forgetting movie recommendations or losing track of TV show progress. MTDB makes it effortless to create a list of films and shows you're excited to watch and organize the ones you've already enjoyed.
 
 MTDB is designed for all entertainment enthusiasts. Whether you're a movie buff, a TV show addict, or just someone who enjoys the occasional flick, MTDB is here to make your life easier. Create your personal watchlist, rate what you've seen, and get tailored recommendations based on your preferences. No more scrolling through endless options – MTDB helps you decide what's worth your time.
+
+![screenshot](documentation/mockup.png)
+
+[View the live site here.](https://mtdb-movie-television-database-ff116cae015a.herokuapp.com/)
 
 ## UX
 
@@ -40,51 +16,18 @@ Once the user is logged in they will be presented with a library of all the movi
 
 ### Colour Scheme
 
-⚠️⚠️⚠️⚠️⚠️ START OF NOTES (to be deleted) ⚠️⚠️⚠️⚠️⚠️
+I have chosen a dark theme with purple highlights as I feel this best represented the 'Movie' experience. For the majority of the text I have selected a white color as this popped out more and makes the experience better for the user.
 
-Explain your colours and the colour scheme.
+- `#F5F5F5` used for primary text.
+- `#F79426` used for primary highlights and buttons.
+- `#6B0E87` used for background colours.
+- `#000000` used for secondary background colours.
+- `#FF0000` used for buttons that have a permanent action.
+- `#4CAF50` used for 'safe' buttons.
 
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
+I used [coolors.co](https://coolors.co/000000-ff0000-4caf50-6b0e87-f79426-f5f5f5) to generate my colour palette.
 
-- `#000000` used for primary text.
-- `#E84610` used for primary highlights.
-- `#4A4A4F` used for secondary text.
-- `#009FE3` used for secondary highlights.
-
-⚠️⚠️⚠️⚠️⚠️ START OF NOTES (to be deleted) ⚠️⚠️⚠️⚠️⚠️
-
-Consider adding a link and screenshot for your colour scheme using "coolors".
-https://coolors.co/generate
-
-When you add a colour to the palette, the URL is dynamically updated, making it easier for you to return back to your colour palette later if needed.
-
-Example:
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
-I used [coolors.co](https://coolors.co/e84610-009fe3-4a4a4f-445261-d63649-e6ecf0-000000) to generate my colour palette.
-
-![screenshot](documentation/coolors.png)
-
-⚠️⚠️⚠️⚠️⚠️ START OF NOTES (to be deleted) ⚠️⚠️⚠️⚠️⚠️
-
-If you've used CSS `:root` variables, consider also including a code snippet here!
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
-I've used CSS `:root` variables to easily update the global colour scheme by changing only one value, instead of everywhere in the CSS file.
-
-```css
-:root {
-    /* P = Primary | S = Secondary */
-    --p-text: #000000;
-    --p-highlight: #E84610;
-    --s-text: #4A4A4F;
-    --s-highlight: #009FE3;
-    --white: #FFFFFF;
-    --black: #000000;
-}
-```
+![screenshot](documentation/colour-pallette.png)
 
 ### Typography
 
@@ -105,12 +48,6 @@ Example:
 - [Font Awesome](https://fontawesome.com) icons were used throughout the site, such as the social media icons in the footer.
 
 ## User Stories
-
-⚠️⚠️⚠️⚠️⚠️ START OF NOTES (to be deleted) ⚠️⚠️⚠️⚠️⚠️
-
-In this section, list all of your user stories for the project.
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
 
 ### New Site Users
 
@@ -293,26 +230,26 @@ Feel free to delete any unused items below as necessary.
 My project uses a non-relational database with MongoDB, and therefore the database architecture
 doesn't have actual relationships like a relational database would.
 
-My database is called **task_manager**.
+My database is called **mtdb**.
 
 It contains 3 collections:
 
-- **categories**
+- **all_added_title**
     | Key | Type | Notes |
     | --- | --- | --- |
     | _id | ObjectId() | |
-    | category_name | String | |
+    | id | String | |
+    | poster_path | String | |
 
-- **tasks**
+- **rating_review**
     | Key | Type | Notes |
     | --- | --- | --- |
     | _id | ObjectId() | |
-    | category_name | String | selected from *categories* collection |
-    | task_name | String | |
-    | task_description | String | |
-    | is_urgent | String | |
-    | due_date | String | |
-    | created_by | String | selected from the *users* collection |
+    | user_id | ObjectId() | |
+    | feature_id | String | |
+    | rating | String | |
+    | review | String | |
+
 
 - **users**
     | Key | Type | Notes |
@@ -320,6 +257,10 @@ It contains 3 collections:
     | _id | ObjectId() | |
     | username | String | |
     | password | String | uses Secure Hash Algorithm (SHA) |
+    | movie_list | Array | |
+    | tv_list | Array | |
+    | watchlist | Array | |
+    | seenlist | Array | |
 
 ## Testing
 

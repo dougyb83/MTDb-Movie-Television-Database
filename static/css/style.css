@@ -15,11 +15,11 @@ section.container {
 
 .error-content {
     text-align: center;
-    color: whitesmoke;
+    color: #f5f5f5;
 }
 
 #countdown {
-    color: red;
+    color: #ff0000;
 }
 
 .error-content a {
@@ -102,7 +102,7 @@ img.logo-img {
 #search {
     border-radius: 30px;
     background-color: rgba(240, 248, 255, 0.37);
-    color: whitesmoke;
+    color: #f5f5f5;
     width: 30vw;
     text-align: center;
     padding: 0;
@@ -205,7 +205,7 @@ footer {
     display: inline-flex;
     font-size: 3rem;  
     text-decoration: none;  
-    color: whitesmoke;
+    color: #f5f5f5;
     width: 6rem;
     height: 6rem;   
     transition: .5s linear;
@@ -377,7 +377,7 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
 
 .message {
     text-align: center;
-    color: red;
+    color: #ff0000;
 }
 
 .hide {
@@ -454,7 +454,7 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
 }
 
 .library-sub-title, .list-sub-title {
-    color: whitesmoke;
+    color: #f5f5f5;
     position: relative;
     margin-left: 10px;
     top: 40px;
@@ -496,7 +496,7 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
 }
 
 .controls i:hover {
-    color: whitesmoke;    
+    color: #f5f5f5;    
 }
 
 .feature-title {
@@ -522,12 +522,12 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
     position: absolute;
     top: 4px;
     right: 3px;
-    color: whitesmoke;
+    color: #f5f5f5;
 }
 
 .card .card-reveal {
     background-color: #080808b3;
-    color: whitesmoke;
+    color: #f5f5f5;
 }
 
 #all-tv-shows, #all-films {
@@ -539,7 +539,7 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
 }
 
 #all-tv-shows:hover, #all-films:hover {
-    color: whitesmoke;
+    color: #f5f5f5;
 }
 
 /* feature display pages - search results and edit feature */
@@ -573,7 +573,7 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
 
 .review {
     height: 100px !important;
-    color: whitesmoke;
+    color: #f5f5f5;
 }
 
 textarea::placeholder {
@@ -592,7 +592,7 @@ textarea::placeholder {
 }
 
 .button-container a i {
-    background-color: red;
+    background-color: #ff0000;
 }
 
 #edit-review button {
