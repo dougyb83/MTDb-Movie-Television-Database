@@ -2,6 +2,10 @@ html {
     scroll-behavior: smooth;
 }
 
+body {
+    font-family: 'Roboto';
+}
+
 /* 404 page */
 .error-page {
     height: 100vh;
