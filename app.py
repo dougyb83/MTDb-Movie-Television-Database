@@ -27,6 +27,10 @@ mongo = PyMongo(app)
 
 # get API request data
 def get_api_data(url):
+    """
+    Accesses the API with the supplied url, 
+    gets the data and returns the data in json format
+    """
     # store the url response
     response = requests.get(url, headers=headers)
     return response.json()
@@ -35,6 +39,10 @@ def get_api_data(url):
 @app.route("/")
 @app.route("/home")
 def home():
+    """
+    Accesses the home page and retireves popular
+    movies and TV shows data from the API
+    """
     # access popular movies from api
     # store the api url with the title included
     url = "https://api.themoviedb.org/3/movie/popular?language=en-US&page=1"
@@ -56,6 +64,12 @@ def home():
 
 @app.route("/register", methods=["POST"])
 def register():
+    """
+    Allows new users to register an account.
+    The user library is loaded upon successful registration
+    and a database entry is made.
+    if unsuccessful user is directed back to home
+    """
     # register new account
     if request.method == "POST" and request.form.get("signup-username"):
         # check if username already exists in db
@@ -85,6 +99,11 @@ def register():
 
 @app.route("/login", methods=["POST"])
 def login():
+    """
+    Allows users to log in with an existing account.
+    The user library is loaded upon successful log in
+    or directed back to home if unsuccessful
+    """
     # log in
     if request.method == "POST" and request.form.get("login-username"):
         # check if username exists in db
@@ -115,6 +134,10 @@ def login():
 
 @app.route("/logout")
 def logout():
+    """
+    Allows users to log out.
+    The user is directed back to home
+    """
     # remove user from session cookie
     flash("You have been logged out")
     session.pop("user")
@@ -123,6 +146,10 @@ def logout():
 
 @app.route("/library/")
 def library():
+    """
+    loads the users library page and accesses the database to get
+    the users list of films and tv shows to be displayed
+    """
     if "user" in session:
         # get user data from DB
         user = mongo.db.users.find_one({"username": session["user"]})
@@ -179,6 +206,11 @@ def library():
 
 @app.route("/search", methods=["GET", "POST"])
 def search():
+    """
+    Allows the user to search for a movie or tv show from the search bar.
+    If no result or no value supplied user is directed back to home.
+    if search is successful the user is shown the full details of the requsted title
+    """
     # get the movie/show title from the search input
     title = request.form.get("search")
     # check if title has a value
@@ -206,8 +238,45 @@ def search():
         return redirect(url_for("home"))
 
 
+@app.route(
+    "/feature_details/<feature_id>/<media_type>", methods=["GET", "POST"])
+def feature_details(feature_id, media_type):
+    """
+    When the user to selects a movie or tv show from one of the lists
+    (library, watchlist or seenlist) the API is accessed to provide all the 
+    details of that title and are displayed to the user
+    """
+    if "user" in session:
+        # get user data from DB
+        user = mongo.db.users.find_one({"username": session["user"]})
+        # get the movie or show details
+        media_data = get_media_details(feature_id, media_type)
+        media_certificate = get_media_certificate(feature_id, media_type)
+        # get user rating data from DB
+        rating_review = mongo.db.rating_review.find_one({
+            "$and": [
+                {"user_id": ObjectId(user["_id"])},
+                {"feature_id": feature_id}
+                ]})
+
+        return render_template(
+            "feature-details.html", media_data=media_data,
+            media_type=media_type, media_certificate=media_certificate,
+            rating_review=rating_review
+        )
+    else:
+        # user is not logged in - display home page
+        return redirect(url_for("home"))
+
+
 @app.route("/popular_feature/<title>")
 def popular_feature(title):
+    """
+    This function is called when the user clicks on a poster
+    img from the home pages popular films and tv show section.
+    It accesses the api to get the full details of the selected 
+    title and loads the results for the user to see
+    """
     # get the movie/show ID from the API
     url = f"https://api.themoviedb.org/3/search/multi?query={title}&include_adult=false&language=en-US&page=1"  # noqa
     # get json data
@@ -226,6 +295,11 @@ def popular_feature(title):
 
 # use different API request format to get extended details
 def get_media_details(media_id, media_type):
+    """
+    This function is called by various other functions and accesses
+    the api to get details such as the title, poster_path and genres.
+    The data is returned in json format
+    """
     # get the movie/show ID from the API
     if media_type == "movie" or media_type == "tv":
         url = f"https://api.themoviedb.org/3/{media_type}/{media_id}?language=en-US"  # noqa
@@ -236,6 +310,9 @@ def get_media_details(media_id, media_type):
 
 # use different API request format to get movie/show certificate
 def get_media_certificate(media_id, media_type):
+    """
+    This function gets the age rating (certificate) for the movie or tv show
+    """
     if media_type == "movie":
         url = f"https://api.themoviedb.org/3/movie/{media_id}/release_dates"
         # get json data
@@ -260,6 +337,11 @@ def get_media_certificate(media_id, media_type):
 
 @app.route("/add_rating_review/<media_type>", methods=["GET", "POST"])
 def add_rating_review(media_type):
+    """
+    Allows the user to add their own personal rating and give a
+    review or comment to the title they are currently viewing.
+    This is then added to the database
+    """
     if request.method == "POST":
         # get user data from DB
         user = mongo.db.users.find_one({"username": session["user"]})
@@ -295,6 +377,12 @@ def add_rating_review(media_type):
 
 @app.route("/add_watchlist", methods=["GET", "POST"])
 def add_watchlist():
+    """
+    Allows the user to add a title to thier watchlist.
+    the title id gets added to the users arrays in the database
+    and the title, id and poster_path gets added to a shared
+    collection (all_added_titles) in the database
+    """
     # get user data from DB
     user = mongo.db.users.find_one({"username": session["user"]})
     if request.method == "POST":
@@ -362,6 +450,12 @@ def add_watchlist():
 
 @app.route("/add_seenlist", methods=["GET", "POST"])
 def add_seenlist():
+    """
+    Allows the user to add a title to thier seenlist.
+    the title id gets added to the users arrays in the database
+    and the title, id and poster_path gets added to a shared
+    collection (all_added_titles) in the database
+    """
     # get user data from DB
     user = mongo.db.users.find_one({"username": session["user"]})
     if request.method == "POST":
@@ -429,6 +523,15 @@ def add_seenlist():
 
 @app.route("/view_watchlist/<media_type>", methods=["GET", "POST"])
 def view_watchlist(media_type):
+    """
+    The user can view all the titles in thier watchlist. depending on the
+    media_type supplied the user will see either the tv show watchlist or the
+    films watchlist. This is done by accessing the id from the users specific
+    watchlist array then matching the id to that in the all_added_titles
+    collection and returning a list of dictionaries containing id's,
+    titles and poster paths. If the title isn't in the all_added_titles
+    collection the API is called and the title is added for future reference
+    """
     if "user" in session:
         # get user data from DB
         user = mongo.db.users.find_one({"username": session["user"]})
@@ -484,6 +587,15 @@ def view_watchlist(media_type):
 
 @app.route("/view_seenlist/<media_type>", methods=["GET", "POST"])
 def view_seenlist(media_type):
+    """
+    The user can view all the titles in thier seenlist. depending on the
+    media_type supplied the user will see either the tv show seenlist or the
+    films seenlist. This is done by accessing the id from the users specific
+    seenlist array then matching the id to that in the all_added_titles
+    collection and returning a list of dictionaries containing id's,
+    titles and poster paths. If the title isn't in the all_added_titles
+    collection the API is called and the title is added for future reference
+    """
     if "user" in session:
         # get user data from DB
         user = mongo.db.users.find_one({"username": session["user"]})
@@ -536,35 +648,11 @@ def view_seenlist(media_type):
         # user is not logged in - display home page
         return redirect(url_for("home"))
 
-
-@app.route(
-    "/feature_details/<feature_id>/<media_type>", methods=["GET", "POST"])
-def feature_details(feature_id, media_type):
-    if "user" in session:
-        # get user data from DB
-        user = mongo.db.users.find_one({"username": session["user"]})
-        # get the movie or show details
-        media_data = get_media_details(feature_id, media_type)
-        media_certificate = get_media_certificate(feature_id, media_type)
-        # get user rating data from DB
-        rating_review = mongo.db.rating_review.find_one({
-            "$and": [
-                {"user_id": ObjectId(user["_id"])},
-                {"feature_id": feature_id}
-                ]})
-
-        return render_template(
-            "feature-details.html", media_data=media_data,
-            media_type=media_type, media_certificate=media_certificate,
-            rating_review=rating_review
-        )
-    else:
-        # user is not logged in - display home page
-        return redirect(url_for("home"))
-
-
 @app.route("/delete/<feature_id>/<media_type>")
 def delete(feature_id, media_type):
+    """
+    Allows the user to delete a title from thier collection
+    """
     # get title before deleting from user's database
     feature = get_media_details(feature_id, media_type)
     if media_type == "movie":
