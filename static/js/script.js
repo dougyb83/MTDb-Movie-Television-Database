@@ -73,35 +73,3 @@ $(document).ready(function(){
   $(".dropdown-trigger").dropdown();
   $('.tooltipped').tooltip();
 });
-
-
-
-
-
-
-
-
-
-  // if (document.getElementById('star1').checked) {
-
-  // } else if (document.getElementById('star2').checked) {
-
-  // } else if (document.getElementById('star3').checked) {
-
-  // } else if (document.getElementById('star4').checked) {
-
-  // } else {
-
-  // }
-
-
-// function autocomplete() {
-//     // gets the partial search string to send to api
-//     let searchString = document.getElementById("search").value;
-//     // only search if string is longer than 2 chars
-//     if (searchString.length >= 3) {
-//         // send searchString to backend
-//         fetch("/autocomplete")
-//         console.log(searchString);
-//     }
-// }
