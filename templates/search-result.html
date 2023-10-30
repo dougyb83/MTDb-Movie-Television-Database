@@ -1,9 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
     
+    <!-- Start of search results -->
     <div class="main-content container grey-text text-lighten-4"> 
         <div class="row">
             <div class="col s6 m6 l6">
+                <!-- search results text content -->
                 <div class="title-genre">
                     <h3 id="title">
                         <strong>
@@ -42,7 +44,8 @@
                         {% endif %}
                     </p>
                 </div> 
-                <p id="overview" class="hide-on-small-only overview">{{ media_data['overview'] }}</p>                                  
+                <p id="overview" class="hide-on-small-only overview">{{ media_data['overview'] }}</p>
+                <!-- buttons - desktop: add to watchlist, add to seenlist, delete -->                                  
                 <div class="button-container hide-on-small-only">
                     {% if session.user %}   
                         <form method="POST" action="{{ url_for('add_watchlist') }}">                    
@@ -85,6 +88,7 @@
                     {% endif %}
                 </div>
             </div>
+            <!-- search results poster image -->
             <div class="col s6 m6 l6 poster">
                 {% if media_data['poster_path'] == None %}                    
                     <img src="{{ url_for('static', filename='images/no-image-placeholder.png') }}" alt="No Image Available">
@@ -93,6 +97,7 @@
                         alt="{% if media_type == 'movie' %}{{ media_data['title'] }}{% else %}{{ media_data['name'] }}{% endif %}">
                 {% endif %}
             </div>
+            <!-- buttons - mobile: add to watchlist, add to seenlist, delete -->  
             <div class="button-container col s12 hide-on-med-and-up">
                 {% if session.user %}   
                     <form method="POST" action="{{ url_for('add_watchlist') }}">                    

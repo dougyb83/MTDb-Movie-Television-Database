@@ -55,7 +55,7 @@
                 </div>
             </nav>
         </div>
-        <!-- mobile sidenav -->
+        <!-- mobile sidenav for top navbar -->
         <ul class="sidenav navbar-sidenav grey darken-4" id="nav-menu">
             <li><a href="{{ url_for('home') }}">Home</a></li>
             {% if session.user %}          
@@ -122,8 +122,7 @@
                         </div>
                     </div>
                 </form>
-            </div>
-        
+            </div>        
             <div class="row">
                 <div class="col s12">
                     <p class="center-align">
@@ -183,6 +182,7 @@
     </div>
   
     <main>
+        <!-- left side nav -->
         {% if session.user %} 
             <div {% if request.path == url_for('home') or request.path == '/' %} class="hide side-menu" {% else %} class="side-menu" {% endif %} id="side-menu">
                 <ul class="sidenav sidenav-fixed grey darken-4 white-text">
@@ -302,8 +302,7 @@
         {% endblock %}
     </main>
 
-    
-
+    <!-- Start of Footer -->
     <footer class="page-footer text-shadow grey darken-3">
         <div class="container">
             <div class="row">
@@ -345,6 +344,7 @@
         </div>
     </footer>
 
+    <!-- Start of bottom nav (replaces left side nav on mobile devices) -->
     {% if session.user %} 
         <div class="bottom-nav hide-on-large-only">
             <div class="navbar-fixed navbar-center">
@@ -396,9 +396,12 @@
         </div>
     {% endif %}
 
+    <!-- JQuery Script -->
     <script src="https://code.jquery.com/jquery-3.7.0.min.js" 
         integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <!-- Materialize Script -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <!-- Custom Script -->
     <script src="{{ url_for('static', filename='js/script.js') }}"></script>
     {% block scripts %}
     {% endblock %}

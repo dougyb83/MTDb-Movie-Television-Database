@@ -1,9 +1,11 @@
 {% extends "base.html" %}
 {% block content %}
-    
+
+    <!-- Start of feature details -->
     <div class="main-content container grey-text text-lighten-4">        
         <div class="row">
             <div class="col s6 m6 l6">
+                <!-- feature details text content -->
                 <div class="title-genre">
                     <h3 id="title">
                         <strong>
@@ -42,7 +44,8 @@
                         {% endif %}
                     </p>
                 </div> 
-                <p id="overview" class="hide-on-small-only overview">{{ media_data['overview'] }}</p>                                  
+                <p id="overview" class="hide-on-small-only overview">{{ media_data['overview'] }}</p>
+                <!-- buttons - desktop: add to watchlist, add to seenlist, delete -->                                 
                 <div class="button-container hide-on-small-only">
                     <form method="POST" action="{{ url_for('add_watchlist') }}">                   
                         <input type="hidden" name="id" value="{{ media_data['id'] }}">                  
@@ -74,6 +77,7 @@
                     </div>
                 </div>
             </div>
+            <!-- feature poster image -->
             <div class="col s6 m6 l6 poster">
                 {% if media_data['poster_path'] == None %}                    
                     <img src="{{ url_for('static', filename='images/no-image-placeholder.png') }}" alt="No Image Available">
@@ -82,6 +86,7 @@
                         alt="{% if media_type == 'movie' %}{{ media_data['title'] }}{% else %}{{ media_data['name'] }}{% endif %}">
                 {% endif %}
             </div>
+            <!-- buttons - mobile: add to watchlist, add to seenlist, delete -->  
             <div class="button-container col s12 hide-on-med-and-up">
                 <form method="POST" action="{{ url_for('add_watchlist') }}">                    
                     <input type="hidden" name="id" value="{{ media_data['id'] }}">                  
@@ -111,7 +116,7 @@
                     <a href="#modal-delete-{{ media_data['id'] }}" id="delete-button" class="modal-trigger btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Delete"><i class="fa-solid fa-trash"></i></a>
                     <span class="hide-on-large-only">Delete from list</span>
                 </div>
-            </div>  
+            </div>
             <div class="col overview">
                 <p class="hide-on-med-and-up">{{ media_data['overview'] }}</p>
             </div>         
@@ -128,6 +133,7 @@
                 <a href="{{ url_for('delete', feature_id=media_data['id'], media_type=media_type) }}" class="modal-close waves-effect waves-green btn red">Yes</a>
             </div>
         </div>
+        <!-- Rating and Review section -->
         <div class="row">
             <form method="POST" action="{{ url_for('add_rating_review', media_type=media_type) }}">
                 <input type="hidden" name="id" value="{{ media_data['id'] }}">
@@ -171,6 +177,7 @@
 
 {% endblock %}
 {% block scripts %}
+    <!-- Script to pass rating variable to JavaScript -->
     <script type="text/javascript">
         let rating = "{{ rating_review['rating'] }}"
     </script>

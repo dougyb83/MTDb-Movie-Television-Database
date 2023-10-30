@@ -561,7 +561,7 @@ def view_watchlist(media_type):
                         media_data.append(feature_info)
         else:
             for title_id in watchlist:
-                if id in user["tv_list"]:
+                if title_id in user["tv_list"]:
                     # make sure id is in all_added_titles collection
                     if mongo.db.all_added_titles.find_one({"id": title_id}):
                         # get the movie title and poster from DB
