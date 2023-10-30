@@ -51,10 +51,10 @@
                             <input type="hidden" name="media_type" value="{{ media_type }}">
                             <input type="hidden" name="poster" value="{{ media_data['poster_path'] }}">
                             <div class="watchlist-button">
-                                <button class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Add to Watchlist" type="submit">
+                                <button class="btn-floating waves-effect waves-light tooltipped" id="watchlist-button-desktop" data-position="top" data-tooltip="Add to Watchlist" type="submit">
                                     <i class="fa-regular fa-bookmark"></i>
                                 </button>
-                                <label class="hide-on-large-only" for="watchlist-button">Add to Watchlist</label>
+                                <label class="hide-on-large-only" for="watchlist-button-desktop">Add to Watchlist</label>
                             </div>
                         </form>
                         <form method="POST" action="{{ url_for('add_seenlist') }}">                    
@@ -63,24 +63,24 @@
                             <input type="hidden" name="media_type" value="{{ media_type }}">
                             <input type="hidden" name="poster" value="{{ media_data['poster_path'] }}">
                             <div class="seenlist-button">
-                                <button class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Add to Seenlist" type="submit">
+                                <button class="btn-floating waves-effect waves-light tooltipped" id="seenlist-button-desktop" data-position="top" data-tooltip="Add to Seenlist" type="submit">
                                     <i class="fa-regular fa-circle-check"></i>
                                 </button>
-                                <label class="hide-on-large-only" for="seenlist-button">Add to Seenlist</label>
+                                <label class="hide-on-large-only" for="seenlist-button-desktop">Add to Seenlist</label>
                             </div>
                         </form>
                     {% else %}
                         <div class="watchlist-button">
-                            <button class="non-session-activity btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Add to Watchlist">
+                            <button class="non-session-activity btn-floating waves-effect waves-light tooltipped" id="watchlist-button-non-user" data-position="top" data-tooltip="Add to Watchlist">
                                 <i class="fa-regular fa-bookmark"></i>
                             </button>
-                            <label class="hide-on-large-only" for="watchlist-button">Add to Watchlist</label>
+                            <label class="hide-on-large-only" for="watchlist-button-non-user">Add to Watchlist</label>
                         </div>
                         <div class="seenlist-button">
-                            <button class="non-session-activity btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Add to Seenlist" >
+                            <button class="non-session-activity btn-floating waves-effect waves-light tooltipped" id="seenlist-button-non-user" data-position="top" data-tooltip="Add to Seenlist" >
                                 <i class="fa-regular fa-circle-check"></i>
                             </button>
-                            <label class="hide-on-large-only" for="seenlist-button">Add to Seenlist</label>
+                            <label class="hide-on-large-only" for="seenlist-button-non-user">Add to Seenlist</label>
                         </div>
                     {% endif %}
                 </div>
@@ -101,7 +101,7 @@
                         <input type="hidden" name="media_type" value="{{ media_type }}">
                         <input type="hidden" name="poster" value="{{ media_data['poster_path'] }}">
                         <div class="watchlist-button">
-                            <button class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Add to Watchlist" type="submit">
+                            <button class="btn-floating waves-effect waves-light tooltipped" id="watchlist-button" data-position="top" data-tooltip="Add to Watchlist" type="submit">
                                 <i class="fa-regular fa-bookmark"></i>
                             </button>
                             <label class="hide-on-large-only" for="watchlist-button">Add to Watchlist</label>
@@ -113,7 +113,7 @@
                         <input type="hidden" name="media_type" value="{{ media_type }}">
                         <input type="hidden" name="poster" value="{{ media_data['poster_path'] }}">
                         <div class="watchlist-button">
-                            <button class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Add to Seenlist" type="submit">
+                            <button class="btn-floating waves-effect waves-light tooltipped" id="seenlist-button" data-position="top" data-tooltip="Add to Seenlist" type="submit">
                                 <i class="fa-regular fa-circle-check"></i>
                             </button>
                             <label class="hide-on-large-only" for="seenlist-button">Add to Seenlist</label>
@@ -121,16 +121,16 @@
                     </form>
                 {% else %}
                     <div class="watchlist-button">
-                        <button class="non-session-activity btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Add to Watchlist">
+                        <button class="non-session-activity btn-floating waves-effect waves-light tooltipped" id="watchlist-button-non-user" data-position="top" data-tooltip="Add to Watchlist">
                             <i class="fa-regular fa-bookmark"></i>
                         </button>                                       
-                        <label class="hide-on-large-only" for="watchlist-button">Add to Watchlist</label>
+                        <label class="hide-on-large-only" for="watchlist-button-non-user">Add to Watchlist</label>
                     </div>
                     <div class="watchlist-button">
-                        <button class="non-session-activity btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Add to Seenlist" >
+                        <button class="non-session-activity btn-floating waves-effect waves-light tooltipped" id="seenlist-button-non-user" data-position="top" data-tooltip="Add to Seenlist" >
                             <i class="fa-regular fa-circle-check"></i>
                         </button>
-                        <label class="hide-on-large-only" for="seenlist-button">Add to Seenlist</label>
+                        <label class="hide-on-large-only" for="seenlist-button-non-user">Add to Seenlist</label>
                     </div>
                 {% endif %}
             </div>  
