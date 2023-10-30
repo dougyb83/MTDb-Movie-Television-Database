@@ -119,48 +119,109 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
 ## Features
 
-⚠️⚠️⚠️⚠️⚠️ START OF NOTES (to be deleted) ⚠️⚠️⚠️⚠️⚠️
-
-In this section, you should go over the different parts of your project,
-and describe each in a sentence or so.
-
-You will need to explain what value each of the features provides for the user,
-focusing on who this website is for, what it is that they want to achieve,
-and how your project is the best way to help them achieve these things.
-
-For some/all of your features, you may choose to reference the specific project files that implement them.
-
-IMPORTANT: Remember to always include a screenshot of each individual feature!
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
 ### Existing Features
 
-- **Title for feature #1**
+- **Navbar**
+    - A simple navbar where the user can use the search bar to find movies and tv shows, navigate to the home page using the 'Home' link or by clicking the logo/title, navigate to the library page or log out.
+    - If the user is new to the page or not yet logged in, the navbar gives the user the option to sign up or log in.
 
-    - Details about this particular feature, including the value to the site, and benefit for the user. Be as detailed as possible!
+![screenshot](documentation/features/feature01-1.png)
+![screenshot](documentation/features/feature01-3.png)
+![screenshot](documentation/features/feature01-2.png)
 
-![screenshot](documentation/feature01.png)
 
-- **Title for feature #2**
+- **Welcome section**
 
-    - Details about this particular feature, including the value to the site, and benefit for the user. Be as detailed as possible!
+    - A clean and simple welcome section of the home page displaying the sites full name.
+    - log in and sign up buttons have been added to the welcome page to make it easy for users to see, especially when vieing on a mobile device where the navbar log in and sign up links are hidden.
 
-![screenshot](documentation/feature02.png)
+![screenshot](documentation/features/feature02-1.png) ![screenshot](documentation/features/feature02-2.png)
 
-- **Title for feature #3**
 
-    - Details about this particular feature, including the value to the site, and benefit for the user. Be as detailed as possible!
+- **Popular Films and TV Shows**
 
-![screenshot](documentation/feature03.png)
+    - This section uses an API to fetch data about the most popular films and tv shows.
+    - Because this uses an API these titles will constantly be updated giving the user something new to look at when visiting the site.
 
-⚠️⚠️⚠️⚠️⚠️ START OF NOTES (to be deleted) ⚠️⚠️⚠️⚠️⚠️
+![screenshot](documentation/features/feature03.png)
 
-Repeat as necessary for as many features as your site contains.
+- **Footer**
 
-Hint: the more, the merrier!
+    - Logo and title will link the user back to the homepage.
+    - Social media links for the user to find out more about the site. These will open in a new tab.
 
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
+![screenshot](documentation/features/feature04.png)
+
+- **Log In and Sign Up Modals**
+
+    - I have choosen to have modals for the log in and sign up options instead of directing the user to a separate page. I feel this is more user friendly. For example if the user decides not to log in or sign up at that time they dont have to navigate back to the homepage.
+    - If the user clicks on the wrong button by mistake there is a link at the bottom of the modal that will take the user to the correct modal.
+    - To close the modal the user can either click on the 'x' button or anywhere on the screen outside of the modal.
+    - Once logged in the user will be directed to their library page.
+
+![screenshot](documentation/features/feature05-1.png) ![screenshot](documentation/features/feature05-2.png)
+
+
+- **Flash message modals**
+
+    - I chose to display the flash messages within a modal because I did not like that the flash messages appeared at the top of the screen and would  push other elements down the page.
+    - Another positive of using a modal to display the flash message is that the message could be closed once the user has read it keeping the page clean and tidy.
+
+![screenshot](documentation/features/feature06-1.png) ![screenshot](documentation/features/feature06-2.png)
+
+![screenshot](documentation/features/feature06-3.png) ![screenshot](documentation/features/feature06-4.png)
+
+
+- **Bottom and side nav**
+
+    - Once a user has signed up and is logged in they have a variety of other options available to them. These are all displayed on the bottom nav (for mobile users) and side nav (for desktop users).
+    - The user can navigate back to the home page, library page or view thier watchlists or seenlists.
+    - The Watchlists and Seenlists nav options have an expandable menu which allows the user to navigate to a specific list
+
+![screenshot](documentation/features/feature07-1.png)  ![screenshot](documentation/features/feature07-2.png)  ![screenshot](documentation/features/feature07-3.png)
+
+![screenshot](documentation/features/feature07-4.png)
+
+
+- **Search Results**
+
+    - When the user searches for a title in the search bar this page will be loaded.
+    - The API is access once again to find the details of the search title and are diplayed here for the user
+    - The user does not have to be logged in to search for a title. But if they try to add the title to one of the lists, non registered users will be warned that they must be logged in to perform the action.
+
+![screenshot](documentation/features/feature08-1.png)  ![screenshot](documentation/features/feature08-2.png)
+
+- **Feature Details**
+
+    - This page is only available to session users. It is accessed by clicking one of the titles that have been added to the users lists.
+    - This page allows the user to change which list the title is in. If the user trys to add the title to a list that it is already in a modal flash message will promt the user.
+    - Users can delete titles from thier lists witht the delete/trash button. A modal prompt will be shown to the user to confirm if they want to delete (see below).
+    - Users can add thier own star rating from 1 to 5 stars.
+    - Personal review or comments can also be added for each title.
+
+![screenshot](documentation/features/feature09-1.png)  ![screenshot](documentation/features/feature09-2.png)  ![screenshot](documentation/features/feature09-3.png)
+
+- **Poster menu options**
+
+    - Each poster has an expandable menu accesed by clicking the three vertical dots.
+    - This menu gives the user options to delete the title from the list or edit. choosing edit will direct the user to the feature details page.
+
+![screenshot](documentation/features/feature10.png)
+
+- **Delete modal prompt**
+
+    - This modal prompt is displayed whenever a user try's to delete a title.
+    - This is to capture any accidental clicks of the delete button.
+
+![screenshot](documentation/features/feature11.png)
+
+- **404 page**
+
+    - This page displays when the user tries to navigate to a page that doesn't exist.
+    - The page will refresh to the homepage after 10 seconds.
+
+![screenshot](documentation/features/feature12.png)
+
 
 ### Future Features
 
@@ -193,7 +254,6 @@ Feel free to delete any unused items below as necessary.
 
 - [HTML](https://en.wikipedia.org/wiki/HTML) used for the main site content.
 - [CSS](https://en.wikipedia.org/wiki/CSS) used for the main site design and layout.
-- [CSS :root variables](https://www.w3schools.com/css/css3_variables.asp) used for reusable styles throughout the site.
 - [CSS Flexbox](https://www.w3schools.com/css/css3_flexbox.asp) used for an enhanced responsive layout.
 - [CSS Grid](https://www.w3schools.com/css/css_grid.asp) used for an enhanced responsive layout.
 - [JavaScript](https://www.javascript.com) used for user interaction on the site.
@@ -271,18 +331,6 @@ For all testing, please refer to the [TESTING.md](TESTING.md) file.
 
 The live deployed application can be found deployed on [Heroku](https://mtdb-movie-television-database-ff116cae015a.herokuapp.com).
 
-### ElephantSQL Relational Database
-
-This project uses [ElephantSQL](https://www.elephantsql.com) for the PostgreSQL Database.
-
-To obtain your own Postgres Database, sign-up with your GitHub account, then follow these steps:
-- Click **Create New Instance** to start a new database.
-- Provide a name (this is commonly the name of the project: PLACEHOLDER-NAME).
-- Select the **Tiny Turtle (Free)** plan.
-- You can leave the **Tags** blank.
-- Select the **Region** and **Data Center** closest to you.
-- Once created, click on the new database name, where you can view the database URL and Password.
-
 ### MongoDB Non-Relational Database
 
 This project uses [MongoDB](https://www.mongodb.com) for the Non-Relational Database.
@@ -348,54 +396,6 @@ This project can be cloned or forked in order to make a local copy on your own s
 For either method, you will need to install any applicable packages found within the *requirements.txt* file.
 - `pip3 install -r requirements.txt`.
 
-If you are using SQLAlchemy for your project, you need to create a local PostgreSQL database.
-In this example, the example database name is **db-name**.
-
-```shell
-workspace (branch) $ set_pg
-workspace (branch) $ psql
-
-... connection to postgres ...
-
-postgres=# CREATE DATABASE db-name;
-CREATE DATABASE
-postgres=# \c db-name;
-You are now connected to database "db-name" as user "foobar".
-db-name=# \q
-```
-
-Once that database is created, you must migrate the database changes from your models.py file.
-This example uses **app-name** for the name of the primary Flask application.
-
-```shell
-workspace (branch) $ python3
-
-... connection to Python CLI ...
-
->>> from app-name import db
->>> db.create_all()
->>> exit()
-```
-
-To confirm that the database table(s) have been created, you can use the following:
-
-```shell
-workspace (branch) $ psql -d db-name
-
-... connection to postgres ...
-
-postgres=# \dt
-
-	List of relations
-Schema | Name | Type | Owner
--------+------+------+--------
-public | blah1 | table | foobar
-public | blah2 | table | foobar
-public | blah3 | table | foobar
-
-db-name=# \q
-```
-
 You will need to create a new file called `env.py` at the root-level,
 and include the same environment variables listed above from the Heroku deployment steps, plus a few extras.
 
@@ -414,33 +414,6 @@ os.environ.setdefault("SECRET_KEY", "user's own value")
 os.environ.setdefault("DB_URL", "user's own value")
 os.environ.setdefault("DEBUG", "True")
 os.environ.setdefault("DEVELOPMENT", "True")
-```
-
-If using Flask-Migrate, make sure to include the following steps as well.
-
-During the course of development, it became necessary to update the PostgreSQL data models.
-In order to do this, [Flask-Migrate](https://flask-migrate.readthedocs.io) was used.
-
-- `pip3 install Flask-Migrate`
-- Import the newly installed package on your main `__init__.py` file:
-	- `from flask_migrate import Migrate`
-- Define **Migrate** in the same file after **app** and **db** are defined:
-	- `migrate = Migrate(app, db)`
-- Initiate the migration changes in the terminal:
-
-```shell
-workspace (branch) $ flask db init
-
-	... generating migrations ...
-
-workspace (branch) $ set_pg
-workspace (branch) $ flask db migrate -m "Add a commit message for this migration"
-
-	... migrating changes ...
-
-workspace (branch) $ flask db upgrade
-
-	... updating database ...
 ```
 
 #### Cloning
@@ -503,7 +476,7 @@ Ideally, you should provide an actual link to every resource used, not just a ge
 
 | Source | Location | Notes |
 | --- | --- | --- |
-| [Markdown Builder](https://traveltimn.github.io/markdown-builder) | README and TESTING | tool to help generate the Markdown files |
+| [Markdown Builder](https://tim.2bn.dev/markdown-builder/) | README and TESTING | tool to help generate the Markdown files |
 | [Chris Beams](https://chris.beams.io/posts/git-commit) | version control | "How to Write a Git Commit Message" |
 | [W3Schools](https://www.w3schools.com/howto/howto_js_topnav_responsive.asp) | entire site | responsive HTML/CSS/JS navbar |
 | [W3Schools](https://www.w3schools.com/howto/howto_css_modals.asp) | contact page | interactive pop-up (modal) |
