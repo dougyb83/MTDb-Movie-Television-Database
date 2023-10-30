@@ -2,10 +2,6 @@ html {
     scroll-behavior: smooth;
 }
 
-body {
-    font-family: 'Roboto';
-}
-
 /* 404 page */
 .error-page {
     height: 100vh;
@@ -41,10 +37,16 @@ section.container {
     color: #F79426;
 }
 
+/* modals */
+.modal {
+    width: 30vw;
+}
+
 /* base.html */
 body {
     background-image: radial-gradient(farthest-side at 90% -0%, #6b0e87, rgb(36 5 71), #0f0219);
     background-repeat: no-repeat;
+    font-family: 'Roboto';
 }
 
 main {
@@ -73,6 +75,10 @@ nav ul a:hover {
     background-color: unset;
 }
 
+nav ul li.active {
+    background-color: unset;
+}
+
 .nav-wrapper {
     display: flex;
     align-items: center;
@@ -82,10 +88,6 @@ nav ul a:hover {
 .navbar-center {
     display: flex;
     justify-content: center;
-}
-
-nav ul li.active {
-    background-color: unset;
 }
 
 img.logo-img {
@@ -119,6 +121,13 @@ img.logo-img {
 
 ul.sidenav.sidenav-fixed.grey.darken-4.white-text {
     padding-right: 0;
+}
+
+.sidenav.sidenav-fixed {
+    border-radius: 0 10px 0 0;
+    margin-top: 89px;
+    width: 265px;
+    padding: 30px 45px ;
 }
 
 .sidenav li a, nav ul a {
@@ -160,6 +169,11 @@ ul.sub-menu {
 
 ul.sub-menu li {
     margin-top: 8px;
+}
+
+.message {
+    text-align: center;
+    color: #ff0000;
 }
 
 /* footer */
@@ -372,10 +386,6 @@ img#popcorn-2 {
     justify-content: space-evenly;
 }
 
-.modal {
-    width: 30vw;
-}
-
 .auth-form {
     width: 80%;
     text-align: center;
@@ -388,19 +398,6 @@ img#popcorn-2 {
 input#login-password, input#login-username,input#signup-username,input#signup-password {
     padding-left: 10px;
     margin-left: 26px;
-}
-
-.message {
-    text-align: center;
-    color: #ff0000;
-}
-
-.hide {
-    display: none;
-}
-
-.show {
-    display: block;
 }
 
 .user-login-signup {
@@ -451,19 +448,6 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
 }
 
 /* library page */
-.sidenav.sidenav-fixed {
-    border-radius: 0 10px 0 0;
-    margin-top: 89px;
-    width: 265px;
-    padding: 30px 45px ;
-}
-
-.library-content, .list-content {
-    min-height: 85vh;
-    padding-bottom: 20px;
-    margin: 20px 20px 0 270px;
-}
-
 .feature-title {
     position: absolute;
     text-align: left;
@@ -475,6 +459,12 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.library-content, .list-content {
+    min-height: 85vh;
+    padding-bottom: 20px;
+    margin: 20px 20px 0 270px;
 }
 
 .library-content .feature-title, .list-content .feature-title {
@@ -512,24 +502,6 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
     width: 100%;
 }
 
-.controls {
-    display: flex;
-    flex-direction: column;
-    height: 90%;
-    justify-content: space-between;
-    text-align: center;
-    font-size: 1.8em;
-}
-
-.controls i {
-    padding: 18px;
-    color: rgb(170, 169, 169);
-}
-
-.controls i:hover {
-    color: #f5f5f5;    
-}
-
 .card-menu {
     position: absolute;
     right: -7px;
@@ -549,6 +521,24 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
     color: #f5f5f5;
 }
 
+.controls {
+    display: flex;
+    flex-direction: column;
+    height: 90%;
+    justify-content: space-between;
+    text-align: center;
+    font-size: 1.8em;
+}
+
+.controls i {
+    padding: 18px;
+    color: rgb(170, 169, 169);
+}
+
+.controls i:hover {
+    color: #f5f5f5;    
+}
+
 #all-tv-shows, #all-films {
     color: rgb(170, 169, 169);
     font-size: 20px;
@@ -566,7 +556,7 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
 }
 
 
-/* feature display pages - search results and edit feature */
+/* feature-details & search-results pages */
 .main-content {
     min-height: 85vh;
     margin: 40px 0 40px 0;
@@ -633,50 +623,42 @@ textarea::placeholder {
     padding: 0;
     border: none;
     float: left;
-  }
+}
   
-  .rating > label {
+.rating > label {
     color: #90A0A3;
     float: right;
-  }
+}
   
-  .rating > label:before {
+.rating > label:before {
     margin: 5px;
     font-size: 1.7em;
     font-family: FontAwesome;
     content: "\f005";
     display: inline-block;
-  }
+}
   
-  .rating > input {
+.rating > input {
     display: none;
-  }
+}
   
-  .rating > input:checked ~ label,
-  .rating:not(:checked) > label:hover,
-  .rating:not(:checked) > label:hover ~ label {
+.rating > input:checked ~ label,
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
     color: #F79426;
-  }
+}
   
-  .rating > input:checked + label:hover,
-  .rating > input:checked ~ label:hover,
-  .rating > label:hover ~ input:checked ~ label,
-  .rating > input:checked ~ label:hover ~ label {
+.rating > input:checked + label:hover,
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label,
+.rating > input:checked ~ label:hover ~ label {
     color: #FECE31;
-  }
+}
 
 
 /* media queries */
 @media only screen and (min-width: 1441px) {
-    .popular, nav {
-        width: 80%;
-    }
-
-    .title-container {
-        width: 90%;
-        padding: 0 330px;
-    }
-
+    /* base.html */
     .fa-magnifying-glass {
         font-size: 1.3em;
         position: relative;
@@ -684,13 +666,18 @@ textarea::placeholder {
         left: -115px;
     }
 
-    .library-content, .list-content {
-        width: 80%;
-        margin-left: 270px;
-    }
-
     .auth-form .input-field i {
         left: 0;
+    }
+
+    /* home page*/
+    .title-container {
+        width: 90%;
+        padding: 0 330px;
+    }
+
+    .popular, nav {
+        width: 80%;
     }
 
     img#movie-reel {
@@ -717,9 +704,16 @@ textarea::placeholder {
         bottom: 200px;
         width: 15vw;
     }
+
+    /* library page */
+    .library-content, .list-content {
+        width: 80%;
+        margin-left: 270px;
+    }
 }
 
 @media only screen and (max-width: 1440px) {
+    /* base.html */
     .fa-magnifying-glass {
         font-size: 1.3em;
         position: relative;
@@ -727,8 +721,95 @@ textarea::placeholder {
         left: -115px;
     }
 
+    /* home page */
+    img#movie-reel {
+        position: absolute;
+        right: 115px;
+        top: 117px;
+        width: 22vw;
+    }
+    
+    img#tv-set {
+        left: 112px;
+        bottom: 227px;
+        width: 17vw;
+    }
+    
+    img#popcorn-1 {
+        left: 42px;
+        top: 76px;
+        width: 15vw;
+    }
+    
+    img#popcorn-2 {
+        right: 52px;
+        bottom: 200px;
+        width: 15vw;
+    }
+
+    /* feature-details & search-results pages */
     .main-content {
         left: 305px;
+    }
+}
+
+@media only screen and (max-width: 1024px) {  
+    /* modals */
+    .modal {
+        width: 42vw;
+    }
+
+    /* base.html */
+    nav {
+        height: 56px;
+    }
+    nav ul a {
+        font-size: 1.2em;
+    }
+
+    nav .brand-logo {
+        font-size: 2.5em;
+    }
+
+    .sidenav.sidenav-fixed {
+        padding: 25px 35px;
+    }
+
+    img.logo-img {
+        width: 55px;
+    }
+    
+    .search-bar {
+        left: 65px;
+    }
+
+    .fa-magnifying-glass {
+        top: -18px;
+        left: -117px;
+    }
+
+    .user-login-signup {
+        width: 42vw;
+        top: 115px;
+    }
+    
+    .log-in-button, .sign-up-button {
+        font-size: 17px;
+        width: 16vw;
+    }
+
+    .icon-link {  
+        font-size: 2rem;  
+        width: 4.5rem;
+    }
+
+    /* home page */
+    .welcome h1 {
+        font-size: 4em;
+    }
+
+    .title-container {
+        width: 90%;
     }
 
     img#movie-reel {
@@ -754,51 +835,6 @@ textarea::placeholder {
         right: 52px;
         bottom: 200px;
         width: 15vw;
-    }
-}
-
-@media only screen and (max-width: 1024px) {    
-    .card-title .card-close {
-        font-size: 0.8em;
-        right: 5px;
-        top: 5px;
-    }
-
-    .welcome h1 {
-        font-size: 4em;
-    }
-
-    nav {
-        height: 56px;
-    }
-    nav ul a {
-        font-size: 1.2em;
-    }
-
-    nav .brand-logo {
-        font-size: 2.5em;
-    }
-
-    img.logo-img {
-        width: 55px;
-    }
-    
-    .search-bar {
-        left: 65px;
-    }
-
-    .fa-magnifying-glass {
-        top: -18px;
-        left: -117px;
-    }
-
-    .modal {
-        width: 42vw;
-    }
-
-    .main-content {
-        left: 277px;
-        min-height: 80vh;
     }
 
     .popular h2 {
@@ -816,12 +852,15 @@ textarea::placeholder {
         font-size: 1.1em !important;
     }
 
-    .card-menu {
-        top: 8px;
+    /* library page */
+    .card-title .card-close {
+        font-size: 0.8em;
+        right: 5px;
+        top: 5px;
     }
 
-    .title-container {
-        width: 90%;
+    .card-menu {
+        top: 8px;
     }
 
     .card .card-reveal {
@@ -835,54 +874,16 @@ textarea::placeholder {
     i.right {
         font-size: 1.5em;
     }
-    
-    .sidenav.sidenav-fixed {
-        padding: 25px 35px;
-    }
-
-    img#movie-reel {
-        position: absolute;
-        right: 115px;
-        top: 117px;
-        width: 22vw;
-    }
-    
-    img#tv-set {
-        left: 112px;
-        bottom: 227px;
-        width: 17vw;
-    }
-    
-    img#popcorn-1 {
-        left: 42px;
-        top: 76px;
-        width: 15vw;
-    }
-    
-    img#popcorn-2 {
-        right: 52px;
-        bottom: 200px;
-        width: 15vw;
-    }
 
     #all-tv-shows, #all-films {
         font-size: 17px;
     }
 
-    .user-login-signup {
-        width: 42vw;
-        top: 115px;
+    /* feature-details & search-results pages */
+    .main-content {
+        left: 277px;
+        min-height: 80vh;
     }
-    
-    .log-in-button, .sign-up-button {
-        font-size: 17px;
-        width: 16vw;
-    }
-
-    .icon-link {  
-        font-size: 2rem;  
-        width: 4.5rem;
-      }
 
     #title {
         font-size: 35px;
@@ -890,19 +891,12 @@ textarea::placeholder {
 }
 
 @media only screen and (max-width: 992px) {
-    .welcome {
-        margin-top: -135px;
+    /* modals */
+    .modal {
+        width: 59vw;
     }
 
-    nav .input-field {
-        width: 80%;
-        right: 10px;
-    }
-
-    .poster img {
-        width: 32vw;
-    }
-
+    /* base.html */
     .side-menu .sidenav-trigger {
         position: absolute;
         z-index: 999;
@@ -915,63 +909,19 @@ textarea::placeholder {
         z-index: 1000;
     }
 
-    ul#nav-menu {
-        padding-top: 30px;
-        width: 195px;
-    }
-
     .sidenav li a{
         font-size: 25px;
         padding: 35px;
     }
 
-    img.logo-img {
-        width: 50px;
+    ul#nav-menu {
+        padding-top: 30px;
+        width: 195px;
     }
     
-    .search-bar {
-        width: 60%;
-    }
-
-    #search {
-        width: 40vw;
-    }
-
-    .modal {
-        width: 59vw;
-    }
-
-    .main-content {
-        left: unset;
-        margin: 75px auto 0;
-        width: 90%;
-    }
-
-    .popular h2 {
-        font-size: 3.5em;
-    }
-
-    .popular h3 {
-        font-size: 25px;
-    }
-
-    .card .card-content {
-        padding: 18px;
-    }
-
-    .card-title .card-close {
-        font-size: 0.8em;
-    }
-
-    .controls i {
-        padding: 55px;    
-    }
-
-    .library-content, .list-content {
-        width: 90vw;
-        margin: 0 auto;
-        position: relative;
-        top: -20px;
+    nav .input-field {
+        width: 80%;
+        right: 10px;
     }
 
     .bottom-nav nav {
@@ -992,17 +942,14 @@ textarea::placeholder {
         display: flex;
         flex-direction: column;
         text-align: center;
+        margin: 0;
     }
     
     li.menu-item {
         width: 25%;
         align-items: center;
     }
-    
-    .menu-item {
-        margin: 0;
-    }
-    
+       
     a.icon {
         position: relative;
         top: -11px;
@@ -1050,23 +997,17 @@ textarea::placeholder {
     .list-item {
         width: 103px;
     }
+
+    img.logo-img {
+        width: 50px;
+    }
     
-    footer {
-        margin-bottom: -11px;
-        z-index: 99;
+    .search-bar {
+        width: 60%;
     }
 
-    img#tv-set {
-        bottom: 300px;
-        left: 65px;
-    }
-
-    img#movie-reel {
-        right: 13px;
-    }
-
-    #all-tv-shows, #all-films {
-        font-size: 15px;
+    #search {
+        width: 40vw;
     }
 
     .user-login-signup {
@@ -1078,6 +1019,32 @@ textarea::placeholder {
         font-size: 17px;
     }
 
+    /* home page */
+    .welcome {
+        margin-top: -135px;
+    }
+
+    .popular h2 {
+        font-size: 3.5em;
+    }
+
+    .popular h3 {
+        font-size: 25px;
+    }
+
+    .poster img {
+        width: 32vw;
+    }
+
+    img#tv-set {
+        bottom: 300px;
+        left: 65px;
+    }
+
+    img#movie-reel {
+        right: 13px;
+    }
+
     .go-to-library {
         width: 50vw;
         top: 95px;
@@ -1085,6 +1052,37 @@ textarea::placeholder {
 
     .go-to-library-button {
         width: 28vw;
+    }
+
+    /* library page */
+    .card .card-content {
+        padding: 18px;
+    }
+
+    .card-title .card-close {
+        font-size: 0.8em;
+    }
+
+    .controls i {
+        padding: 55px;    
+    }
+
+    .library-content, .list-content {
+        width: 90vw;
+        margin: 0 auto;
+        position: relative;
+        top: -20px;
+    }
+
+    #all-tv-shows, #all-films {
+        font-size: 15px;
+    }
+
+    /* feature-details & search-results pages */
+    .main-content {
+        left: unset;
+        margin: 75px auto 0;
+        width: 90%;
     }
 
     .watchlist-button, .seenlist-button, .delete-button {
@@ -1102,17 +1100,16 @@ textarea::placeholder {
         flex-wrap: wrap;
         margin-top: 10px;
     }
+   
+    /* footer */
+    footer {
+        margin-bottom: -11px;
+        z-index: 99;
+    }
 }
 
 @media only screen and (max-width: 768px) {
-    #title {
-        font-size: 29px;
-    }
-
-    .controls i {
-        padding: 16px;    
-    }
-
+    /* base.html */
     .user-login-signup {
         width: 50vw;
     }
@@ -1122,14 +1119,30 @@ textarea::placeholder {
         width: 23vw;
     }
 
+    /* home page */
     img#tv-set {
         bottom: 343px;
+    }
+
+    /* library page */
+    .controls i {
+        padding: 16px;    
+    }
+
+    /* feature-details & search-results pages */
+    #title {
+        font-size: 29px;
     }
 }
 
 @media only screen and (max-width: 600px) {
-    .popular h2 {
-        font-size: 3em;
+    /* base.html */
+    .user-login-signup {
+        width: 52vw;
+    }
+
+    .log-in-button, .sign-up-button {
+        font-size: 16px;
     }
 
     .icon-link {  
@@ -1137,6 +1150,12 @@ textarea::placeholder {
         width: 4rem;
     }
 
+    /* home page */
+    .popular h2 {
+        font-size: 3em;
+    }
+
+    /* footer */
     .footer-logo-img {
         width: 65px;
     }
@@ -1149,12 +1168,14 @@ textarea::placeholder {
         margin-top:40px;
     }
 
-    #title {
-        font-size: 22px;
-    }
-    
+    /* library page */
     .controls i {
         padding: 50px;    
+    }
+
+    /* feature-details & search-results pages */
+    #title {
+        font-size: 22px;
     }
 
     .cert-year-runtime {
@@ -1164,34 +1185,15 @@ textarea::placeholder {
     .overview {
         margin: 10px 0 0 0;
     }
-
-    .user-login-signup {
-        width: 52vw;
-    }
-
-    .log-in-button, .sign-up-button {
-        font-size: 16px;
-    }
 }
 
 @media only screen and (max-width: 425px) {
-    .welcome {
-        padding: 25px;
-        margin-top: -93px;
+    /* modals */
+    .modal {
+        width: 80vw;
     }
 
-    .popular h2 {
-        font-size: 2.5em;
-    }
-
-    .popular h3 {
-        margin-left: 10px;
-    }
-
-    .popular-title {
-        font-size: 0.9em !important;
-    }
-
+    /* base.html */
     nav {
         width: 95%;
     }
@@ -1213,90 +1215,9 @@ textarea::placeholder {
         padding: 35px 0;
     }
 
-    .fa-magnifying-glass {
-        top: -13px;
-        left: -71px;
-    }
-
-    img.logo-img {
-        display: none;
-    }
-    
-    .search-bar {
-        width: 60%;
-        left: -3px;
-    }
-
-    .search-bar, .label-icon {
-        margin-left: 55px;
-    }
-
-    #search {
-        width: 50vw;
-        font-size: 1em;
-    }
-
-    .modal {
-        width: 80vw;
-    }
-
-    .main-content {
-        left: unset;
-        margin: 40px auto 0;
-        width: 90%;
-        min-height: 50vh;
-        display: block;
-    }
-
-    .feature-container-search {
-        height: 75px
-    }
-
-    .title-genre h3 {
-        font-size: 2.5em;
-    }
-
-    .title-genre #genres {
-        padding: 0;
-        width: 50%;
-        font-size: .8em;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
-
-    .poster img {
-        width: 41vw;
-    }
-
-    .cert-year-runtime p {
-        margin: 10px 0 0 0;
-    }
-
-    textarea#review {
-        font-size: .9em;
-    }
-
     ul#nav-menu {
         width: 132px;
         padding-top: 0;
-    }
-
-    form#seenlist {
-        position: absolute;
-        left: 135px;
-    }
-
-    #rating {
-        margin-bottom: 0;
-    }
-
-    .rating > label {
-        font-size: 8px;
-    }
-
-    .rating > h6 {
-        font-size: 15px;
     }
 
     .menu-item a, .sub-menu-item .sub-list-item {
@@ -1331,20 +1252,27 @@ textarea::placeholder {
         top: -6px;
     }
 
-    img#movie-reel {
-        right: 22px;
-        top: 84px;
+    .fa-magnifying-glass {
+        top: -13px;
+        left: -71px;
     }
 
-    img#tv-set {
-        left: 28px;
-        bottom: 320px;
+    img.logo-img {
+        display: none;
+    }
+    
+    .search-bar {
+        width: 60%;
+        left: -3px;
     }
 
-    #all-tv-shows, #all-films {
-        font-size: 13px;
-        right: 17px;
-        top: 8px;
+    .search-bar, .label-icon {
+        margin-left: 55px;
+    }
+
+    #search {
+        width: 50vw;
+        font-size: 1em;
     }
 
     .user-login-signup {
@@ -1357,6 +1285,34 @@ textarea::placeholder {
         width: 26vw;
     }
 
+    /* home page */
+    .welcome {
+        padding: 25px;
+        margin-top: -93px;
+    }
+
+    .popular h2 {
+        font-size: 2.5em;
+    }
+
+    .popular h3 {
+        margin-left: 10px;
+    }
+
+    .popular-title {
+        font-size: 0.9em !important;
+    }
+
+    img#movie-reel {
+        right: 22px;
+        top: 84px;
+    }
+
+    img#tv-set {
+        left: 28px;
+        bottom: 320px;
+    }
+
     .go-to-library {
         width: 90vw;
         top: 115px;
@@ -1366,6 +1322,65 @@ textarea::placeholder {
         width: 40vw;
     }
 
+    /* library page */
+    #all-tv-shows, #all-films {
+        font-size: 13px;
+        right: 17px;
+        top: 8px;
+    }
+
+    /* feature-details & search-results pages */
+    .main-content {
+        left: unset;
+        margin: 40px auto 0;
+        width: 90%;
+        min-height: 50vh;
+        display: block;
+    }
+
+    .title-genre h3 {
+        font-size: 2.5em;
+    }
+
+    .cert-year-runtime p {
+        margin: 10px 0 0 0;
+    }
+
+    textarea#review {
+        font-size: .9em;
+    }
+
+    .title-genre #genres {
+        padding: 0;
+        width: 50%;
+        font-size: .8em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .poster img {
+        width: 41vw;
+    }
+
+    form#seenlist {
+        position: absolute;
+        left: 135px;
+    }
+
+    #rating {
+        margin-bottom: 0;
+    }
+
+    .rating > label {
+        font-size: 8px;
+    }
+
+    .rating > h6 {
+        font-size: 15px;
+    }
+
+    /* footer */
     .footer-logo-title {
         display: flex;
         justify-content: center;
@@ -1383,15 +1398,11 @@ textarea::placeholder {
 }
 
 @media only screen and (max-width: 375px) {
+    /* base.html */
     nav .input-field {
         left: 10px;
     }
-
-    form#seenlist {
-        position: absolute;
-        left: 110px;
-    }
-    
+  
     .menu-item a, .sub-menu-item .sub-list-item {
         font-size: 12px;
     }
@@ -1410,19 +1421,25 @@ textarea::placeholder {
         width: 33vw;
     }
 
-    .controls i {
-        padding: 35px;
-    }
-
+    /* home page */
     .go-to-library-button {
         width: 55vw;
+    }
+
+    /* feature-details & search-results pages */
+    form#seenlist {
+        position: absolute;
+        left: 110px;
+    }
+
+    /* library page */
+    .controls i {
+        padding: 35px;
     }
 }
 
 @media only screen and (max-width: 320px) {
-    .popular h2 {
-        font-size: 2.2em;    }
-
+    /* base.html */
     nav .input-field {
         left: 0px;
     }
@@ -1432,36 +1449,16 @@ textarea::placeholder {
         left: 0;
     }
 
+    .side-menu ul {
+        margin-top: 10px;
+    }
+
     .search-bar {
         left: -13px;
     }
 
     #search {
         width: 58vw;
-    }
-
-    .go-to-library {
-        top: 79px;
-    }
-
-    .button-title {
-        font-size: 19px;
-    }
-
-    .feature-container-search {
-        height: 65px;
-    }
-
-    .side-menu ul {
-        margin-top: 10px;
-    }
-
-    .title-genre h3 {
-        font-size: 1.9em;
-    }
-
-    #overview {
-        top: 40px;
     }
 
     .user-login-signup {
@@ -1473,7 +1470,30 @@ textarea::placeholder {
         font-size: 17px;
         width: 32vw;
     }
-    
+
+    /* home page */
+    .popular h2 {
+        font-size: 2.2em;
+    }
+
+    .go-to-library {
+        top: 79px;
+    }
+
+    .button-title {
+        font-size: 19px;
+    }
+
+    /* feature-details & search-results pages */
+    .title-genre h3 {
+        font-size: 1.9em;
+    }
+
+    #overview {
+        top: 40px;
+    }
+
+    /* library page */
     .controls i {
         padding: 29px;
     }
