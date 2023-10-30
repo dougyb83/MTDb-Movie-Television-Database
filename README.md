@@ -291,17 +291,6 @@ For all testing, please refer to the [TESTING.md](TESTING.md) file.
 
 ## Deployment
 
-⚠️⚠️⚠️⚠️⚠️ START OF NOTES (to be deleted) ⚠️⚠️⚠️⚠️⚠️
-
-**IMPORTANT:**
-- Be sure to remove all instances of ElephantSQL/PostgreSQL/Flask-Migrate if you've only used a non-relational database with MongoDB
-- Be sure to remove all instances of MongoDB if you've only used a relational database with ElephantSQL/PostgreSQL
-- ⚠️ DO NOT update the environment variables to your own! These should NOT be included in this file; just demo values! ⚠️
-- ⚠️ DO NOT update the environment variables to your own! These should NOT be included in this file; just demo values! ⚠️
-- ⚠️ DO NOT update the environment variables to your own! These should NOT be included in this file; just demo values! ⚠️
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
 The live deployed application can be found deployed on [Heroku](https://mtdb-movie-television-database-ff116cae015a.herokuapp.com).
 
 ### MongoDB Non-Relational Database
@@ -418,23 +407,8 @@ You can fork this repository by using the following steps:
 2. At the top of the Repository (not top of page) just above the "Settings" Button on the menu, locate the "Fork" Button.
 3. Once clicked, you should now have a copy of the original repository in your own GitHub account!
 
-### Local VS Deployment
-
-⚠️⚠️⚠️⚠️⚠️ START OF NOTES (to be deleted) ⚠️⚠️⚠️⚠️⚠️
-
-Use this space to discuss any differences between the local version you've developed, and the live deployment site on Heroku.
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
 ## Credits
 
-⚠️⚠️⚠️⚠️⚠️ START OF NOTES (to be deleted) ⚠️⚠️⚠️⚠️⚠️
-
-In this section you need to reference where you got your content, media, and extra help from.
-It is common practice to use code from other repositories and tutorials,
-however, it is important to be very specific about these sources to avoid plagiarism.
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
 
 ### Content
 
@@ -451,56 +425,31 @@ Ideally, you should provide an actual link to every resource used, not just a ge
 | --- | --- | --- |
 | [Markdown Builder](https://tim.2bn.dev/markdown-builder/) | README and TESTING | tool to help generate the Markdown files |
 | [Chris Beams](https://chris.beams.io/posts/git-commit) | version control | "How to Write a Git Commit Message" |
-| [W3Schools](https://www.w3schools.com/howto/howto_js_topnav_responsive.asp) | entire site | responsive HTML/CSS/JS navbar |
-| [W3Schools](https://www.w3schools.com/howto/howto_css_modals.asp) | contact page | interactive pop-up (modal) |
-| [W3Schools](https://www.w3schools.com/css/css3_variables.asp) | entire site | how to use CSS :root variables |
+| [W3Schools](https://www.w3schools.com/css/css3_gradients_radial.asp) | entire site | Colour gradient used on the background |
+| [StackOverflow](https://stackoverflow.com/a/11974399) | feature-details and search-results pages | how to exclude last iteration in jinja |
+| [Dynjashik](https://github.com/Dynjashik/MSP3-Movie-collection/blob/master/templates/base.html) | entire site | How to display flash messages in a modal |
+| [Codepen](https://codepen.io/recodenow/pen/YZqgZW) | feature-details page | Five star rating checkbox |
+| [StackOverflow](https://stackoverflow.com/questions/37259740/passing-variables-from-flask-to-javascript) | feature-details page | How to pass variable data to JS from the backend |
+| [Dev.to](https://dev.to/jeetvora331/remove-background-from-image-using-css-only-fdi#:~:text=Sometimes%2C%20a%20.,appearance%20of%20a%20transparent%20background) | Home page | How to remove background from an image with CSS |
+| [CSS Scan](https://getcssscan.com/css-buttons-examples) | Home page | Buttons for log in and sign up (button 33) |
 | [Flexbox Froggy](https://flexboxfroggy.com/) | entire site | modern responsive layouts |
-| [Grid Garden](https://cssgridgarden.com) | entire site | modern responsive layouts |
-| [StackOverflow](https://stackoverflow.com/a/2450976) | quiz page | Fisher-Yates/Knuth shuffle in JS |
-| [YouTube](https://www.youtube.com/watch?v=YL1F4dCUlLc) | leaderboard | using `localStorage()` in JS for high scores |
-| [YouTube](https://www.youtube.com/watch?v=u51Zjlnui4Y) | PP3 terminal | tutorial for adding color to the Python terminal |
-| [strftime](https://strftime.org) | CRUD functionality | helpful tool to format date/time from string |
-| [WhiteNoise](http://whitenoise.evans.io) | entire site | hosting static files on Heroku temporarily |
+
 
 ### Media
 
-⚠️⚠️⚠️⚠️⚠️ START OF NOTES (to be deleted) ⚠️⚠️⚠️⚠️⚠️
-
-Use this space to provide attribution links to any images, videos, or audio files borrowed from online.
-A few examples have been provided below to give you some ideas.
-
-If you're the owner (or a close acquaintance) of all media files, then make sure to specify this.
-Let the assessors know that you have explicit rights to use the media files within your project.
-
-Ideally, you should provide an actual link to every media file used, not just a generic link to the main site!
-The list below is by no means exhaustive. Within the Code Institute Slack community, you can find more "free media" links
-by sending yourself the following command: `!freemedia`.
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
 | Source | Location | Type | Notes |
 | --- | --- | --- | --- |
-| [Pexels](https://www.pexels.com) | entire site | image | favicon on all pages |
-| [Lorem Picsum](https://picsum.photos) | home page | image | hero image background |
-| [Unsplash](https://unsplash.com) | product page | image | sample of fake products |
-| [Pixabay](https://pixabay.com) | gallery page | image | group of photos for gallery |
-| [Wallhere](https://wallhere.com) | footer | image | background wallpaper image in the footer |
-| [This Person Does Not Exist](https://thispersondoesnotexist.com) | testimonials | image | headshots of fake testimonial images |
-| [Audio Micro](https://www.audiomicro.com/free-sound-effects) | game page | audio | free audio files to generate the game sounds |
-| [Videvo](https://www.videvo.net/) | home page | video | background video on the hero section |
-| [TinyPNG](https://tinypng.com) | entire site | image | tool for image compression |
+| [Wikimedia](https://commons.wikimedia.org/wiki/File:No-Image-Placeholder.svg) | entire site | image | Placeholder image if no poster is found |
+| [Cleanpng](https://www.cleanpng.com/png-black-and-white-reel-computer-icons-film-4705969/preview.html) | home page | image | Movie reel image on welcome section |
+| [Vectorstock](https://www.vectorstock.com/royalty-free-vector/tv-with-remote-control-icon-vector-21452169) | home page | image | TV and remote image on welcome section |
+| [Cleanpng](https://www.cleanpng.com/png-popcorn-cinema-film-clip-art-western-style-food-ve-241252/) | home page | image | Popcorn image on welcome section |
+| [Bandcrowd](https://www.brandcrowd.com/) | entire site | image | Site logo and favicon |
+| [TMDB](https://www.themoviedb.org/) | entire site | image | all movie and tv show posters |
+
 
 ### Acknowledgements
 
-⚠️⚠️⚠️⚠️⚠️ START OF NOTES (to be deleted) ⚠️⚠️⚠️⚠️⚠️
-
-Use this space to provide attribution to any supports that helped, encouraged, or supported you throughout the development stages of this project.
-A few examples have been provided below to give you some ideas.
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
-- I would like to thank my Code Institute mentor, [Tim Nelson](https://github.com/TravelTimN) for their support throughout the development of this project.
+- I would like to thank my Code Institute mentors, [Rory Patrick Sheridan](https://github.com/Ri-Dearg) & [Tim Nelson](https://github.com/TravelTimN) for their support throughout the development of this project.
 - I would like to thank the [Code Institute](https://codeinstitute.net) tutor team for their assistance with troubleshooting and debugging some project issues.
-- I would like to thank the [Code Institute Slack community](https://code-institute-room.slack.com) for the moral support; it kept me going during periods of self doubt and imposter syndrome.
-- I would like to thank my partner (John/Jane), for believing in me, and allowing me to make this transition into software development.
-- I would like to thank my employer, for supporting me in my career development change towards becoming a software developer.
+
+
