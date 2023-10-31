@@ -14,13 +14,13 @@
         </div>
         {% if not session.user %}  
             <div class="user-login-signup">
-                <button class="log-in-button button-title" role="button"><strong>Log In</strong></button>
-                <button class="sign-up-button button-title" role="button"><strong>Sign Up</strong></button>
+                <span class="log-in-button button-title" role="button"><strong>Log In</strong></span>
+                <span class="sign-up-button button-title" role="button"><strong>Sign Up</strong></span>
             </div>
         {% else %}
             <div class="go-to-library">
                 <a href="{{ url_for('library') }}">
-                    <button class="go-to-library-button button-title" role="button"><strong>Go to Library</strong></button>
+                    <span class="go-to-library-button button-title" role="button"><strong>Go to Library</strong></span>
                 </a>
             </div>
         {% endif %}

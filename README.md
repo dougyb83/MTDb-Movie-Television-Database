@@ -268,7 +268,7 @@ It contains 3 collections:
     | Key | Type | Notes |
     | --- | --- | --- |
     | _id | ObjectId() | |
-    | user_id | ObjectId() | |
+    | user_id | ObjectId() | Acts as Foriegn Key |
     | feature_id | String | |
     | rating | String | |
     | review | String | |

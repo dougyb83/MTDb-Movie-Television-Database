@@ -359,7 +359,7 @@
                                 <a href="{{ url_for('library') }}" {% if request.path == url_for('library') %} class="active icon" {% else %} class="icon" {% endif %}><i class="fa-solid fa-lines-leaning"></i></a>
                                 <a href="{{ url_for('library') }}" {% if request.path == url_for('library') %} class="active list-item" {% else %} class="list-item" {% endif %}>Library</a>
                             </li>
-                            <li class="menu-item" id="watchlists">      
+                            <li class="menu-item">      
                                 <!-- Dropdown Trigger -->
                                 <a {% if request.path == url_for('view_watchlist', media_type="movie") or request.path == url_for('view_watchlist', media_type="tv")%} class="active dropdown-trigger icon" {% else %} class="dropdown-trigger icon" {% endif %} href="#!" data-target="watchlist-menu"><i class="fa-regular fa-bookmark"></i></a>
                                 <a {% if request.path == url_for('view_watchlist', media_type="movie") or request.path == url_for('view_watchlist', media_type="tv")%} class=" active dropdown-trigger list-item menu-item-text" {% else %} class=" dropdown-trigger list-item menu-item-text" {% endif %} href="#!" data-target="watchlist-menu">Watchlists</a>
@@ -374,7 +374,7 @@
                                     </li>
                                 </ul>
                             </li>
-                            <li class="menu-item" id="seenlists">      
+                            <li class="menu-item">      
                                 <!-- Dropdown Trigger -->
                                 <a {% if request.path == url_for('view_seenlist', media_type="movie") or request.path == url_for('view_seenlist', media_type="tv")%} class="active dropdown-trigger icon" {% else %} class="dropdown-trigger icon" {% endif %} href="#!" data-target="seenlist-menu"><i class="fa-solid fa-eye"></i></a>
                                 <a {% if request.path == url_for('view_seenlist', media_type="movie") or request.path == url_for('view_seenlist', media_type="tv")%} class="active dropdown-trigger list-item menu-item-text" {% else %} class="dropdown-trigger list-item menu-item-text"  {% endif %}href="#!" data-target="seenlist-menu">Seenlists</a>
