@@ -28,13 +28,13 @@ $(document).ready(function(){
   $(".flash-modal").modal("open");
   // if a non registered user performs a register user action display a warning and prompt login
   $(".non-session-activity").click(function () {
-    $(".message").text("You must be logged in to perfom that action")
+    $(".message").text("You must be logged in to perfom that action");
     $(".log-in-modal").modal("open");
   });
   // if the above message is displayed on the login modal and the user doesn't log in - clear the message
   $('.log-in-modal').modal({
     onCloseEnd: function() { // Callback for Modal close
-      $(".message").text("") 
+      $(".message").text("");
       } 
     }
   );
@@ -57,11 +57,11 @@ $(document).ready(function(){
   }
   // hide the sublists and show them when clicked
   $("#watchlists>a").click(function () {
-    $(".watchlists").toggleClass("hide show")
+    $(".watchlists").toggleClass("hide show");
   });
   // hide the sublists and show them when clicked
   $("#seenlists>a").click(function () {
-    $(".seenlists").toggleClass("hide show")
+    $(".seenlists").toggleClass("hide show");
   });
   // Keep sublists visible when viewing relevant data on list.html
   if ($("#list-sub-title").text().trim() == "Films Watchlist" || $("#list-sub-title").text().trim() == "TV Watchlist") {
