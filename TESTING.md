@@ -81,45 +81,12 @@ I've tested my deployed project using the Lighthouse Audit tool to check for any
 | Home | Desktop | ![screenshot](documentation/lighthouse/lighthouse-home-desktop.png) | Some minor warnings |
 | Library | Mobile | ![screenshot](documentation/lighthouse/lighthouse-library-mobile.png) | Some minor warnings |
 | Library | Desktop | ![screenshot](documentation/lighthouse/lighthouse-library-desktop.png) | Few warnings |
-| Search-results | Mobile | ![screenshot](documentation/lighthouse/lighthouse-search-results-mobile.png) | Some minor warnings |
-| Search-results | Desktop | ![screenshot](documentation/lighthouse/lighthouse-search-results-desktop.png) | Some minor warnings |
 | Feature-details | Mobile | ![screenshot](documentation/lighthouse/lighthouse-feature-details-mobile.png) | Some minor warnings |
 | Feature-details | Desktop | ![screenshot](documentation/lighthouse/lighthouse-feature-details-desktop.png) | Some minor warnings |
 | List | Mobile | ![screenshot](documentation/lighthouse/lighthouse-list-mobile.png) | Some minor warnings |
 | List | Desktop | ![screenshot](documentation/lighthouse/lighthouse-list-desktop.png) | Some minor warnings |
 
 ## Defensive Programming
-
-⚠️⚠️⚠️⚠️⚠️ START OF NOTES (to be deleted) ⚠️⚠️⚠️⚠️⚠️
-
-Defensive programming (defensive design) is extremely important!
-
-When building projects that accept user inputs or forms, you should always test the level of security for each.
-Examples of this could include (not limited to):
-
-Forms:
-- Users cannot submit an empty form
-- Users must enter valid email addresses
-
-PP3 (Python-only):
-- Users must enter a valid letter/word/string when prompted
-- Users must choose from a specific list only
-
-Flask/Django:
-- Users cannot brute-force a URL to navigate to a restricted page
-- Users cannot perform CRUD functionality while logged-out
-- User-A should not be able to manipulate data belonging to User-B, or vice versa
-- Non-Authenticated users should not be able to access pages that require authentication
-- Standard users should not be able to access pages intended for superusers
-
-You'll want to test all functionality on your application, whether it's a standard form,
-or uses CRUD functionality for data manipulation on a database.
-Make sure to include the `required` attribute on any form-fields that should be mandatory.
-Try to access various pages on your site as different user types (User-A, User-B, guest user, admin, superuser).
-
-You should include any manual tests performed, and the expected results/outcome.
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
 
 Defensive programming was manually tested with the below user acceptance testing:
 
@@ -128,67 +95,161 @@ Defensive programming was manually tested with the below user acceptance testing
 | Home Page | | | | |
 | | Click on Logo | Redirection to Home page | Pass | |
 | | Click on Home link in navbar | Redirection to Home page | Pass | |
+| | Click on Search Bar | cursor enters input field | Pass | |
+| | Type a Movie name and Press Enter | Redirection to Search-results page | Pass | |
+| | Type a TV show name and Press Enter | Redirection to Search-results page | Pass | |
+| | Click on the Nav Bar Login link | Login Modal opens | Pass | |
+| | Click on the Login Button | Login Modal opens | Pass | |
+| | Click on the Nav Bar Sign Up link | Login Modal opens | Pass | |
+| | Click on the Sign Up Button | Login Modal opens | Pass | |
+| | Click Library link in navbar | Redirects user to Library page | Pass | |
+| | Click Go to Library button | Redirects user to Library page | Pass | |
+| | Click Poster in Popular Films & TV Shows section | Redirects user to Search-results page and displays the correct data | Pass | |
+| Footer | | | | |
+| | Click on Footer Logo | Redirection to Home page | Pass | |
+| | Click on Social Icons | Relevant Social Media site opens in a new tab | Pass | |
 | Library Page | | | | |
-| | Click on Gallery link in navbar | Redirection to Gallery page | Pass | |
-| | Load gallery images | All images load as expected | Pass | |
+| | Navigate to Library URL when not logged in | Redirection to Home page | Pass | |
+| | Click on Home link in sidenav | Redirection to Home page | Pass | |
+| | Click on Library link in sidenav | Redirection to Library page | Pass | |
+| | Click on Watchlists link in sidenav | Opens Sub Menu | Pass | |
+| | Click on Watchlists-Films sub menu link in sidenav | Redirection to List page | Pass | |
+| | Click on Watchlists-TV Shows sub menu link in sidenav | Redirection to List page | Pass | |
+| | Click on Seenlists link in sidenav | Opens Sub Menu | Pass | |
+| | Click on Seenlists-Films sub menu link in sidenav | Redirection to List page | Pass | |
+| | Click on Seenlists-TV Shows sub menu link in sidenav | Redirection to List page | Pass | |
+| | Click on Jump to TV Shows link | Page scrolls down to TV Shows section | Pass | |
+| | Click on Jump to Films link | Page scrolls up to Films section | Pass | |
+| | Click on 3 dots next to Film/Show name | Card Menu overlays poster image | Pass | |
+| | Click on Edit Details Icon | Redirection to Feature Details page | Pass | |
+| | Click on Trash/Delete Icon | Prompts user to confirm deletion | Pass | |
+| | Click on No when prompted to confirm deletion | Modal closes and DB entry remains | Pass | |
+| | Click on Yes when prompted to confirm deletion | Redirection to Library page and DB entry is deleted | Pass | |
+| | Click on Poster | Redirection to Feature Details page | Pass | |
 | Search-results Page | | | | |
-| | Click on Contact link in navbar | Redirection to Contact page | Pass | |
-| | Enter first/last name | Field will accept freeform text | Pass | |
-| | Enter valid email address | Field will only accept email address format | Pass | |
-| | Enter message in textarea | Field will accept freeform text | Pass | |
-| | Click the Submit button | Redirects user to form-dump | Pass | User must click 'Back' button to return |
+| | Click on Home link in sidenav | Redirection to Home page | Pass | |
+| | Click on Library link in sidenav | Redirection to Library page | Pass | |
+| | Click on Watchlists link in sidenav | Opens Sub Menu | Pass | |
+| | Click on Watchlists-Films sub menu link in sidenav | Redirection to List page | Pass | |
+| | Click on Watchlists-TV Shows sub menu link in sidenav | Redirection to List page | Pass | |
+| | Click on Seenlists link in sidenav | Opens Sub Menu | Pass | |
+| | Click on Seenlists-Films sub menu link in sidenav | Redirection to List page | Pass | |
+| | Click on Seenlists-TV Shows sub menu link in sidenav | Redirection to List page | Pass | |
+| | (Non-session user) Click on Library link in sidenav | User Prompted to Log In | Pass | |
+| | (Non-session user) Click on Watchlists link in sidenav | Opens Sub Menu & User Prompted to Log In | Pass | |
+| | (Non-session user) Click on Watchlists-Films sub menu link in sidenav | User Prompted to Log In | Pass | |
+| | (Non-session user) Click on Watchlists-TV Shows sub menu link in sidenav | User Prompted to Log In | Pass | |
+| | (Non-session user) Click on Seenlists link in sidenav | Opens Sub Menu & User Prompted to Log In | Pass | |
+| | (Non-session user) Click on Seenlists-Films sub menu link in sidenav | User Prompted to Log Ine | Pass | |
+| | (Non-session user) Click on Seenlists-TV Shows sub menu link in sidenav | User Prompted to Log In | Pass | |
+| | Click on Add to Watchlist link | Redirection to Library and data added to watchlist | Pass | |
+| | Click on Add to Seenlist link | Redirection to Library and data added to seenlist | Pass | |
+| | Click on Add to Watchlist link when already in Watchlist | Redirection to Library and promted that title is already in Watchlist | Pass | |
+| | Click on Add to Seenlist link when already in Seenlist | Redirection to Library and promted that title is already in Seenlist | Pass | |
+| | (Non-session user) Click on Add to Watchlist link | User Prompted to Log In | Pass | |
+| | (Non-session user) Click on Add to Seenlist link | User Prompted to Log In | Pass | |
 | Feature-details Page | | | | |
-| | Click on Contact link in navbar | Redirection to Contact page | Pass | |
-| | Enter first/last name | Field will accept freeform text | Pass | |
-| | Enter valid email address | Field will only accept email address format | Pass | |
-| | Enter message in textarea | Field will accept freeform text | Pass | |
-| | Click the Submit button | Redirects user to form-dump | Pass | User must click 'Back' button to return |
+| | Navigate to Feature Details URL when not logged in | Redirection to Home page | Pass | |
+| | Click on Home link in sidenav | Redirection to Home page | Pass | |
+| | Click on Library link in sidenav | Redirection to Library page | Pass | |
+| | Click on Watchlists link in sidenav | Opens Sub Menu | Pass | |
+| | Click on Watchlists-Films sub menu link in sidenav | Redirection to List page | Pass | |
+| | Click on Watchlists-TV Shows sub menu link in sidenav | Redirection to List page | Pass | |
+| | Click on Seenlists link in sidenav | Opens Sub Menu | Pass | |
+| | Click on Seenlists-Films sub menu link in sidenav | Redirection to List page | Pass | |
+| | Click on Seenlists-TV Shows sub menu link in sidenav | Redirection to List page | Pass | |
+| | Click on Add to Watchlist link | Redirection to Library and data added to watchlist | Pass | |
+| | Click on Add to Seenlist link | Redirection to Library and data added to seenlist | Pass | |
+| | Click on Add to Watchlist link when already in Watchlist | Redirection to Library and promted that title is already in Watchlist | Pass | |
+| | Click on Add to Seenlist link when already in Seenlist | Redirection to Library and promted that title is already in Seenlist | Pass | |
+| | Click on Trash/Delete Icon | Prompts user to confirm deletion | Pass | |
+| | Click on No when prompted to confirm deletion | Modal closes and DB entry remains | Pass | |
+| | Click on Yes when prompted to confirm deletion | Redirection to Library page and DB entry is deleted | Pass | |
+| | Click on Star rating Checkbox | Checkbox selected | Pass | |
+| | Click on Your Review text box | Cursor enter text area | Pass | |
+| | Click on Submit Rating/Review button | User is prompted and rating/review is added to the DB | Pass | |
+| | Click on Edit Rating/Review button | Text can be edited | Pass | |
 | Film Watchlist Page | | | | |
-| | Click on Contact link in navbar | Redirection to Contact page | Pass | |
-| | Enter first/last name | Field will accept freeform text | Pass | |
-| | Enter valid email address | Field will only accept email address format | Pass | |
-| | Enter message in textarea | Field will accept freeform text | Pass | |
-| | Click the Submit button | Redirects user to form-dump | Pass | User must click 'Back' button to return |
+| | Click on Home link in sidenav | Redirection to Home page | Pass | |
+| | Click on Library link in sidenav | Redirection to Library page | Pass | |
+| | Click on Watchlists link in sidenav | Opens Sub Menu | Pass | |
+| | Click on Watchlists-Films sub menu link in sidenav | Redirection to List page | Pass | |
+| | Click on Watchlists-TV Shows sub menu link in sidenav | Redirection to List page | Pass | |
+| | Click on Seenlists link in sidenav | Opens Sub Menu | Pass | |
+| | Click on Seenlists-Films sub menu link in sidenav | Redirection to List page | Pass | |
+| | Click on Seenlists-TV Shows sub menu link in sidenav | Redirection to List page | Pass | |
+| | Click on 3 dots next to Film/Show name | Card Menu overlays poster image | Pass | |
+| | Click on Edit Details Icon | Redirection to Feature Details page | Pass | |
+| | Click on Trash/Delete Icon | Prompts user to confirm deletion | Pass | |
+| | Click on No when prompted to confirm deletion | Modal closes and DB entry remains | Pass | |
+| | Click on Yes when prompted to confirm deletion | Redirection to Library page and DB entry is deleted | Pass | |
+| | Click on Poster | Redirection to Feature Details page | Pass | |
 | TV Watchlist Page | | | | |
-| | Click on Contact link in navbar | Redirection to Contact page | Pass | |
-| | Enter first/last name | Field will accept freeform text | Pass | |
-| | Enter valid email address | Field will only accept email address format | Pass | |
-| | Enter message in textarea | Field will accept freeform text | Pass | |
-| | Click the Submit button | Redirects user to form-dump | Pass | User must click 'Back' button to return |
+| | Click on Home link in sidenav | Redirection to Home page | Pass | |
+| | Click on Library link in sidenav | Redirection to Library page | Pass | |
+| | Click on Watchlists link in sidenav | Opens Sub Menu | Pass | |
+| | Click on Watchlists-Films sub menu link in sidenav | Redirection to List page | Pass | |
+| | Click on Watchlists-TV Shows sub menu link in sidenav | Redirection to List page | Pass | |
+| | Click on Seenlists link in sidenav | Opens Sub Menu | Pass | |
+| | Click on Seenlists-Films sub menu link in sidenav | Redirection to List page | Pass | |
+| | Click on Seenlists-TV Shows sub menu link in sidenav | Redirection to List page | Pass | |
+| | Click on 3 dots next to Film/Show name | Card Menu overlays poster image | Pass | |
+| | Click on Edit Details Icon | Redirection to Feature Details page | Pass | |
+| | Click on Trash/Delete Icon | Prompts user to confirm deletion | Pass | |
+| | Click on No when prompted to confirm deletion | Modal closes and DB entry remains | Pass | |
+| | Click on Yes when prompted to confirm deletion | Redirection to Library page and DB entry is deleted | Pass | |
+| | Click on Poster | Redirection to Feature Details page | Pass | |
 | Film Seenlist Page | | | | |
-| | Click on Contact link in navbar | Redirection to Contact page | Pass | |
-| | Enter first/last name | Field will accept freeform text | Pass | |
-| | Enter valid email address | Field will only accept email address format | Pass | |
-| | Enter message in textarea | Field will accept freeform text | Pass | |
-| | Click the Submit button | Redirects user to form-dump | Pass | User must click 'Back' button to return |
+| | Click on Home link in sidenav | Redirection to Home page | Pass | |
+| | Click on Library link in sidenav | Redirection to Library page | Pass | |
+| | Click on Watchlists link in sidenav | Opens Sub Menu | Pass | |
+| | Click on Watchlists-Films sub menu link in sidenav | Redirection to List page | Pass | |
+| | Click on Watchlists-TV Shows sub menu link in sidenav | Redirection to List page | Pass | |
+| | Click on Seenlists link in sidenav | Opens Sub Menu | Pass | |
+| | Click on Seenlists-Films sub menu link in sidenav | Redirection to List page | Pass | |
+| | Click on Seenlists-TV Shows sub menu link in sidenav | Redirection to List page | Pass | |
+| | Click on 3 dots next to Film/Show name | Card Menu overlays poster image | Pass | |
+| | Click on Edit Details Icon | Redirection to Feature Details page | Pass | |
+| | Click on Trash/Delete Icon | Prompts user to confirm deletion | Pass | |
+| | Click on No when prompted to confirm deletion | Modal closes and DB entry remains | Pass | |
+| | Click on Yes when prompted to confirm deletion | Redirection to Library page and DB entry is deleted | Pass | |
+| | Click on Poster | Redirection to Feature Details page | Pass | |
 | TV Seenlist Page | | | | |
-| | Click on Contact link in navbar | Redirection to Contact page | Pass | |
-| | Enter first/last name | Field will accept freeform text | Pass | |
-| | Enter valid email address | Field will only accept email address format | Pass | |
-| | Enter message in textarea | Field will accept freeform text | Pass | |
-| | Click the Submit button | Redirects user to form-dump | Pass | User must click 'Back' button to return |
+| | Click on Home link in sidenav | Redirection to Home page | Pass | |
+| | Click on Library link in sidenav | Redirection to Library page | Pass | |
+| | Click on Watchlists link in sidenav | Opens Sub Menu | Pass | |
+| | Click on Watchlists-Films sub menu link in sidenav | Redirection to List page | Pass | |
+| | Click on Watchlists-TV Shows sub menu link in sidenav | Redirection to List page | Pass | |
+| | Click on Seenlists link in sidenav | Opens Sub Menu | Pass | |
+| | Click on Seenlists-Films sub menu link in sidenav | Redirection to List page | Pass | |
+| | Click on Seenlists-TV Shows sub menu link in sidenav | Redirection to List page | Pass | |
+| | Click on 3 dots next to Film/Show name | Card Menu overlays poster image | Pass | |
+| | Click on Edit Details Icon | Redirection to Feature Details page | Pass | |
+| | Click on Trash/Delete Icon | Prompts user to confirm deletion | Pass | |
+| | Click on No when prompted to confirm deletion | Modal closes and DB entry remains | Pass | |
+| | Click on Yes when prompted to confirm deletion | Redirection to Library page and DB entry is deleted | Pass | |
+| | Click on Poster | Redirection to Feature Details page | Pass | |
 | Sign Up | | | | |
-| | Click on Sign Up button | Redirection to Sign Up page | Pass | |
-| | Enter valid email address | Field will only accept email address format | Pass | |
-| | Enter valid password (twice) | Field will only accept password format | Pass | |
-| | Click on Sign Up button | Asks user to confirm email page | Pass | Email sent to user |
-| | Confirm email | Redirects user to blank Sign In page | Pass | |
+| | Click on the Nav Bar Sign Up link | Login Modal opens | Pass | |
+| | Click on the Sign Up Button | Login Modal opens | Pass | |
+| | Enter valid User Name | Field will only accept alphanumeric username | Pass | |
+| | Enter valid password | Field will only accept alphanumeric password format | Pass | |
+| | Click Register button with valid Username & Password | Redirects user to Library page | Pass | |
+| | Click Register button with empty Password field | Prompts for Password | Pass | |
+| | Click Register button with empty Username field | Prompts for Username | Pass | |
+| | Click Register button with both input fields empty | Prompts for input | Pass | |
+| | Click Already Registered link | Opens Log In Modal | Pass | |
 | Log In | | | | |
 | | Click on the Login link | Redirection to Login page | Pass | |
-| | Enter valid email address | Field will only accept email address format | Pass | |
-| | Enter valid password | Field will only accept password format | Pass | |
-| | Click Login button | Redirects user to home page | Pass | |
+| | Enter valid User Name | Field will only accept alphanumeric username | Pass | |
+| | Enter valid password | Field will only accept alphanumeric password format | Pass | |
+| | Click Log In button with valid Username & Password | Redirects user to Library page | Pass | |
+| | Click Log In button with empty Password field | Prompts for Password | Pass | |
+| | Click Log In button with empty Username field | Prompts for Username | Pass | |
+| | Click Log In button with both input fields empty | Prompts for input | Pass | |
+| | Click New Here link | Opens Sign Up Modal | Pass | |
 | Log Out | | | | |
-| | Click Logout button | Redirects user to logout page | Pass | Confirms logout first |
-| | Click Confirm Logout button | Redirects user to home page | Pass | |
-
-
-⚠️⚠️⚠️⚠️⚠️ START OF NOTES (to be deleted) ⚠️⚠️⚠️⚠️⚠️
-
-Repeat for all other tests, as applicable to your own site.
-The aforementioned tests are just an example of a few different project scenarios.
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
+| | Click Logout button | Redirects user to Home page | Pass |  |
 
 ## User Story Testing
 

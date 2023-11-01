@@ -434,7 +434,7 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
-    width: 10vw;
+    width: 14vw;
     height: 5vh;
   }
   
