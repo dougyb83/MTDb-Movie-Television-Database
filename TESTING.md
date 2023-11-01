@@ -170,6 +170,7 @@ Defensive programming was manually tested with the below user acceptance testing
 | | Click on Submit Rating/Review button | User is prompted and rating/review is added to the DB | Pass | |
 | | Click on Edit Rating/Review button | Text can be edited | Pass | |
 | Film Watchlist Page | | | | |
+| | Navigate to Film Watchlist URL when not logged in | Redirection to Home page | Pass | |
 | | Click on Home link in sidenav | Redirection to Home page | Pass | |
 | | Click on Library link in sidenav | Redirection to Library page | Pass | |
 | | Click on Watchlists link in sidenav | Opens Sub Menu | Pass | |
@@ -185,6 +186,7 @@ Defensive programming was manually tested with the below user acceptance testing
 | | Click on Yes when prompted to confirm deletion | Redirection to Library page and DB entry is deleted | Pass | |
 | | Click on Poster | Redirection to Feature Details page | Pass | |
 | TV Watchlist Page | | | | |
+| | Navigate to TV Watchlist URL when not logged in | Redirection to Home page | Pass | |
 | | Click on Home link in sidenav | Redirection to Home page | Pass | |
 | | Click on Library link in sidenav | Redirection to Library page | Pass | |
 | | Click on Watchlists link in sidenav | Opens Sub Menu | Pass | |
@@ -200,6 +202,7 @@ Defensive programming was manually tested with the below user acceptance testing
 | | Click on Yes when prompted to confirm deletion | Redirection to Library page and DB entry is deleted | Pass | |
 | | Click on Poster | Redirection to Feature Details page | Pass | |
 | Film Seenlist Page | | | | |
+| | Navigate to Film Seenlist URL when not logged in | Redirection to Home page | Pass | |
 | | Click on Home link in sidenav | Redirection to Home page | Pass | |
 | | Click on Library link in sidenav | Redirection to Library page | Pass | |
 | | Click on Watchlists link in sidenav | Opens Sub Menu | Pass | |
@@ -215,6 +218,7 @@ Defensive programming was manually tested with the below user acceptance testing
 | | Click on Yes when prompted to confirm deletion | Redirection to Library page and DB entry is deleted | Pass | |
 | | Click on Poster | Redirection to Feature Details page | Pass | |
 | TV Seenlist Page | | | | |
+| | Navigate to TV Seenlist URL when not logged in | Redirection to Home page | Pass | |
 | | Click on Home link in sidenav | Redirection to Home page | Pass | |
 | | Click on Library link in sidenav | Redirection to Library page | Pass | |
 | | Click on Watchlists link in sidenav | Opens Sub Menu | Pass | |
@@ -253,29 +257,18 @@ Defensive programming was manually tested with the below user acceptance testing
 
 ## User Story Testing
 
-⚠️⚠️⚠️⚠️⚠️ START OF NOTES (to be deleted) ⚠️⚠️⚠️⚠️⚠️
-
-Testing user stories is actually quite simple, once you've already got the stories defined on your README.
-
-Most of your project's **features** should already align with the **user stories**,
-so this should as simple as creating a table with the user story, matching with the re-used screenshot
-from the respective feature.
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
 | User Story | Screenshot |
 | --- | --- |
-| As a new site user, I would like to ____________, so that I can ____________. | ![screenshot](documentation/feature01.png) |
-| As a new site user, I would like to ____________, so that I can ____________. | ![screenshot](documentation/feature02.png) |
-| As a new site user, I would like to ____________, so that I can ____________. | ![screenshot](documentation/feature03.png) |
-| As a returning site user, I would like to ____________, so that I can ____________. | ![screenshot](documentation/feature04.png) |
-| As a returning site user, I would like to ____________, so that I can ____________. | ![screenshot](documentation/feature05.png) |
-| As a returning site user, I would like to ____________, so that I can ____________. | ![screenshot](documentation/feature06.png) |
-| As a site administrator, I should be able to ____________, so that I can ____________. | ![screenshot](documentation/feature07.png) |
-| As a site administrator, I should be able to ____________, so that I can ____________. | ![screenshot](documentation/feature08.png) |
-| As a site administrator, I should be able to ____________, so that I can ____________. | ![screenshot](documentation/feature09.png) |
-| repeat for all remaining user stories | x |
-
+| As a new site user, I would like to see clear sign-up and login options, so that I can quickly access the sites full functionality. | ![screenshot](documentation/features/feature02-1.png) |
+| As a new site user, I would like to search for movies/shows without signing up, so that I can see what the site has to offer. | ![screenshot](documentation/features/feature08-1.png) |
+| As a new site user, I would like to easily navigate through the site, so that I can quickly find exactly what I'm looking for. | ![screenshot](documentation/features/feature07-3.png) ![screenshot](documentation/features/feature07-4.png) |
+| As a new site user, I would like to responsive design, so that I can view the page on multiple devices. | ![screenshot](documentation/testing/responsive-desktop-home.png) ![screenshot](documentation/testing/responsive-desktop-library.png) ![screenshot](documentation//testing/responsive-desktop-feature-details.png) ![screenshot](documentation/testing/responsive-mobile-s21-home.png) ![screenshot](documentation/testing/responsive--mobile-s21-library.png) ![screenshot](documentation/testing/responsive--mobile-s21-feature-details.png) |
+| As a returning site user, I would like to easily sign up or log in, so that I can access my library and lists. | ![screenshot](documentation/features/feature05-1.png)  ![screenshot](documentation/features/feature05-2.png) |
+| As a returning site user, I would like to add movies/shows to my lists, so that I can keep track of what to watch or what I have watched. | ![screenshot](documentation/features/feature09-1.png) |
+| As a returning site user, I would like to view each of my lists individually, so I can choose what to watch. | ![screenshot](documentation/features/feature07-2.png) ![screenshot](documentation/features/feature07-3.png) |
+| As a returning site user, I would like to add my own rating and review to each item in the library. | ![screenshot](documentation/features/feature09-2.png) |
+| As a returning site user, I would like to delete movies/shows from my lists, so that unwanted items are no longer displayed to me. | ![screenshot](documentation/features/feature09-2.png) |
+ 
 ## Automated Testing
 
 I have conducted a series of automated tests on my application.
