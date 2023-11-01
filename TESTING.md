@@ -46,42 +46,16 @@ I have used the recommended [PEP8 CI Python Linter](https://pep8ci.herokuapp.com
 
 ## Browser Compatibility
 
-⚠️⚠️⚠️⚠️⚠️ START OF NOTES (to be deleted) ⚠️⚠️⚠️⚠️⚠️
-
-Use this space to discuss testing the live/deployed site on various browsers.
-
-Consider testing at least 3 different browsers, if available on your system.
-
-Recommended browsers to consider:
-- [Chrome](https://www.google.com/chrome)
-- [Firefox (Developer Edition)](https://www.mozilla.org/firefox/developer)
-- [Edge](https://www.microsoft.com/edge)
-- [Safari](https://support.apple.com/downloads/safari)
-- [Brave](https://brave.com/download)
-- [Opera](https://www.opera.com/download)
-
-**IMPORTANT**: You must provide screenshots of the tested browsers, to "prove" that you've actually tested them.
-
-Please note, there are services out there that can test multiple browser compatibilities at the same time.
-Some of these are paid services, but some are free.
-If you use these, you must provide a link to the source used for attribution, and multiple screenshots of the results.
-
-Sample browser testing documentation:
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
 I've tested my deployed project on multiple browsers to check for compatibility issues.
 
-| Browser | Screenshot | Notes |
-| --- | --- | --- |
-| Chrome | ![screenshot](documentation/browser-chrome.png) | Works as expected |
-| Firefox | ![screenshot](documentation/browser-firefox.png) | Works as expected |
-| Edge | ![screenshot](documentation/browser-edge.png) | Works as expected |
-| Safari | ![screenshot](documentation/browser-safari.png) | Minor CSS differences |
-| Brave | ![screenshot](documentation/browser-brave.png) | Works as expected |
-| Opera | ![screenshot](documentation/browser-opera.png) | Minor differences |
-| Internet Explorer | ![screenshot](documentation/browser-iex.png) | Does not work as expected |
-| x | x | repeat for any other tested browsers |
+| Browser | Screenshot                                                                | Screenshot                                                                | Screenshot                                                                   | Notes                 |
+| ------- | ------------------------------------------------------------------------- | ------------------------------------------------------------------------- | ---------------------------------------------------------------------------- | --------------------- |
+| Chrome  | ![screenshot](documentation/browser-compatibility/browser-chrome-home.png) | ![screenshot](documentation/browser-compatibility/browser-chrome-library.png) | ![screenshot](documentation/browser-compatibility/browser-chrome-feature-details.png) | Works as expected |
+| Firefox | ![screenshot](documentation/browser-compatibility/browser-firefox-home.png) | ![screenshot](documentation/browser-compatibility/browser-firefox-library.png) | ![screenshot](documentation/browser-compatibility/browser-firefox-feature-details.png) | Works as expected |
+| Edge    | ![screenshot](documentation/browser-compatibility/browser-edge-home.png) | ![screenshot](documentation/browser-compatibility/browser-edge-library.png) | ![screenshot](documentation/browser-compatibility/browser-edge-feature-details.png) | Works as expected |
+| Aloha   | ![screenshot](documentation/browser-compatibility/browser-aloha-home.png) | ![screenshot](documentation/browser-compatibility/browser-aloha-library.png) | ![screenshot](documentation/browser-compatibility/browser-aloha-feature-details.png) | Works as expected |
+| Brave   | ![screenshot](documentation/browser-compatibility/browser-brave-home.png) | ![screenshot](documentation/browser-compatibility/browser-brave-library.png) | ![screenshot](documentation/browser-compatibility/browser-brave-feature-details.png) | Works as expected |
+| Opera   | ![screenshot](documentation/browser-compatibility/browser-opera-home.png) | ![screenshot](documentation/browser-compatibility/browser-opera-library.png) | ![screenshot](documentation/browser-compatibility/browser-opera-feature-details.png) | Works as expected |
 
 ## Responsiveness
 
@@ -108,16 +82,15 @@ Sample responsiveness testing documentation:
 
 I've tested my deployed project on multiple devices to check for responsiveness issues.
 
-| Device | Screenshot | Notes |
-| --- | --- | --- |
-| Mobile (DevTools) | ![screenshot](documentation/responsive-mobile.png) | Works as expected |
-| Tablet (DevTools) | ![screenshot](documentation/responsive-tablet.png) | Works as expected |
-| Desktop | ![screenshot](documentation/responsive-desktop.png) | Works as expected |
-| XL Monitor | ![screenshot](documentation/responsive-xl.png) | Scaling starts to have minor issues |
-| 4K Monitor | ![screenshot](documentation/responsive-4k.png) | Noticeable scaling issues |
-| Google Pixel 7 Pro | ![screenshot](documentation/responsive-pixel.png) | Works as expected |
-| iPhone 14 | ![screenshot](documentation/responsive-iphone.png) | Works as expected |
-| x | x | repeat for any other tested sizes |
+| Device                   | Screenshot                                                          | Screenshot                                                          | Screenshot                                                             | Notes             |
+| ------------------------ | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ---------------------------------------------------------------------- | ----------------- |
+| Mobile (DevTools)        | ![screenshot](documentation/testing/responsive-mobile-dev-home.png)   | ![screenshot](documentation/testing/responsive-mobile-dev-game.png)   | ![screenshot](documentation/testing/responsive-mobile-dev-contact.png)   | Works as expected |
+| Tablet (DevTools)        | ![screenshot](documentation/testing/responsive-tablet-dev-home.png)   | ![screenshot](documentation/testing/responsive-tablet-dev-game.png)   | ![screenshot](documentation/testing/responsive-tablet-dev-contact.png)   | Works as expected |
+| Desktop                  | ![screenshot](documentation/testing/responsive-desktop-home.png)      | ![screenshot](documentation/testing/responsive-desktop-game.png)      | ![screenshot](documentation/testing/responsive-desktop-contact.png)      | Works as expected |
+| Google Pixel 4a          | ![screenshot](documentation/testing/responsive-mobile-pixel-home.png) | ![screenshot](documentation/testing/responsive-mobile-pixel-game.png) | ![screenshot](documentation/testing/responsive-mobile-pixel-contact.png) | Works as expected |
+| Samsung Galaxy S8        | ![screenshot](documentation/testing/responsive-mobile-s8-home.png)    | ![screenshot](documentation/testing/responsive-mobile-s8-game.png)    | ![screenshot](documentation/testing/responsive-mobile-s8-contact.png)    | Works as expected |
+| Samsung Galaxy S21 Ultra | ![screenshot](documentation/testing/responsive-mobile-s21-home.png)   | ![screenshot](documentation/testing/responsive-mobile-s21-game.png)   | ![screenshot](documentation/testing/responsive-mobile-s21-contact.png)   | Works as expected |
+| Samsung Galaxy Tab 4     | ![screenshot](documentation/testing/responsive-tablet-tab4-home.png)  | ![screenshot](documentation/testing/responsive-tablet-tab4-game.png)  | ![screenshot](documentation/testing/responsive-tablet-tab4-contact.png)  | Works as expected |
 
 ## Lighthouse Audit
 

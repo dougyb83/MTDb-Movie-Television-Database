@@ -1329,11 +1329,11 @@ textarea::placeholder {
 
     .go-to-library {
         width: 90vw;
-        top: 115px;
+        top: 75px;
     }
 
     .go-to-library-button {
-        width: 40vw;
+        width: 50vw;
     }
 
     /* library page */
