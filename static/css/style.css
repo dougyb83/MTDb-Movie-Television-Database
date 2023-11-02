@@ -1343,6 +1343,10 @@ textarea::placeholder {
         top: 8px;
     }
 
+    .controls i {
+        padding: 40px;    
+    }
+
     /* feature-details & search-results pages */
     .main-content {
         left: unset;

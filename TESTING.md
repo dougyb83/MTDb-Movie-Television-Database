@@ -61,9 +61,11 @@ I've tested my deployed project on multiple browsers to check for compatibility 
 
 I've tested my deployed project on multiple devices to check for responsiveness issues.
 
+I have found that in dev tools @ 425px and lower the 3 dots menu activator is not always clickable. This has been tested on more than one PC but with different results. On some PC's it works ok on others it does not.
+
 | Device                   | Screenshot                                                          | Screenshot                                                          | Screenshot                                                             | Notes             |
 | ------------------------ | ------------------------------------------------------------------- | ------------------------------------------------------------------- | ---------------------------------------------------------------------- | ----------------- |
-| Iphone 12 Pro (DevTools)        | ![screenshot](documentation/testing/responsive-iphone12pro-dev-home.png)   | ![screenshot](documentation/testing/responsive-iphone12pro-dev-library.png)   | ![screenshot](documentation/testing/responsive-iphone12pro-dev-feature-details.png)   | Works as expected |
+| Iphone 12 Pro (DevTools)        | ![screenshot](documentation/testing/responsive-iphone12pro-dev-home.png)   | ![screenshot](documentation/testing/responsive-iphone12pro-dev-library.png)   | ![screenshot](documentation/testing/responsive-iphone12pro-dev-feature-details.png)   | The 3 dots menu activator is sometimes unclickable |
 | Ipad Mini (DevTools)        | ![screenshot](documentation/testing/responsive-ipadmini-dev-home.png)   | ![screenshot](documentation/testing/responsive-ipadmini-dev-library.png)   | ![screenshot](documentation/testing/responsive-ipadmini-dev-feature-details.png)   | Works as expected |
 | Desktop                  | ![screenshot](documentation/testing/responsive-desktop-home.png)      | ![screenshot](documentation/testing/responsive-desktop-library.png)      | ![screenshot](documentation/testing/responsive-desktop-feature-details.png)      | Works as expected |
 | Google Pixel 4a          | ![screenshot](documentation/testing/responsive-mobile-pixel-home.png) | ![screenshot](documentation/testing/responsive-mobile-pixel-library.png) | ![screenshot](documentation/testing/responsive-mobile-pixel-feature-details.png) | Works as expected |
@@ -269,75 +271,6 @@ Defensive programming was manually tested with the below user acceptance testing
 | As a returning site user, I would like to add my own rating and review to each item in the library. | ![screenshot](documentation/features/feature09-2.png) |
 | As a returning site user, I would like to delete movies/shows from my lists, so that unwanted items are no longer displayed to me. | ![screenshot](documentation/features/feature09-2.png) |
  
-## Automated Testing
-
-I have conducted a series of automated tests on my application.
-
-I fully acknowledge and understand that, in a real-world scenario, an extensive set of additional tests would be more comprehensive.
-
-### Python (Unit Testing)
-
-⚠️⚠️⚠️⚠️⚠️ START OF NOTES (to be deleted) ⚠️⚠️⚠️⚠️⚠️
-
-Adjust the code below (file names, etc.) to match your own project files/folders.
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
-I have used Django's built-in unit testing framework to test the application functionality.
-
-In order to run the tests, I ran the following command in the terminal each time:
-
-`python3 manage.py test name-of-app `
-
-To create the coverage report, I would then run the following commands:
-
-`coverage run --source=name-of-app manage.py test`
-
-`coverage report`
-
-To see the HTML version of the reports, and find out whether some pieces of code were missing, I ran the following commands:
-
-`coverage html`
-
-`python3 -m http.server`
-
-Below are the results from the various apps on my application that I've tested:
-
-| App | File | Coverage | Screenshot |
-| --- | --- | --- | --- |
-| Bag | test_forms.py | 99% | ![screenshot](documentation/py-test-bag-forms.png) |
-| Bag | test_models.py | 89% | ![screenshot](documentation/py-test-bag-models.png) |
-| Bag | test_urls.py | 100% | ![screenshot](documentation/py-test-bag-urls.png) |
-| Bag | test_views.py | 71% | ![screenshot](documentation/py-test-bag-views.png) |
-| Checkout | test_forms.py | 99% | ![screenshot](documentation/py-test-checkout-forms.png) |
-| Checkout | test_models.py | 89% | ![screenshot](documentation/py-test-checkout-models.png) |
-| Checkout | test_urls.py | 100% | ![screenshot](documentation/py-test-checkout-urls.png) |
-| Checkout | test_views.py | 71% | ![screenshot](documentation/py-test-checkout-views.png) |
-| Home | test_forms.py | 99% | ![screenshot](documentation/py-test-home-forms.png) |
-| Home | test_models.py | 89% | ![screenshot](documentation/py-test-home-models.png) |
-| Home | test_urls.py | 100% | ![screenshot](documentation/py-test-home-urls.png) |
-| Home | test_views.py | 71% | ![screenshot](documentation/py-test-home-views.png) |
-| Products | test_forms.py | 99% | ![screenshot](documentation/py-test-products-forms.png) |
-| Products | test_models.py | 89% | ![screenshot](documentation/py-test-products-models.png) |
-| Products | test_urls.py | 100% | ![screenshot](documentation/py-test-products-urls.png) |
-| Products | test_views.py | 71% | ![screenshot](documentation/py-test-products-views.png) |
-| Profiles | test_forms.py | 99% | ![screenshot](documentation/py-test-profiles-forms.png) |
-| Profiles | test_models.py | 89% | ![screenshot](documentation/py-test-profiles-models.png) |
-| Profiles | test_urls.py | 100% | ![screenshot](documentation/py-test-profiles-urls.png) |
-| Profiles | test_views.py | 71% | ![screenshot](documentation/py-test-profiles-views.png) |
-| x | x | x | repeat for all remaining tested apps/files |
-
-#### Unit Test Issues
-
-⚠️⚠️⚠️⚠️⚠️ START OF NOTES (to be deleted) ⚠️⚠️⚠️⚠️⚠️
-
-Use this section to list any known issues you ran into while writing your unit tests.
-Remember to include screenshots (where possible), and a solution to the issue (if known).
-
-This can be used for both "fixed" and "unresolved" issues.
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
 ## Bugs
 
 - Heroku Application Error - `ModuleNotFoundError: No module named 'requests'`
@@ -385,44 +318,5 @@ This can be used for both "fixed" and "unresolved" issues.
     - To fix this, I changed the `type="image/png"` to `type="image/x-icon"`.
 
 ## Unfixed Bugs
-
-⚠️⚠️⚠️⚠️⚠️ START OF NOTES (to be deleted) ⚠️⚠️⚠️⚠️⚠️
-
-You will need to mention unfixed bugs and why they were not fixed.
-This section should include shortcomings of the frameworks or technologies used.
-Although time can be a big variable to consider, paucity of time and difficulty understanding
-implementation is not a valid reason to leave bugs unfixed.
-
-If you've identified any unfixed bugs, no matter how small, be sure to list them here.
-It's better to be honest and list them, because if it's not documented and an assessor finds the issue,
-they need to know whether or not you're aware of them as well, and why you've not corrected/fixed them.
-
-Some examples:
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
-
-- On devices smaller than 375px, the page starts to have `overflow-x` scrolling.
-
-    ![screenshot](documentation/unfixed-bug01.png)
-
-    - Attempted fix: I tried to add additional media queries to handle this, but things started becoming too small to read.
-
-- For PP3, when using a helper `clear()` function, any text above the height of the terminal does not clear, and remains when you scroll up.
-
-    ![screenshot](documentation/unfixed-bug02.png)
-
-    - Attempted fix: I tried to adjust the terminal size, but it only resizes the actual terminal, not the allowable area for text.
-
-- When validating HTML with a semantic `section` element, the validator warns about lacking a header `h2-h6`. This is acceptable.
-
-    ![screenshot](documentation/unfixed-bug03.png)
-
-    - Attempted fix: this is a known warning and acceptable, and my section doesn't require a header since it's dynamically added via JS.
-
-⚠️⚠️⚠️⚠️⚠️ START OF NOTES (to be deleted) ⚠️⚠️⚠️⚠️⚠️
-
-If you legitimately cannot find any unfixed bugs or warnings, then use the following sentence:
-
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
 
 There are no remaining bugs that I am aware of.
