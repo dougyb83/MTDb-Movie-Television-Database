@@ -340,46 +340,49 @@ This can be used for both "fixed" and "unresolved" issues.
 
 ## Bugs
 
-⚠️⚠️⚠️⚠️⚠️ START OF NOTES (to be deleted) ⚠️⚠️⚠️⚠️⚠️
+- Heroku Application Error - `ModuleNotFoundError: No module named 'requests'`
 
-It's very important to document any bugs you've discovered while developing the project.
-Make sure to include any necessary steps you've implemented to fix the bug(s) as well.
+    ![screenshot](documentation/bugs/bug01-1.png)
+    ![screenshot](documentation/bugs/bug01-2.png)
 
-For JavaScript and Python applications, it's best to screenshot the errors to include them as well.
+    - I tried using `pip3 freeze --local > requirements.txt` to update the requirements.txt but it didn't add 'requests' to the file. 
+    - To fix this, I manually added `requests==2.26.0` to requirements.txt.
 
-**PRO TIP**: screenshots of bugs are extremely helpful, and go a long way!
 
-🛑🛑🛑🛑🛑 END OF NOTES (to be deleted) 🛑🛑🛑🛑🛑
+- White Space on mobile devices 
 
-- JS Uncaught ReferenceError: `foobar` is undefined/not defined
+    ![screenshot](documentation/bugs/bug02-1.png)
+    ![screenshot](documentation/bugs/bug02-2.png)
 
-    ![screenshot](documentation/bug01.png)
+    - While viewing the home page at different resolutions I found a large area of white space on the right-hand side of screens smaller than 425px.
+    I found the source of the problem by using the developer tools in Chrome and deleted different elements one at a time until the white space was gone. 
+    By doing this I worked out the problem was within the div with the `.welcome` class and was caused by a large margin style within `.welcome h1`.
+    - To fix this, I removed the margin.
 
-    - To fix this, I _____________________.
 
-- JS `'let'` or `'const'` or `'template literal syntax'` or `'arrow function syntax (=>)'` is available in ES6 (use `'esversion: 11'`) or Mozilla JS extensions (use moz).
+- Side Nav position changes on page refresh
 
-    ![screenshot](documentation/bug02.png)
+    ![screenshot](documentation/bugs/bug03-1.png)
+    ![screenshot](documentation/bugs/bug03-2.png)
 
-    - To fix this, I _____________________.
+    - In my javascript I am targeting two different sidenav elements. The problem was occuring because the both sidenavs were being targeted by the same class - `.sidenav`. The first sidenav has a property of `edge: "right"`. So on page refresh this property was being applied to both sidennavs causing the position issues on the left sidenav.
+    - To fix this, I targeted the left sidnav by its id rather than by classname. 
 
-- Python `'ModuleNotFoundError'` when trying to import module from imported package
 
-    ![screenshot](documentation/bug03.png)
+- Unusual Spacing of cards
 
-    - To fix this, I _____________________.
+    ![screenshot](documentation/bugs/bug04.png)
 
-- Django `TemplateDoesNotExist` at /appname/path appname/template_name.html
+    - When a page was being populated with a list of films and/or tv shows I was experiencing some odd behaviour when it came to the poster postions on the page. several of the posters would display correctly sitting next to each other and then wrapping to a 'new line' once the container width is exceeded. But some 'new lines' would only display one or two posters and would always be right aligned.
+    After some investigation I found a post on [StackOverflow](https://stackoverflow.com/a/69168408) that described a similar issue. The problem being that materialize does not like if cards are not the same height. Although there were no differing height properties being set, I found that the images being supplied by the API were slightly different sizes. 
+    - To fix this, I gave the `img` a property of `aspect-ratio: 2 / 3;`.
 
-    ![screenshot](documentation/bug04.png)
 
-    - To fix this, I _____________________.
+- Mixed content: insecure Favicon
 
-- Python `E501 line too long` (93 > 79 characters)
+    ![screenshot](documentation/bugs/bug05.png)
 
-    ![screenshot](documentation/bug04.png)
-
-    - To fix this, I _____________________.
+    - To fix this, I changed the `type="image/png"` to `type="image/x-icon"`.
 
 ## Unfixed Bugs
 
