@@ -33,12 +33,16 @@
                     <form class="search-bar" method="POST" action="{{ url_for('search') }}">
                         <div class="input-field">
                             <input id="search" name="search" type="search" required>
-                            <label class="label-icon" for="search">
+                            <label for="search" class="label-icon">
                             <i class="fa-solid fa-magnifying-glass"></i>
                             </label>
+                            <label for="search" class="sr-only">Search</label>
                         </div>
                     </form>
-                    <a href="#" data-target="nav-menu" class="sidenav-trigger right"><i class="fas fa-bars"></i></a>
+                    <a href="#" data-target="nav-menu" class="sidenav-trigger right">
+                        <i class="fas fa-bars"></i>
+                        <span class="sr-only">Open Menu</span>
+                    </a>
                     <ul class="hide-on-med-and-down">
                         <li {% if request.path == url_for('home') %} class="active" {% endif %}><a href="{{ url_for('home') }}">Home</a></li>
                         {% if session.user %}          
@@ -241,63 +245,63 @@
                 </ul>
             </div>
         {% else %}
-        <div {% if request.path == url_for('home') or request.path == '/' %} class="hide side-menu" {% else %} class="side-menu" {% endif %}>
-            <ul class="sidenav sidenav-fixed grey darken-4 white-text">
-                <li>
-                    <div class="menu-item">
-                        <a href="#"><i class="fa-solid fa-house"></i></a>
-                        <a href="{{ url_for('home') }}" class="list-item">Home</a>
-                    </div>
-                </li>
-                <li>
-                    <div class="menu-item non-session-activity">
-                        <a href="#"><i class="fa-solid fa-lines-leaning"></i></a>
-                        <a href="#" class="list-item">Library</a>
-                    </div>
-                </li>
-                <li>
-                    <div class="menu-item non-session-activity" id="watchlists">
-                        <a href="#!"><i class="fa-regular fa-bookmark"></i></a>
-                        <a href="#!" class="list-item menu-item-text">Watchlists</a>
-                        <ul class="sub-menu hide watchlists">
-                            <li>
-                                <div class="sub-menu-item non-session-activity">
-                                    <a href="#"><i class="fa-solid fa-film"></i></a>
-                                    <a href="#" class="list-item">Films</a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="sub-menu-item non-session-activity">
-                                    <a href="#"><i class="fa-solid fa-tv"></i></a>
-                                    <a href="#" class="list-item">TV Shows</a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <div class="menu-item non-session-activity" id="seenlists">
-                        <a href="#!"><i class="fa-solid fa-eye"></i></a>
-                        <a href="#!" class="list-item menu-item-text">Seenlists</a>
-                        <ul class="sub-menu hide seenlists">
-                            <li>
-                                <div class="sub-menu-item non-session-activity">
-                                    <a href="#"><i class="fa-solid fa-film"></i></a>
-                                    <a href="#" class="list-item">Films</a>
-                                </div>
-                            </li>
-                            <li>
-                                <div class="sub-menu-item non-session-activity">
-                                    <a href="#"><i class="fa-solid fa-tv"></i></a>
-                                    <a href="#" class="list-item">TV Shows</a>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    {% endif %}
+            <div {% if request.path == url_for('home') or request.path == '/' %} class="hide side-menu" {% else %} class="side-menu" {% endif %}>
+                <ul class="sidenav sidenav-fixed grey darken-4 white-text">
+                    <li>
+                        <div class="menu-item">
+                            <a href="#"><i class="fa-solid fa-house"></i></a>
+                            <a href="{{ url_for('home') }}" class="list-item">Home</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="menu-item non-session-activity">
+                            <a href="#"><i class="fa-solid fa-lines-leaning"></i></a>
+                            <a href="#" class="list-item">Library</a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="menu-item non-session-activity" id="watchlists">
+                            <a href="#!"><i class="fa-regular fa-bookmark"></i></a>
+                            <a href="#!" class="list-item menu-item-text">Watchlists</a>
+                            <ul class="sub-menu hide watchlists">
+                                <li>
+                                    <div class="sub-menu-item non-session-activity">
+                                        <a href="#"><i class="fa-solid fa-film"></i></a>
+                                        <a href="#" class="list-item">Films</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="sub-menu-item non-session-activity">
+                                        <a href="#"><i class="fa-solid fa-tv"></i></a>
+                                        <a href="#" class="list-item">TV Shows</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="menu-item non-session-activity" id="seenlists">
+                            <a href="#!"><i class="fa-solid fa-eye"></i></a>
+                            <a href="#!" class="list-item menu-item-text">Seenlists</a>
+                            <ul class="sub-menu hide seenlists">
+                                <li>
+                                    <div class="sub-menu-item non-session-activity">
+                                        <a href="#"><i class="fa-solid fa-film"></i></a>
+                                        <a href="#" class="list-item">Films</a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="sub-menu-item non-session-activity">
+                                        <a href="#"><i class="fa-solid fa-tv"></i></a>
+                                        <a href="#" class="list-item">TV Shows</a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        {% endif %}
         {% block content%}
         {% endblock %}
     </main>
@@ -318,19 +322,34 @@
                     <div class="right">
                         <ul class="icon-list">
                             <li class="icon-item">
-                                <a href="https://www.instagram.com/" target="_blank" class="icon-link"><i class="fab fa-instagram"></i></a>
+                                <a href="https://www.instagram.com/" target="_blank" class="icon-link">
+                                    <i class="fab fa-instagram"></i>
+                                    <span class="sr-only">Instagram</span>
+                                </a>
                             </li>
                             <li class="icon-item">
-                                <a href="https://www.facebook.com/" target="_blank" class="icon-link"><i class="fab fa-facebook-f"></i></a>
+                                <a href="https://www.facebook.com/" target="_blank" class="icon-link">
+                                    <i class="fab fa-facebook-f"></i>
+                                    <span class="sr-only">Facebook</span>
+                                </a>
                             </li>
                             <li class="icon-item">
-                                <a href="https://github.com/dougyb83" target="_blank" class="icon-link"><i class="fa-brands fa-github"></i></a>
+                                <a href="https://github.com/dougyb83" target="_blank" class="icon-link">
+                                    <i class="fa-brands fa-github"></i>
+                                    <span class="sr-only">GitHub</span>
+                                </a>
                             </li>
                             <li class="icon-item">
-                                <a href="https://www.youtube.com/" target="_blank" class="icon-link"><i class="fab fa-youtube"></i></a>
+                                <a href="https://www.youtube.com/" target="_blank" class="icon-link">
+                                    <i class="fab fa-youtube"></i>
+                                    <span class="sr-only">YouTube</span>
+                                </a>
                             </li>
                             <li class="icon-item">
-                                <a href="https://www.linkedin.com/in/douglas-benson" target="_blank" class="icon-link"><i class="fab fa-linkedin-in"></i></a>
+                                <a href="https://www.linkedin.com/in/douglas-benson" target="_blank" class="icon-link">
+                                    <i class="fab fa-linkedin-in"></i>
+                                    <span class="sr-only">LinkedIn</span>
+                                </a>
                             </li>    
                         </ul>
                     </div>

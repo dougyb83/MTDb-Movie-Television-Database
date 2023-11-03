@@ -248,7 +248,7 @@ My database is called **mtdb**.
 
 It contains 3 collections:
 
-- **all_added_title**
+- **all_added_titles**
     | Key | Type | Notes |
     | --- | --- | --- |
     | _id | ObjectId() | |
@@ -415,6 +415,7 @@ You can fork this repository by using the following steps:
 | [Dev.to](https://dev.to/jeetvora331/remove-background-from-image-using-css-only-fdi#:~:text=Sometimes%2C%20a%20.,appearance%20of%20a%20transparent%20background) | Home page | How to remove background from an image with CSS |
 | [CSS Scan](https://getcssscan.com/css-buttons-examples) | Home page | Buttons for log in and sign up (button 33) |
 | [Flexbox Froggy](https://flexboxfroggy.com/) | entire site | modern responsive layouts |
+| [CSS-Tricks](https://css-tricks.com/inclusively-hidden) | entire site | How to make a screen reader only class |
 
 
 ### Media
