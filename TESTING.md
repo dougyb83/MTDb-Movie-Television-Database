@@ -10,13 +10,13 @@ I have used the recommended [HTML W3C Validator](https://validator.w3.org) to va
 
 | Page | W3C URL | Screenshot | Notes |
 | --- | --- | --- | --- |
-| Home | [W3C](https://validator.w3.org/nu/?doc=https%3A%2F%2Fmtdb-movie-television-database-ff116cae015a.herokuapp.com%2Fhome) | ![screenshot](documentation/validation/html-validation-home.png) | Section lacks header h2-h6 warning |
-| Home (logged in)| n/a | ![screenshot](documentation/validation/html-validation-home-logged-in.png) | Section lacks header h2-h6 warning |
-| search-results | n/a | ![screenshot](documentation/validation/html-validation-search-results.png) | Section lacks header h2-h6 warning |
-| search-results (logged in)| n/a | ![screenshot](documentation/validation/html-validation-search-results-logged-in.png) | Section lacks header h2-h6 warning |
-| Library | n/a | ![screenshot](documentation/validation/html-validation-library.png) | Section lacks header h2-h6 warning |
-| Feature-details | n/a | ![screenshot](documentation/validation/html-validation-feature-details.png) | Section lacks header h2-h6 warning |
-| lists | n/a | ![screenshot](documentation/validation/html-validation-lists.png) | Section lacks header h2-h6 warning |
+| Home | [W3C](https://validator.w3.org/nu/?doc=https%3A%2F%2Fmtdb-movie-television-database-ff116cae015a.herokuapp.com%2Fhome) | ![screenshot](documentation/validation/html-validation-home.png) | Pass - No Errors |
+| Home (logged in)| n/a | ![screenshot](documentation/validation/html-validation-home-logged-in.png) | Pass - No Errors |
+| search-results | n/a | ![screenshot](documentation/validation/html-validation-search-results.png) | Pass - No Errors |
+| search-results (logged in)| n/a | ![screenshot](documentation/validation/html-validation-search-results-logged-in.png) | Pass - No Errors |
+| Library | n/a | ![screenshot](documentation/validation/html-validation-library.png) | Pass - No Errors |
+| Feature-details | n/a | ![screenshot](documentation/validation/html-validation-feature-details.png) | Pass - No Errors |
+| lists | n/a | ![screenshot](documentation/validation/html-validation-lists.png) | Pass - No Errors |
 | 404 | n/a | ![screenshot](documentation/validation/html-validation-404.png) | Pass - No Errors |
 
 ### CSS
