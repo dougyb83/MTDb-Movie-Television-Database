@@ -74,20 +74,21 @@
 
     <section>
     <!-- flash messages -->
-    {% with messages = get_flashed_messages() %}
-        {% if messages %}
-            {% for message in messages %}
-            <div id="flash-modal" class="modal flash-modal">
-                <div class="modal-content flash-modal-content">
-                    <p>{{ message }}</p>
+        <h4 class="sr-only">Flash Message</h4>
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                <div id="flash-modal" class="modal flash-modal">
+                    <div class="modal-content flash-modal-content">
+                        <p>{{ message }}</p>
+                    </div>
+                    <div class="modal-footer flash-modal-button">
+                        <a class="modal-action modal-close waves-effect btn cyan lighten-1">OK</a>
+                    </div>
                 </div>
-                <div class="modal-footer flash-modal-button">
-                    <a class="modal-action modal-close waves-effect btn cyan lighten-1">OK</a>
-                </div>
-            </div>
-            {% endfor %}
-        {% endif %}
-    {% endwith %}
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
     </section>
 
     <!-- sign up modal -->
@@ -224,7 +225,7 @@
                     </li>
                     <li>
                         <div class="menu-item" id="seenlists">
-                            <a href="#!"><i class="fa-solid fa-eye"></i></a>
+                            <a href="#!"><i class="fa-solid fa-eye"></i><span class="sr-only">Seenlists</span></a>
                             <a href="#!" class="list-item menu-item-text">Seenlists</a>
                             <ul class="sub-menu hide seenlists">
                                 <li>
@@ -371,39 +372,39 @@
                     <div>
                         <ul class="navbar-fixed grey darken-4 white-text">
                             <li class="menu-item">
-                                <a href="{{ url_for('home') }}" {% if request.path == url_for('home') %} class="active icon" {% else %} class="icon" {% endif %}><i class="fa-solid fa-house"></i></a>
+                                <a href="{{ url_for('home') }}" {% if request.path == url_for('home') %} class="active icon" {% else %} class="icon" {% endif %}><i class="fa-solid fa-house"></i><span class="sr-only">Home</span></a>
                                 <a href="{{ url_for('home') }}" {% if request.path == url_for('home') %} class="active list-item" {% else %} class="list-item" {% endif %}>Home</a>
                             </li>
                             <li class="menu-item">
-                                <a href="{{ url_for('library') }}" {% if request.path == url_for('library') %} class="active icon" {% else %} class="icon" {% endif %}><i class="fa-solid fa-lines-leaning"></i></a>
+                                <a href="{{ url_for('library') }}" {% if request.path == url_for('library') %} class="active icon" {% else %} class="icon" {% endif %}><i class="fa-solid fa-lines-leaning"></i><span class="sr-only">Library</span></a>
                                 <a href="{{ url_for('library') }}" {% if request.path == url_for('library') %} class="active list-item" {% else %} class="list-item" {% endif %}>Library</a>
                             </li>
                             <li class="menu-item">      
                                 <!-- Dropdown Trigger -->
-                                <a {% if request.path == url_for('view_watchlist', media_type="movie") or request.path == url_for('view_watchlist', media_type="tv")%} class="active dropdown-trigger icon" {% else %} class="dropdown-trigger icon" {% endif %} href="#!" data-target="watchlist-menu"><i class="fa-regular fa-bookmark"></i></a>
+                                <a {% if request.path == url_for('view_watchlist', media_type="movie") or request.path == url_for('view_watchlist', media_type="tv")%} class="active dropdown-trigger icon" {% else %} class="dropdown-trigger icon" {% endif %} href="#!" data-target="watchlist-menu"><i class="fa-regular fa-bookmark"></i><span class="sr-only">Watchlists</span></a>
                                 <a {% if request.path == url_for('view_watchlist', media_type="movie") or request.path == url_for('view_watchlist', media_type="tv")%} class=" active dropdown-trigger list-item menu-item-text" {% else %} class=" dropdown-trigger list-item menu-item-text" {% endif %} href="#!" data-target="watchlist-menu">Watchlists</a>
                                 <ul id="watchlist-menu" class="dropdown-content grey darken-4 white-text">
                                     <li class="sub-menu-item">
-                                        <a href="{{ url_for('view_watchlist', media_type='movie') }}" {% if request.path == url_for('view_watchlist', media_type="movie") %}class="active sub-icon" {% else %} class="sub-icon" {% endif %}><i class="fa-solid fa-film"></i></a>
+                                        <a href="{{ url_for('view_watchlist', media_type='movie') }}" {% if request.path == url_for('view_watchlist', media_type="movie") %}class="active sub-icon" {% else %} class="sub-icon" {% endif %}><i class="fa-solid fa-film"></i><span class="sr-only">Films</span></a>
                                         <a href="{{ url_for('view_watchlist', media_type='movie') }}" {% if request.path == url_for('view_watchlist', media_type="movie") %}class="active sub-list-item" {% else %} class="sub-list-item" {% endif %}>Films</a>                                    
                                     </li>
                                     <li class="sub-menu-item">
-                                        <a href="{{ url_for('view_watchlist', media_type='tv') }}" {% if request.path == url_for('view_watchlist', media_type="tv") %}class="active sub-icon" {% else %} class="sub-icon" {% endif %}><i class="fa-solid fa-tv"></i></a>
+                                        <a href="{{ url_for('view_watchlist', media_type='tv') }}" {% if request.path == url_for('view_watchlist', media_type="tv") %}class="active sub-icon" {% else %} class="sub-icon" {% endif %}><i class="fa-solid fa-tv"></i><span class="sr-only">Tv Shows</span></a>
                                         <a href="{{ url_for('view_watchlist', media_type='tv') }}" {% if request.path == url_for('view_watchlist', media_type="tv") %}class="active sub-list-item" {% else %} class="sub-list-item" {% endif %}>TV Shows</a>
                                     </li>
                                 </ul>
                             </li>
                             <li class="menu-item">      
                                 <!-- Dropdown Trigger -->
-                                <a {% if request.path == url_for('view_seenlist', media_type="movie") or request.path == url_for('view_seenlist', media_type="tv")%} class="active dropdown-trigger icon" {% else %} class="dropdown-trigger icon" {% endif %} href="#!" data-target="seenlist-menu"><i class="fa-solid fa-eye"></i></a>
+                                <a {% if request.path == url_for('view_seenlist', media_type="movie") or request.path == url_for('view_seenlist', media_type="tv")%} class="active dropdown-trigger icon" {% else %} class="dropdown-trigger icon" {% endif %} href="#!" data-target="seenlist-menu"><i class="fa-solid fa-eye"></i><span class="sr-only">Seenlists</span></a>
                                 <a {% if request.path == url_for('view_seenlist', media_type="movie") or request.path == url_for('view_seenlist', media_type="tv")%} class="active dropdown-trigger list-item menu-item-text" {% else %} class="dropdown-trigger list-item menu-item-text"  {% endif %}href="#!" data-target="seenlist-menu">Seenlists</a>
                                 <ul id="seenlist-menu" class="dropdown-content grey darken-4 white-text">
                                     <li class="sub-menu-item">
-                                        <a href="{{ url_for('view_seenlist', media_type='movie') }}" {% if request.path == url_for('view_seenlist', media_type="movie") %}class="active sub-icon" {% else %} class="sub-icon" {% endif %}><i class="fa-solid fa-film"></i></a>
+                                        <a href="{{ url_for('view_seenlist', media_type='movie') }}" {% if request.path == url_for('view_seenlist', media_type="movie") %}class="active sub-icon" {% else %} class="sub-icon" {% endif %}><i class="fa-solid fa-film"></i><span class="sr-only">Films</span></a>
                                         <a href="{{ url_for('view_seenlist', media_type='movie') }}" {% if request.path == url_for('view_seenlist', media_type="movie") %}class="active sub-list-item" {% else %} class="sub-list-item" {% endif %}>Films</a>                                    
                                     </li>
                                     <li class="sub-menu-item">
-                                        <a href="{{ url_for('view_seenlist', media_type='tv') }}" {% if request.path == url_for('view_seenlist', media_type="tv") %}class="active sub-icon" {% else %} class="sub-icon" {% endif %}><i class="fa-solid fa-tv"></i></a>
+                                        <a href="{{ url_for('view_seenlist', media_type='tv') }}" {% if request.path == url_for('view_seenlist', media_type="tv") %}class="active sub-icon" {% else %} class="sub-icon" {% endif %}><i class="fa-solid fa-tv"></i><span class="sr-only">TV Shows</span></a>
                                         <a href="{{ url_for('view_seenlist', media_type='tv') }}" {% if request.path == url_for('view_seenlist', media_type="tv") %}class="active sub-list-item" {% else %} class="sub-list-item" {% endif %}>TV Shows</a>
                                     </li>
                                 </ul>
