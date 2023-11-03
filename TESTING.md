@@ -80,15 +80,15 @@ I've tested my deployed project using the Lighthouse Audit tool to check for any
 | Page | Size | Screenshot | Notes |
 | --- | --- | --- | --- |
 | Home | Mobile | ![screenshot](documentation/lighthouse/lighthouse-home-mobile.png) | Some minor warnings |
-| Home | Desktop | ![screenshot](documentation/lighthouse/lighthouse-home-desktop.png) | Some minor warnings |
-| Search-results (via popular films & tv shows on home page) | Mobile | ![screenshot](documentation/lighthouse/lighthouse-search-results-mobile.png) | Some minor warnings |
-| Search-results (via popular films & tv shows on home page) | Desktop | ![screenshot](documentation/lighthouse/lighthouse-search-results-desktop.png) | Some minor warnings |
+| Home | Desktop | ![screenshot](documentation/lighthouse/lighthouse-home-desktop.png) | No major problems |
+| Search-results (via popular films & tv shows on home page) | Mobile | ![screenshot](documentation/lighthouse/lighthouse-search-results-mobile.png) | No major problems |
+| Search-results (via popular films & tv shows on home page) | Desktop | ![screenshot](documentation/lighthouse/lighthouse-search-results-desktop.png) | No major problems |
 | Library | Mobile | ![screenshot](documentation/lighthouse/lighthouse-library-mobile.png) | Some minor warnings |
-| Library | Desktop | ![screenshot](documentation/lighthouse/lighthouse-library-desktop.png) | Few warnings |
+| Library | Desktop | ![screenshot](documentation/lighthouse/lighthouse-library-desktop.png) | No major problems |
 | Feature-details | Mobile | ![screenshot](documentation/lighthouse/lighthouse-feature-details-mobile.png) | Some minor warnings |
-| Feature-details | Desktop | ![screenshot](documentation/lighthouse/lighthouse-feature-details-desktop.png) | Some minor warnings |
+| Feature-details | Desktop | ![screenshot](documentation/lighthouse/lighthouse-feature-details-desktop.png) | No major problems |
 | List | Mobile | ![screenshot](documentation/lighthouse/lighthouse-list-mobile.png) | Some minor warnings |
-| List | Desktop | ![screenshot](documentation/lighthouse/lighthouse-list-desktop.png) | Some minor warnings |
+| List | Desktop | ![screenshot](documentation/lighthouse/lighthouse-list-desktop.png) | No major problems |
 
 ## Defensive Programming
 
