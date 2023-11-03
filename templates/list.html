@@ -24,7 +24,7 @@
                                     {% if item['poster_path'] == None %}                    
                                         <img src="{{ url_for('static', filename='images/no-image-placeholder.png') }}" alt="No Image Available">
                                     {% else %}
-                                        <img src="https://image.tmdb.org/t/p/w500{{ item['poster_path'] }}" alt="{% if media_type == 'movie' %}{{ item['title'] }}{% else %}{{item['name']}}{% endif %}">
+                                        <img src="https://image.tmdb.org/t/p/w500{{ item['poster_path'] }}" alt="{% if media_type == 'movie' %}{{ item['title'] }}{% else %}{{item['title']}}{% endif %}">
                                     {% endif %} 
                                 </a>
                             </div>

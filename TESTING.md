@@ -81,6 +81,8 @@ I've tested my deployed project using the Lighthouse Audit tool to check for any
 | --- | --- | --- | --- |
 | Home | Mobile | ![screenshot](documentation/lighthouse/lighthouse-home-mobile.png) | Some minor warnings |
 | Home | Desktop | ![screenshot](documentation/lighthouse/lighthouse-home-desktop.png) | Some minor warnings |
+| Search-results (via popular films & tv shows on home page) | Mobile | ![screenshot](documentation/lighthouse/lighthouse-search-results-mobile.png) | Some minor warnings |
+| Search-results (via popular films & tv shows on home page) | Desktop | ![screenshot](documentation/lighthouse/lighthouse-search-results-desktop.png) | Some minor warnings |
 | Library | Mobile | ![screenshot](documentation/lighthouse/lighthouse-library-mobile.png) | Some minor warnings |
 | Library | Desktop | ![screenshot](documentation/lighthouse/lighthouse-library-desktop.png) | Few warnings |
 | Feature-details | Mobile | ![screenshot](documentation/lighthouse/lighthouse-feature-details-mobile.png) | Some minor warnings |
