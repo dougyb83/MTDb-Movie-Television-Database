@@ -53,7 +53,7 @@
                         <input type="hidden" name="media_type" value="{{ media_type }}">
                         <input type="hidden" name="poster" value="{{ media_data['poster_path'] }}">
                         <div class="watchlist-button">
-                            <button id="watchlist-button-desktop" class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Add to Watchlist" type="submit">
+                            <button id="watchlist-button-desktop" name="watchlist-button-desktop" class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Add to Watchlist" type="submit">
                                 <i class="fa-regular fa-bookmark"></i>
                             </button>
                             <label class="hide-on-large-only" for="watchlist-button-desktop">Add to Watchlist</label>
@@ -65,7 +65,7 @@
                         <input type="hidden" name="media_type" value="{{ media_type }}">
                         <input type="hidden" name="poster" value="{{ media_data['poster_path'] }}">
                         <div class="seenlist-button">
-                            <button id="seenlist-button-desktop" class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Add to Seenlist" type="submit">
+                            <button id="seenlist-button-desktop" name="seenlist-button-desktop" class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Add to Seenlist" type="submit">
                                 <i class="fa-regular fa-circle-check"></i>
                             </button>
                             <label class="hide-on-large-only" for="seenlist-button-desktop">Add to Seenlist</label>
@@ -74,6 +74,7 @@
                     <div class="delete-button">
                         <a href="#modal-delete-{{ media_data['id'] }}" class="modal-trigger btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Delete"><i class="fa-solid fa-trash"></i></a>
                         <span class="hide-on-large-only">Delete from list</span>
+                        <span class="sr-only">Delete from list</span>
                     </div>
                 </div>
             </div>
@@ -94,7 +95,7 @@
                     <input type="hidden" name="media_type" value="{{ media_type }}">
                     <input type="hidden" name="poster" value="{{ media_data['poster_path'] }}">
                     <div class="watchlist-button">
-                        <button id="watchlist-button" class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Add to Watchlist" type="submit">
+                        <button id="watchlist-button" name="watchlist-button" class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Add to Watchlist" type="submit">
                             <i class="fa-regular fa-bookmark"></i>
                         </button>
                         <label class="hide-on-large-only" for="watchlist-button">Add to Watchlist</label>
@@ -106,7 +107,7 @@
                     <input type="hidden" name="media_type" value="{{ media_type }}">
                     <input type="hidden" name="poster" value="{{ media_data['poster_path'] }}">
                     <div class="seenlist-button">
-                        <button id="seenlist-button" class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Add to Seenlist" type="submit">
+                        <button id="seenlist-button" name="seenlist-button" class="btn-floating waves-effect waves-light tooltipped" data-position="top" data-tooltip="Add to Seenlist" type="submit">
                             <i class="fa-regular fa-circle-check"></i>
                         </button>
                         <label class="hide-on-large-only" for="seenlist-button">Add to Seenlist</label>
@@ -157,7 +158,7 @@
                         <div class="edit-review" id="edit-review">
                             <p>Your Review!</p>
                             <p id="review">{{ rating_review['review'] }}</p>
-                            <button id="edit-review-btn" class="btn waves-effect waves-light left" title="Edit Review">
+                            <button id="edit-review-btn" name="edit-review-button" class="btn waves-effect waves-light left" title="Edit Review">
                                 Edit Rating/Review
                             </button>
                         </div>                                                          
@@ -165,7 +166,7 @@
                         <div class="input-field" id="edit-review">
                             <label for="review">Your Review!</label>
                             <textarea id="review" name="review" class="review materialize-textarea" maxlength="290" placeholder="290 character limit"></textarea>                            
-                            <button class="btn waves-effect waves-light right" title="Add Review">
+                            <button class="btn waves-effect waves-light right" name="submit-rating-review-button" title="Add Review">
                                 Submit Rating/Review
                             </button>
                         </div>  

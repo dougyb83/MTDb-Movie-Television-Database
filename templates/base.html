@@ -192,30 +192,30 @@
                 <ul class="sidenav sidenav-fixed grey darken-4 white-text">
                     <li>
                         <div class="menu-item">
-                            <a href="{{ url_for('home') }}"><i class="fa-solid fa-house"></i></a>
+                            <a href="{{ url_for('home') }}"><i class="fa-solid fa-house"></i><span class="sr-only">Home</span></a>
                             <a href="{{ url_for('home') }}" class="list-item">Home</a>
                         </div>
                     </li>
                     <li>
                         <div class="menu-item">
-                            <a href="{{ url_for('library') }}" {% if request.path == url_for('library') %} class="active" {% endif %}><i class="fa-solid fa-lines-leaning"></i></a>
+                            <a href="{{ url_for('library') }}" {% if request.path == url_for('library') %} class="active" {% endif %}><i class="fa-solid fa-lines-leaning"></i><span class="sr-only">Library</span></a>
                             <a href="{{ url_for('library') }}" {% if request.path == url_for('library') %} class="list-item active" {% else %} class="list-item" {% endif %}>Library</a>
                         </div>
                     </li>
                     <li>
                         <div class="menu-item" id="watchlists">
-                            <a href="#!"><i class="fa-regular fa-bookmark"></i></a>
+                            <a href="#!"><i class="fa-regular fa-bookmark"></i><span class="sr-only">Watchlists</span></a>
                             <a href="#!" class="list-item menu-item-text">Watchlists</a>
                             <ul class="sub-menu hide watchlists">
                                 <li>
                                     <div class="sub-menu-item">
-                                        <a href="{{ url_for('view_watchlist', media_type='movie') }}" {% if request.path == url_for('view_watchlist', media_type='movie') %} class="active" {% endif %}><i class="fa-solid fa-film"></i></a>
+                                        <a href="{{ url_for('view_watchlist', media_type='movie') }}" {% if request.path == url_for('view_watchlist', media_type='movie') %} class="active" {% endif %}><i class="fa-solid fa-film"></i><span class="sr-only">Films</span></a>
                                         <a href="{{ url_for('view_watchlist', media_type='movie') }}" {% if request.path == url_for('view_watchlist', media_type='movie') %} class="active list-item" {% else %} class="list-item" {% endif %}>Films</a>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="sub-menu-item">
-                                        <a href="{{ url_for('view_watchlist', media_type='tv') }}" {% if request.path == url_for('view_watchlist', media_type='tv') %} class="active" {% endif %}><i class="fa-solid fa-tv"></i></a>
+                                        <a href="{{ url_for('view_watchlist', media_type='tv') }}" {% if request.path == url_for('view_watchlist', media_type='tv') %} class="active" {% endif %}><i class="fa-solid fa-tv"></i><span class="sr-only">TV Shows</span></a>
                                         <a href="{{ url_for('view_watchlist', media_type='tv') }}" {% if request.path == url_for('view_watchlist', media_type='tv') %} class="active list-item" {% else %} class="list-item" {% endif %}>TV Shows</a>
                                     </div>
                                 </li>
@@ -229,13 +229,13 @@
                             <ul class="sub-menu hide seenlists">
                                 <li>
                                     <div class="sub-menu-item">
-                                        <a href="{{ url_for('view_seenlist', media_type='movie') }}" {% if request.path == url_for('view_seenlist', media_type='movie') %} class="active" {% endif %}><i class="fa-solid fa-film"></i></a>
+                                        <a href="{{ url_for('view_seenlist', media_type='movie') }}" {% if request.path == url_for('view_seenlist', media_type='movie') %} class="active" {% endif %}><i class="fa-solid fa-film"></i><span class="sr-only">Films</span></a>
                                         <a href="{{ url_for('view_seenlist', media_type='movie') }}" {% if request.path == url_for('view_seenlist', media_type='movie') %} class="active list-item" {% else %} class="list-item" {% endif %}>Films</a>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="sub-menu-item">
-                                        <a href="{{ url_for('view_seenlist', media_type='tv') }}" {% if request.path == url_for('view_seenlist', media_type='tv') %} class="active" {% endif %}><i class="fa-solid fa-tv"></i></a>
+                                        <a href="{{ url_for('view_seenlist', media_type='tv') }}" {% if request.path == url_for('view_seenlist', media_type='tv') %} class="active" {% endif %}><i class="fa-solid fa-tv"></i><span class="sr-only">TV Shows</span></a>
                                         <a href="{{ url_for('view_seenlist', media_type='tv') }}" {% if request.path == url_for('view_seenlist', media_type='tv') %} class="active list-item" {% else %} class="list-item" {% endif %}>TV Shows</a>
                                     </div>
                                 </li>
@@ -249,30 +249,30 @@
                 <ul class="sidenav sidenav-fixed grey darken-4 white-text">
                     <li>
                         <div class="menu-item">
-                            <a href="#"><i class="fa-solid fa-house"></i></a>
+                            <a href="#"><i class="fa-solid fa-house"></i><span class="sr-only">Home</span></a>
                             <a href="{{ url_for('home') }}" class="list-item">Home</a>
                         </div>
                     </li>
                     <li>
                         <div class="menu-item non-session-activity">
-                            <a href="#"><i class="fa-solid fa-lines-leaning"></i></a>
+                            <a href="#"><i class="fa-solid fa-lines-leaning"></i><span class="sr-only">Library</span></a>
                             <a href="#" class="list-item">Library</a>
                         </div>
                     </li>
                     <li>
                         <div class="menu-item non-session-activity" id="watchlists">
-                            <a href="#!"><i class="fa-regular fa-bookmark"></i></a>
+                            <a href="#!"><i class="fa-regular fa-bookmark"></i><span class="sr-only">Watchlists</span></a>
                             <a href="#!" class="list-item menu-item-text">Watchlists</a>
                             <ul class="sub-menu hide watchlists">
                                 <li>
                                     <div class="sub-menu-item non-session-activity">
-                                        <a href="#"><i class="fa-solid fa-film"></i></a>
+                                        <a href="#"><i class="fa-solid fa-film"></i><span class="sr-only">Films</span></a>
                                         <a href="#" class="list-item">Films</a>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="sub-menu-item non-session-activity">
-                                        <a href="#"><i class="fa-solid fa-tv"></i></a>
+                                        <a href="#"><i class="fa-solid fa-tv"></i><span class="sr-only">TV Shows</span></a>
                                         <a href="#" class="list-item">TV Shows</a>
                                     </div>
                                 </li>
@@ -281,18 +281,18 @@
                     </li>
                     <li>
                         <div class="menu-item non-session-activity" id="seenlists">
-                            <a href="#!"><i class="fa-solid fa-eye"></i></a>
+                            <a href="#!"><i class="fa-solid fa-eye"></i><span class="sr-only">Seenlists</span></a>
                             <a href="#!" class="list-item menu-item-text">Seenlists</a>
                             <ul class="sub-menu hide seenlists">
                                 <li>
                                     <div class="sub-menu-item non-session-activity">
-                                        <a href="#"><i class="fa-solid fa-film"></i></a>
+                                        <a href="#"><i class="fa-solid fa-film"></i><span class="sr-only">Films</span></a>
                                         <a href="#" class="list-item">Films</a>
                                     </div>
                                 </li>
                                 <li>
                                     <div class="sub-menu-item non-session-activity">
-                                        <a href="#"><i class="fa-solid fa-tv"></i></a>
+                                        <a href="#"><i class="fa-solid fa-tv"></i><span class="sr-only">Tv Shows</span></a>
                                         <a href="#" class="list-item">TV Shows</a>
                                     </div>
                                 </li>
