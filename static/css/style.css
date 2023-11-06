@@ -57,6 +57,7 @@ body {
     background-image: radial-gradient(farthest-side at 90% -0%, #6b0e87, rgb(36 5 71), #0f0219);
     background-repeat: no-repeat;
     font-family: 'Roboto';
+    color: #f5f5f5;
 }
 
 main {
@@ -309,16 +310,17 @@ footer {
     justify-content: center;
 }
 
+.title-container {
+    width: 80%;
+    margin: 0 auto;
+}
+
 .welcome h1 {
     font-family: 'Amatic SC', sans-serif;
     font-weight: 700;
     font-size: 6em;
     color: #F5F5F5;
-}
-
-.title-container {
-    width: 80%;
-    margin: 0 auto;
+    margin: 10px;
 }
 
 img#movie-reel {
@@ -686,6 +688,10 @@ textarea::placeholder {
         padding: 0 330px;
     }
 
+    .site-description {
+        font-size: 1.3em;
+    }
+
     .popular, nav {
         width: 80%;
     }
@@ -732,6 +738,10 @@ textarea::placeholder {
     }
 
     /* home page */
+    .site-description {
+        margin: 0 95px;
+    }
+
     img#movie-reel {
         position: absolute;
         right: 115px;
@@ -740,7 +750,7 @@ textarea::placeholder {
     }
     
     img#tv-set {
-        left: 112px;
+        left: 85px;
         bottom: 227px;
         width: 17vw;
     }
@@ -1041,6 +1051,11 @@ textarea::placeholder {
     .popular h3 {
         font-size: 25px;
     }
+    
+    .site-description {
+        font-size: 0.9em;
+        margin: 10px 0;
+    }
 
     .poster img {
         width: 32vw;
@@ -1334,7 +1349,7 @@ textarea::placeholder {
 
     img#tv-set {
         left: 28px;
-        bottom: 320px;
+        bottom: 345px;
     }
 
     .go-to-library {
