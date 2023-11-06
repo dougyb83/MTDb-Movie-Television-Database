@@ -33,7 +33,7 @@ section.container {
 }
 
 .error-content a {
-    color: #F79426;
+    color: #f79426;
 }
 
 /* flash messages */
@@ -44,7 +44,7 @@ section.container {
 
 .menu-item .active, .active a {
     background-color: unset;
-    color: #F79426;
+    color: #f79426;
 }
 
 /* modals */
@@ -57,7 +57,6 @@ body {
     background-image: radial-gradient(farthest-side at 90% -0%, #6b0e87, rgb(36 5 71), #0f0219);
     background-repeat: no-repeat;
     font-family: 'Roboto';
-    color: #f5f5f5;
 }
 
 main {
@@ -321,6 +320,10 @@ footer {
     font-size: 6em;
     color: #F5F5F5;
     margin: 10px;
+}
+
+.site-description {
+    color: #f5f5f5;
 }
 
 img#movie-reel {
@@ -614,7 +617,7 @@ textarea::placeholder {
 }
 
 .button-container button i {
-    background-color: #F79426;
+    background-color: #f79426;
 }
 
 .button-container a i {
@@ -622,7 +625,7 @@ textarea::placeholder {
 }
 
 #edit-review button {
-    background-color: #F79426;
+    background-color: #f79426;
 }
 
 /* 5 star rating from codepen.io */
@@ -657,7 +660,7 @@ textarea::placeholder {
 .rating > input:checked ~ label,
 .rating:not(:checked) > label:hover,
 .rating:not(:checked) > label:hover ~ label {
-    color: #F79426;
+    color: #f79426;
 }
   
 .rating > input:checked + label:hover,
