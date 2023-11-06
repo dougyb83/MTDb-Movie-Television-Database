@@ -249,13 +249,16 @@ My database is called **mtdb**.
 It contains 3 collections:
 
 - **all_added_titles**
+This collection holds a record of every TV Show and Film that has been added by all users and is used to help populate the Library, Watchlists and Seenlists.
     | Key | Type | Notes |
     | --- | --- | --- |
     | _id | ObjectId() | |
     | id | String | |
     | poster_path | String | |
 
+
 - **rating_review**
+This collection stores the user specific rating and/or review that they have added to a Film or TV Show.
     | Key | Type | Notes |
     | --- | --- | --- |
     | _id | ObjectId() | |
@@ -266,6 +269,7 @@ It contains 3 collections:
 
 
 - **users**
+This collection stores the users username and their hashed password. As well as arrays that store the film or tv show API id's.
     | Key | Type | Notes |
     | --- | --- | --- |
     | _id | ObjectId() | |
