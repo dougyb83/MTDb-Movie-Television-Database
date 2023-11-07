@@ -207,10 +207,6 @@ footer {
     text-align: center;
 }
 
-.icon-list {
-    margin-bottom: 0;
-}
-
 /* social icons styling from  codepen https://codepen.io/robsonvinicius/pen/bGpKQrw */
 :root {
     --bg: #dcdde1;     
@@ -228,6 +224,7 @@ footer {
     padding: 0 1.5rem;
     display: flex;
     justify-content: space-between;
+    margin-bottom: 0;
   }
   
   .icon-item {
@@ -1460,6 +1457,10 @@ textarea::placeholder {
     .socials {
         display: flex;
         justify-content: center;
+    }
+
+    .icon-list {
+        padding: 0;
     }
 
     .icon-link::before {
