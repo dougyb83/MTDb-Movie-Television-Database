@@ -203,5 +203,9 @@
     <!-- Script to pass rating variable to JavaScript -->
     <script>
         let rating = "{{ rating_review['rating'] }}"
+        // if rating variable has a value then check the radio button
+        if (rating) {
+            document.getElementById("star" + rating.toString()).setAttribute("checked", "checked");
+        }
     </script>
 {% endblock %}

@@ -51,10 +51,6 @@ $(document).ready(function(){
       </div>
     `);
   });
-  // if the current page contains an id of 'rating' and the rating variable has a value then check the radio button
-  if (document.getElementById("rating") && rating) {
-    document.getElementById("star" + rating.toString()).setAttribute("checked", "checked");
-  }
   // hide the sublists and show them when clicked
   $("#watchlists>a").click(function () {
     $(".watchlists").toggleClass("hide show");
