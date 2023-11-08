@@ -625,6 +625,11 @@ textarea::placeholder {
     background-color: #f79426;
 }
 
+.delete-review-button a {
+    margin-left: 20px;
+    background-color: #ff0000;
+}
+
 /* 5 star rating from codepen.io */
 #rating {
     float: left;
@@ -1443,6 +1448,10 @@ textarea::placeholder {
         font-size: 15px;
     }
 
+    #edit-review button, .delete-review-button a {
+        font-size: 0.8em;
+    }
+
     /* footer */
     .footer-logo-title {
         display: flex;
@@ -1568,6 +1577,10 @@ textarea::placeholder {
 
     #overview {
         top: 40px;
+    }
+
+    #edit-review button, .delete-review-button a {
+        padding: 0 8px;
     }
 
     /* library page */

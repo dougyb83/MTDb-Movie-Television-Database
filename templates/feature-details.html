@@ -159,14 +159,19 @@
                     </div>
                 </div>
                 <div class="col s12 m12 l7">
-                    {% if rating_review %}
+                    {% if rating_review['review'] %}
                         <div class="edit-review" id="edit-review">
                             <p>Your Review!</p>
                             <p id="review">{{ rating_review['review'] }}</p>
                             <button id="edit-review-btn" class="btn waves-effect waves-light left" title="Edit Review">
-                                Edit Rating/Review
+                                <strong>Edit Rating/Review</strong>
                             </button>
-                        </div>                                                          
+                        </div>
+                        <div class="delete-review-button">
+                            <a href="#modal-delete-review-{{ media_data['id'] }}" class="modal-trigger btn waves-effect waves-light tooltipped" data-position="top" data-tooltip="Delete Review">
+                                <span><strong>Delete Review</strong></span>
+                            </a>
+                        </div>                                                       
                     {% else %}                                    
                         <div class="input-field" id="edit-review">
                             <label for="review">Your Review!</label>
@@ -178,6 +183,18 @@
                     {% endif %}
                 </div>
             </form>
+        </div>
+        <!-- Modal: delete media -->
+        <div id="modal-delete-review-{{ media_data['id'] }}" class="modal">
+            <div class="modal-content black-text">
+                <h4>Delete Review</h4>
+                <p>Are you sure you want to delete your review?</p>
+                <small>This action is permanent, and cannot be undone.</small>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn green">No</a>
+                <a href="{{ url_for('delete_review', feature_id=media_data['id'], media_type=media_type) }}" class="modal-close waves-effect waves-green btn red">Yes</a>
+            </div>
         </div>       
     </div>
 

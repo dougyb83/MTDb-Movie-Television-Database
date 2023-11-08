@@ -360,6 +360,7 @@ def add_rating_review(media_type):
                     "rating": request.form.get("rating"),
                     "review": request.form.get("review")
                 }})
+            flash("Your Rating/Review has been Updated")
         # insert rating/review if none exists in the DB
         else:
             review_submit = {
@@ -710,6 +711,30 @@ def delete(feature_id, media_type):
 
     flash(f'"{title}" deleted from your Library')
     return redirect(url_for("library", username=session["user"]))
+
+
+@app.route("/delete_review/<feature_id>/<media_type>")
+def delete_review(feature_id, media_type):
+    """
+    Allows the user to delete reviews that have been added
+    """
+    # get user data from DB
+    user = mongo.db.users.find_one({"username": session["user"]})
+    rating_review = mongo.db.rating_review.find_one({
+            "$and": [
+                {"user_id": ObjectId(user["_id"])},
+                {"feature_id": feature_id}
+                ]})
+    # if rating/review exists in the DB, update the DB
+    if rating_review["review"]:
+        mongo.db.rating_review.update_one(
+            {"_id": ObjectId(rating_review["_id"])},
+            {"$set": {
+                "review": ""
+            }})
+    flash("Your review has been Deleted")
+    return redirect(url_for(
+            "feature_details", feature_id=feature_id, media_type=media_type))
 
 
 @app.errorhandler(404)
