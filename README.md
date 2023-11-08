@@ -213,6 +213,13 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
 ![screenshot](documentation/features/feature12.png)
 
+- **500 page**
+
+    - This page displays when there is an internal server error.
+    - The page will refresh to the homepage after 10 seconds.
+
+![screenshot](documentation/features/feature13.png)
+
 
 ### Future Features
 
