@@ -3,7 +3,6 @@ html {
 }
 
 .sr-only:not(:focus):not(:active) {
-    clip: rect(0 0 0 0); 
     clip-path: inset(50%);
     height: 1px;
     overflow: hidden;
@@ -221,7 +220,7 @@ footer {
   .icon-list {
     width: 100%;
     max-width: 50rem;
-    padding: 0 1.5rem;
+    padding: 0 0;
     display: flex;
     justify-content: space-between;
     margin-bottom: 0;
@@ -432,20 +431,17 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
 .button-title {
     background-color: #f79426;
     border-radius: 100px;
-    box-shadow: rgba(255, 138, 5, 5) 0 -25px 18px -14px inset,rgba(247,148,38, .15) 0 1px 2px,rgba(247,148,38, .15) 0 2px 4px,rgba(247,148,38, .15) 0 4px 8px,rgba(247,148,38, .15) 0 8px 16px,rgba(247,148,38, .15) 0 16px 32px;
+    box-shadow: rgba(255, 138, 5, 1) 0 -25px 18px -14px inset,rgba(247,148,38, .15) 0 1px 2px,rgba(247,148,38, .15) 0 2px 4px,rgba(247,148,38, .15) 0 4px 8px,rgba(247,148,38, .15) 0 8px 16px,rgba(247,148,38, .15) 0 16px 32px;
     color: black;
     cursor: pointer;
     display: inline-block;
-    font-family: CerebriSans-Regular,-apple-system,system-ui,Roboto,sans-serif;
+    font-family: 'roboto', sans-serif;
     padding: 7px 20px;
     text-align: center;
     text-decoration: none;
     transition: all 250ms;
     border: 0;
     font-size: 21px;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
     width: 14vw;
     height: 5vh;
   }
@@ -615,19 +611,23 @@ textarea::placeholder {
 
 .button-container button i {
     background-color: #f79426;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.75);
 }
 
 .button-container a i {
     background-color: #ff0000;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.75);
 }
 
 #edit-review button {
     background-color: #f79426;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.75);
 }
 
 .delete-review-button a {
     margin-left: 20px;
     background-color: #ff0000;
+    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.75);
 }
 
 /* 5 star rating from codepen.io */
