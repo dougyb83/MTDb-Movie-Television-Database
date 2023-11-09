@@ -186,9 +186,9 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
     - This page is only available to session users. It is accessed by clicking one of the titles that have been added to the users lists.
     - This page allows the user to change which list the title is in. If the user trys to add the title to a list that it is already in a modal flash message will promt the user.
-    - Users can delete titles from thier lists witht the delete/trash button. A modal prompt will be shown to the user to confirm if they want to delete (see below).
+    - Users can delete titles from thier lists with the delete/trash button. A modal prompt will be shown to the user to confirm if they want to delete (see below).
     - Users can add thier own star rating from 1 to 5 stars.
-    - Personal review or comments can also be added for each title.
+    - Personal review or comments can also be added or deleted for each title.
 
 ![screenshot](documentation/features/feature09-1.png)  ![screenshot](documentation/features/feature09-2.png)  ![screenshot](documentation/features/feature09-3.png)
 
@@ -255,7 +255,7 @@ My database is called **mtdb**.
 
 It contains 3 collections:
 
-- **all_added_titles**
+- **all_added_titles** - 
 This collection holds a record of every TV Show and Film that has been added by all users and is used to help populate the Library, Watchlists and Seenlists.
     | Key | Type | Notes |
     | --- | --- | --- |
@@ -264,7 +264,7 @@ This collection holds a record of every TV Show and Film that has been added by 
     | poster_path | String | |
 
 
-- **rating_review**
+- **rating_review** - 
 This collection stores the user specific rating and/or review that they have added to a Film or TV Show.
     | Key | Type | Notes |
     | --- | --- | --- |
@@ -275,7 +275,7 @@ This collection stores the user specific rating and/or review that they have add
     | review | String | |
 
 
-- **users**
+- **users** - 
 This collection stores the users username and their hashed password. As well as arrays that store the film or tv show API id's.
     | Key | Type | Notes |
     | --- | --- | --- |

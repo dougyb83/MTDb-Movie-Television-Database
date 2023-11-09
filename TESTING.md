@@ -168,11 +168,14 @@ Defensive programming was manually tested with the below user acceptance testing
 | | Click on Add to Seenlist link when already in Seenlist | Redirection to Library and promted that title is already in Seenlist | Pass | |
 | | Click on Trash/Delete Icon | Prompts user to confirm deletion | Pass | |
 | | Click on No when prompted to confirm deletion | Modal closes and DB entry remains | Pass | |
-| | Click on Yes when prompted to confirm deletion | Redirection to Library page and DB entry is deleted | Pass | |
+| | Click on Yes when prompted to confirm deletion | Redirection to Library page and DB entry is deleted with Flash message to confirm | Pass | |
 | | Click on Star rating Checkbox | Checkbox selected | Pass | |
 | | Click on Your Review text box | Cursor enter text area | Pass | |
 | | Click on Submit Rating/Review button | User is prompted and rating/review is added to the DB | Pass | |
 | | Click on Edit Rating/Review button | Text can be edited | Pass | |
+| | Click on Delete Review button | Prompts user to confirm deletion | Pass | |
+| | Click on No when prompted to confirm deletion | Modal closes and DB entry remains | Pass | |
+| | Click on Yes when prompted to confirm deletion | Redirection back to feature-details page and DB entry is deleted with Flash message to confirm | Pass | |
 | Film Watchlist Page | | | | |
 | | Navigate to Film Watchlist URL when not logged in | Redirection to Home page | Pass | |
 | | Click on Home link in sidenav | Redirection to Home page | Pass | |
