@@ -303,16 +303,16 @@ Defensive programming was manually tested with the below user acceptance testing
     ![screenshot](documentation/bugs/bug03-1.png)
     ![screenshot](documentation/bugs/bug03-2.png)
 
-    - In my javascript I am targeting two different sidenav elements. The problem was occuring because the both sidenavs were being targeted by the same class - `.sidenav`. The first sidenav has a property of `edge: "right"`. So on page refresh this property was being applied to both sidennavs causing the position issues on the left sidenav.
+    - In my javascript I am targeting two different sidenav elements. The problem was occurring because both sidenavs were being targeted by the same class - `.sidenav`. The first sidenav has a property of `edge: "right"`. So on page refresh this property was being applied to both sidenavs causing the position issues on the left sidenav.
     - To fix this, I targeted the left sidnav by its id rather than by classname. 
 
 
-- Unusual Spacing of cards
+- Unusual Spacing of Cards
 
     ![screenshot](documentation/bugs/bug04.png)
 
-    - When a page was being populated with a list of films and/or tv shows I was experiencing some odd behaviour when it came to the poster postions on the page. several of the posters would display correctly sitting next to each other and then wrapping to a 'new line' once the container width is exceeded. But some 'new lines' would only display one or two posters and would always be right aligned.
-    After some investigation I found a post on [StackOverflow](https://stackoverflow.com/a/69168408) that described a similar issue. The problem being that materialize does not like if cards are not the same height. Although there were no differing height properties being set, I found that the images being supplied by the API were slightly different sizes. 
+    - When a page was being populated with a list of films and/or tv shows I was experiencing some odd behaviour when it came to the poster positions on the page. several of the posters would display correctly sitting next to each other and then wrapping to a 'new line' once the container width is exceeded. But some 'new lines' would only display one or two posters and would always be right aligned.
+    After some investigation, I found a post on [StackOverflow](https://stackoverflow.com/a/69168408) that described a similar issue. The problem is that materialize does not like it if cards are not the same height. Although there were no differing height properties being set, I found that the images being supplied by the API were slightly different sizes. 
     - To fix this, I gave the `img` a property of `aspect-ratio: 2 / 3;`.
 
 

@@ -10,13 +10,13 @@ MTDB is designed for all entertainment enthusiasts. Whether you're a movie buff,
 
 ## UX
 
-The Homepage's main function will be to attract new users to register an account and for existing users to log in. So sign-up and log in options will be in clear eyesight as soon as the page is opened. Some extra functionality will be the ability to search for a movie or show log-inhe nav bar without first logging in or signing up. Once a search result is found an option will be presented to log-in a watchlist or seen list. If either of these buttons are clicked the user will be promted to log in or sign up.
+The Homepage's main function will be to attract new users to register an account and for existing users to log-in. So sign-up and log-in options will be in clear eyesight as soon as the page is opened. Some extra functionality will be the ability to search for a movie or show from the nav bar without first logging in or signing up. Once a search result is found an option will be presented options to add to a watchlist or seenlist. If either of these buttons are clicked the user will be prompted to log-in or sign-up.
 
 Once the user is logged in they will be presented with a library of all the movies and shows saved to their lists. From here they can select the individual lists available to them or select an item from the full library, where they are given the ability to move the item between lists, give it a rating, add personal comments or delete the item.
 
 ### Colour Scheme
 
-I have chosen a dark theme with purple highlights as I feel this best represented the 'Movie' experience. For the majority of the text I have selected a white color as this popped out more and makes the experience better for the user.
+I have chosen a dark theme with purple highlights as I feel this best represents the 'Movie' experience. For the majority of the text, I have selected a white colour as this popped out more and made the experience better for the user.
 
 - `#F5F5F5` used for primary text.
 - `#F79426` used for primary highlights and buttons.
@@ -48,7 +48,7 @@ I used [coolors.co](https://coolors.co/000000-ff0000-4caf50-6b0e87-f79426-f5f5f5
 
 ### Returning Site Users
 
-- As a returning site user, I would like to easily sign up or log in, so that I can access my library and lists.
+- As a returning site user, I would like to easily sign-up or log-in, so that I can access my library and lists.
 - As a returning site user, I would like to add movies/shows to my lists, so that I can keep track of what to watch or what I have watched.
 - As a returning site user, I would like to view each of my lists individually, so I can choose what to watch.
 - As a returning site user, I would like to add my own rating and review to each item in the library.
@@ -113,8 +113,8 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 ### Existing Features
 
 - **Navbar**
-    - A simple navbar where the user can use the search bar to find movies and tv shows, navigate to the home page using the 'Home' link or by clicking the logo/title, navigate to the library page or log out.
-    - If the user is new to the page or not yet logged in, the navbar gives the user the option to sign up or log in.
+    - A simple navbar where the user can use the search bar to find movies and TV shows, navigate to the home page using the 'Home' link or by clicking the logo/title, navigate to the library page or log out.
+    - If the user is new to the page or not yet logged in, the navbar gives the user the option to sign-up or log-in.
 
 ![screenshot](documentation/features/feature01-1.png)
 ![screenshot](documentation/features/feature01-3.png)
@@ -124,14 +124,14 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 - **Welcome section**
 
     - A clean and simple welcome section of the home page displaying the sites full name.
-    - log in and sign up buttons have been added to the welcome page to make it easy for users to see, especially when vieing on a mobile device where the navbar log in and sign up links are hidden.
+    - log-in and sign-up buttons have been added to the welcome page to make it easy for users to see, especially when viewing on a mobile device where the navbar log-in and sign-up links are hidden.
 
 ![screenshot](documentation/features/feature02-1.png) ![screenshot](documentation/features/feature02-2.png)
 
 
 - **Popular Films and TV Shows**
 
-    - This section uses an API to fetch data about the most popular films and tv shows.
+    - This section uses an API to fetch data about the most popular films and TV shows.
     - Because this uses an API these titles will constantly be updated giving the user something new to look at when visiting the site.
 
 ![screenshot](documentation/features/feature03.png)
@@ -143,9 +143,9 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
 ![screenshot](documentation/features/feature04.png)
 
-- **Log In and Sign Up Modals**
+- **log-in and sign-up Modals**
 
-    - I have choosen to have modals for the log in and sign up options instead of directing the user to a separate page. I feel this is more user friendly. For example if the user decides not to log in or sign up at that time they dont have to navigate back to the homepage.
+    - I have chosen to have modals for the log-in and sign-up options instead of directing the user to a separate page. I feel this is more user-friendly. For example, if the user decides not to log-in or sign-up at that time they don't have to navigate back to the homepage.
     - If the user clicks on the wrong button by mistake there is a link at the bottom of the modal that will take the user to the correct modal.
     - To close the modal the user can either click on the 'x' button or anywhere on the screen outside of the modal.
     - Once logged in the user will be directed to their library page.
@@ -166,7 +166,7 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 - **Bottom and side nav**
 
     - Once a user has signed up and is logged in they have a variety of other options available to them. These are all displayed on the bottom nav (for mobile users) and side nav (for desktop users).
-    - The user can navigate back to the home page, library page or view thier watchlists or seenlists.
+    - The user can navigate back to the home page, library page or view their watchlists or seenlists.
     - The Watchlists and Seenlists nav options have an expandable menu which allows the user to navigate to a specific list
 
 ![screenshot](documentation/features/feature07-1.png)  ![screenshot](documentation/features/feature07-2.png)  ![screenshot](documentation/features/feature07-3.png)
@@ -177,31 +177,31 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 - **Search Results**
 
     - When the user searches for a title in the search bar this page will be loaded.
-    - The API is access once again to find the details of the search title and are diplayed here for the user
-    - The user does not have to be logged in to search for a title. But if they try to add the title to one of the lists, non registered users will be warned that they must be logged in to perform the action.
+    - The API is accessed once again to find the details of the search title and is diplayed here for the user
+    - The user does not have to be logged in to search for a title. But if they try to add the title to one of the lists, non-registered users will be warned that they must be logged in to perform the action.
 
 ![screenshot](documentation/features/feature08-1.png)  ![screenshot](documentation/features/feature08-2.png)
 
 - **Feature Details**
 
     - This page is only available to session users. It is accessed by clicking one of the titles that have been added to the users lists.
-    - This page allows the user to change which list the title is in. If the user trys to add the title to a list that it is already in a modal flash message will promt the user.
-    - Users can delete titles from thier lists with the delete/trash button. A modal prompt will be shown to the user to confirm if they want to delete (see below).
-    - Users can add thier own star rating from 1 to 5 stars.
-    - Personal review or comments can also be added or deleted for each title.
+    - This page allows the user to change which list the title is in. If the user tries to add the title to a list that it is already in a modal flash message will prompt the user.
+    - Users can delete titles from their lists with the delete/trash button. A modal prompt will be shown to the user to confirm if they want to delete (see below).
+    - Users can add their own star rating from 1 to 5 stars.
+    - Personal reviews or comments can also be added or deleted for each title.
 
 ![screenshot](documentation/features/feature09-1.png)  ![screenshot](documentation/features/feature09-2.png)  ![screenshot](documentation/features/feature09-3.png)
 
 - **Poster menu options**
 
-    - Each poster has an expandable menu accesed by clicking the three vertical dots.
-    - This menu gives the user options to delete the title from the list or edit. choosing edit will direct the user to the feature details page.
+    - Each poster has an expandable menu accessed by clicking the three vertical dots.
+    - This menu gives the user options to delete the title from the list or edit it. choosing edit will direct the user to the feature details page.
 
 ![screenshot](documentation/features/feature10.png)
 
 - **Delete modal prompt**
 
-    - This modal prompt is displayed whenever a user try's to delete a title.
+    - This modal prompt is displayed whenever a user tries to delete a title.
     - This is to capture any accidental clicks of the delete button.
 
 ![screenshot](documentation/features/feature11.png)
@@ -224,9 +224,9 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 ### Future Features
 
 - Autocomplete list for search bar
-    - This feature will access the API as the user types and will display the closest matches in a dropdown list. This list will display the titles and the posters for all closest matches
+    - This feature will access the API as the user types and will display the closest matches in a dropdown list. This list will display the titles and the posters for all closest the matches
 - Where to watch
-    - This will access an API that return information on what streaming services the currently viewed title can be watch on.
+    - This will access an API that returns information on what streaming services the currently viewed title can be watched on.
 - Ratings from external sources
     - This will also access an API to gather the ratings or scores that have been given by other platforms such as imdb.com and rottentomatoes.com
 
@@ -265,18 +265,18 @@ This collection holds a record of every TV Show and Film that has been added by 
 
 
 - **rating_review** - 
-This collection stores the user specific rating and/or review that they have added to a Film or TV Show.
+This collection stores the user-specific rating and/or review that they have added to a Film or TV Show.
     | Key | Type | Notes |
     | --- | --- | --- |
     | _id | ObjectId() | |
-    | user_id | ObjectId() | Acts as Foriegn Key |
+    | user_id | ObjectId() | Acts as Foreign Key |
     | feature_id | String | |
     | rating | String | |
     | review | String | |
 
 
 - **users** - 
-This collection stores the users username and their hashed password. As well as arrays that store the film or tv show API id's.
+This collection stores the users username and their hashed password. As well as arrays that store the film or TV show API id's.
     | Key | Type | Notes |
     | --- | --- | --- |
     | _id | ObjectId() | |
@@ -405,7 +405,7 @@ A tutorial on how to do that can be found [here](https://www.gitpod.io/docs/conf
 By forking the GitHub Repository, we make a copy of the original repository on our GitHub account to view and/or make changes without affecting the original owner's repository.
 You can fork this repository by using the following steps:
 
-1. Log in to GitHub and locate the [GitHub Repository](https://github.com/dougyb83/MTDb-Movie-Television-Database)
+1. log-in to GitHub and locate the [GitHub Repository](https://github.com/dougyb83/MTDb-Movie-Television-Database)
 2. At the top of the Repository (not top of page) just above the "Settings" Button on the menu, locate the "Fork" Button.
 3. Once clicked, you should now have a copy of the original repository in your own GitHub account!
 
@@ -424,7 +424,7 @@ You can fork this repository by using the following steps:
 | [Codepen](https://codepen.io/recodenow/pen/YZqgZW) | feature-details page | Five star rating checkbox |
 | [StackOverflow](https://stackoverflow.com/questions/37259740/passing-variables-from-flask-to-javascript) | feature-details page | How to pass variable data to JS from the backend |
 | [Dev.to](https://dev.to/jeetvora331/remove-background-from-image-using-css-only-fdi#:~:text=Sometimes%2C%20a%20.,appearance%20of%20a%20transparent%20background) | Home page | How to remove background from an image with CSS |
-| [CSS Scan](https://getcssscan.com/css-buttons-examples) | Home page | Buttons for log in and sign up (button 33) |
+| [CSS Scan](https://getcssscan.com/css-buttons-examples) | Home page | Buttons for log-in and sign-up (button 33) |
 | [Flexbox Froggy](https://flexboxfroggy.com/) | entire site | modern responsive layouts |
 | [CSS-Tricks](https://css-tricks.com/inclusively-hidden) | entire site | How to make a screen reader only class |
 
