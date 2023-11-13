@@ -51,7 +51,7 @@ def home():
     popular_movie_data = popular_movie_data["results"][0:5]
     # access popular tv shows from api
     # store the api url with the title included
-    url = "https://api.themoviedb.org/3/tv/popular?language=en-US&page=1&without_genres=10767"  # noqa
+    url = "https://api.themoviedb.org/3/trending/tv/day?language=en-US"  # noqa
     # get json data
     popular_series_data = get_api_data(url)
     # split object into first 5 results
