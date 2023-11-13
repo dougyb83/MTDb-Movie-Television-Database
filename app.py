@@ -708,6 +708,20 @@ def delete(feature_id, media_type):
             "seenlist": user["seenlist"]
         }}
     )
+    # find rating/review linked to this title
+    rating_review = mongo.db.rating_review.find_one({
+        "$and": [
+            {"user_id": ObjectId(user["_id"])},
+            {"feature_id": feature_id}
+            ]})
+    # if rating/review exists in the DB, update the DB
+    if rating_review["review"]:
+        mongo.db.rating_review.update_one(
+            {"_id": ObjectId(rating_review["_id"])},
+            {"$set": {
+                "review": "",
+                "rating": ""
+            }})
 
     flash(f'"{title}" deleted from your Library')
     return redirect(url_for("library", username=session["user"]))
