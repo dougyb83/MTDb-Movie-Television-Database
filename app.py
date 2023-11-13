@@ -715,7 +715,7 @@ def delete(feature_id, media_type):
             {"feature_id": feature_id}
             ]})
     # if rating/review exists in the DB, update the DB
-    if rating_review["review"]:
+    if rating_review:
         mongo.db.rating_review.update_one(
             {"_id": ObjectId(rating_review["_id"])},
             {"$set": {
