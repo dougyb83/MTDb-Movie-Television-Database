@@ -223,12 +223,15 @@ I've used [Balsamiq](https://balsamiq.com/wireframes) to design my site wirefram
 
 ### Future Features
 
-- Autocomplete list for search bar
-    - This feature will access the API as the user types and will display the closest matches in a dropdown list. This list will display the titles and the posters for all closest the matches
-- Where to watch
-    - This will access an API that returns information on what streaming services the currently viewed title can be watched on.
-- Ratings from external sources
-    - This will also access an API to gather the ratings or scores that have been given by other platforms such as imdb.com and rottentomatoes.com
+- **Autocomplete List for Search Bar**  (Implemented: 2nd Aug 2024)
+    - Provides real-time search suggestions as the user types. The dropdown list displays the titles and posters of the closest matches, pulling data from the API to offer relevant and immediate search results.
+
+![screenshot](documentation/features/feature14.png)
+
+- **Where to Watch**
+    - This feature will provide users with information on which streaming services offer the currently viewed title. By querying an API, users will be able to see where they can stream or rent their favorite movies and TV shows.
+- **Ratings from External Sources**
+    - Integrates with external APIs to fetch ratings and scores from popular review platforms like IMDb and Rotten Tomatoes. This will give users a comprehensive view of how a title is received across different platforms.
 
 ## Tools & Technologies Used
 
