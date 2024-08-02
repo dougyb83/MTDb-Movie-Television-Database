@@ -24,7 +24,7 @@
     <header>
         <!-- top navbar -->
         <div class="navbar-fixed navbar-center">
-            <nav class="text-shadow grey darken-4">
+            <nav class="text-shadow nav-bar">
                 <div class="nav-wrapper">                    
                     <a href="{{ url_for('home') }}" class="brand-logo left">
                         <img src="{{ url_for('static', filename='images/mtdb-logo.png') }}" alt="Logo for MTDB" class="logo-img">
@@ -32,18 +32,19 @@
                     </a>
                     <form class="search-bar" method="POST" action="{{ url_for('search') }}">
                         <div class="input-field">
-                            <input id="search" name="search" type="search" required>
+                            <input id="search" name="search" type="search" autocomplete="off" required>
                             <label for="search" class="label-icon">
                                 <i class="fa-solid fa-magnifying-glass"></i>
                                 <span class="sr-only">Search</span>
                             </label>
+                            <div id="suggestions" class="grey darken-3 white-text hidden"></div>
                         </div>
                     </form>
                     <a href="#" data-target="nav-menu" class="sidenav-trigger right">
                         <i class="fas fa-bars"></i>
                         <span class="sr-only">Open Menu</span>
                     </a>
-                    <ul class="hide-on-med-and-down">
+                    <ul class="hide-on-med-and-down nav-links">
                         <li {% if request.path == url_for('home') %} class="active" {% endif %}><a href="{{ url_for('home') }}">Home</a></li>
                         {% if session.user %}          
                         <li {% if request.path == url_for('library') %} class="active" {% endif %}><a href="{{ url_for('library') }}">Library</a></li>
@@ -70,7 +71,7 @@
                 <li class="nav-sign-up"><a href="#">Sign up</a></li>
             {% endif %}
         </ul>
-    </header>
+    </header>   
 
     <section>
     <!-- flash messages -->

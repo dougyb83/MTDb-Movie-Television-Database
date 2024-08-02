@@ -203,38 +203,72 @@ def library():
 
 
 @app.route("/search", methods=["GET", "POST"])
-def search():
+@app.route("/search/<media_type>/<media_id>", methods=["GET", "POST"])
+def search(media_type=None, media_id=None):
     """
     Allows the user to search for a movie or tv show from the search bar.
     If no result or no value supplied user is directed back to home.
     if search is successful the user is shown the
-    full details of the requsted title
+    full details of the requsted title.
+    New feature - movies are suggested to the user as they type
     """
-    # get the movie/show title from the search input
-    title = request.form.get("search")
-    # check if title has a value
-    if title:
-        # get the movie/show ID from the API
-        url = f"https://api.themoviedb.org/3/search/multi?query={title}&include_adult=false&language=en-US&page=1"  # noqa
-        # get json data
-        json_data = get_api_data(url)
-        # get the movie or show id from json results
-        if json_data["total_results"] > 0:
-            media_id = json_data['results'][0]['id']
-            # get media type
-            media_type = json_data['results'][0]['media_type']
-            # get the movie or show details
-            media_data = get_media_details(media_id, media_type)
-            media_certificate = get_media_certificate(media_id, media_type)
-            return render_template(
-                "search-result.html", media_data=media_data,
-                media_certificate=media_certificate, media_type=media_type)
-        else:
-            flash(f'No results found for "{title}"')
-            return redirect(url_for("home"))
+    # if feature_id request came from search suggestions
+    if media_id:
+        # get the movie or show details
+        media_data = get_media_details(media_id, media_type)
+        media_certificate = get_media_certificate(media_id, media_type)
+        return render_template(
+            "search-result.html", media_data=media_data,
+            media_certificate=media_certificate, media_type=media_type)
     else:
-        # title has no value - display home page
-        return redirect(url_for("home"))
+        # get the movie/show title from the search input
+        title = request.form.get("search")
+        # check if title has a value
+        if title:
+            # get the movie/show ID from the API
+            url = f"https://api.themoviedb.org/3/search/multi?query={title}&include_adult=false&language=en-US&page=1"  # noqa
+            # get json data
+            json_data = get_api_data(url)
+            # get the movie or show id from json results
+            if json_data["total_results"] > 0:
+                media_id = json_data['results'][0]['id']
+                # get media type
+                media_type = json_data['results'][0]['media_type']
+                # get the movie or show details
+                media_data = get_media_details(media_id, media_type)
+                media_certificate = get_media_certificate(media_id, media_type)
+                return render_template(
+                    "search-result.html", media_data=media_data,
+                    media_certificate=media_certificate, media_type=media_type)
+            else:
+                flash(f'No results found for "{title}"')
+                return redirect(url_for("home"))
+        
+    # title has no value - display home page
+    return redirect(url_for("home"))
+    
+
+@app.route("/search_suggestions/<search_term>", methods=["GET", "POST"])
+def search_suggestions(search_term):
+    """
+    Securely handles the api calls made by fetch in script.js when 
+    the user begins typing search terms in the input field of the nav bar
+    """
+    if not search_term or len(search_term) <= 3:
+        return {'results': []}
+
+    # Make the request to the external API
+    url = f'https://api.themoviedb.org/3/search/multi?query={search_term}&include_adult=false&language=en-US'
+    response = requests.get(url, headers=headers)
+    
+    if response.status_code != 200:
+        return {'error': 'Failed to fetch data'}, response.status_code
+
+    data = response.json()
+    # Optionally, filter out 'person' media type if not needed
+    results = [item for item in data['results'] if item['media_type'] != 'person'][:5]
+    
+    return {'results': results}
 
 
 @app.route(
