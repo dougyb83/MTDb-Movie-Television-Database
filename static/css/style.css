@@ -197,6 +197,7 @@ ul.sidenav.sidenav-fixed.grey.darken-4.white-text {
 
 ul#nav-menu {
     text-align: center;
+    z-index: 999;
 }
 
 ul li div:hover > a, nav ul li:hover a {
