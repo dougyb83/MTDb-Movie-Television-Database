@@ -26,6 +26,14 @@ $(document).ready(function () {
     $(".log-in-modal").modal("close");
     $(".sign-up-modal").modal("open");
   });
+  // when submit is clicked, close log in or sign up modal. show loading spinner
+  $("#sign-up-button, #log-in-button").click(function () {
+    $(".log-in-modal").modal("close");
+    $(".sign-up-modal").modal("close");
+    $('#loading-overlay').fadeToggle(100);
+  });
+  
+
   // if a flash message exists, open a modal
   $(".flash-modal").modal("open");
   // if a non registered user performs a register user action display a warning and prompt login

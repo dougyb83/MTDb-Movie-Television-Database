@@ -122,7 +122,7 @@
                         </div>
                         <!-- register -->
                         <div class="row">
-                            <button type="submit" class="col s12 btn-large light-blue darken-4 text-shadow">
+                            <button id="sign-up-button" type="submit" class="col s12 btn-large light-blue darken-4 text-shadow">
                                 Register <i class="fas fa-sign-in-alt"></i>
                             </button>
                         </div>
@@ -170,7 +170,7 @@
                         </div>
                         <!-- login -->
                         <div class="row">
-                            <button type="submit" class="col s12 btn-large light-blue darken-4 text-shadow">
+                            <button id="log-in-button" type="submit" class="col s12 btn-large light-blue darken-4 text-shadow">
                                 Log In <i class="fas fa-sign-in-alt"></i>
                             </button>
                         </div>
@@ -307,6 +307,14 @@
         {% block content%}
         {% endblock %}
     </main>
+    
+    <div id="loading-overlay">
+        <h1 class="loading-spinner">
+            <span class="icon">
+                <i class="fas fa-3x fa-sync-alt fa-spin"></i>
+            </span>
+        </h1>
+    </div>
 
     <!-- Start of Footer -->
     <footer class="page-footer text-shadow grey darken-3">
