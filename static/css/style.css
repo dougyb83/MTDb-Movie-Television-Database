@@ -258,6 +258,10 @@ ul.sub-menu li {
     height: 100%;
 }
 
+.loading-spinner .icon {
+    font-size: 1.5rem;
+}
+
 /* footer */
 footer {
     position: relative;
