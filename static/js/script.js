@@ -58,7 +58,7 @@ $(document).ready(function () {
       <div class="input-field">
         <label for="review" class="active">Your Review!</label>
         <textarea id="review" name="review" class="review materialize-textarea" maxlength="290">${reviewText}</textarea>                                
-        <button class="btn waves-effect waves-light right" title="Add Review" type="submit">
+        <button class="btn submit-review-btn waves-effect waves-light right" title="Add Review" type="submit">
             Submit Review
         </button>
         <button class="btn cancel-btn waves-effect waves-light right" type="button">

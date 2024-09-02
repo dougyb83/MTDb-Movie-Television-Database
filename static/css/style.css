@@ -703,7 +703,7 @@ textarea::placeholder {
     color: #cd201f;
 }
 
-.button-container .btn:hover {
+.button-container .btn:hover, button.btn.submit-review-btn:hover, button.btn.cancel-btn:hover {
     background-color: #504e4e;
 }
 
