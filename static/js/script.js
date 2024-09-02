@@ -2,11 +2,11 @@
 
 $(document).ready(function () {
   // modal initialisation
-  $('.modal').modal();
-    
+  $(".modal").modal();
+
   // initialise and set position for side navs
-  $('#nav-menu').sidenav({edge: "right"});
-  $('#slide-out').sidenav({edge: "left",}, 'draggable', true);
+  $("#nav-menu").sidenav({ edge: "right" });
+  $("#slide-out").sidenav({ edge: "left" }, "draggable", true);
 
   // open log-in modal when navbar log in clicked
   $(".nav-log-in, .log-in-button").click(function () {
@@ -30,9 +30,8 @@ $(document).ready(function () {
   $("#sign-up-button, #log-in-button").click(function () {
     $(".log-in-modal").modal("close");
     $(".sign-up-modal").modal("close");
-    $('#loading-overlay').fadeToggle(100);
+    $("#loading-overlay").fadeToggle(100);
   });
-  
 
   // if a flash message exists, open a modal
   $(".flash-modal").modal("open");
@@ -42,24 +41,46 @@ $(document).ready(function () {
     $(".log-in-modal").modal("open");
   });
   // if the above message is displayed on the login modal and the user doesn't log in - clear the message
-  $('.log-in-modal').modal({
-    onCloseEnd: function () { // Callback for Modal close
+  $(".log-in-modal").modal({
+    onCloseEnd: function () {
+      // Callback for Modal close
       $(".message").text("");
-    }
+    },
   });
   // when the edit review button is clicked, make the text editable
+  let originalReviewHtml = $("#edit-review").html();
+  let originalDeleteButtonHtml = $(".delete-review-button").html();
   $("#edit-review-btn").click(function () {
     let reviewText = $("#review").text();
-    $("#edit-review").html(`
+    $("#edit-review").addClass("hide");
+    // Change the HTML to the editable form
+    $(".editing-review").html(`
       <div class="input-field">
         <label for="review" class="active">Your Review!</label>
         <textarea id="review" name="review" class="review materialize-textarea" maxlength="290">${reviewText}</textarea>                                
         <button class="btn waves-effect waves-light right" title="Add Review" type="submit">
             Submit Review
         </button>
+        <button class="btn cancel-btn waves-effect waves-light right" type="button">
+            Cancel
+        </button>
       </div>
     `);
+    
+    // Ensure the delete button is hidden
+    $(".delete-review-button").addClass("hide");
+
+    // Re-attach the event handler for the cancel button after inserting it into the DOM
+    $(".cancel-btn").click(function () {
+      // Revert the HTML back to the original content
+      $("#edit-review").removeClass("hide");
+      $(".delete-review-button").removeClass("hide");
+      $(".editing-review").html("")
+    });
   });
+
+
+
   // hide the sublists and show them when clicked
   $("#watchlists>a").click(function () {
     $(".watchlists").toggleClass("hide show");
@@ -69,14 +90,19 @@ $(document).ready(function () {
     $(".seenlists").toggleClass("hide show");
   });
   // Keep sublists visible when viewing relevant data on list.html
-  if ($("#list-sub-title").text().trim() == "Films Watchlist" || $("#list-sub-title").text().trim() == "TV Watchlist") {
+  if (
+    $("#list-sub-title").text().trim() == "Films Watchlist" ||
+    $("#list-sub-title").text().trim() == "TV Watchlist"
+  ) {
     $(".watchlists").toggleClass("hide show");
-  } else if ($("#list-sub-title").text().trim() == "Films Seenlist" || $("#list-sub-title").text().trim() == "TV Seenlist") {
+  } else if (
+    $("#list-sub-title").text().trim() == "Films Seenlist" ||
+    $("#list-sub-title").text().trim() == "TV Seenlist"
+  ) {
     $(".seenlists").toggleClass("hide show");
   }
   $(".dropdown-trigger").dropdown();
-  $('.tooltipped').tooltip();
-
+  $(".tooltipped").tooltip();
 
   // search suggestions functionality
   const searchInput = document.getElementById("search");
@@ -85,66 +111,72 @@ $(document).ready(function () {
   searchInput.addEventListener("input", () => {
     if (searchInput.value.length > 3) {
       fetch(`/search_suggestions/${searchInput.value}`)
-        .then(data => {
+        .then((data) => {
           if (!data.ok) {
             throw Error(data.status);
           }
           return data.json();
-        }).then(update => {
+        })
+        .then((update) => {
           let suggestions = update.results;
           displaySuggestions(suggestions);
-        }).catch(e => {
+        })
+        .catch((e) => {
           console.log(e);
         });
     } else if (searchInput.value.length < 3) {
-      suggestionsContainer.classList.add('hidden');
-      suggestionsContainer.innerHTML = '';
+      suggestionsContainer.classList.add("hidden");
+      suggestionsContainer.innerHTML = "";
     }
   });
 
   function displaySuggestions(suggestions) {
-    suggestionsContainer.innerHTML = '';
+    suggestionsContainer.innerHTML = "";
     if (suggestions.length > 0) {
       const suggestionsList = document.createElement("ul");
-      suggestionsList.id = 'suggestions-list';
-      suggestions.forEach(suggestion => {
+      suggestionsList.id = "suggestions-list";
+      suggestions.forEach((suggestion) => {
         const suggestionItem = document.createElement("li");
         let title = suggestion.title ? suggestion.title : suggestion.name;
-        let posterPath = !suggestion.poster_path ? "/static/images/no-image-placeholder.png" : `https://image.tmdb.org/t/p/w500${suggestion.poster_path}`;
-        suggestionItem.innerHTML =
-          `<a href="/search/${suggestion.media_type}/${suggestion.id}">
+        let posterPath = !suggestion.poster_path
+          ? "/static/images/no-image-placeholder.png"
+          : `https://image.tmdb.org/t/p/w500${suggestion.poster_path}`;
+        suggestionItem.innerHTML = `<a href="/search/${suggestion.media_type}/${suggestion.id}">
               <div class="suggestions-div">
               <img src="${posterPath}" alt="${title}">
                 <span>${title}</span>
               </div>
           </a>`;
         suggestionsList.appendChild(suggestionItem);
-        suggestionsContainer.classList.remove('hidden');
+        suggestionsContainer.classList.remove("hidden");
       });
       suggestionsContainer.appendChild(suggestionsList);
     } else {
-      suggestionsContainer.innerHTML = '<p>No results found</p>';
+      suggestionsContainer.innerHTML = "<p>No results found</p>";
     }
   }
 
   // Add a click event listener to the document
-  document.addEventListener('click', function (event) {
+  document.addEventListener("click", function (event) {
     // Check if the click is outside the suggestions div
-    if (!suggestionsContainer.contains(event.target) && event.target !== searchInput) {
+    if (
+      !suggestionsContainer.contains(event.target) &&
+      event.target !== searchInput
+    ) {
       // Hide the suggestions div
-      suggestionsContainer.classList.add('hidden');
+      suggestionsContainer.classList.add("hidden");
     }
   });
 
   // Add a click event listener to the suggestions div to stop propagation
-  suggestionsContainer.addEventListener('click', function (event) {
+  suggestionsContainer.addEventListener("click", function (event) {
     event.stopPropagation();
   });
 
   // Remove the hidden class when the search input is clicked
-  searchInput.addEventListener('click', function (event) {
+  searchInput.addEventListener("click", function (event) {
     if (searchInput.value.length > 3) {
-      suggestionsContainer.classList.remove('hidden');
+      suggestionsContainer.classList.remove("hidden");
       event.stopPropagation(); // Prevent the click from propagating to the document
     }
   });
