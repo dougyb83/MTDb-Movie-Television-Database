@@ -195,6 +195,11 @@ ul.sidenav.sidenav-fixed.grey.darken-4.white-text {
     color: rgb(170, 169, 169);
 }
 
+.sidenav li>a:hover {
+    background-color: transparent;
+    color: #fff;
+}
+
 ul#nav-menu {
     text-align: center;
     z-index: 999;
@@ -202,6 +207,7 @@ ul#nav-menu {
 
 ul li div:hover > a, nav ul li:hover a {
     color: #fffffffc;
+    background-color: transparent;
 }
 
 .sidenav .menu-item {
@@ -703,7 +709,12 @@ textarea::placeholder {
     color: #cd201f;
 }
 
-.button-container .btn:hover, button.btn.submit-review-btn:hover, button.btn.cancel-btn:hover {
+.button-container .btn:hover, 
+button.btn.submit-review-btn:hover, 
+button.btn.cancel-btn:hover,
+.button-container .btn:focus, 
+button.btn.submit-review-btn:focus, 
+button.btn.cancel-btn:focus {
     background-color: #504e4e;
 }
 
@@ -1046,7 +1057,7 @@ textarea::placeholder {
 
     .sidenav li a{
         font-size: 25px;
-        padding: 35px;
+        margin: 10px 0;
     }
 
     ul#nav-menu {
@@ -1102,11 +1113,12 @@ textarea::placeholder {
     }
 
     .dropdown-content li>a {
-        color: rgb(170, 169, 169); 
+        color: rgb(170, 169, 169);
+        background-color: transparent;
     }
 
-    .sub-menu-item:hover a {
-        color: rgb(46, 45, 45); 
+    .dropdown-content li:hover {
+        background-color: #504e4e;
     }
     
     ul.dropdown-content {
@@ -1410,11 +1422,6 @@ textarea::placeholder {
 
     .sidenav.sidenav-fixed {
         padding: 25px 30px;
-    }
-
-    .sidenav li a {
-        font-size: 18px;
-        padding: 35px 0;
     }
 
     ul#nav-menu {
