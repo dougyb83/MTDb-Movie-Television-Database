@@ -51,7 +51,7 @@ section.container {
     width: 30vw;
 }
 
-.modal-footer .btn:hover {
+.modal-footer .btn:hover, .modal-content .btn:hover {
     background-color: #504e4e;
 }
 
@@ -522,7 +522,7 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
 /* button from https://getcssscan.com/css-buttons-examples - button-33 */
 .button-title {
     background-color: #f79426;
-    border-radius: 100px;
+    border-radius: 5px;
     box-shadow: rgba(255, 138, 5, 1) 0 -25px 18px -14px inset,rgba(247,148,38, .15) 0 1px 2px,rgba(247,148,38, .15) 0 2px 4px,rgba(247,148,38, .15) 0 4px 8px,rgba(247,148,38, .15) 0 8px 16px,rgba(247,148,38, .15) 0 16px 32px;
     color: black;
     cursor: pointer;
@@ -541,6 +541,10 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
   .button-title:hover {
     box-shadow: rgba(247,148,38,.35) 0 -25px 18px -14px inset,rgba(247,148,38,.25) 0 1px 2px,rgba(247,148,38,.25) 0 2px 4px,rgba(247,148,38,.25) 0 4px 8px,rgba(247,148,38,.25) 0 8px 16px,rgba(247,148,38,.25) 0 16px 32px;
     transform: scale(1.05) rotate(-1deg);
+  }
+
+  .button-title:focus {
+    background-color: #f79426;
   }
 
   .go-to-library-button {
@@ -946,6 +950,16 @@ button.btn.cancel-btn:focus {
     .log-in-button, .sign-up-button {
         font-size: 17px;
         width: 16vw;
+    }
+
+    #log-in-button, #sign-up-button {
+        background-color: #2f2e2e;
+        color: #F5F5F5;
+        border-radius: 5px;
+    }
+
+    #log-in-button:hover, #sign-up-button:hover {
+        background-color: #504e4e;
     }
 
     .icon-link {  
