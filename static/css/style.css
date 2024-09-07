@@ -63,7 +63,7 @@ body {
 }
 
 main {
-    min-height: 65vh;
+    min-height: 75vh;
 }
 
 .nav-bar {
@@ -690,8 +690,7 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
 
 /* feature-details & search-results pages */
 .main-content {
-    min-height: 85vh;
-    margin: 40px 0 40px 0;
+    margin: 40px 0 0 0;
     position: relative;
     left: 330px;
 }
@@ -1413,7 +1412,7 @@ button.btn.cancel-btn:focus {
         height: 2.5em;
     }
 
-    .attribution {
+    .attribution-tmdb {
         flex-direction: column;
         margin-bottom: 10px;
     }
