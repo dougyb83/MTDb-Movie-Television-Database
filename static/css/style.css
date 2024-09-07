@@ -294,9 +294,22 @@ footer {
     font-size: 2.9em;
 }
 
-.footer-copyright {
-    text-align: center;
-}
+.attribution {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .attribution img {
+    width: 70px;
+    margin-right: 10px;
+  }
+
+  .attribution a {
+    text-decoration: none;
+  }
 
 /* social icons styling from  codepen https://codepen.io/robsonvinicius/pen/bGpKQrw */
 :root {
@@ -496,6 +509,11 @@ img#popcorn-2 {
 
 .auth-form .input-field i {
     left: 0;
+    color: #333333;
+}
+
+.input-field .prefix.active {
+    color: #535c68;
 }
 
 input#login-password, input#login-username,input#signup-username,input#signup-password {
@@ -549,6 +567,16 @@ input#login-password, input#login-username,input#signup-username,input#signup-pa
 
   .go-to-library-button {
     width: 21vw;
+}
+
+#log-in-button, #sign-up-button {
+    background-color: #2f2e2e;
+    color: #F5F5F5;
+    border-radius: 5px;
+}
+
+#log-in-button:hover, #sign-up-button:hover {
+    background-color: #504e4e;
 }
 
 /* library page */
@@ -950,16 +978,6 @@ button.btn.cancel-btn:focus {
     .log-in-button, .sign-up-button {
         font-size: 17px;
         width: 16vw;
-    }
-
-    #log-in-button, #sign-up-button {
-        background-color: #2f2e2e;
-        color: #F5F5F5;
-        border-radius: 5px;
-    }
-
-    #log-in-button:hover, #sign-up-button:hover {
-        background-color: #504e4e;
     }
 
     .icon-link {  
@@ -1395,6 +1413,15 @@ button.btn.cancel-btn:focus {
         height: 2.5em;
     }
 
+    .attribution {
+        flex-direction: column;
+        margin-bottom: 10px;
+    }
+  
+    .attribution p {
+        margin-top: 0;
+    }
+    
     /* library page */
     .controls i {
         padding: 50px;    
@@ -1638,6 +1665,14 @@ button.btn.cancel-btn:focus {
         width: 2.7em;
         height: 2.7em;
 
+    }
+
+    .attribution {
+        font-size: 0.6rem;
+    }
+
+    .attribution img {
+        width: 50px;
     }
 }
 

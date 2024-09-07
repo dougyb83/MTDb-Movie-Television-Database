@@ -280,6 +280,14 @@ def feature_details(feature_id, media_type):
     details of that title and are displayed to the user
     """
     if "user" in session:
+        # store the api url with the feature_id included
+        if media_type == "movie":
+            url = f"https://api.themoviedb.org/3/movie/{feature_id}/watch/providers"
+        else:
+            url = f"https://api.themoviedb.org/3/tv/{feature_id}/watch/providers"
+        # get json data
+        watch_providers = get_api_data(url)
+        print(watch_providers)
         # get user data from DB
         user = mongo.db.users.find_one({"username": session["user"]})
         # get the movie or show details
