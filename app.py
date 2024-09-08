@@ -286,8 +286,12 @@ def feature_details(feature_id, media_type):
         else:
             url = f"https://api.themoviedb.org/3/tv/{feature_id}/watch/providers"
         # get json data
-        watch_providers = get_api_data(url)
-        print(watch_providers)
+        get_watch_providers = get_api_data(url)
+        if get_watch_providers['results']['GB']['flatrate']:
+            watch_providers = get_watch_providers['results']['GB']['flatrate'][0:3]
+        else:
+            watch_providers = get_watch_providers['results']['GB']['buy'][0:3]
+
         # get user data from DB
         user = mongo.db.users.find_one({"username": session["user"]})
         # get the movie or show details
@@ -303,7 +307,7 @@ def feature_details(feature_id, media_type):
         return render_template(
             "feature-details.html", media_data=media_data,
             media_type=media_type, media_certificate=media_certificate,
-            rating_review=rating_review
+            rating_review=rating_review, watch_providers=watch_providers
         )
     else:
         # user is not logged in - display home page

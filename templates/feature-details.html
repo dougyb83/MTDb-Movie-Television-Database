@@ -46,8 +46,8 @@
                 </div> 
                 <p id="overview" class="hide-on-small-only overview">{{ media_data['overview'] }}</p>
                 <!-- buttons - desktop: add to watchlist, add to seenlist, delete -->                                 
-                <div class="button-container hide-on-small-only">
-                    <form method="POST" action="{{ url_for('add_watchlist') }}">                   
+                <div class="row button-container hide-on-small-only">
+                    <form method="POST" class="col" action="{{ url_for('add_watchlist') }}">                   
                         <input type="hidden" name="id" value="{{ media_data['id'] }}">                  
                         <input type="hidden" name="title" value="{% if media_type == 'movie' %}{{ media_data['title'] }}{% else %}{{ media_data['name'] }}{% endif %}">
                         <input type="hidden" name="media_type" value="{{ media_type }}">
@@ -59,7 +59,7 @@
                             <label class="hide-on-large-only" for="watchlist-button-desktop">Add to Watchlist</label>
                         </div>
                     </form>
-                    <form method="POST" action="{{ url_for('add_seenlist') }}">                    
+                    <form method="POST" class="col" action="{{ url_for('add_seenlist') }}">                    
                         <input type="hidden" name="id" value="{{ media_data['id'] }}">                  
                         <input type="hidden" name="title" value="{% if media_type == 'movie' %}{{ media_data['title'] }}{% else %}{{ media_data['name'] }}{% endif %}">
                         <input type="hidden" name="media_type" value="{{ media_type }}">
@@ -71,13 +71,23 @@
                             <label class="hide-on-large-only" for="seenlist-button-desktop">Add to Seenlist</label>
                         </div>
                     </form>
-                    <div class="delete-button">
+                    <div class="col delete-button">
                         <a href="#modal-delete-{{ media_data['id'] }}" class="modal-trigger btn waves-effect waves-light tooltipped" data-position="top" data-tooltip="Delete">
                             <i class="fa-solid fa-trash"></i>
                             <span class="sr-only">Delete from list</span>
                         </a>
                         <span class="hide-on-large-only">Delete from list</span>
                     </div>
+                </div>
+                <h6 class="hide-on-small-only"><strong>Where to watch</strong></h6>
+                <div class="row watch-provider hide-on-small-only">                    
+                    {% for provider in watch_providers %}
+                    <div class="col">
+                        <a href="https://www.google.com/search?q={{provider['provider_name']}}" target="_blank" class="watch-provider-button" aria-label="Watch on {{provider['provider_name']}}" type="text">
+                            <img src="https://image.tmdb.org/t/p/w500{{ provider['logo_path'] }}" alt="{{provider['provider_name']}} logo">
+                        </a>
+                    </div>
+                    {% endfor %}
                 </div>
             </div>
             <!-- feature poster image -->
@@ -125,7 +135,17 @@
             </div>
             <div class="col overview">
                 <p class="hide-on-med-and-up">{{ media_data['overview'] }}</p>
-            </div>         
+            </div>    
+            <h6 class="hide-on-med-and-up"><strong>Where to watch</strong></h6>
+            <div class="row watch-provider hide-on-med-and-up">                    
+                {% for provider in watch_providers %}
+                <div class="col">
+                    <a href="https://www.google.com/search?q={{provider['provider_name']}}" target="_blank" class="watch-provider-button" aria-label="Watch on {{provider['provider_name']}}" type="text">
+                        <img src="https://image.tmdb.org/t/p/w500{{ provider['logo_path'] }}" alt="{{provider['provider_name']}} logo">
+                    </a>
+                </div>
+                {% endfor %}
+            </div>     
         </div>
         <!-- Modal: delete media -->
         <div id="modal-delete-{{ media_data['id'] }}" class="modal">
