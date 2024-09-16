@@ -79,16 +79,18 @@
                         <span class="hide-on-large-only">Delete from list</span>
                     </div>
                 </div>
-                <h6 class="hide-on-small-only"><strong>Where to watch</strong></h6>
-                <div class="row watch-provider hide-on-small-only">                    
-                    {% for provider in watch_providers %}
-                    <div class="col">
-                        <a href="https://www.google.com/search?q={{provider['provider_name']}}" target="_blank" class="watch-provider-button" aria-label="Watch on {{provider['provider_name']}}" type="text">
-                            <img src="https://image.tmdb.org/t/p/w500{{ provider['logo_path'] }}" alt="{{provider['provider_name']}} logo">
-                        </a>
+                {% if watch_providers %} 
+                    <h6 class="hide-on-small-only"><strong>Where to watch</strong></h6>
+                    <div class="row watch-provider hide-on-small-only">                    
+                        {% for provider in watch_providers %}
+                        <div class="col">
+                            <a href="https://www.google.com/search?q={{provider['provider_name']}}" target="_blank" class="watch-provider-button" aria-label="Watch on {{provider['provider_name']}}" type="text">
+                                <img src="https://image.tmdb.org/t/p/w500{{ provider['logo_path'] }}" alt="{{provider['provider_name']}} logo">
+                            </a>
+                        </div>
+                        {% endfor %}
                     </div>
-                    {% endfor %}
-                </div>
+                {% endif %}
             </div>
             <!-- feature poster image -->
             <div class="col s6 m6 l6 poster">
@@ -135,17 +137,19 @@
             </div>
             <div class="col overview">
                 <p class="hide-on-med-and-up">{{ media_data['overview'] }}</p>
-            </div>    
-            <h6 class="hide-on-med-and-up"><strong>Where to watch</strong></h6>
-            <div class="row watch-provider hide-on-med-and-up">                    
-                {% for provider in watch_providers %}
-                <div class="col">
-                    <a href="https://www.google.com/search?q={{provider['provider_name']}}" target="_blank" class="watch-provider-button" aria-label="Watch on {{provider['provider_name']}}" type="text">
-                        <img src="https://image.tmdb.org/t/p/w500{{ provider['logo_path'] }}" alt="{{provider['provider_name']}} logo">
-                    </a>
-                </div>
-                {% endfor %}
-            </div>     
+            </div>   
+            {% if watch_providers %} 
+                <h6 class="hide-on-med-and-up"><strong>Where to watch</strong></h6>
+                <div class="row watch-provider hide-on-med-and-up">                    
+                    {% for provider in watch_providers %}
+                    <div class="col">
+                        <a href="https://www.google.com/search?q={{provider['provider_name']}}" target="_blank" class="watch-provider-button" aria-label="Watch on {{provider['provider_name']}}" type="text">
+                            <img src="https://image.tmdb.org/t/p/w500{{ provider['logo_path'] }}" alt="{{provider['provider_name']}} logo">
+                        </a>
+                    </div>
+                    {% endfor %}
+                </div>   
+            {% endif %}  
         </div>
         <!-- Modal: delete media -->
         <div id="modal-delete-{{ media_data['id'] }}" class="modal">

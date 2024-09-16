@@ -288,15 +288,15 @@ def feature_details(feature_id, media_type):
         # get json data
         get_watch_providers = get_api_data(url)
 
-        flatrate_providers = get_watch_providers['results']['GB'].get('flatrate', [])
-        buy_providers = get_watch_providers['results']['GB'].get('buy', [])
-        if flatrate_providers:
-            watch_providers = flatrate_providers[0:3]
-        elif buy_providers:
-            watch_providers = buy_providers[0:3]
-        else:
+        try:
+            flatrate_providers = get_watch_providers['results']['GB'].get('flatrate', [])
+            buy_providers = get_watch_providers['results']['GB'].get('buy', [])
+            if flatrate_providers:
+                watch_providers = flatrate_providers[0:3]
+            elif buy_providers:
+                watch_providers = buy_providers[0:3]
+        except:
             watch_providers = []
-        print(watch_providers)
         # get user data from DB
         user = mongo.db.users.find_one({"username": session["user"]})
         # get the movie or show details

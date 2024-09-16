@@ -66,7 +66,7 @@ $(document).ready(function () {
         </button>
       </div>
     `);
-    
+
     // Ensure the delete button is hidden
     $(".delete-review-button").addClass("hide");
 
@@ -75,11 +75,9 @@ $(document).ready(function () {
       // Revert the HTML back to the original content
       $("#edit-review").removeClass("hide");
       $(".delete-review-button").removeClass("hide");
-      $(".editing-review").html("")
+      $(".editing-review").html("");
     });
   });
-
-
 
   // hide the sublists and show them when clicked
   $("#watchlists>a").click(function () {

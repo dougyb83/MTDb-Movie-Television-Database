@@ -46,9 +46,9 @@
                 </div> 
                 <p id="overview" class="hide-on-small-only overview">{{ media_data['overview'] }}</p>
                 <!-- buttons - desktop: add to watchlist, add to seenlist, delete -->                                  
-                <div class="button-container hide-on-small-only">
+                <div class="button-container row hide-on-small-only">
                     {% if session.user %}   
-                        <form method="POST" action="{{ url_for('add_watchlist') }}">                    
+                        <form method="POST" class="col" action="{{ url_for('add_watchlist') }}">                    
                             <input type="hidden" name="id" value="{{ media_data['id'] }}">                  
                             <input type="hidden" name="title" value="{% if media_type == 'movie' %}{{ media_data['title'] }}{% else %}{{ media_data['name'] }}{% endif %}">
                             <input type="hidden" name="media_type" value="{{ media_type }}">
@@ -60,7 +60,7 @@
                                 <label class="hide-on-large-only" for="watchlist-button-desktop">Add to Watchlist</label>
                             </div>
                         </form>
-                        <form method="POST" action="{{ url_for('add_seenlist') }}">                    
+                        <form method="POST" class="col" action="{{ url_for('add_seenlist') }}">                    
                             <input type="hidden" name="id" value="{{ media_data['id'] }}">                  
                             <input type="hidden" name="title" value="{% if media_type == 'movie' %}{{ media_data['title'] }}{% else %}{{ media_data['name'] }}{% endif %}">
                             <input type="hidden" name="media_type" value="{{ media_type }}">
@@ -73,13 +73,13 @@
                             </div>
                         </form>
                     {% else %}
-                        <div class="watchlist-button">
+                        <div class="col watchlist-button">
                             <button class="non-session-activity btn waves-effect waves-light tooltipped" aria-label="Add to Watchlist" id="watchlist-button-desktop-non-user" data-position="top" data-tooltip="Add to Watchlist">
                                 <i class="fa-regular fa-bookmark"></i>
                             </button>
                             <label class="hide-on-large-only" for="watchlist-button-desktop-non-user">Add to Watchlist</label>
                         </div>
-                        <div class="seenlist-button">
+                        <div class="col seenlist-button">
                             <button class="non-session-activity btn waves-effect waves-light tooltipped" aria-label="Add to Seenlist" id="seenlist-button-non-user" data-position="top" data-tooltip="Add to Seenlist" >
                                 <i class="fa-regular fa-circle-check"></i>
                             </button>

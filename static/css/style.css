@@ -774,6 +774,7 @@ button.btn.cancel-btn:focus {
 }
 
 .watch-provider {
+    display: flex;
     margin: 10px 0 0 0;
     width: fit-content;
     padding: 10px;
