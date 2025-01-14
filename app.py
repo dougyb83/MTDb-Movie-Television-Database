@@ -19,11 +19,7 @@ headers = {
 
 app = Flask(__name__)
 
-# app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
-# app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
-
-# mongo = PyMongo(app)
 
 try:
     # Initialize MongoDB client
@@ -38,35 +34,6 @@ try:
 except Exception as e:
     print(f"Error connecting to MongoDB: {e}")
     mongo = None
-
-
-
-def move_items():
-    """
-    Moves all items from the 'users' collection
-    to the 'db.users' collection in the same database.
-    """
-    try:
-        # Access the source and target collections
-        source_collection = mongo["all_added_titles"]
-        target_collection = mongo["db.all_added_titles"]
-
-        # Fetch all documents from the source collection
-        documents = list(source_collection.find({}))
-
-        if not documents:
-            print("No documents found in the source collection.")
-            return
-
-        # Insert documents into the target collection
-        target_collection.insert_many(documents)
-
-        # Optionally, delete documents from the source collection
-        source_collection.delete_many({})
-
-        print(f"Moved {len(documents)} documents to 'db.users' successfully.")
-    except Exception as e:
-        print(f"An error occurred: {e}")
 
 
 # get API request data
